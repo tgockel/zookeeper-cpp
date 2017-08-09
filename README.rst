@@ -6,19 +6,28 @@ A ZooKeeper client for C++.
 Features include (but are not necessarily limited to):
 
 - Simple
+
   - Connect with just a connection string
   - Clients should not require factories
   - Does not require *any* knowledge of the Java or C APIs
+
 - Configurable
+
   - Use the parts you need
   - Change parts to fit in your application
+
 - Safe
+
   - In the best case, illegal code should fail to compile
   - An illegal action should throw an exception
   - Utility functions have a `strong exception guarantee <http://www.gotw.ca/gotw/082.htm>`_
+
 - Stable
+
   - Worry less about upgrading -- the API and ABI will not change out from under you
+
 - Documented
+
   - Consumable by human beings
   - Answers questions you might actually ask
 
