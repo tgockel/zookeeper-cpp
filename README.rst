@@ -87,38 +87,38 @@ Things in ``zk/curator`` have features found in the `Apache Curator <http://cura
 
 * Elections
 
-  * `Leader Latch <http://curator.apache.org/curator-recipes/leader-latch.html>`_
-  * `Leader Election <http://curator.apache.org/curator-recipes/leader-election.html>`_
+  * `Leader Latch <https://github.com/tgockel/zookeeper-cpp/issues/1>`_
+  * `Leader Election <https://github.com/tgockel/zookeeper-cpp/issues/2>`_
 
 * Locks
 
-  * `Shared Reentrant Lock <http://curator.apache.org/curator-recipes/shared-reentrant-lock.html>`_
-  * `Shared Lock <http://curator.apache.org/curator-recipes/shared-lock.html>`_
-  * `Shared Reentrant Read Write Lock <http://curator.apache.org/curator-recipes/shared-reentrant-read-write-lock.html>`_
-  * `Shared Semaphore <http://curator.apache.org/curator-recipes/shared-semaphore.html>`_
-  * `Multi Shared Lock <http://curator.apache.org/curator-recipes/multi-shared-lock.html>`_
+  * `Shared Reentrant Lock <https://github.com/tgockel/zookeeper-cpp/issues/3>`_
+  * `Shared Lock <https://github.com/tgockel/zookeeper-cpp/issues/4>`_
+  * `Shared Reentrant Read Write Lock <https://github.com/tgockel/zookeeper-cpp/issues/5>`_
+  * `Shared Semaphore <https://github.com/tgockel/zookeeper-cpp/issues/6>`_
+  * `Multi Shared Lock <https://github.com/tgockel/zookeeper-cpp/issues/7>`_
 
 * Barriers
 
-  * `Barrier <http://curator.apache.org/curator-recipes/barrier.html>`_
-  * `Double Barrier <http://curator.apache.org/curator-recipes/double-barrier.html>`_
+  * `Barrier <https://github.com/tgockel/zookeeper-cpp/issues/8>`_
+  * `Double Barrier <https://github.com/tgockel/zookeeper-cpp/issues/9>`_
 
 * Counters
 
-  * `Shared Counter <http://curator.apache.org/curator-recipes/shared-counter.html>`_
-  * `Distributed Atomic Long <http://curator.apache.org/curator-recipes/distributed-atomic-long.html>`_
+  * `Shared Counter <https://github.com/tgockel/zookeeper-cpp/issues/10>`_
+  * `Distributed Atomic Long <https://github.com/tgockel/zookeeper-cpp/issues/11>`_
 
 * Caches
 
-  * `Path Cache <http://curator.apache.org/curator-recipes/path-cache.html>`_
-  * `Node Cache <http://curator.apache.org/curator-recipes/node-cache.html>`_
-  * `Tree Cache <http://curator.apache.org/curator-recipes/tree-cache.html>`_
+  * `Path Cache <https://github.com/tgockel/zookeeper-cpp/issues/12>`_
+  * `Node Cache <https://github.com/tgockel/zookeeper-cpp/issues/13>`_
+  * `Tree Cache <https://github.com/tgockel/zookeeper-cpp/issues/14>`_
 
 * Nodes
 
-  * `Persistent Node <http://curator.apache.org/curator-recipes/persistent-node.html>`_
-  * `Persistent TTL Node <http://curator.apache.org/curator-recipes/persistent-ttl-node.html>`_
-  * `Group Member <http://curator.apache.org/curator-recipes/group-member.html>`_
+  * `Persistent Node <https://github.com/tgockel/zookeeper-cpp/issues/15>`_
+  * `Persistent TTL Node <https://github.com/tgockel/zookeeper-cpp/issues/16>`_
+  * `Group Member <https://github.com/tgockel/zookeeper-cpp/issues/17>`_
 
 None of the queue types are planned to be implemented.
 The `Curator Documentation (TN4) <https://cwiki.apache.org/confluence/display/CURATOR/TN4>`_ advises against their use,
