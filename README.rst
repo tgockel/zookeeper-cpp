@@ -76,29 +76,40 @@ This library also bundles a number of other features that are commonly required 
 
 Things in ``zk/curator`` have features found in the `Apache Curator <http://curator.apache.org/>`_ project.
 
-- Elections
-  - [ ] `Leader Latch <http://curator.apache.org/curator-recipes/leader-latch.html>`_
-  - [ ] `Leader Election <http://curator.apache.org/curator-recipes/leader-election.html>`_
-- Locks
-  - [ ] `Shared Reentrant Lock <http://curator.apache.org/curator-recipes/shared-reentrant-lock.html>`_
-  - [ ] `Shared Lock <http://curator.apache.org/curator-recipes/shared-lock.html>`_
-  - [ ] `Shared Reentrant Read Write Lock <http://curator.apache.org/curator-recipes/shared-reentrant-read-write-lock.html>`_
-  - [ ] `Shared Semaphore <http://curator.apache.org/curator-recipes/shared-semaphore.html>`_
-  - [ ] `Multi Shared Lock <http://curator.apache.org/curator-recipes/multi-shared-lock.html>`_
-- Barriers
-  - [ ] `Barrier <http://curator.apache.org/curator-recipes/barrier.html>`_
-  - [ ] `Double Barrier <http://curator.apache.org/curator-recipes/double-barrier.html>`_
-- Counters
-  - [ ] `Shared Counter <http://curator.apache.org/curator-recipes/shared-counter.html>`_
-  - [ ] `Distributed Atomic Long <http://curator.apache.org/curator-recipes/distributed-atomic-long.html>`_
-- Caches
-  - [ ] `Path Cache <http://curator.apache.org/curator-recipes/path-cache.html>`_
-  - [ ] `Node Cache <http://curator.apache.org/curator-recipes/node-cache.html>`_
-  - [ ] `Tree Cache <http://curator.apache.org/curator-recipes/tree-cache.html>`_
-- Nodes
-  - [ ] `Persistent Node <http://curator.apache.org/curator-recipes/persistent-node.html>`_
-  - [ ] `Persistent TTL Node <http://curator.apache.org/curator-recipes/persistent-ttl-node.html>`_
-  - [ ] `Group Member <http://curator.apache.org/curator-recipes/group-member.html>`_
+* Elections
+
+  * `Leader Latch <http://curator.apache.org/curator-recipes/leader-latch.html>`_
+  * `Leader Election <http://curator.apache.org/curator-recipes/leader-election.html>`_
+
+* Locks
+
+  * `Shared Reentrant Lock <http://curator.apache.org/curator-recipes/shared-reentrant-lock.html>`_
+  * `Shared Lock <http://curator.apache.org/curator-recipes/shared-lock.html>`_
+  * `Shared Reentrant Read Write Lock <http://curator.apache.org/curator-recipes/shared-reentrant-read-write-lock.html>`_
+  * `Shared Semaphore <http://curator.apache.org/curator-recipes/shared-semaphore.html>`_
+  * `Multi Shared Lock <http://curator.apache.org/curator-recipes/multi-shared-lock.html>`_
+
+* Barriers
+
+  * `Barrier <http://curator.apache.org/curator-recipes/barrier.html>`_
+  * `Double Barrier <http://curator.apache.org/curator-recipes/double-barrier.html>`_
+
+* Counters
+
+  * `Shared Counter <http://curator.apache.org/curator-recipes/shared-counter.html>`_
+  * `Distributed Atomic Long <http://curator.apache.org/curator-recipes/distributed-atomic-long.html>`_
+
+* Caches
+
+  * `Path Cache <http://curator.apache.org/curator-recipes/path-cache.html>`_
+  * `Node Cache <http://curator.apache.org/curator-recipes/node-cache.html>`_
+  * `Tree Cache <http://curator.apache.org/curator-recipes/tree-cache.html>`_
+
+* Nodes
+
+  * `Persistent Node <http://curator.apache.org/curator-recipes/persistent-node.html>`_
+  * `Persistent TTL Node <http://curator.apache.org/curator-recipes/persistent-ttl-node.html>`_
+  * `Group Member <http://curator.apache.org/curator-recipes/group-member.html>`_
 
 None of the queue types are planned to be implemented.
 The `Curator Documentation (TN4) <https://cwiki.apache.org/confluence/display/CURATOR/TN4>`_ advises against their use,
@@ -175,7 +186,8 @@ License
 -------
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-the License. You may obtain a copy of the License at `http://www.apache.org/licenses/LICENSE-2.0`_.
+the License. You may obtain a copy of the License at
+`http://www.apache.org/licenses/LICENSE-2.0 <http://www.apache.org/licenses/LICENSE-2.0>`_.
 
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
 an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
