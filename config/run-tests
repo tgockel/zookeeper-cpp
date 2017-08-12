@@ -12,6 +12,16 @@ fi
 mkdir ${BUILD_DIR}
 cd ${BUILD_DIR}
 
-cmake ..
+if $(hash lcov 2>/dev/null); then
+  COVERAGE=1
+else
+  COVERAGE=0
+fi
+
+cmake .. -DZKPP_BUILD_OPTION_CODE_COVERAGE=${COVERAGE}
 make VERBOSE=1
 make test
+
+if [[ ${COVERAGE} -eq 1 ]]; then
+  ${PROJECT_ROOT}/config/upload-coverage ${BUILD_DIR}
+fi

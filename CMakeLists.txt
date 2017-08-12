@@ -52,7 +52,7 @@ set(CXX_STANDARD c++17
    )
 
 set(CXX_WARNINGS "-Wall -Wextra -Wconversion -Werror")
-set(CXX_EXTRA_FLAGS "-fconcepts -Wl,--no-as-needed")
+set(CXX_EXTRA_FLAGS "-Wl,--no-as-needed")
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --std=${CXX_STANDARD} ${CXX_WARNINGS} -ggdb3 ${CXX_EXTRA_FLAGS}")
 set(CMAKE_CXX_FLAGS_DEBUG   "${CMAKE_CXX_FLAGS_DEBUG} -DZKPP_DEBUG=1")
