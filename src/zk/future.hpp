@@ -6,21 +6,6 @@
 
 #include <zk/config.hpp>
 
-/** \def ZKPP_FUTURE_USE_CUSTOM
- *  Set this to 1 to use custom definitions of \c zk::future and \c zk::promise. If this is set, you must also set
- *  \c ZKPP_FUTURE_TEMPLATE, \c ZKPP_PROMISE_TEMPLATE, and \c ZKPP_FUTURE_INCLUDE.
- *
- *  \def ZKPP_FUTURE_TEMPLATE
- *  The template to use for \c zk::future. By default, this is \c std::future.
- *
- *  \def ZKPP_PROMISE_TEMPLATE
- *  The template to use for \c zk::promise. This should be highly related to \c ZKPP_FUTURE_TEMPLATE
- *
- *  \def ZKPP_FUTURE_INCLUDE
- *  The file to include to get the implementation for \c future and \c promise. If you define \c ZKPP_FUTURE_TEMPLATE
- *  and \c ZKPP_PROMISE_TEMPLATE, you must also define this.
-**/
-
 /** \def ZKPP_FUTURE_USE_STD
  *  Set this to 1 to use \c std::future and \c std::promise as the backing types for \c zk::future and \c zk::promise.
  *  This is the default behavior.
