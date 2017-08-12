@@ -34,6 +34,9 @@ Features include (but are not necessarily limited to):
 **NOTE**: This library is a work-in-progress.
 All documentation you see here is subject to change and non-existence.
 
+.. image:: https://travis-ci.org/tgockel/zookeeper-cpp.svg?branch=master
+    :target: https://travis-ci.org/tgockel/zookeeper-cpp
+
 Usage
 -----
 
