@@ -23,6 +23,7 @@ cmake_policy(SET CMP0037 OLD) # allow generation of "test" target
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake/modules/")
 
 include(BuildFunctions)
+include(ConfigurationSetting)
 include(ListSplit)
 
 ################################################################################
@@ -46,6 +47,23 @@ build_option(NAME       CODE_COVERAGE
              DEFAULT    OFF
              CONFIGS_ON Debug
             )
+
+configuration_setting(NAME    BUFFER
+                      DOC     "Type to use for zk::buffer"
+                      DEFAULT STD_VECTOR
+                      OPTIONS
+                        STD_VECTOR
+                        CUSTOM
+                     )
+
+configuration_setting(NAME    FUTURE
+                      DOC     "Type to use for zk::future<T> and zk::promise<T>"
+                      DEFAULT STD
+                      OPTIONS
+                        STD
+                        STD_EXPERIMENTAL
+                        CUSTOM
+                     )
 
 set(CXX_STANDARD c++17
     CACHE STRING "The language standard to target for C++."
