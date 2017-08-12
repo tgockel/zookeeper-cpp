@@ -23,6 +23,7 @@ cmake_policy(SET CMP0037 OLD) # allow generation of "test" target
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake/modules/")
 
 include(BuildFunctions)
+include(CheckIncludeFileCXX)
 include(ConfigurationSetting)
 include(ListSplit)
 
@@ -59,6 +60,22 @@ configuration_setting(NAME    BUFFER
 configuration_setting(NAME    FUTURE
                       DOC     "Type to use for zk::future<T> and zk::promise<T>"
                       DEFAULT STD
+                      OPTIONS
+                        STD
+                        STD_EXPERIMENTAL
+                        CUSTOM
+                     )
+
+check_include_file_cxx("optional" HAVE_STD_OPTIONAL)
+if(HAVE_STD_OPTIONAL)
+  set(OPTIONAL_DEFAULT STD)
+else()
+  set(OPTIONAL_DEFAULT STD_EXPERIMENTAL)
+endif()
+configuration_setting(NAME    OPTIONAL
+                      DOC     "Type to use for zk::optional<T>, zk::nullopt_t, and zk::nullopt"
+                      DEFAULT STD
+                      SET     ${OPTIONAL_DEFAULT}
                       OPTIONS
                         STD
                         STD_EXPERIMENTAL

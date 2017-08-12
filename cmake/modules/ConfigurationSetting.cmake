@@ -8,14 +8,20 @@ include(CMakeParseArguments)
 #  - DOC: Documentation to place in the CMake configuration GUI.
 #  - DEFUALT: The default value of the configuration setting (some value from OPTIONS). This value must be synced with
 #    the C++ code or the behavior will be nonsense.
+#  - SET: Set the value to this. If unspecified, this will simply be the same as DEFUALT. However, this can be useful in
+#    cases where you wish to specify a non-default based on system information.
 #  - OPTIONS[]: List of valid options to set.
 function(configuration_setting)
   set(options)
-  set(oneValueArgs NAME DOC DEFAULT)
+  set(oneValueArgs NAME DOC DEFAULT SET)
   set(multiValueArgs OPTIONS)
   cmake_parse_arguments(ARG "${options}" "${oneValueArgs}" "${multiValueArgs}" ${ARGN})
 
-  set(ZKPP_BUILD_SETTING_${ARG_NAME} "${ARG_DEFAULT}"
+  if(NOT ARG_SET)
+    set(ARG_SET "${ARG_DEFAULT}")
+  endif()
+
+  set(ZKPP_BUILD_SETTING_${ARG_NAME} "${ARG_SET}"
       CACHE STRING "${ARG_DOC}"
      )
   if(NOT ${ZKPP_BUILD_SETTING_${ARG_NAME}} IN_LIST ARG_OPTIONS)
