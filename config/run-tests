@@ -13,7 +13,8 @@ mkdir ${BUILD_DIR}
 cd ${BUILD_DIR}
 
 if $(hash lcov 2>/dev/null); then
-  COVERAGE=1
+  # TODO(https://github.com/tgockel/zookeeper-cpp/issues/42): Disabling Coveralls coverage for now.
+  COVERAGE=0
 else
   COVERAGE=0
 fi
