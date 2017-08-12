@@ -5,6 +5,8 @@ GCC_VERSION_MAJOR=$(c++ --version | grep -Po '\d\.\d\.\d' | grep -Po '^\d+' | he
 
 ls -l $1/../coveralls-repo-token
 COVERALLS_REPO_TOKEN=$(cat $1/../coveralls-repo-token)
+TRAVIS=true
+CI=true
 
 coveralls                                                       \
     --repo-token="${COVERALLS_REPO_TOKEN}"                      \
