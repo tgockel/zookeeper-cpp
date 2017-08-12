@@ -6,14 +6,6 @@
 
 #include <zk/config.hpp>
 
-/** \def ZKPP_FUTURE_USE_STD
- *  Set this to 1 to use \c std::future and \c std::promise as the backing types for \c zk::future and \c zk::promise.
- *  This is the default behavior.
-**/
-#ifndef ZKPP_FUTURE_USE_STD
-#   define ZKPP_FUTURE_USE_STD 1
-#endif
-
 /** \def ZKPP_FUTURE_USE_STD_EXPERIMENTAL
  *  Set this to 1 to use \c std::experimental::future and \c std::experimental::promise as the backing types for
  *  \c zk::future and \c zk::promise.
@@ -38,6 +30,18 @@
 **/
 #ifndef ZKPP_FUTURE_USE_CUSTOM
 #   define ZKPP_FUTURE_USE_CUSTOM 0
+#endif
+
+/** \def ZKPP_FUTURE_USE_STD
+ *  Set this to 1 to use \c std::future and \c std::promise as the backing types for \c zk::future and \c zk::promise.
+ *  This is the default behavior.
+**/
+#ifndef ZKPP_FUTURE_USE_STD
+#   if ZKPP_FUTURE_USE_STD_EXPERIMENTAL || ZKPP_FUTURE_USE_CUSTOM
+#       define ZKPP_FUTURE_USE_STD 0
+#   else
+#       define ZKPP_FUTURE_USE_STD 1
+#   endif
 #endif
 
 #if ZKPP_FUTURE_USE_STD
