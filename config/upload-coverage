@@ -3,7 +3,7 @@
 # TODO: 99% sure there is a better way to do this
 GCC_VERSION_MAJOR=$(c++ --version | grep -Po '\d\.\d\.\d' | grep -Po '^\d+' | head -1)
 
-ls $1/../coveralls-repo-token
+ls -l $1/../coveralls-repo-token
 COVERALLS_REPO_TOKEN=$(cat $1/../coveralls-repo-token)
 
 coveralls                                                       \
