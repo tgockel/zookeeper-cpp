@@ -3,6 +3,8 @@
 # TODO: 99% sure there is a better way to do this
 GCC_VERSION_MAJOR=$(c++ --version | grep -Po '\d\.\d\.\d' | grep -Po '^\d+' | head -1)
 
+COVERALLS_REPO_TOKEN=$(cat $1/../coveralls-repo-token)
+
 coveralls                                                       \
     --build-root $1                                             \
     --exclude-pattern '_test\.cpp$'                             \

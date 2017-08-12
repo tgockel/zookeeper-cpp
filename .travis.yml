@@ -9,4 +9,5 @@ services:
 before_install:
 - docker build config/docker/${DISTRO} -t dev/zookeeper-cpp/${DISTRO}
 script:
+- echo ${COVERALLS_REPO_TOKEN} > ${TRAVIS_BUILD_DIR}/coveralls-repo-token
 - docker run -v ${TRAVIS_BUILD_DIR}:/root/zookeeper-cpp dev/zookeeper-cpp/${DISTRO}
