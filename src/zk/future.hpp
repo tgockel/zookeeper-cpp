@@ -57,6 +57,8 @@
 #       error "When ZKPP_FUTURE_USE_CUSTOM is set, you must also define ZKPP_FUTURE_TEMPLATE, ZKPP_PROMISE_TEMPLATE,
 #       error "and ZKPP_FUTURE_INCLUDE."
 #   endif
+#else
+#   error "Unknown type to use for zk::future and zk::promise"
 #endif
 
 #include ZKPP_FUTURE_INCLUDE
