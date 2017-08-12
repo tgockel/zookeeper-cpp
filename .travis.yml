@@ -1,0 +1,12 @@
+language: cpp
+sudo: required
+dist: trusty
+env:
+  matrix:
+  - DISTRO=ubuntu-16.04
+services:
+- docker
+before_install:
+- docker build config/docker/${DISTRO} -t dev/zookeeper-cpp/${DISTRO}
+script:
+- docker run -v ${TRAVIS_BUILD_DIR}:/root/zookeeper-cpp dev/zookeeper-cpp/${DISTRO}

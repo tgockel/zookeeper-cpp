@@ -1,0 +1,17 @@
+#!/bin/bash -e
+
+PROJECT_ROOT=$(dirname ~)/$(whoami)/zookeeper-cpp
+BUILD_DIR=${PROJECT_ROOT}/build-ci
+echo "${DISTRO} ${PROJECT_ROOT}"
+c++ --version
+
+if [[ -e ${BUILD_DIR} ]]; then
+    echo "Build directory (${BUILD_DIR}) unclean -- deleting it"
+    rm -rf ${BUILD_DIR}
+fi
+mkdir ${BUILD_DIR}
+cd ${BUILD_DIR}
+
+cmake ..
+make VERBOSE=1
+make test

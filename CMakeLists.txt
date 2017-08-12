@@ -79,10 +79,14 @@ elseif(EXISTS "/usr/src/gtest/src/")
   # GTest's packaging on Ubuntu (libgtest-dev) contains all the source files instead of a library and headers. CMake has
   # a package discovery for GTest, but it does not pick up on this for you, so we'll build it manually here.
   message(STATUS "GTest is not installed, but the sources were found...adding them to the build")
-  file(GLOB gtest_cpps "/usr/src/gtest/src/*.cc")
-  list_split(gtest_main_cpp gtest_lib_cpps "${gtest_cpps}" "gtest_main.cc")
-  message(STATUS "gtest_lib_cpps=${gtest_lib_cpps}")
-  add_library(gtest ${gtest_lib_cpps})
+  if(EXISTS "/usr/src/gtest/src/gtest-all.cc")
+    set(gtest_lib_cpps "/usr/src/gtest/src/gtest-all.cc")
+    message(STATUS "Building with gtest-all.cc")
+  else()
+    file(GLOB gtest_lib_cpps "/usr/src/gtest/src/gtest-*.cc")
+    message(STATUS "Building with gtest_lib_cpps=${gtest_lib_cpps}")
+  endif()
+  add_library(gtest SHARED ${gtest_lib_cpps})
 
   # GTest uses relative imports incorrectly, so make sure to add it to the include path.
   target_include_directories(gtest PRIVATE "/usr/src/gtest")
