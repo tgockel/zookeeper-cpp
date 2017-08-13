@@ -14,6 +14,7 @@ RUN apt-get install --yes   \
     grep                    \
     g++-6                   \
     g++-7                   \
+    ivy                     \
     libgtest-dev            \
     libzookeeper-mt-dev
 

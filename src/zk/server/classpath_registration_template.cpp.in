@@ -1,0 +1,20 @@
+#include <zk/config.hpp>
+#include <zk/server/package_registry.hpp>
+#include <zk/server/package_registry_tests.hpp>
+
+namespace zk::server
+{
+
+namespace
+{
+
+auto registration = test_package_registry::instance()
+                    .register_classpath_server
+                     (
+                        R"(@server_version@)",
+                        R"(@server_classpath@)"
+                     );
+
+}
+
+}

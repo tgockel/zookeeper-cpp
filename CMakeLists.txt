@@ -26,6 +26,7 @@ include(BuildFunctions)
 include(CheckIncludeFileCXX)
 include(ConfigurationSetting)
 include(ListSplit)
+include(ZooKeeper)
 
 ################################################################################
 # Build Configuration                                                          #
@@ -41,6 +42,10 @@ if(NOT ${CMAKE_BUILD_TYPE} IN_LIST VALID_BUILD_TYPES)
   message(FATAL_ERROR "Invalid CMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}\nValid build types are: ${VALID_BUILD_TYPES}")
 endif()
 message(STATUS "Configuration: ${CMAKE_BUILD_TYPE}")
+
+set(ZKPP_SERVER_VERSIONS "3.5.3-beta;3.4.10"
+    CACHE STRING "The ZooKeeper server versions to run tests against. The first in the list is the default."
+   )
 
 message(STATUS "Features:")
 build_option(NAME       CODE_COVERAGE
@@ -149,6 +154,25 @@ build_module(NAME zkpp
              LINK_LIBRARIES
                ${zookeeper_LIBRARIES}
             )
+
+build_module(NAME zkpp_server
+             PATH src/zk/server
+             LINK_LIBRARIES
+               zkpp
+            )
+
+################################################################################
+# ZooKeeper Server Testing                                                     #
+################################################################################
+
+foreach(server_version IN LISTS ZKPP_SERVER_VERSIONS)
+  find_zookeeper_server(VERSION "${server_version}"
+                        OUTPUT_CLASSPATH server_classpath
+                       )
+  set(generated_cpp "${CMAKE_CURRENT_BINARY_DIR}/generated/src/zk/server/classpath_registration_${server_version}.cpp")
+  configure_file(src/zk/server/classpath_registration_template.cpp.in "${generated_cpp}" @ONLY)
+  target_sources(zkpp_server__tests PRIVATE "${generated_cpp}")
+endforeach()
 
 ################################################################################
 # Targets                                                                      #
