@@ -54,7 +54,7 @@
 #   define ZKPP_PROMISE_TEMPLATE std::experimental::promise
 #elif ZKPP_FUTURE_USE_CUSTOM
 #   if !defined ZKPP_FUTURE_TEMPLATE || !defined ZKPP_PROMISE_TEMPLATE || !defined ZKPP_FUTURE_INCLUDE
-#       error "When ZKPP_FUTURE_USE_CUSTOM is set, you must also define ZKPP_FUTURE_TEMPLATE, ZKPP_PROMISE_TEMPLATE,
+#       error "When ZKPP_FUTURE_USE_CUSTOM is set, you must also define ZKPP_FUTURE_TEMPLATE, ZKPP_PROMISE_TEMPLATE,"
 #       error "and ZKPP_FUTURE_INCLUDE."
 #   endif
 #else
