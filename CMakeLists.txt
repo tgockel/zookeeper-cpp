@@ -87,6 +87,22 @@ configuration_setting(NAME    OPTIONAL
                         CUSTOM
                      )
 
+check_include_file_cxx("string_view" HAVE_STD_STRING_VIEW)
+if(HAVE_STD_STRING_VIEW)
+  set(STRING_VIEW_DEFAULT STD)
+else()
+  set(STRING_VIEW_DEFAULT STD_EXPERIMENTAL)
+endif()
+configuration_setting(NAME    STRING_VIEW
+                      DOC
+                      DEFAULT STD
+                      SET     ${STRING_VIEW_DEFAULT}
+                      OPTIONS
+                        STD
+                        STD_EXPERIMENTAL
+                        CUSTOM
+                     )
+
 set(CXX_STANDARD c++17
     CACHE STRING "The language standard to target for C++."
    )
