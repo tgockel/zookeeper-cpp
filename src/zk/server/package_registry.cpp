@@ -63,4 +63,13 @@ package_registry::size_type package_registry::size() const
     return _registrations.size();
 }
 
+optional<std::string> package_registry::find_newest_classpath() const
+{
+    std::unique_lock<std::mutex> ax(_protect);
+    if (_registrations.empty())
+        return nullopt;
+    else
+        return _registrations.rbegin()->second;
+}
+
 }

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <zk/config.hpp>
+#include <zk/optional.hpp>
 
 #include <cstddef>
 #include <map>
@@ -57,6 +58,14 @@ public:
     {
         return size() == size_type(0);
     }
+
+    /** Get the classpath for running the newest registered server version.
+     *
+     *  \warning
+     *  This function is nonsense and will be deprecated. The concept is fine, but returning an \c std::string as a
+     *  classpath is terrible. It should be replaced by a dedicated \c run_settings class.
+    **/
+    optional<std::string> find_newest_classpath() const;
 
 private:
     mutable std::mutex                 _protect;
