@@ -94,7 +94,7 @@ else()
   set(STRING_VIEW_DEFAULT STD_EXPERIMENTAL)
 endif()
 configuration_setting(NAME    STRING_VIEW
-                      DOC
+                      DOC     "Type to use for zk::string_view"
                       DEFAULT STD
                       SET     ${STRING_VIEW_DEFAULT}
                       OPTIONS
@@ -176,6 +176,8 @@ build_module(NAME zkpp_server
              LINK_LIBRARIES
                zkpp
             )
+
+target_link_libraries(zkpp__tests zkpp_server zkpp_server__tests)
 
 ################################################################################
 # ZooKeeper Server Testing                                                     #

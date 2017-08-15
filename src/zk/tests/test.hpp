@@ -20,6 +20,14 @@
 
 #include <gtest/gtest.h>
 
+// Maybe some day this will be defined
+#ifndef GTEST_TEST_F
+#   define GTEST_TEST_F TEST_F
+#endif
+
+namespace zk::test
+{
+
 /** \def CHECK
  *  Check a condition and abort the test in failure if it does not hold. When performing binary comparisons, prefer to
  *  use the check macros which accept two arguments (\c CHECK_EQ, \c CHECK_LT, etc), as these will print out the values
@@ -42,7 +50,9 @@
 #define CHECK_SUCCESS     GTEST_SUCCEED
 #define CHECK_FAIL        GTEST_FAIL
 
-namespace zk::test::detail
+using test_fixture = ::testing::Test;
+
+namespace detail
 {
 
 template <typename TException>
@@ -88,5 +98,7 @@ void operator+(const check_throws_info<TException>& info, FAction&& action)
 **/
 #define CHECK_THROWS(ex)                                                                                               \
     ::zk::test::detail::check_throws_info<ex>(__FILE__, __LINE__) + [&] ()
+
+}
 
 }
