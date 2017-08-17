@@ -215,3 +215,10 @@ In the Java and C APIs, the act of removing a ZNode is called ``delete`` and ``z
 However, ``delete`` is a C++ keyword and cannot be used as a member function.
 So, this library uses ``erase``, which falls in line with standard C++ containers.
 Alternatives such as calling the operation ``delete_`` look a bit worse (in the author's opinion).
+
+How can I contribute?
+^^^^^^^^^^^^^^^^^^^^^
+
+Pick an `open issue <https://github.com/tgockel/zookeeper-cpp/issues>`_ and start working on it!
+For more details, read the `CONTRIBUTING <https://github.com/tgockel/zookeeper-cpp/blob/master/CONTRIBUTING.rst>`_
+guide.
