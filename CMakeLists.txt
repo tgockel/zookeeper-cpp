@@ -19,6 +19,7 @@ message(STATUS "Software Version: ${ZKPP_VERSION}")
 
 cmake_policy(VERSION 3.5)
 cmake_policy(SET CMP0037 OLD) # allow generation of "test" target
+set(CMAKE_REQUIRED_QUIET YES) # tell check_include_file_cxx to keep quiet
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake/modules/")
 
