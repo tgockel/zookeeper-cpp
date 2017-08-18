@@ -1,0 +1,7 @@
+[server_database]
+name=Databases (openSUSE_Leap_42.3)
+type=rpm-md
+baseurl=http://download.opensuse.org/repositories/server:/database/openSUSE_Leap_42.3/
+gpgcheck=1
+gpgkey=http://download.opensuse.org/repositories/server:/database/openSUSE_Leap_42.3/repodata/repomd.xml.key
+enabled=1
