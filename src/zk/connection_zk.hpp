@@ -22,15 +22,19 @@ public:
 
     virtual ~connection_zk() noexcept;
 
-    virtual void close();
+    virtual void close() override;
+
+    virtual zk::state state() const override;
+
+    virtual future<std::pair<buffer, stat>> get(string_view path) override;
 
 private:
-    static void on_session_event(ptr<zhandle_t>  handle,
-                                 int             ev_type,
-                                 int             state,
-                                 ptr<const char> path,
-                                 ptr<void>       watcher_ctx
-                                ) noexcept;
+    static void on_session_event_raw(ptr<zhandle_t>  handle,
+                                     int             ev_type,
+                                     int             state,
+                                     ptr<const char> path,
+                                     ptr<void>       watcher_ctx
+                                    ) noexcept;
 
 private:
     ptr<zhandle_t> _handle;

@@ -22,6 +22,8 @@ public:
 protected:
     const std::string& get_connection_string() const;
 
+    client get_connected_client() const;
+
 private:
     std::shared_ptr<server> _server;
     std::string             _conn_string;

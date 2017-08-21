@@ -1,4 +1,5 @@
 #include <zk/tests/test.hpp>
+#include <zk/client.hpp>
 
 #include <chrono>
 #include <thread>
@@ -30,6 +31,11 @@ void server_fixture::TearDown()
 const std::string& server_fixture::get_connection_string() const
 {
     return _conn_string;
+}
+
+client server_fixture::get_connected_client() const
+{
+    return client(client::create(get_connection_string()).get());
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

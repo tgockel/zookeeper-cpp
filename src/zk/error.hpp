@@ -77,6 +77,8 @@ constexpr bool is_api_error(error_code code)
 [[noreturn]]
 void throw_error(error_code code);
 
+std::exception_ptr get_exception_ptr_of(error_code code);
+
 class error :
         public std::runtime_error
 {

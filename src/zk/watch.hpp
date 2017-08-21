@@ -70,4 +70,8 @@ std::string to_string(const state&);
 **/
 using watch_callback = std::function<void (event_type, state)>;
 
+class watch_handle final
+{
+};
+
 }

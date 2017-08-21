@@ -49,7 +49,9 @@ Ultimately, the usage looks like this (assuming you have a ZooKeeper server runn
 
     int main()
     {
-        zk::client client("zk://127.0.0.1:2181");
+        // zk::client::create returns a future<zk::client>, which is delivered when the connection is established.
+        auto client = zk::client::create("zk://127.0.0.1:2181")
+                                 .get();
 
         // foobar's type is zk::future<std::pair<zk::buffer, zk::stat>>
         auto foobar = client.get("/foo/bar");
