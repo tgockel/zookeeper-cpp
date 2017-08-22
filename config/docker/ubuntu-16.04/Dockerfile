@@ -28,8 +28,6 @@ RUN pip install     \
     cpp-coveralls   \
     pyyaml
 
-# Short story: update-alternatives is the right solution for things, but this involves less Ubuntu.
-RUN rm -f /usr/bin/c++
-RUN ln -s /usr/bin/g++-7 /usr/bin/c++
+RUN update-alternatives --install /usr/bin/c++ c++ /usr/bin/g++-7 99
 
 CMD ["/root/zookeeper-cpp/config/run-tests"]
