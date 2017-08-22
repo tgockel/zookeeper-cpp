@@ -26,6 +26,13 @@ GTEST_TEST_F(connection_zk_tests, get_root)
     c.close();
 }
 
+GTEST_TEST_F(connection_zk_tests, exists)
+{
+    client c = get_connected_client();
+    CHECK_TRUE(c.exists("/").get());
+    CHECK_FALSE(c.exists("/some/bogus/path").get());
+}
+
 GTEST_TEST_F(connection_zk_tests, create)
 {
     client c = get_connected_client();

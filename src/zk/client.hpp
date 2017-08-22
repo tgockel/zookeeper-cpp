@@ -110,6 +110,9 @@ public:
     **/
     future<std::pair<std::vector<std::string>, stat>> get_children(string_view path) const;
 
+    /** Return the \c stat of the node of the given \a path or \c nullopt if no such node exists. **/
+    future<optional<stat>> exists(string_view path) const;
+
     /** Create a node with the given \a path.
      *
      *  This operation, if successful, will trigger all the watches left on the node of the given path by \c watch API

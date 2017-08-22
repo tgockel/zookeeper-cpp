@@ -234,6 +234,39 @@ future<std::pair<std::vector<std::string>, stat>> connection_zk::get_children(st
     });
 }
 
+future<optional<stat>> connection_zk::exists(string_view path)
+{
+    ::stat_completion_t callback =
+        [] (int rc_in, ptr<const struct Stat> stat_in, ptr<const void> prom_in)
+        {
+            std::unique_ptr<promise<optional<stat>>> prom((ptr<promise<optional<stat>>>) prom_in);
+            auto rc = error_code_from_raw(rc_in);
+            if (rc == error_code::ok)
+                prom->set_value(stat_from_raw(*stat_in));
+            else if (rc == error_code::no_node)
+                prom->set_value(nullopt);
+            else
+                prom->set_exception(get_exception_ptr_of(rc));
+        };
+
+    return with_str(path, [&] (ptr<const char> path)
+    {
+        auto ppromise = std::make_unique<promise<optional<stat>>>();
+        auto rc = error_code_from_raw(::zoo_aexists(_handle, path, 0, callback, ppromise.get()));
+        if (rc == error_code::ok)
+        {
+            auto f = ppromise->get_future();
+            ppromise.release();
+            return f;
+        }
+        else
+        {
+            ppromise->set_exception(get_exception_ptr_of(rc));
+            return ppromise->get_future();
+        }
+    });
+}
+
 future<std::string> connection_zk::create(string_view     path,
                                           const buffer&   data,
                                           const acl_list& acl,

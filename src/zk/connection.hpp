@@ -27,6 +27,8 @@ public:
 
     virtual future<std::pair<std::vector<std::string>, stat>> get_children(string_view path) = 0;
 
+    virtual future<optional<stat>> exists(string_view path) = 0;
+
     virtual future<std::string> create(string_view     path,
                                        const buffer&   data,
                                        const acl_list& acls,

@@ -98,6 +98,11 @@ future<std::pair<std::vector<std::string>, stat>> client::get_children(string_vi
     return _conn->get_children(path);
 }
 
+future<optional<stat>> client::exists(string_view path) const
+{
+    return _conn->exists(path);
+}
+
 future<std::string> client::create(string_view     path,
                                    const buffer&   data,
                                    const acl_list& acls,
