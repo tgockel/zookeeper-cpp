@@ -101,6 +101,15 @@ public:
     **/
     future<std::pair<buffer, stat>> get(string_view path) const;
 
+    /** Return the list of the children of the node of the given \a path. The returned values are not prefixed with the
+     *  provided \a path; i.e. if the database contains \c "/path/a" and \c "/path/b", the result of \c get_children for
+     *  \c "/path" will be `["a", "b"]`. The list of children returned is not sorted and no guarantee is provided as to
+     *  its natural or lexical order.
+     *
+     *  \throws no_node If no node with the given path exists, the future will be delivered with \c no_node.
+    **/
+    future<std::pair<std::vector<std::string>, stat>> get_children(string_view path) const;
+
     /** Create a node with the given \a path.
      *
      *  This operation, if successful, will trigger all the watches left on the node of the given path by \c watch API

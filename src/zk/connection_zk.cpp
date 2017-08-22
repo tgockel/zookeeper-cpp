@@ -87,6 +87,15 @@ static stat stat_from_raw(const struct Stat& raw)
     return out;
 }
 
+static std::vector<std::string> string_vector_from_raw(const struct String_vector& raw)
+{
+    std::vector<std::string> out;
+    out.reserve(raw.count);
+    for (std::int32_t idx = 0; idx < raw.count; ++idx)
+        out.emplace_back(raw.data[idx]);
+    return out;
+}
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // connection_zk                                                                                                      //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -158,6 +167,59 @@ future<std::pair<buffer, stat>> connection_zk::get(string_view path)
     {
         auto ppromise = std::make_unique<promise<std::pair<buffer, stat>>>();
         auto rc = error_code_from_raw(::zoo_aget(_handle, path, 0, callback, ppromise.get()));
+        if (rc == error_code::ok)
+        {
+            auto f = ppromise->get_future();
+            ppromise.release();
+            return f;
+        }
+        else
+        {
+            ppromise->set_exception(get_exception_ptr_of(rc));
+            return ppromise->get_future();
+        }
+    });
+}
+
+future<std::pair<std::vector<std::string>, stat>> connection_zk::get_children(string_view path)
+{
+    ::strings_stat_completion_t callback =
+        [] (int                             rc_in,
+            ptr<const struct String_vector> strings_in,
+            ptr<const struct Stat>          stat_in,
+            ptr<const void>                 prom_in
+           )
+        {
+            std::unique_ptr<promise<std::pair<std::vector<std::string>, stat>>>
+                prom((ptr<promise<std::pair<std::vector<std::string>, stat>>>) prom_in);
+            auto rc = error_code_from_raw(rc_in);
+            if (rc == error_code::ok)
+            {
+                try
+                {
+                    prom->set_value({ string_vector_from_raw(*strings_in), stat_from_raw(*stat_in) });
+                }
+                catch (...)
+                {
+                    prom->set_exception(std::current_exception());
+                }
+            }
+            else
+            {
+                prom->set_exception(get_exception_ptr_of(rc));
+            }
+        };
+
+    return with_str(path, [&] (ptr<const char> path)
+    {
+        auto ppromise = std::make_unique<promise<std::pair<std::vector<std::string>, stat>>>();
+        auto rc = error_code_from_raw(::zoo_aget_children2(_handle,
+                                                           path,
+                                                           0,
+                                                           callback,
+                                                           ppromise.get()
+                                                          )
+                                     );
         if (rc == error_code::ok)
         {
             auto f = ppromise->get_future();

@@ -28,6 +28,8 @@ public:
 
     virtual future<std::pair<buffer, stat>> get(string_view path) override;
 
+    virtual future<std::pair<std::vector<std::string>, stat>> get_children(string_view path) override;
+
     virtual future<std::string> create(string_view     path,
                                        const buffer&   data,
                                        const acl_list& acl,

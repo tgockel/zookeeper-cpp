@@ -93,6 +93,11 @@ future<std::pair<buffer, stat>> client::get(string_view path) const
     return _conn->get(path);
 }
 
+future<std::pair<std::vector<std::string>, stat>> client::get_children(string_view path) const
+{
+    return _conn->get_children(path);
+}
+
 future<std::string> client::create(string_view     path,
                                    const buffer&   data,
                                    const acl_list& acls,

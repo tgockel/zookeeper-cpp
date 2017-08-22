@@ -1,5 +1,6 @@
 #include <zk/server/server_tests.hpp>
 
+#include <algorithm>
 #include <chrono>
 #include <cstring>
 #include <iostream>
@@ -65,6 +66,25 @@ GTEST_TEST_F(connection_zk_tests, create_seq_and_erase)
     {
         c.get(name).get();
     };
+}
+
+GTEST_TEST_F(connection_zk_tests, create_seq_and_get_children)
+{
+    client c = get_connected_client();
+    auto f_create = c.create("/test-node-", buffer_from("Hello!"), create_mode::sequential);
+    std::string name(f_create.get());
+    std::pair<buffer, stat> contents_orig(c.get(name).get());
+
+    c.create(name + "/a", buffer()).get();
+    c.create(name + "/b", buffer()).get();
+    c.create(name + "/c", buffer()).get();
+
+    std::pair<std::vector<std::string>, stat> children(c.get_children(name).get());
+    CHECK_EQ(contents_orig.second.data_version,  children.second.data_version);
+    CHECK_LT(contents_orig.second.child_version, children.second.child_version);
+    std::vector<std::string> expected_children = { "a", "b", "c" };
+    std::sort(children.first.begin(), children.first.end());
+    CHECK_TRUE(expected_children == children.first);
 }
 
 }
