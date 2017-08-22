@@ -34,6 +34,8 @@ public:
                                        create_mode     mode
                                       ) override;
 
+    virtual future<stat> set(string_view path, const buffer& data, version check) override;
+
 private:
     static void on_session_event_raw(ptr<zhandle_t>  handle,
                                      int             ev_type,

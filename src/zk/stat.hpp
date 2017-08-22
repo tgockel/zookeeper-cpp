@@ -104,7 +104,7 @@ struct version final :
     /** An invalid version specifier. This will never be returned by the database and will always be rejected in commit
      *  operations. This is a good value to use as a placeholder when you are searching for the proper \c version.
     **/
-    static constexpr version invalid() { return version(0); };
+    static constexpr version invalid() { return version(-42); };
 
     /** When specified in an operation, this version specifier will always pass. It is the equivalent to not performing
      *  a version check.

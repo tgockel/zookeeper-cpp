@@ -31,6 +31,8 @@ public:
                                        create_mode     mode
                                       ) = 0;
 
+    virtual future<stat> set(string_view path, const buffer& data, version check) = 0;
+
     virtual zk::state state() const = 0;
 
     /** Watch for a state change. **/

@@ -110,4 +110,9 @@ future<std::string> client::create(string_view     path,
     return create(path, data, acls::open_unsafe(), mode);
 }
 
+future<stat> client::set(string_view path, const buffer& data, version check)
+{
+    return _conn->set(path, data, check);
+}
+
 }

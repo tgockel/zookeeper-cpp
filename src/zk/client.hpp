@@ -133,6 +133,18 @@ public:
                                create_mode     mode = create_mode::normal
                               );
 
+    /** Set the data for the node of the given \a path if such a node exists and the given version matches the version
+     *  of the node (if the given version is \c version::any, there is no version check). This operation, if successful,
+     *  will trigger all the watches on the node of the given \c path left by \c watch calls.
+     *
+     *  \throws no_node If no node with the given \a path exists, the future will be delivered with \c no_node.
+     *  \throws bad_version If the given version \a check does not match the node's version, the future will be
+     *   delivered with \c bad_version.
+     *  \throws invalid_arguments The maximum allowable size of the data array is 1 MiB (1,048,576 bytes). If \a data
+     *   is larger than this the future will be delivered with \c invalid_arguments.
+    **/
+    future<stat> set(string_view path, const buffer& data, version check = version::any());
+
 private:
     std::shared_ptr<connection> _conn;
 };

@@ -37,8 +37,6 @@ template <typename FAction>
 auto with_acl(const acl_list& acls, FAction&& action)
         -> decltype(std::forward<FAction>(action)(ptr<const ACL_vector>()))
 {
-    std::cerr << "HELLO " << acls << std::endl;
-
     ACL parts[acls.size()];
     for (std::size_t idx = 0; idx < acls.size(); ++idx)
     {
@@ -218,6 +216,44 @@ future<std::string> connection_zk::create(string_view     path,
                 return ppromise->get_future();
             }
         });
+}
+
+future<stat> connection_zk::set(string_view path, const buffer& data, version check)
+{
+    ::stat_completion_t callback =
+        [] (int rc_in, ptr<const struct Stat> stat_raw, ptr<const void> prom_in)
+        {
+            std::unique_ptr<promise<stat>> prom((ptr<promise<stat>>) prom_in);
+            auto rc = error_code_from_raw(rc_in);
+            if (rc == error_code::ok)
+                prom->set_value(stat_from_raw(*stat_raw));
+            else
+                prom->set_exception(get_exception_ptr_of(rc));
+        };
+
+    return with_str(path, [&] (ptr<const char> path)
+    {
+        auto ppromise = std::make_unique<promise<stat>>();
+        auto rc = error_code_from_raw(::zoo_aset(_handle,
+                                                 path,
+                                                 data.data(),
+                                                 int(data.size()),
+                                                 check.value,
+                                                 callback,
+                                                 ppromise.get()
+                                                ));
+        if (rc == error_code::ok)
+        {
+            auto f = ppromise->get_future();
+            ppromise.release();
+            return f;
+        }
+        else
+        {
+            ppromise->set_exception(get_exception_ptr_of(rc));
+            return ppromise->get_future();
+        }
+    });
 }
 
 void connection_zk::on_session_event_raw(ptr<zhandle_t>  handle,
