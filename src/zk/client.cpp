@@ -125,4 +125,9 @@ future<void> client::erase(string_view path, version check)
     return _conn->erase(path, check);
 }
 
+future<void> client::load_fence() const
+{
+    return _conn->load_fence();
+}
+
 }

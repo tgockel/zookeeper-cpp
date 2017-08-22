@@ -349,6 +349,34 @@ future<void> connection_zk::erase(string_view path, version check)
     });
 }
 
+future<void> connection_zk::load_fence()
+{
+    ::string_completion_t callback =
+        [] (int rc_in, ptr<const char>, ptr<const void> prom_in)
+        {
+            std::unique_ptr<promise<void>> prom((ptr<promise<void>>) prom_in);
+            auto rc = error_code_from_raw(rc_in);
+            if (rc == error_code::ok)
+                prom->set_value();
+            else
+                prom->set_exception(get_exception_ptr_of(rc));
+        };
+
+    auto ppromise = std::make_unique<std::promise<void>>();
+    auto rc = error_code_from_raw(::zoo_async(_handle, "/", callback, ppromise.get()));
+    if (rc == error_code::ok)
+    {
+        auto f = ppromise->get_future();
+        ppromise.release();
+        return f;
+    }
+    else
+    {
+        ppromise->set_exception(get_exception_ptr_of(rc));
+        return ppromise->get_future();
+    }
+}
+
 void connection_zk::on_session_event_raw(ptr<zhandle_t>  handle,
                                          int             ev_type,
                                          int             state,

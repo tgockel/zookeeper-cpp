@@ -87,4 +87,11 @@ GTEST_TEST_F(connection_zk_tests, create_seq_and_get_children)
     CHECK_TRUE(expected_children == children.first);
 }
 
+GTEST_TEST_F(connection_zk_tests, load_fence)
+{
+    client c = get_connected_client();
+    // There does not appear to be a good way to actually test this -- so just make sure we don't segfault
+    c.load_fence().get();
+}
+
 }

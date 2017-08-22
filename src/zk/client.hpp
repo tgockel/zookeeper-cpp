@@ -168,6 +168,42 @@ public:
     **/
     future<void> erase(string_view path, version check = version::any());
 
+    /** Ensure that all subsequent reads observe the data at the transaction on the server at or past real-time \e now.
+     *  If your application communicates only through reads and writes of ZooKeeper, this operation is never needed.
+     *  However, if your application communicates a change in ZooKeeper state through means outside of ZooKeeper (called
+     *  a "hidden channel" in ZooKeeper vernacular), then it is possible for a receiver to attempt to react to a change
+     *  before it can observe it through ZooKeeper state.
+     *
+     *  \warning
+     *  The internal pipeline for this operation is not the same as modifying operations (\c set, \c create, etc.). In
+     *  cases of leader failure, there is a chance that the leader does not have support from the quorum, as it has
+     *  switched to a new leader. While this is rare, it is still \e possible that not all updates have been processed.
+     *
+     *  \note
+     *  Other APIs call this operation \c sync and allow you to provide a \c path parameter. There are a few issues with
+     *  this. First: that name conflicts with the commonly-used POSIX \c sync command, leading to confusion that data in
+     *  ZooKeeper does not have integrity. Secondly, this operation has more in common with \c std::atomic_thread_fence
+     *  or the x86 \c lfence instruction than \c sync (on the server, "flush" is an appropriate term -- just like fence
+     *  implementations in CPUs). Finally, the \c path parameter is ignored by the server -- all future fetches are
+     *  fenced, no matter what path is specified. In the future, ZooKeeper might support partitioning, in which case the
+     *  \c path parameter might become relevant.
+     *
+     *  \example{Client: load_fence}
+     *  It is often not necessary to wait for the fence future to be returned, as future reads will be synced without
+     *  waiting. However, there is no guarantee on the ordering of the read if the future returned from \c load_fence
+     *  is completed in error.
+     *
+     *  \code
+     *  auto fence_future = client.load_fence();
+     *  // data_future will be completed with the load_fence, even though we haven't waited to complete
+     *  auto data_future = client.get("/some/path");
+     *
+     *  // Useful to use when_all to concat and error check (C++ Extensions for Concurrency, ISO/IEC TS 19571:2016)
+     *  auto guaranteed_future = std::when_all(std::move(fence_future), std::move(data_future));
+     *  \endcode
+    **/
+    future<void> load_fence() const;
+
 private:
     std::shared_ptr<connection> _conn;
 };
