@@ -4,6 +4,7 @@ dist: trusty
 env:
   matrix:
   - DISTRO=ubuntu-16.04
+  - DISTRO=ubuntu-17.04
   - DISTRO=opensuse-42.3
 services:
 - docker
