@@ -145,6 +145,20 @@ public:
     **/
     future<stat> set(string_view path, const buffer& data, version check = version::any());
 
+    /** Erase the node with the given \a path. The call will succeed if such a node exists, and the given version
+     *  \a check matches the node's version (if the given version is \c version::any, it matches any node's versions).
+     *  This operation, if successful, will trigger all the watches on the node of the given path left by \c watch API
+     *  calls, watches left by \c watch_exists API calls, and the watches on the parent node left by \c watch_children
+     *  API calls.
+     *
+     *  \throws no_node If no node with the given \a path exists, the future will be delivered with \c no_node.
+     *  \throws bad_version If the given version \a check does not match the node's version, the future will be
+     *   delivered with \c bad_version.
+     *  \throws not_empty You are only allowed to erase nodes with no children. If the node has children, the future
+     *   will be delievered with \c not_empty.
+    **/
+    future<void> erase(string_view path, version check = version::any());
+
 private:
     std::shared_ptr<connection> _conn;
 };

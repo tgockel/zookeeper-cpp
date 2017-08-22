@@ -115,4 +115,9 @@ future<stat> client::set(string_view path, const buffer& data, version check)
     return _conn->set(path, data, check);
 }
 
+future<void> client::erase(string_view path, version check)
+{
+    return _conn->erase(path, check);
+}
+
 }

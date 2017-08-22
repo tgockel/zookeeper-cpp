@@ -36,6 +36,8 @@ public:
 
     virtual future<stat> set(string_view path, const buffer& data, version check) override;
 
+    virtual future<void> erase(string_view path, version check) override;
+
 private:
     static void on_session_event_raw(ptr<zhandle_t>  handle,
                                      int             ev_type,

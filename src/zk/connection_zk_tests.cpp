@@ -7,6 +7,7 @@
 
 #include "client.hpp"
 #include "connection_zk.hpp"
+#include "error.hpp"
 
 namespace zk
 {
@@ -50,6 +51,20 @@ GTEST_TEST_F(connection_zk_tests, create_seq_and_set)
     c.set(name, buffer_from("WORLD")).get();
     std::pair<buffer, stat> contents(c.get(name).get());
     CHECK_EQ(contents.second.data_version, expected_version);
+    CHECK_TRUE(contents.first == buffer_from("WORLD"));
+}
+
+GTEST_TEST_F(connection_zk_tests, create_seq_and_erase)
+{
+    client c = get_connected_client();
+    auto f_create = c.create("/test-node-", buffer_from("Hello!"), create_mode::sequential);
+    std::string name(f_create.get());
+    std::pair<buffer, stat> contents_orig(c.get(name).get());
+    c.erase(name, contents_orig.second.data_version).get();
+    CHECK_THROWS(no_node)
+    {
+        c.get(name).get();
+    };
 }
 
 }
