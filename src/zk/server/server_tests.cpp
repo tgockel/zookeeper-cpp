@@ -35,7 +35,7 @@ const std::string& server_fixture::get_connection_string() const
 
 client server_fixture::get_connected_client() const
 {
-    return client(client::create(get_connection_string()).get());
+    return client(client::connect(get_connection_string()).get());
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

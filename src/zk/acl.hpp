@@ -117,6 +117,7 @@ class acl_list final
 public:
     using iterator       = std::vector<acl>::iterator;
     using const_iterator = std::vector<acl>::const_iterator;
+    using size_type      = std::size_t;
 
 public:
     acl_list(std::vector<acl> acls) noexcept;
@@ -126,6 +127,10 @@ public:
     { }
 
     ~acl_list() noexcept;
+
+    size_type size() const { return _impl.size(); }
+
+    const acl& operator[](size_type idx) const { return _impl[idx]; }
 
     iterator begin()              { return _impl.begin(); }
     const_iterator begin() const  { return _impl.begin(); }

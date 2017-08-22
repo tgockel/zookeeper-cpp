@@ -25,6 +25,12 @@ public:
 
     virtual future<std::pair<buffer, stat>> get(string_view path) = 0;
 
+    virtual future<std::string> create(string_view     path,
+                                       const buffer&   data,
+                                       const acl_list& acls,
+                                       create_mode     mode
+                                      ) = 0;
+
     virtual zk::state state() const = 0;
 
     /** Watch for a state change. **/

@@ -33,6 +33,26 @@ auto with_str(string_view src, FAction&& action)
     return std::forward<FAction>(action)(buffer);
 }
 
+template <typename FAction>
+auto with_acl(const acl_list& acls, FAction&& action)
+        -> decltype(std::forward<FAction>(action)(ptr<const ACL_vector>()))
+{
+    std::cerr << "HELLO " << acls << std::endl;
+
+    ACL parts[acls.size()];
+    for (std::size_t idx = 0; idx < acls.size(); ++idx)
+    {
+        parts[idx].perms     = static_cast<int>(acls[idx].permissions());
+        parts[idx].id.scheme = const_cast<ptr<char>>(acls[idx].scheme().c_str());
+        parts[idx].id.id     = const_cast<ptr<char>>(acls[idx].id().c_str());
+    }
+
+    ACL_vector vec;
+    vec.count = int(acls.size());
+    vec.data  = parts;
+    return std::forward<FAction>(action)(&vec);
+}
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Native Adaptors                                                                                                    //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -152,6 +172,52 @@ future<std::pair<buffer, stat>> connection_zk::get(string_view path)
             return ppromise->get_future();
         }
     });
+}
+
+future<std::string> connection_zk::create(string_view     path,
+                                          const buffer&   data,
+                                          const acl_list& acl,
+                                          create_mode     mode
+                                         )
+{
+    ::string_completion_t callback =
+        [] (int rc_in, ptr<const char> name_in, ptr<const void> prom_in)
+        {
+            std::unique_ptr<promise<std::string>> prom((ptr<promise<std::string>>) prom_in);
+            auto rc = error_code_from_raw(rc_in);
+            if (rc == error_code::ok)
+                prom->set_value(std::string(name_in));
+            else
+                prom->set_exception(get_exception_ptr_of(rc));
+        };
+
+        return with_str(path, [&] (ptr<const char> path)
+        {
+            auto ppromise = std::make_unique<promise<std::string>>();
+            auto rc = with_acl(acl, [&] (ptr<const ACL_vector> acl)
+            {
+                return error_code_from_raw(::zoo_acreate(_handle,
+                                                         path,
+                                                         data.data(),
+                                                         int(data.size()),
+                                                         acl,
+                                                         static_cast<int>(mode),
+                                                         callback,
+                                                         ppromise.get()
+                                                        ));
+            });
+            if (rc == error_code::ok)
+            {
+                auto f = ppromise->get_future();
+                ppromise.release();
+                return f;
+            }
+            else
+            {
+                ppromise->set_exception(get_exception_ptr_of(rc));
+                return ppromise->get_future();
+            }
+        });
 }
 
 void connection_zk::on_session_event_raw(ptr<zhandle_t>  handle,

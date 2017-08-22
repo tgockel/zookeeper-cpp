@@ -28,6 +28,12 @@ public:
 
     virtual future<std::pair<buffer, stat>> get(string_view path) override;
 
+    virtual future<std::string> create(string_view     path,
+                                       const buffer&   data,
+                                       const acl_list& acl,
+                                       create_mode     mode
+                                      ) override;
+
 private:
     static void on_session_event_raw(ptr<zhandle_t>  handle,
                                      int             ev_type,

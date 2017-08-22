@@ -1,8 +1,41 @@
 #include "client.hpp"
 #include "connection.hpp"
+#include "acl.hpp"
+
+#include <sstream>
+#include <ostream>
 
 namespace zk
 {
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// create_mode                                                                                                        //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+std::ostream& operator<<(std::ostream& os, const create_mode& mode)
+{
+    if (mode == create_mode::normal)
+        return os << "normal";
+
+    bool first = true;
+    auto tick = [&] { return std::exchange(first, false) ? "" : "|"; };
+    if (is_set(mode, create_mode::ephemeral))  os << tick() << "ephemeral";
+    if (is_set(mode, create_mode::sequential)) os << tick() << "sequential";
+    if (is_set(mode, create_mode::container))  os << tick() << "container";
+
+    return os;
+}
+
+std::string to_string(const create_mode& self)
+{
+    std::ostringstream os;
+    os << self;
+    return os.str();
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// client                                                                                                             //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 client::client(string_view conn_string) :
         client(connection::create(conn_string))
@@ -12,7 +45,7 @@ client::client(std::shared_ptr<connection> conn) noexcept :
         _conn(std::move(conn))
 { }
 
-future<client> client::create(string_view conn_string)
+future<client> client::connect(string_view conn_string)
 {
     try
     {
@@ -58,6 +91,23 @@ void client::close()
 future<std::pair<buffer, stat>> client::get(string_view path) const
 {
     return _conn->get(path);
+}
+
+future<std::string> client::create(string_view     path,
+                                   const buffer&   data,
+                                   const acl_list& acls,
+                                   create_mode     mode
+                                  )
+{
+    return _conn->create(path, data, acls, mode);
+}
+
+future<std::string> client::create(string_view     path,
+                                   const buffer&   data,
+                                   create_mode     mode
+                                  )
+{
+    return create(path, data, acls::open_unsafe(), mode);
 }
 
 }
