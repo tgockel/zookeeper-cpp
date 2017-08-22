@@ -218,6 +218,33 @@ However, ``delete`` is a C++ keyword and cannot be used as a member function.
 So, this library uses ``erase``, which falls in line with standard C++ containers.
 Alternatives such as calling the operation ``delete_`` look a bit worse (in the author's opinion).
 
+Why are watch calls separate?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In the Java and C APIs, adding a watch to a ZNode is an additional parameter to the ``get``, ``get_children``, or
+``exists`` calls while this library uses ``watch``, ``watch_children``, and ``watch_exists`` calls.
+This is done because the return types are different between a simple fetch and setting a watch.
+While ``get`` returns a ``future<pair<buffer, stat>>``, ``watch`` returns the slightly more complicated
+``future<tuple<buffer, stat, future<pair<event_type, state>>>>``.
+The ``watch_handle`` would be disabled in cases where a flag is not set, and it would be ignored with the majority of
+use cases.
+This leads to an awkward API for simple calls.
+
+An alternative used by other libraries is to provide a ``std::function``, implying to not watch when the function is not
+passed in.
+This has a number of disadvantages:
+
+- There is no good way to cancel a watch without giving an extra parameter.
+  With a ``future``, you simply let it fall out of scope.
+- Watches are delivered only once, which is obvious from a ``future``-like API, but not obvious from a ``function``-like
+  API.
+- It is not obvious what the behavior should be if the original call returns in error.
+  With a ``future``, the behavior is obvious, since you never receive the mechanisms to perform the watch.
+
+In Java, the method of choice is to use the
+`Watcher <https://zookeeper.apache.org/doc/r3.4.10/api/org/apache/zookeeper/Watcher.html>`_ interface, but this feels
+extremely out of place in C++ code.
+
 How can I contribute?
 ^^^^^^^^^^^^^^^^^^^^^
 
