@@ -20,9 +20,8 @@ class connection_zk_tests :
 GTEST_TEST_F(connection_zk_tests, get_root)
 {
     client c = get_connected_client();
-    auto f = c.get("/");
-    auto r = f.get();
-    std::cout << r.second << std::endl;
+    auto res = c.get("/").get();
+    std::cerr << res << std::endl;
     c.close();
 }
 
@@ -38,7 +37,7 @@ GTEST_TEST_F(connection_zk_tests, create)
     client c = get_connected_client();
     const char local_buf[10] = { 0 };
     auto f_create = c.create("/test-node", buffer(local_buf, local_buf + sizeof local_buf));
-    std::string name(f_create.get());
+    auto name = f_create.get().name();
     CHECK_EQ("/test-node", name);
 }
 
@@ -51,24 +50,24 @@ GTEST_TEST_F(connection_zk_tests, create_seq_and_set)
 {
     client c = get_connected_client();
     auto f_create = c.create("/test-node-", buffer_from("Hello!"), create_mode::sequential);
-    std::string name(f_create.get());
-    std::pair<buffer, stat> contents_orig(c.get(name).get());
-    auto expected_version = contents_orig.second.data_version;
+    auto name = f_create.get().name();
+    auto orig_stat = c.get(name).get().stat();
+    auto expected_version = orig_stat.data_version;
     ++expected_version;
 
     c.set(name, buffer_from("WORLD")).get();
-    std::pair<buffer, stat> contents(c.get(name).get());
-    CHECK_EQ(contents.second.data_version, expected_version);
-    CHECK_TRUE(contents.first == buffer_from("WORLD"));
+    auto contents = c.get(name).get();
+    CHECK_EQ(contents.stat().data_version, expected_version);
+    CHECK_TRUE(contents.data() == buffer_from("WORLD"));
 }
 
 GTEST_TEST_F(connection_zk_tests, create_seq_and_erase)
 {
     client c = get_connected_client();
     auto f_create = c.create("/test-node-", buffer_from("Hello!"), create_mode::sequential);
-    std::string name(f_create.get());
-    std::pair<buffer, stat> contents_orig(c.get(name).get());
-    c.erase(name, contents_orig.second.data_version).get();
+    auto name = f_create.get().name();
+    auto orig_stat = c.get(name).get().stat();
+    c.erase(name, orig_stat.data_version).get();
     CHECK_THROWS(no_node)
     {
         c.get(name).get();
@@ -79,19 +78,19 @@ GTEST_TEST_F(connection_zk_tests, create_seq_and_get_children)
 {
     client c = get_connected_client();
     auto f_create = c.create("/test-node-", buffer_from("Hello!"), create_mode::sequential);
-    std::string name(f_create.get());
-    std::pair<buffer, stat> contents_orig(c.get(name).get());
+    auto name = f_create.get().name();
+    auto orig_stat = c.get(name).get().stat();
 
     c.create(name + "/a", buffer()).get();
     c.create(name + "/b", buffer()).get();
     c.create(name + "/c", buffer()).get();
 
-    std::pair<std::vector<std::string>, stat> children(c.get_children(name).get());
-    CHECK_EQ(contents_orig.second.data_version,  children.second.data_version);
-    CHECK_LT(contents_orig.second.child_version, children.second.child_version);
+    auto result = c.get_children(name).get();
+    CHECK_EQ(orig_stat.data_version,  result.parent_stat().data_version);
+    CHECK_LT(orig_stat.child_version, result.parent_stat().child_version);
     std::vector<std::string> expected_children = { "a", "b", "c" };
-    std::sort(children.first.begin(), children.first.end());
-    CHECK_TRUE(expected_children == children.first);
+    std::sort(result.children().begin(), result.children().end());
+    CHECK_TRUE(expected_children == result.children());
 }
 
 GTEST_TEST_F(connection_zk_tests, load_fence)

@@ -6,10 +6,10 @@
 #include <mutex>
 #include <vector>
 
-#include "client.hpp"
+#include "buffer.hpp"
+#include "forwards.hpp"
 #include "future.hpp"
 #include "string_view.hpp"
-#include "watch.hpp"
 
 namespace zk
 {
@@ -23,19 +23,19 @@ public:
 
     virtual void close() = 0;
 
-    virtual future<std::pair<buffer, stat>> get(string_view path) = 0;
+    virtual future<get_result> get(string_view path) = 0;
 
-    virtual future<std::pair<std::vector<std::string>, stat>> get_children(string_view path) = 0;
+    virtual future<get_children_result> get_children(string_view path) = 0;
 
-    virtual future<optional<stat>> exists(string_view path) = 0;
+    virtual future<exists_result> exists(string_view path) = 0;
 
-    virtual future<std::string> create(string_view     path,
-                                       const buffer&   data,
-                                       const acl_list& acls,
-                                       create_mode     mode
-                                      ) = 0;
+    virtual future<create_result> create(string_view     path,
+                                         const buffer&   data,
+                                         const acl_list& acls,
+                                         create_mode     mode
+                                        ) = 0;
 
-    virtual future<stat> set(string_view path, const buffer& data, version check) = 0;
+    virtual future<set_result> set(string_view path, const buffer& data, version check) = 0;
 
     virtual future<void> erase(string_view path, version check) = 0;
 

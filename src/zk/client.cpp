@@ -10,31 +10,6 @@ namespace zk
 {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// create_mode                                                                                                        //
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-std::ostream& operator<<(std::ostream& os, const create_mode& mode)
-{
-    if (mode == create_mode::normal)
-        return os << "normal";
-
-    bool first = true;
-    auto tick = [&] { return std::exchange(first, false) ? "" : "|"; };
-    if (is_set(mode, create_mode::ephemeral))  os << tick() << "ephemeral";
-    if (is_set(mode, create_mode::sequential)) os << tick() << "sequential";
-    if (is_set(mode, create_mode::container))  os << tick() << "container";
-
-    return os;
-}
-
-std::string to_string(const create_mode& self)
-{
-    std::ostringstream os;
-    os << self;
-    return os.str();
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // client                                                                                                             //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -60,6 +35,7 @@ future<client> client::connect(string_view conn_string)
         }
         else
         {
+            // TODO: Test if future::then can be relied on and use that instead of std::async
             return std::async
                    (
                        std::launch::async,
@@ -89,39 +65,39 @@ void client::close()
     _conn->close();
 }
 
-future<std::pair<buffer, stat>> client::get(string_view path) const
+future<get_result> client::get(string_view path) const
 {
     return _conn->get(path);
 }
 
-future<std::pair<std::vector<std::string>, stat>> client::get_children(string_view path) const
+future<get_children_result> client::get_children(string_view path) const
 {
     return _conn->get_children(path);
 }
 
-future<optional<stat>> client::exists(string_view path) const
+future<exists_result> client::exists(string_view path) const
 {
     return _conn->exists(path);
 }
 
-future<std::string> client::create(string_view     path,
-                                   const buffer&   data,
-                                   const acl_list& acls,
-                                   create_mode     mode
-                                  )
+future<create_result> client::create(string_view     path,
+                                     const buffer&   data,
+                                     const acl_list& acls,
+                                     create_mode     mode
+                                    )
 {
     return _conn->create(path, data, acls, mode);
 }
 
-future<std::string> client::create(string_view     path,
-                                   const buffer&   data,
-                                   create_mode     mode
-                                  )
+future<create_result> client::create(string_view   path,
+                                     const buffer& data,
+                                     create_mode   mode
+                                    )
 {
     return create(path, data, acls::open_unsafe(), mode);
 }
 
-future<stat> client::set(string_view path, const buffer& data, version check)
+future<set_result> client::set(string_view path, const buffer& data, version check)
 {
     return _conn->set(path, data, check);
 }

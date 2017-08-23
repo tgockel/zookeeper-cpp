@@ -45,7 +45,25 @@ Ultimately, the usage looks like this (assuming you have a ZooKeeper server runn
     #include <zk/client.hpp>
     #include <zk/multi.hpp>
 
+    #include <exception>
     #include <iostream>
+
+    /** All result types are printable for debugging purposes. **/
+    template <typename T>
+    void print_thing(const std::future<T>& result)
+    {
+        try
+        {
+            // Unwrap the future value, which will not block (based on usage), but could throw.
+            T value(result.get());
+            std::cerr << value << std::endl;
+        }
+        catch (const std::exception& ex)
+        {
+            // Error "handling"
+            std::cerr << "Exception: " << ex.what() << std::endl;
+        }
+    }
 
     int main()
     {
@@ -53,30 +71,41 @@ Ultimately, the usage looks like this (assuming you have a ZooKeeper server runn
         auto client = zk::client::create("zk://127.0.0.1:2181")
                                  .get();
 
-        // foobar's type is zk::future<std::pair<zk::buffer, zk::stat>>
-        auto foobar = client.get("/foo/bar");
+        // get_result has a zk::buffer and zk::stat.
+        client.get("/foo/bar")
+            .then(print_thing<zk::get_result>);
 
-        // children's type is zk::future<std::pair<std::vector<std::string>, zk::stat>>
-        auto children = client.get_children("/foo");
+        // get_children_result has a std::vector<std::string> for the path names and zk::stat for the parent stat.
+        client.get_children("/foo")
+            .then(print_thing<zk::get_children_result>);
 
-        // set_res's type is zk::future<zk::stat>
-        auto set_res = client.set("/foo/bar", "some data");
-        auto foo_bar_version = set_res.get().data_version;
+        // set_result has a zk::stat for the modified ZNode.
+        client.set("/foo/bar", "some data")
+            .then(print_thing<zk::set_result>);
 
-        // create_res's type is zk::future<std::string>
-        auto create_res = client.create("/foo/baz", "more data");
         // More explicit: client.create("/foo/baz", "more data", zk::acls::open_unsafe(), zk::create_mode::normal);
+        client.create("/foo/baz", "more data")
+            .then(print_thing<zk::create_result>);
 
-        zk::multi_op txn =
-        {
-            zk::op::check("/foo", zk::version::any()),
-            zk::op::check("/foo/baz", foo_bar_version),
-            zk::op::create("/foo/bap", "hi", nullopt, zk::create_mode::sequential),
-            zk::op::erase("/foo/bzr"),
-        };
-        // multi_res's type is zk::future<zk::multi_result>
-        auto multi_res = client.commit(txn);
-        multi_res.get();
+        client.get("/foo/bar")
+            .then([client] (const auto& get_res)
+            {
+                zk::version foo_bar_version = get_res.get().stat().data_version;
+
+                zk::multi_op txn =
+                {
+                    zk::op::check("/foo", zk::version::any()),
+                    zk::op::check("/foo/baz", foo_bar_version),
+                    zk::op::create("/foo/bap", "hi", nullopt, zk::create_mode::sequential),
+                    zk::op::erase("/foo/bzr"),
+                };
+
+                // multi_res's type is zk::future<zk::multi_result>
+                client.commit(txn).then(print_thing<zk::multi_result>);
+            });
+
+        // This is not strictly needed -- a client falling out of scope will auto-trigger close
+        client.close();
     }
 
 Value-Added Features
@@ -194,7 +223,6 @@ Can you get this library working on platforms that are not Linux?
 Maybe.
 But Linux is the primary development, testing, and deployment platform of people writing distributed applications, so
 this library is targetted at Linux.
-Blame Windows.
 
 License
 -------
@@ -224,10 +252,10 @@ Why are watch calls separate?
 In the Java and C APIs, adding a watch to a ZNode is an additional parameter to the ``get``, ``get_children``, or
 ``exists`` calls while this library uses ``watch``, ``watch_children``, and ``watch_exists`` calls.
 This is done because the return types are different between a simple fetch and setting a watch.
-While ``get`` returns a ``future<pair<buffer, stat>>``, ``watch`` returns the slightly more complicated
-``future<tuple<buffer, stat, future<pair<event_type, state>>>>``.
-The ``watch_handle`` would be disabled in cases where a flag is not set, and it would be ignored with the majority of
-use cases.
+While ``get`` returns a ``future<get_result>``, ``watch`` returns the slightly more complicated
+``future<watch_result>``.
+The ``future`` in ``watch_result::next()`` would be disabled in cases where a flag is not set, and it would be ignored
+with the majority of use cases.
 This leads to an awkward API for simple calls.
 
 An alternative used by other libraries is to provide a ``std::function``, implying to not watch when the function is not

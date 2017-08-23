@@ -26,19 +26,19 @@ public:
 
     virtual zk::state state() const override;
 
-    virtual future<std::pair<buffer, stat>> get(string_view path) override;
+    virtual future<get_result> get(string_view path) override;
 
-    virtual future<std::pair<std::vector<std::string>, stat>> get_children(string_view path) override;
+    virtual future<get_children_result> get_children(string_view path) override;
 
-    virtual future<optional<stat>> exists(string_view path) override;
+    virtual future<exists_result> exists(string_view path) override;
 
-    virtual future<std::string> create(string_view     path,
-                                       const buffer&   data,
-                                       const acl_list& acl,
-                                       create_mode     mode
-                                      ) override;
+    virtual future<create_result> create(string_view     path,
+                                         const buffer&   data,
+                                         const acl_list& acl,
+                                         create_mode     mode
+                                        ) override;
 
-    virtual future<stat> set(string_view path, const buffer& data, version check) override;
+    virtual future<set_result> set(string_view path, const buffer& data, version check) override;
 
     virtual future<void> erase(string_view path, version check) override;
 

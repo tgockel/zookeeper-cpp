@@ -15,8 +15,8 @@
 #include "acl.hpp"
 #include "error.hpp"
 #include "multi.hpp"
-#include "stat.hpp"
-#include "watch.hpp"
+#include "results.hpp"
+#include "types.hpp"
 
 namespace zk
 {
@@ -157,22 +157,22 @@ zk::state connection_zk::state() const
         return zk::state::closed;
 }
 
-future<std::pair<buffer, stat>> connection_zk::get(string_view path)
+future<get_result> connection_zk::get(string_view path)
 {
     ::data_completion_t callback =
         [] (int rc_in, ptr<const char> data, int data_sz, ptr<const struct Stat> pstat, ptr<const void> prom_in) noexcept
         {
-            std::unique_ptr<promise<std::pair<buffer, stat>>> prom((ptr<promise<std::pair<buffer, stat>>>) prom_in);
+            std::unique_ptr<promise<get_result>> prom((ptr<promise<get_result>>) prom_in);
             auto rc = error_code_from_raw(rc_in);
             if (rc == error_code::ok)
-                prom->set_value({ buffer(data, data + data_sz), stat_from_raw(*pstat) });
+                prom->set_value(get_result(buffer(data, data + data_sz), stat_from_raw(*pstat)));
             else
                 prom->set_exception(get_exception_ptr_of(rc));
         };
 
     return with_str(path, [&] (ptr<const char> path)
     {
-        auto ppromise = std::make_unique<promise<std::pair<buffer, stat>>>();
+        auto ppromise = std::make_unique<promise<get_result>>();
         auto rc = error_code_from_raw(::zoo_aget(_handle, path, 0, callback, ppromise.get()));
         if (rc == error_code::ok)
         {
@@ -188,7 +188,7 @@ future<std::pair<buffer, stat>> connection_zk::get(string_view path)
     });
 }
 
-future<std::pair<std::vector<std::string>, stat>> connection_zk::get_children(string_view path)
+future<get_children_result> connection_zk::get_children(string_view path)
 {
     ::strings_stat_completion_t callback =
         [] (int                             rc_in,
@@ -197,29 +197,24 @@ future<std::pair<std::vector<std::string>, stat>> connection_zk::get_children(st
             ptr<const void>                 prom_in
            )
         {
-            std::unique_ptr<promise<std::pair<std::vector<std::string>, stat>>>
-                prom((ptr<promise<std::pair<std::vector<std::string>, stat>>>) prom_in);
+            std::unique_ptr<promise<get_children_result>> prom((ptr<promise<get_children_result>>) prom_in);
             auto rc = error_code_from_raw(rc_in);
-            if (rc == error_code::ok)
+            try
             {
-                try
-                {
-                    prom->set_value({ string_vector_from_raw(*strings_in), stat_from_raw(*stat_in) });
-                }
-                catch (...)
-                {
-                    prom->set_exception(std::current_exception());
-                }
+                if (rc != error_code::ok)
+                    throw_error(rc);
+
+                prom->set_value(get_children_result(string_vector_from_raw(*strings_in), stat_from_raw(*stat_in)));
             }
-            else
+            catch (...)
             {
-                prom->set_exception(get_exception_ptr_of(rc));
+                prom->set_exception(std::current_exception());
             }
         };
 
     return with_str(path, [&] (ptr<const char> path)
     {
-        auto ppromise = std::make_unique<promise<std::pair<std::vector<std::string>, stat>>>();
+        auto ppromise = std::make_unique<promise<get_children_result>>();
         auto rc = error_code_from_raw(::zoo_aget_children2(_handle,
                                                            path,
                                                            0,
@@ -241,24 +236,24 @@ future<std::pair<std::vector<std::string>, stat>> connection_zk::get_children(st
     });
 }
 
-future<optional<stat>> connection_zk::exists(string_view path)
+future<exists_result> connection_zk::exists(string_view path)
 {
     ::stat_completion_t callback =
         [] (int rc_in, ptr<const struct Stat> stat_in, ptr<const void> prom_in)
         {
-            std::unique_ptr<promise<optional<stat>>> prom((ptr<promise<optional<stat>>>) prom_in);
+            std::unique_ptr<promise<exists_result>> prom((ptr<promise<exists_result>>) prom_in);
             auto rc = error_code_from_raw(rc_in);
             if (rc == error_code::ok)
-                prom->set_value(stat_from_raw(*stat_in));
+                prom->set_value(exists_result(stat_from_raw(*stat_in)));
             else if (rc == error_code::no_node)
-                prom->set_value(nullopt);
+                prom->set_value(exists_result(nullopt));
             else
                 prom->set_exception(get_exception_ptr_of(rc));
         };
 
     return with_str(path, [&] (ptr<const char> path)
     {
-        auto ppromise = std::make_unique<promise<optional<stat>>>();
+        auto ppromise = std::make_unique<promise<exists_result>>();
         auto rc = error_code_from_raw(::zoo_aexists(_handle, path, 0, callback, ppromise.get()));
         if (rc == error_code::ok)
         {
@@ -274,26 +269,26 @@ future<optional<stat>> connection_zk::exists(string_view path)
     });
 }
 
-future<std::string> connection_zk::create(string_view     path,
-                                          const buffer&   data,
-                                          const acl_list& acl,
-                                          create_mode     mode
-                                         )
+future<create_result> connection_zk::create(string_view     path,
+                                            const buffer&   data,
+                                            const acl_list& acl,
+                                            create_mode     mode
+                                           )
 {
     ::string_completion_t callback =
         [] (int rc_in, ptr<const char> name_in, ptr<const void> prom_in)
         {
-            std::unique_ptr<promise<std::string>> prom((ptr<promise<std::string>>) prom_in);
+            std::unique_ptr<promise<create_result>> prom((ptr<promise<create_result>>) prom_in);
             auto rc = error_code_from_raw(rc_in);
             if (rc == error_code::ok)
-                prom->set_value(std::string(name_in));
+                prom->set_value(create_result(std::string(name_in)));
             else
                 prom->set_exception(get_exception_ptr_of(rc));
         };
 
         return with_str(path, [&] (ptr<const char> path)
         {
-            auto ppromise = std::make_unique<promise<std::string>>();
+            auto ppromise = std::make_unique<promise<create_result>>();
             auto rc = with_acl(acl, [&] (ptr<const ACL_vector> acl)
             {
                 return error_code_from_raw(::zoo_acreate(_handle,
@@ -320,22 +315,22 @@ future<std::string> connection_zk::create(string_view     path,
         });
 }
 
-future<stat> connection_zk::set(string_view path, const buffer& data, version check)
+future<set_result> connection_zk::set(string_view path, const buffer& data, version check)
 {
     ::stat_completion_t callback =
         [] (int rc_in, ptr<const struct Stat> stat_raw, ptr<const void> prom_in)
         {
-            std::unique_ptr<promise<stat>> prom((ptr<promise<stat>>) prom_in);
+            std::unique_ptr<promise<set_result>> prom((ptr<promise<set_result>>) prom_in);
             auto rc = error_code_from_raw(rc_in);
             if (rc == error_code::ok)
-                prom->set_value(stat_from_raw(*stat_raw));
+                prom->set_value(set_result(stat_from_raw(*stat_raw)));
             else
                 prom->set_exception(get_exception_ptr_of(rc));
         };
 
     return with_str(path, [&] (ptr<const char> path)
     {
-        auto ppromise = std::make_unique<promise<stat>>();
+        auto ppromise = std::make_unique<promise<set_result>>();
         auto rc = error_code_from_raw(::zoo_aset(_handle,
                                                  path,
                                                  data.data(),

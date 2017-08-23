@@ -1,6 +1,7 @@
 #include "connection.hpp"
 #include "connection_zk.hpp"
 #include "error.hpp"
+#include "types.hpp"
 
 #include <zookeeper/zookeeper.h>
 

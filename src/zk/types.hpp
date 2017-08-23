@@ -3,8 +3,6 @@
 #include <zk/config.hpp>
 
 #include <chrono>
-#include <cstdint>
-#include <functional>
 #include <iosfwd>
 #include <string>
 
@@ -197,6 +195,101 @@ public:
 std::ostream& operator<<(std::ostream&, const stat&);
 
 std::string to_string(const stat&);
+
+/** When used in \c client::set, this value determines how the znode is created on the server. These values can be ORed
+ *  together to create combinations.
+**/
+enum class create_mode : unsigned int
+{
+    /** Standard behavior of a znode -- the opposite of doing any of the options. **/
+    normal = 0b0000,
+    /** The znode will be deleted upon the client's disconnect. **/
+    ephemeral = 0b0001,
+    /** The name of the znode will be appended with a monotonically increasing number. The actual path name of a
+     *  sequential node will be the given path plus a suffix \c "i" where \c i is the current sequential number of the
+     *  node. The sequence number is always fixed length of 10 digits, 0 padded. Once such a node is created, the
+     *  sequential number will be incremented by one.
+    **/
+    sequential = 0b0010,
+    /** Container nodes are special purpose nodes useful for recipes such as leader, lock, etc. When the last child of a
+     *  container is deleted, the container becomes a candidate to be deleted by the server at some point in the future.
+     *  Given this property, you should be prepared to get \c no_node when creating children inside of this container
+     *  node.
+    **/
+    container = 0b0100,
+};
+
+constexpr create_mode operator|(create_mode a, create_mode b)
+{
+    return create_mode(static_cast<unsigned int>(a) | static_cast<unsigned int>(b));
+}
+
+constexpr create_mode operator&(create_mode a, create_mode b)
+{
+    return create_mode(static_cast<unsigned int>(a) & static_cast<unsigned int>(b));
+}
+
+constexpr create_mode operator~(create_mode a)
+{
+    return create_mode(~static_cast<unsigned int>(a));
+}
+
+/** Check that \a self has \a flags set. **/
+constexpr bool is_set(create_mode self, create_mode flags)
+{
+    return (self & flags) == flags;
+}
+
+std::ostream& operator<<(std::ostream&, const create_mode&);
+
+std::string to_string(const create_mode&);
+
+/** Enumeration of types of events that may occur. **/
+enum class event_type : int
+{
+    error           =  0, //!< Invalid event (this should never be issued).
+    created         =  1, //!< Issued when a znode at a given path is created.
+    erased          =  2, //!< Issued when a znode at a given path is erased.
+    changed         =  3, //!< Issued when the data of a watched znode are altered. This event value is issued whenever
+                          //!< a \e set operation occurs without an actual contents check, so there is no guarantee the
+                          //!< data actually changed.
+    child           =  4, //!< Issued when the children of a watched znode are created or deleted. This event is not
+                          //!< issued when the data within children is altered.
+    session         = -1, //!< This value is issued as part of an event when the \c state changes.
+    not_watching    = -2, //!< Watch has been forcefully removed. This is generated when the server for some reason
+                          //!< (probably a resource constraint), will no longer watch a node for a client.
+};
+
+std::ostream& operator<<(std::ostream&, const event_type&);
+
+std::string to_string(const event_type&);
+
+/** Enumeration of states the client may be at in a \c watch_callback. It represents the state of the connection at the
+ *  time the event was generated.
+**/
+enum class state : int
+{
+    closed                =    0, //!< The client is not connected to any server in the ensemble.
+    connecting            =    1, //!< The client is connecting.
+    associating           =    2, //!< Client is attempting to associate a session.
+    connected             =    3, //!< The client is in the connected state -- it is connected to a server in the
+                                  //!< ensemble (one of the servers specified in the host connection parameter during
+                                  //!< ZooKeeper client creation).
+    read_only             =    5, //!< The client is connected to a read-only server, that is the server which is not
+                                  //!< currently connected to the majority. The only operations allowed after receiving
+                                  //!< this state is read operations. This state is generated for read-only clients only
+                                  //!< since read/write clients aren't allowed to connect to read-only servers.
+    not_connected         =  999,
+    expired_session       = -112, //!< The serving cluster has expired this session. The ZooKeeper client connection
+                                  //!< (the session) is no longer valid. You must create a new client \c connection if
+                                  //!< you with to access the ensemble.
+    authentication_failed = -113, //!< Authentication has failed -- connection requires a new \c connection instance
+                                  //!< with different credentials.
+};
+
+std::ostream& operator<<(std::ostream&, const state&);
+
+std::string to_string(const state&);
 
 }
 

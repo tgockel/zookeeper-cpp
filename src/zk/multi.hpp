@@ -9,9 +9,8 @@
 
 #include "acl.hpp"
 #include "buffer.hpp"
-#include "client.hpp"
 #include "forwards.hpp"
-#include "stat.hpp"
+#include "types.hpp"
 
 namespace zk
 {

@@ -26,8 +26,8 @@ GTEST_TEST_F(multi_tests, commit_no_fail)
 {
     client c = get_connected_client();
 
-    std::string node1(c.create("/test-", buffer_from("Going to delete"), create_mode::sequential).get());
-    std::string node2(c.create("/test-", buffer_from("First data"), create_mode::sequential).get());
+    auto node1 = c.create("/test-", buffer_from("Going to delete"), create_mode::sequential).get().name();
+    auto node2 = c.create("/test-", buffer_from("First data"), create_mode::sequential).get().name();
 
     multi_op txn =
     {
@@ -41,8 +41,8 @@ GTEST_TEST_F(multi_tests, commit_no_fail)
     // node1 should be erased
     CHECK_FALSE(c.exists(node1).get());
 
-    std::pair<buffer, stat> node2_contents(c.get(node2).get());
-    CHECK_TRUE(node2_contents.first == buffer_from("Second data"));
+    auto node2_contents = c.get(node2).get().data();
+    CHECK_TRUE(node2_contents == buffer_from("Second data"));
 }
 
 }
