@@ -65,17 +65,17 @@ Ultimately, the usage looks like this (assuming you have a ZooKeeper server runn
 
         // create_res's type is zk::future<std::string>
         auto create_res = client.create("/foo/baz", "more data");
-        // More explicit: client.create("/foo/baz", "more data", zk::acls::all(), zk::create_flags::none);
+        // More explicit: client.create("/foo/baz", "more data", zk::acls::open_unsafe(), zk::create_mode::normal);
 
-        zk::multi ops =
+        zk::multi_op txn =
         {
             zk::op::check("/foo", zk::version::any()),
             zk::op::check("/foo/baz", foo_bar_version),
-            zk::op::create("/foo/bap", "hi", nullopt, zk::create_flags::sequential),
+            zk::op::create("/foo/bap", "hi", nullopt, zk::create_mode::sequential),
             zk::op::erase("/foo/bzr"),
         };
         // multi_res's type is zk::future<zk::multi_result>
-        auto multi_res = client.commit(ops);
+        auto multi_res = client.commit(txn);
         multi_res.get();
     }
 

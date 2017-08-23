@@ -42,6 +42,8 @@ public:
 
     virtual future<void> erase(string_view path, version check) override;
 
+    virtual future<multi_result> commit(multi_op&& txn) override;
+
     virtual future<void> load_fence() override;
 
 private:

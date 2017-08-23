@@ -4,6 +4,7 @@
 #include <cerrno>
 #include <cstring>
 #include <iostream>
+#include <map>
 #include <memory>
 #include <stdexcept>
 #include <string>
@@ -13,6 +14,7 @@
 
 #include "acl.hpp"
 #include "error.hpp"
+#include "multi.hpp"
 #include "stat.hpp"
 #include "watch.hpp"
 
@@ -33,17 +35,22 @@ auto with_str(string_view src, FAction&& action)
     return std::forward<FAction>(action)(buffer);
 }
 
+static ACL encode_acl_part(const acl& src)
+{
+    ACL out;
+    out.perms     = static_cast<int>(src.permissions());
+    out.id.scheme = const_cast<ptr<char>>(src.scheme().c_str());
+    out.id.id     = const_cast<ptr<char>>(src.id().c_str());
+    return out;
+}
+
 template <typename FAction>
 auto with_acl(const acl_list& acls, FAction&& action)
         -> decltype(std::forward<FAction>(action)(ptr<const ACL_vector>()))
 {
     ACL parts[acls.size()];
     for (std::size_t idx = 0; idx < acls.size(); ++idx)
-    {
-        parts[idx].perms     = static_cast<int>(acls[idx].permissions());
-        parts[idx].id.scheme = const_cast<ptr<char>>(acls[idx].scheme().c_str());
-        parts[idx].id.id     = const_cast<ptr<char>>(acls[idx].id().c_str());
-    }
+        parts[idx] = encode_acl_part(acls[idx]);
 
     ACL_vector vec;
     vec.count = int(acls.size());
@@ -380,6 +387,162 @@ future<void> connection_zk::erase(string_view path, version check)
             return ppromise->get_future();
         }
     });
+}
+
+struct connection_zk_commit_completer
+{
+    multi_op                                 source_txn;
+    promise<multi_result>                    prom;
+    std::vector<zoo_op_result_t>             raw_results;
+    std::map<std::size_t, Stat>              raw_stats;
+    std::map<std::size_t, std::vector<char>> path_buffers;
+
+    explicit connection_zk_commit_completer(multi_op&& src) :
+            source_txn(std::move(src)),
+            raw_results(source_txn.size())
+    { }
+
+    ptr<Stat> raw_stat_at(std::size_t idx)
+    {
+        return &raw_stats[idx];
+    }
+
+    ptr<std::vector<char>> path_buffer_for(std::size_t idx, const std::string& path, create_mode mode)
+    {
+        // If the creation is sequential, append 12 extra characters to store the digits
+        auto sz = path.size() + (is_set(mode, create_mode::sequential) ? 12 : 1);
+        path_buffers[idx] = std::vector<char>(sz);
+        return &path_buffers[idx];
+    }
+
+    void deliver(error_code rc)
+    {
+        try
+        {
+            if (rc == error_code::ok)
+                prom.set_value(multi_result());
+            else
+                throw_error(rc);
+        }
+        catch (...)
+        {
+            prom.set_exception(std::current_exception());
+        }
+    }
+};
+
+future<multi_result> connection_zk::commit(multi_op&& txn_in)
+{
+    ::void_completion_t callback =
+        [] (int rc_in, ptr<const void> completer_in)
+        {
+            std::unique_ptr<connection_zk_commit_completer>
+                completer((ptr<connection_zk_commit_completer>) completer_in);
+            completer->deliver(error_code_from_raw(rc_in));
+        };
+
+    auto pcompleter = std::make_unique<connection_zk_commit_completer>(std::move(txn_in));
+    auto& txn = pcompleter->source_txn;
+    try
+    {
+        ::zoo_op raw_ops[txn.size()];
+        std::size_t create_op_count = 0;
+        std::size_t acl_piece_count = 0;
+        for (const auto& tx : txn)
+        {
+            if (tx.type() == op_type::create)
+            {
+                ++create_op_count;
+                acl_piece_count += tx.as_create().acl.size();
+            }
+        }
+        ACL_vector      encoded_acls[create_op_count];
+        ACL             acl_pieces[acl_piece_count];
+        ptr<ACL_vector> encoded_acl_iter = encoded_acls;
+        ptr<ACL>        acl_piece_iter   = acl_pieces;
+
+        for (std::size_t idx = 0; idx < txn.size(); ++idx)
+        {
+            auto& raw_op = raw_ops[idx];
+            auto& src_op = txn[idx];
+            switch (src_op.type())
+            {
+                case op_type::check:
+                    zoo_check_op_init(&raw_op, src_op.as_check().path.c_str(), src_op.as_check().check.value);
+                    break;
+                case op_type::create:
+                {
+                    const auto& cdata = src_op.as_create();
+                    encoded_acl_iter->count = int(cdata.acl.size());
+                    encoded_acl_iter->data  = acl_piece_iter;
+                    for (const auto& acl : cdata.acl)
+                    {
+                        *acl_piece_iter = encode_acl_part(acl);
+                        ++acl_piece_iter;
+                    }
+
+                    auto path_buf_ref = pcompleter->path_buffer_for(idx, cdata.path, cdata.mode);
+                    zoo_create_op_init(&raw_op,
+                                       cdata.path.c_str(),
+                                       cdata.data.data(),
+                                       int(cdata.data.size()),
+                                       encoded_acl_iter,
+                                       static_cast<int>(cdata.mode),
+                                       path_buf_ref->data(),
+                                       int(path_buf_ref->size())
+                                      );
+                    ++encoded_acl_iter;
+                    break;
+                }
+                case op_type::erase:
+                    zoo_delete_op_init(&raw_op, src_op.as_erase().path.c_str(), src_op.as_erase().check.value);
+                    break;
+                case op_type::set:
+                {
+                    const auto& setting = src_op.as_set();
+                    zoo_set_op_init(&raw_op,
+                                    setting.path.c_str(),
+                                    setting.data.data(),
+                                    int(setting.data.size()),
+                                    setting.check.value,
+                                    pcompleter->raw_stat_at(idx)
+                                   );
+                    break;
+                }
+                default:
+                {
+                    using std::to_string;
+                    throw std::invalid_argument("Invalid op_type at index=" + to_string(idx) + ": "
+                                                + to_string(src_op.type())
+                                               );
+                }
+            }
+        }
+        auto rc = error_code_from_raw(::zoo_amulti(_handle,
+                                                   int(txn.size()),
+                                                   raw_ops,
+                                                   pcompleter->raw_results.data(),
+                                                   callback,
+                                                   pcompleter.get()
+                                                  )
+                                     );
+        if (rc == error_code::ok)
+        {
+            auto f = pcompleter->prom.get_future();
+            pcompleter.release();
+            return f;
+        }
+        else
+        {
+            pcompleter->prom.set_exception(get_exception_ptr_of(rc));
+            return pcompleter->prom.get_future();
+        }
+    }
+    catch (...)
+    {
+        pcompleter->prom.set_exception(std::current_exception());
+        return pcompleter->prom.get_future();
+    }
 }
 
 future<void> connection_zk::load_fence()

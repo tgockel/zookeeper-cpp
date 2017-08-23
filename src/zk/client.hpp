@@ -207,6 +207,8 @@ public:
     **/
     future<void> load_fence() const;
 
+    future<multi_result> commit(multi_op txn);
+
 private:
     std::shared_ptr<connection> _conn;
 };

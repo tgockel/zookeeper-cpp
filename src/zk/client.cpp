@@ -1,6 +1,7 @@
 #include "client.hpp"
-#include "connection.hpp"
 #include "acl.hpp"
+#include "connection.hpp"
+#include "multi.hpp"
 
 #include <sstream>
 #include <ostream>
@@ -133,6 +134,11 @@ future<void> client::erase(string_view path, version check)
 future<void> client::load_fence() const
 {
     return _conn->load_fence();
+}
+
+future<multi_result> client::commit(multi_op txn)
+{
+    return _conn->commit(std::move(txn));
 }
 
 }

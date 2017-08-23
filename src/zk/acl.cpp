@@ -118,7 +118,7 @@ acl_list::~acl_list() noexcept
 
 std::ostream& operator<<(std::ostream& os, const acl_list& self)
 {
-    os << '{';
+    os << '[';
     bool first = true;
     for (const auto& x : self)
     {
@@ -128,7 +128,7 @@ std::ostream& operator<<(std::ostream& os, const acl_list& self)
             os << ", ";
         os << x;
     }
-    return os << '}';
+    return os << ']';
 }
 
 std::string to_string(const acl_list& self)

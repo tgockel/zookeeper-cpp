@@ -39,6 +39,8 @@ public:
 
     virtual future<void> erase(string_view path, version check) = 0;
 
+    virtual future<multi_result> commit(multi_op&& txn) = 0;
+
     virtual future<void> load_fence() = 0;
 
     virtual zk::state state() const = 0;

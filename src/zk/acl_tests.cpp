@@ -67,11 +67,11 @@ GTEST_TEST(acl_tests, hashing)
 
 GTEST_TEST(acl_list_tests, stringification)
 {
-    CHECK_EQ("{(auth, all)}",          to_string(acls::creator_all()));
-    CHECK_EQ("{(world:anyone, all)}",  to_string(acls::open_unsafe()));
-    CHECK_EQ("{(world:anyone, read)}", to_string(acls::read_unsafe()));
+    CHECK_EQ("[(auth, all)]",          to_string(acls::creator_all()));
+    CHECK_EQ("[(world:anyone, all)]",  to_string(acls::open_unsafe()));
+    CHECK_EQ("[(world:anyone, read)]", to_string(acls::read_unsafe()));
 
-    CHECK_EQ("{(auth, read), (ip:50.40.30.0/24, all)}",
+    CHECK_EQ("[(auth, read), (ip:50.40.30.0/24, all)]",
              to_string(acl_list({ { "auth", "", permission::read }, { "ip", "50.40.30.0/24", permission::all } }))
             );
 }
