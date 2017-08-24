@@ -9,6 +9,7 @@
 #include "client.hpp"
 #include "connection_zk.hpp"
 #include "error.hpp"
+#include "multi.hpp"
 
 namespace zk
 {
@@ -105,6 +106,35 @@ GTEST_TEST_F(connection_zk_tests, watch_change)
     auto ev = watch.next().get();
     CHECK_EQ(ev.type(), event_type::changed);
     CHECK_EQ(ev.state(), state::connected);
+}
+
+GTEST_TEST_F(connection_zk_tests, watch_children)
+{
+    client c = get_connected_client();
+    auto root_name = c.create("/test-node-", buffer_from("Hello!"), create_mode::sequential).get().name();
+
+    c.commit({
+        op::create(root_name + "/a", buffer_from("a")),
+        op::create(root_name + "/b", buffer_from("b")),
+        op::create(root_name + "/c", buffer_from("c")),
+        op::create(root_name + "/d", buffer_from("d")),
+    }).get();
+
+    auto watch_child_creation = c.watch_children(root_name).get();
+    CHECK_EQ(4U, watch_child_creation.initial().children().size());
+
+    c.create(root_name + "/e", buffer_from("e"));
+    auto ev = watch_child_creation.next().get();
+    CHECK_EQ(ev.type(), event_type::child);
+    CHECK_EQ(ev.state(), state::connected);
+
+    auto watch_child_erase = c.watch_children(root_name).get();
+    CHECK_EQ(5U, watch_child_erase.initial().children().size());
+
+    c.erase(root_name + "/a");
+    auto ev2 = watch_child_erase.next().get();
+    CHECK_EQ(ev2.type(), event_type::child);
+    CHECK_EQ(ev2.state(), state::connected);
 }
 
 GTEST_TEST_F(connection_zk_tests, watch_exists)

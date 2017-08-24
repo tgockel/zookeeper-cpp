@@ -208,6 +208,28 @@ std::string to_string(const watch_result& self)
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// watch_children_result                                                                                              //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+watch_children_result::watch_children_result(get_children_result initial, future<event> next) noexcept :
+        _initial(std::move(initial)),
+        _next(std::move(next))
+{ }
+
+watch_children_result::~watch_children_result() noexcept
+{ }
+
+std::ostream& operator<<(std::ostream& os, const watch_children_result& self)
+{
+    return os << "watch_children_result{initial=" << self.initial() << '}';
+}
+
+std::string to_string(const watch_children_result& self)
+{
+    return to_string_generic(self);
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // watch_exists_result                                                                                                //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

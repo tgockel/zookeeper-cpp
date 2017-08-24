@@ -29,6 +29,8 @@ public:
 
     virtual future<get_children_result> get_children(string_view path) = 0;
 
+    virtual future<watch_children_result> watch_children(string_view path) = 0;
+
     virtual future<exists_result> exists(string_view path) = 0;
 
     virtual future<watch_exists_result> watch_exists(string_view path) = 0;

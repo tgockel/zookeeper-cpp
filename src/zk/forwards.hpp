@@ -27,7 +27,8 @@ class set_result;
 enum class state : int;
 struct transaction_id;
 struct version;
-class watch_result;
+class watch_children_result;
 class watch_exists_result;
+class watch_result;
 
 }

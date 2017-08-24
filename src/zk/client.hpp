@@ -72,6 +72,12 @@ public:
     **/
     future<get_children_result> get_children(string_view path) const;
 
+    /** Similar to \c get_children, but if the call is successful (no error is returned), a watch will be left on the
+     *  node with the given \a path. The watch will be triggered by a successful operation that erases the node of the
+     *  given \e path or creates or erases a child under the node.
+    **/
+    future<watch_children_result> watch_children(string_view path) const;
+
     /** Return the \c stat of the node of the given \a path or \c nullopt if no such node exists. **/
     future<exists_result> exists(string_view path) const;
 

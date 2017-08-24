@@ -80,6 +80,11 @@ future<get_children_result> client::get_children(string_view path) const
     return _conn->get_children(path);
 }
 
+future<watch_children_result> client::watch_children(string_view path) const
+{
+    return _conn->watch_children(path);
+}
+
 future<exists_result> client::exists(string_view path) const
 {
     return _conn->exists(path);

@@ -32,6 +32,8 @@ public:
 
     virtual future<get_children_result> get_children(string_view path) override;
 
+    virtual future<watch_children_result> watch_children(string_view path) override;
+
     virtual future<exists_result> exists(string_view path) override;
 
     virtual future<watch_exists_result> watch_exists(string_view path) override;

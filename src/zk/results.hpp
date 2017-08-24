@@ -190,6 +190,35 @@ std::ostream& operator<<(std::ostream&, const watch_result&);
 
 std::string to_string(const watch_result&);
 
+/** The result type of \c client::watch_children. **/
+class watch_children_result final
+{
+public:
+    explicit watch_children_result(get_children_result initial, future<event> next) noexcept;
+
+    watch_children_result(watch_children_result&&) = default;
+
+    ~watch_children_result() noexcept;
+
+    /** The initial result of the fetch. **/
+    const get_children_result& initial() const & { return _initial; }
+    get_children_result&       initial() &       { return _initial; }
+    get_children_result        initial() &&      { return std::move(_initial); }
+
+    /** Future to be delivered when the watch is triggered. **/
+    const future<event>& next() const & { return _next; }
+    future<event>&       next() &       { return _next; }
+    future<event>        next() &&      { return std::move(_next); }
+
+private:
+    get_children_result _initial;
+    future<event>       _next;
+};
+
+std::ostream& operator<<(std::ostream&, const watch_children_result&);
+
+std::string to_string(const watch_children_result&);
+
 /** The result type of \c client::watch_exists. **/
 class watch_exists_result final
 {
