@@ -75,6 +75,12 @@ public:
     /** Return the \c stat of the node of the given \a path or \c nullopt if no such node exists. **/
     future<exists_result> exists(string_view path) const;
 
+    /** Similar to \c watch, but if the call is successful (no error is returned), a watch will be left on the node with
+     *  the given \a path. The watch will be triggered by a successful operation that creates the node, erases the node,
+     *  or sets the data on the node.
+    **/
+    future<watch_exists_result> watch_exists(string_view path) const;
+
     /** Create a node with the given \a path.
      *
      *  This operation, if successful, will trigger all the watches left on the node of the given path by \c watch API

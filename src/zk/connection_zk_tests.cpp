@@ -107,6 +107,28 @@ GTEST_TEST_F(connection_zk_tests, watch_change)
     CHECK_EQ(ev.state(), state::connected);
 }
 
+GTEST_TEST_F(connection_zk_tests, watch_exists)
+{
+    client c = get_connected_client();
+    auto root_name = c.create("/test-node-", buffer_from("Hello!"), create_mode::sequential).get().name();
+
+    auto watch_creation = c.watch_exists(root_name + "/sub").get();
+    CHECK_FALSE(watch_creation.initial());
+
+    c.create(root_name + "/sub", buffer_from("Blah"));
+    auto ev = watch_creation.next().get();
+    CHECK_EQ(ev.type(), event_type::created);
+    CHECK_EQ(ev.state(), state::connected);
+
+    auto watch_erase = c.watch_exists(root_name + "/sub").get();
+    CHECK_TRUE(watch_erase.initial());
+
+    c.erase(root_name + "/sub");
+    auto ev2 = watch_erase.next().get();
+    CHECK_EQ(ev2.type(), event_type::erased);
+    CHECK_EQ(ev2.state(), state::connected);
+}
+
 GTEST_TEST_F(connection_zk_tests, load_fence)
 {
     client c = get_connected_client();

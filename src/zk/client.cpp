@@ -85,6 +85,11 @@ future<exists_result> client::exists(string_view path) const
     return _conn->exists(path);
 }
 
+future<watch_exists_result> client::watch_exists(string_view path) const
+{
+    return _conn->watch_exists(path);
+}
+
 future<create_result> client::create(string_view     path,
                                      const buffer&   data,
                                      const acl_list& acls,

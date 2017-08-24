@@ -31,6 +31,8 @@ public:
 
     virtual future<exists_result> exists(string_view path) = 0;
 
+    virtual future<watch_exists_result> watch_exists(string_view path) = 0;
+
     virtual future<create_result> create(string_view     path,
                                          const buffer&   data,
                                          const acl_list& acls,

@@ -207,4 +207,26 @@ std::string to_string(const watch_result& self)
     return to_string_generic(self);
 }
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// watch_exists_result                                                                                                //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+watch_exists_result::watch_exists_result(exists_result initial, future<event> next) noexcept :
+        _initial(std::move(initial)),
+        _next(std::move(next))
+{ }
+
+watch_exists_result::~watch_exists_result() noexcept
+{ }
+
+std::ostream& operator<<(std::ostream& os, const watch_exists_result& self)
+{
+    return os << "watch_exists_result{initial=" << self.initial() << '}';
+}
+
+std::string to_string(const watch_exists_result& self)
+{
+    return to_string_generic(self);
+}
+
 }

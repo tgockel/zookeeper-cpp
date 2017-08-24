@@ -325,6 +325,69 @@ future<exists_result> connection_zk::exists(string_view path)
     });
 }
 
+future<watch_exists_result> connection_zk::watch_exists(string_view path)
+{
+    using watch_promises = std::pair<std::promise<watch_exists_result>, std::promise<event>>;
+
+    ::stat_completion_t data_callback =
+        [] (int rc_in, ptr<const struct Stat> stat_in, ptr<const void> proms_in)
+        {
+            std::unique_ptr<watch_promises> proms((ptr<watch_promises>) proms_in);
+            auto rc = error_code_from_raw(rc_in);
+            if (rc == error_code::ok)
+            {
+                proms->first.set_value(watch_exists_result(exists_result(stat_from_raw(*stat_in)),
+                                                           proms->second.get_future()
+                                                          )
+                                      );
+                proms.release();
+            }
+            else if (rc == error_code::no_node)
+            {
+                proms->first.set_value(watch_exists_result(exists_result(nullopt),
+                                                           proms->second.get_future()
+                                                          )
+                                      );
+                proms.release();
+            }
+            else
+            {
+                proms->first.set_exception(get_exception_ptr_of(rc));
+            }
+        };
+
+    ::watcher_fn watch_callback =
+        [] (ptr<zhandle_t>, int type_in, int state_in, ptr<const char>, ptr<void> proms_in)
+        {
+            std::unique_ptr<watch_promises> proms(static_cast<ptr<watch_promises>>(proms_in));
+            proms->second.set_value(event(event_from_raw(type_in), state_from_raw(state_in)));
+        };
+
+    return with_str(path, [&] (ptr<const char> path)
+    {
+        auto ppromises = std::make_unique<watch_promises>();
+        auto rc = error_code_from_raw(::zoo_awexists(_handle,
+                                                     path,
+                                                     watch_callback,
+                                                     ppromises.get(),
+                                                     data_callback,
+                                                     ppromises.get()
+                                                    )
+                                     );
+        if (rc == error_code::ok)
+        {
+            auto f = ppromises->first.get_future();
+            ppromises.release();
+            return f;
+        }
+        else
+        {
+            ppromises->first.set_exception(get_exception_ptr_of(rc));
+            return ppromises->first.get_future();
+        }
+    });
+}
+
 future<create_result> connection_zk::create(string_view     path,
                                             const buffer&   data,
                                             const acl_list& acl,
