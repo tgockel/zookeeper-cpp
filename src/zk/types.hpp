@@ -264,7 +264,7 @@ std::ostream& operator<<(std::ostream&, const event_type&);
 
 std::string to_string(const event_type&);
 
-/** Enumeration of states the client may be at in a \c watch_callback. It represents the state of the connection at the
+/** Enumeration of states the client may be at when a watch triggers. It represents the state of the connection at the
  *  time the event was generated.
 **/
 enum class state : int

@@ -17,6 +17,11 @@ class connection_zk_tests :
         public server::server_fixture
 { };
 
+static buffer buffer_from(string_view str)
+{
+    return buffer(str.data(), str.data() + str.size());
+}
+
 GTEST_TEST_F(connection_zk_tests, get_root)
 {
     client c = get_connected_client();
@@ -39,11 +44,6 @@ GTEST_TEST_F(connection_zk_tests, create)
     auto f_create = c.create("/test-node", buffer(local_buf, local_buf + sizeof local_buf));
     auto name = f_create.get().name();
     CHECK_EQ("/test-node", name);
-}
-
-static buffer buffer_from(string_view str)
-{
-    return buffer(str.data(), str.data() + str.size());
 }
 
 GTEST_TEST_F(connection_zk_tests, create_seq_and_set)
@@ -91,6 +91,20 @@ GTEST_TEST_F(connection_zk_tests, create_seq_and_get_children)
     std::vector<std::string> expected_children = { "a", "b", "c" };
     std::sort(result.children().begin(), result.children().end());
     CHECK_TRUE(expected_children == result.children());
+}
+
+GTEST_TEST_F(connection_zk_tests, watch_change)
+{
+    client c = get_connected_client();
+    auto name = c.create("/test-node-", buffer_from("Hello!"), create_mode::sequential).get().name();
+
+    auto watch = c.watch(name).get();
+    CHECK_TRUE(watch.initial().data() == buffer_from("Hello!"));
+
+    c.set(name, buffer_from("world")); // don't wait -- the watch won't trigger until the operation completes
+    auto ev = watch.next().get();
+    CHECK_EQ(ev.type(), event_type::changed);
+    CHECK_EQ(ev.state(), state::connected);
 }
 
 GTEST_TEST_F(connection_zk_tests, load_fence)

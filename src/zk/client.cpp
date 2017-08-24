@@ -70,6 +70,11 @@ future<get_result> client::get(string_view path) const
     return _conn->get(path);
 }
 
+future<watch_result> client::watch(string_view path) const
+{
+    return _conn->watch(path);
+}
+
 future<get_children_result> client::get_children(string_view path) const
 {
     return _conn->get_children(path);

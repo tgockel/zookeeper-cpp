@@ -54,6 +54,15 @@ public:
     **/
     future<get_result> get(string_view path) const;
 
+    /** Similar to \c get, but if the call is successful (no error is returned), a watch will be left on the node with
+     *  the given \a path. The watch will be triggered by a successful operation that sets data on the node or erases
+     *  the node.
+     *
+     *  \throws no_node If no node with the given path exists, the future will be deliever with \c no_node. To watch for
+     *   the creation of a node, use \c watch_exists.
+    **/
+    future<watch_result> watch(string_view path) const;
+
     /** Return the list of the children of the node of the given \a path. The returned values are not prefixed with the
      *  provided \a path; i.e. if the database contains \c "/path/a" and \c "/path/b", the result of \c get_children for
      *  \c "/path" will be `["a", "b"]`. The list of children returned is not sorted and no guarantee is provided as to

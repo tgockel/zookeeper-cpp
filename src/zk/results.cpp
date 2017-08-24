@@ -156,8 +156,55 @@ set_result::set_result(const zk::stat& stat) noexcept :
 set_result::~set_result() noexcept
 { }
 
-std::ostream& operator<<(std::ostream&, const set_result&);
+std::ostream& operator<<(std::ostream& os, const set_result& self)
+{
+    return os << "set_result{" << self.stat() << '}';
+}
 
-std::string to_string(const set_result&);
+std::string to_string(const set_result& self)
+{
+    return to_string_generic(self);
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// event                                                                                                              //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+event::event(event_type type, zk::state state) noexcept :
+        _type(type),
+        _state(state)
+{ }
+
+std::ostream& operator<<(std::ostream& os, const event& self)
+{
+    return os << "event{" << self.type() << " | " << self.state() << '}';
+}
+
+std::string to_string(const event& self)
+{
+    return to_string_generic(self);
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// watch_result                                                                                                       //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+watch_result::watch_result(get_result initial, future<event> next) noexcept :
+        _initial(std::move(initial)),
+        _next(std::move(next))
+{ }
+
+watch_result::~watch_result() noexcept
+{ }
+
+std::ostream& operator<<(std::ostream& os, const watch_result& self)
+{
+    return os << "watch_result{initial=" << self.initial() << '}';
+}
+
+std::string to_string(const watch_result& self)
+{
+    return to_string_generic(self);
+}
 
 }

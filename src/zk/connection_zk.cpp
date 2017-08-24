@@ -188,6 +188,62 @@ future<get_result> connection_zk::get(string_view path)
     });
 }
 
+future<watch_result> connection_zk::watch(string_view path)
+{
+    using watch_promises = std::pair<std::promise<watch_result>, std::promise<event>>;
+
+    ::data_completion_t data_callback =
+        [] (int rc_in, ptr<const char> data, int data_sz, ptr<const struct Stat> pstat, ptr<const void> prom_in) noexcept
+        {
+            std::unique_ptr<watch_promises> prom((ptr<watch_promises>) prom_in);
+            auto rc = error_code_from_raw(rc_in);
+            if (rc == error_code::ok)
+            {
+                prom->first.set_value(watch_result(get_result(buffer(data, data + data_sz), stat_from_raw(*pstat)),
+                                                   prom->second.get_future()
+                                                  )
+                                     );
+                // Since there was no error, we know the watch will be triggered
+                prom.release();
+            }
+            else
+            {
+                prom->first.set_exception(get_exception_ptr_of(rc));
+            }
+        };
+
+    ::watcher_fn watch_callback =
+        [] (ptr<zhandle_t>, int type_in, int state_in, ptr<const char>, ptr<void> proms_in)
+        {
+            std::unique_ptr<watch_promises> prom(static_cast<ptr<watch_promises>>(proms_in));
+            prom->second.set_value(event(event_from_raw(type_in), state_from_raw(state_in)));
+        };
+
+    return with_str(path, [&] (ptr<const char> path)
+    {
+        auto ppromises = std::make_unique<watch_promises>();
+        auto rc = error_code_from_raw(::zoo_awget(_handle,
+                                                  path,
+                                                  watch_callback,
+                                                  ppromises.get(),
+                                                  data_callback,
+                                                  ppromises.get()
+                                                 )
+                                     );
+        if (rc == error_code::ok)
+        {
+            auto f = ppromises->first.get_future();
+            ppromises.release();
+            return f;
+        }
+        else
+        {
+            ppromises->first.set_exception(get_exception_ptr_of(rc));
+            return ppromises->first.get_future();
+        }
+    });
+}
+
 future<get_children_result> connection_zk::get_children(string_view path)
 {
     ::strings_stat_completion_t callback =
