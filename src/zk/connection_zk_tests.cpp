@@ -94,6 +94,24 @@ GTEST_TEST_F(connection_zk_tests, create_seq_and_get_children)
     CHECK_TRUE(expected_children == result.children());
 }
 
+GTEST_TEST_F(connection_zk_tests, acl)
+{
+    client c = get_connected_client();
+    auto name = c.create("/test-node-", buffer_from("Hello!"), create_mode::sequential).get().name();
+
+    // set the data of the node a few times to make sure the data_version is different value from acl_version
+    for (std::size_t changes = 0; changes < 5; ++changes)
+        c.set(name, buffer_from("data change")).get();
+
+    auto orig_result = c.get_acl(name).get();
+    CHECK_EQ(acls::open_unsafe(), orig_result.acl());
+    std::cerr << "HEY: " << orig_result << std::endl;
+
+    c.set_acl(name, acls::read_unsafe(), orig_result.stat().acl_version).get();
+    auto new_result = c.get_acl(name).get();
+    CHECK_EQ(acls::read_unsafe(), new_result.acl());
+}
+
 GTEST_TEST_F(connection_zk_tests, watch_change)
 {
     client c = get_connected_client();

@@ -46,7 +46,7 @@ static ACL encode_acl_part(const acl& src)
 
 template <typename FAction>
 auto with_acl(const acl_list& acls, FAction&& action)
-        -> decltype(std::forward<FAction>(action)(ptr<const ACL_vector>()))
+        -> decltype(std::forward<FAction>(action)(ptr<ACL_vector>()))
 {
     ACL parts[acls.size()];
     for (std::size_t idx = 0; idx < acls.size(); ++idx)
@@ -80,9 +80,9 @@ static state state_from_raw(int raw)
 static stat stat_from_raw(const struct Stat& raw)
 {
     stat out;
-    out.acl_version = version(raw.aversion);
+    out.acl_version = acl_version(raw.aversion);
     out.child_modified_transaction = transaction_id(raw.pzxid);
-    out.child_version = version(raw.cversion);
+    out.child_version = child_version(raw.cversion);
     out.children_count = raw.numChildren;
     out.create_time = stat::time_point() + std::chrono::milliseconds(raw.ctime);
     out.create_transaction = transaction_id(raw.czxid);
@@ -100,6 +100,20 @@ static std::vector<std::string> string_vector_from_raw(const struct String_vecto
     out.reserve(raw.count);
     for (std::int32_t idx = 0; idx < raw.count; ++idx)
         out.emplace_back(raw.data[idx]);
+    return out;
+}
+
+static acl_list acl_from_raw(const struct ACL_vector& raw)
+{
+    auto sz = std::size_t(raw.count);
+
+    acl_list out;
+    out.reserve(sz);
+    for (std::size_t idx = 0; idx < sz; ++idx)
+    {
+        const auto& item = raw.data[idx];
+        out.emplace_back(item.id.scheme, item.id.id, static_cast<permission>(item.perms));
+    }
     return out;
 }
 
@@ -564,6 +578,78 @@ future<void> connection_zk::erase(string_view path, version check)
             ppromise->set_exception(get_exception_ptr_of(rc));
             return ppromise->get_future();
         }
+    });
+}
+
+future<get_acl_result> connection_zk::get_acl(string_view path) const
+{
+    ::acl_completion_t callback =
+        [] (int rc_in, ptr<struct ACL_vector> acl_raw, ptr<struct Stat> stat_raw, ptr<const void> prom_in) noexcept
+        {
+            std::unique_ptr<promise<get_acl_result>> prom((ptr<promise<get_acl_result>>) prom_in);
+            auto rc = error_code_from_raw(rc_in);
+            if (rc == error_code::ok)
+                prom->set_value(get_acl_result(acl_from_raw(*acl_raw), stat_from_raw(*stat_raw)));
+            else
+                prom->set_exception(get_exception_ptr_of(rc));
+        };
+
+    return with_str(path, [&] (ptr<const char> path)
+    {
+        auto ppromise = std::make_unique<promise<get_acl_result>>();
+        auto rc = error_code_from_raw(::zoo_aget_acl(_handle, path, callback, ppromise.get()));
+        if (rc == error_code::ok)
+        {
+            auto f = ppromise->get_future();
+            ppromise.release();
+            return f;
+        }
+        else
+        {
+            ppromise->set_exception(get_exception_ptr_of(rc));
+            return ppromise->get_future();
+        }
+    });
+}
+
+future<void> connection_zk::set_acl(string_view path, const acl_list& acl, acl_version check)
+{
+    ::void_completion_t callback =
+        [] (int rc_in, ptr<const void> prom_in)
+        {
+            std::unique_ptr<promise<void>> prom((ptr<promise<void>>) prom_in);
+            auto rc = error_code_from_raw(rc_in);
+            if (rc == error_code::ok)
+                prom->set_value();
+            else
+                prom->set_exception(get_exception_ptr_of(rc));
+        };
+
+    return with_str(path, [&] (ptr<const char> path)
+    {
+        return with_acl(acl, [&] (ptr<struct ACL_vector> enc_acl)
+        {
+            auto ppromise = std::make_unique<promise<void>>();
+            auto rc = error_code_from_raw(::zoo_aset_acl(_handle,
+                                                         path,
+                                                         check.value,
+                                                         enc_acl,
+                                                         callback,
+                                                         ppromise.get()
+                                                        )
+                                         );
+            if (rc == error_code::ok)
+            {
+                auto f = ppromise->get_future();
+                ppromise.release();
+                return f;
+            }
+            else
+            {
+                ppromise->set_exception(get_exception_ptr_of(rc));
+                return ppromise->get_future();
+            }
+        });
     });
 }
 

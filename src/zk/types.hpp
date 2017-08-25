@@ -96,25 +96,71 @@ inline std::size_t hash(const strong_id<TReal, TId>& x)
     return std::hash<TId>()(x.value);
 }
 
-struct version final :
-        public strong_id<version, std::int32_t>
+/** Base type for version types. These are distinct so we can emit a compilation error on attempts to use the incorrect
+ *  version type (for example, \c client::set_acl does a check on \c acl_version instead of the standard \c version).
+ *
+ *  \see version
+ *  \see acl_version
+ *  \see child_version
+**/
+template <typename TReal>
+struct basic_version :
+        public strong_id<TReal, std::int32_t>
 {
     /** An invalid version specifier. This will never be returned by the database and will always be rejected in commit
      *  operations. This is a good value to use as a placeholder when you are searching for the proper \c version.
     **/
-    static constexpr version invalid() { return version(-42); };
+    static constexpr TReal invalid() { return TReal(-42); };
 
     /** When specified in an operation, this version specifier will always pass. It is the equivalent to not performing
      *  a version check.
     **/
-    static constexpr version any() { return version(-1); };
+    static constexpr TReal any() { return TReal(-1); };
 
-    using strong_id::strong_id;
+    using strong_id<TReal, std::int32_t>::strong_id;
+};
+
+/** Represents a version of the data.
+ *
+ *  \see stat::data_version
+**/
+struct version final :
+        public basic_version<version>
+{
+    using basic_version<version>::basic_version;
 };
 
 std::ostream& operator<<(std::ostream&, const version&);
 
 std::string to_string(const version&);
+
+/** Represents a version of the ACL of a ZNode.
+ *
+ *  \see stat::acl_version
+**/
+struct acl_version final :
+        public basic_version<acl_version>
+{
+    using basic_version<acl_version>::basic_version;
+};
+
+std::ostream& operator<<(std::ostream&, const acl_version&);
+
+std::string to_string(const acl_version&);
+
+/** Represents a version of the children of a ZNode.
+ *
+ *  \see stat::child_version
+**/
+struct child_version final :
+        public basic_version<child_version>
+{
+    using basic_version<child_version>::basic_version;
+};
+
+std::ostream& operator<<(std::ostream&, const child_version&);
+
+std::string to_string(const child_version&);
 
 struct transaction_id final :
         public strong_id<transaction_id, std::size_t>
@@ -168,13 +214,13 @@ public:
     time_point modified_time;
 
     /** The number of changes to the data of the znode. **/
-    version data_version;
+    zk::version data_version;
 
     /** The number of changes to the children of the znode. **/
-    version child_version;
+    zk::child_version child_version;
 
     /** The number of changes to the ACL of the znode. **/
-    version acl_version;
+    zk::acl_version acl_version;
 
     /** The session ID of the owner of this znode, if it is an ephemeral entry. **/
     std::uint64_t ephemeral_owner;

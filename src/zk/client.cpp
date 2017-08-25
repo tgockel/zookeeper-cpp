@@ -117,6 +117,16 @@ future<set_result> client::set(string_view path, const buffer& data, version che
     return _conn->set(path, data, check);
 }
 
+future<get_acl_result> client::get_acl(string_view path) const
+{
+    return _conn->get_acl(path);
+}
+
+future<void> client::set_acl(string_view path, const acl_list& acl, acl_version check)
+{
+    return _conn->set_acl(path, acl, check);
+}
+
 future<void> client::erase(string_view path, version check)
 {
     return _conn->erase(path, check);

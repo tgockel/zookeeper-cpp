@@ -7,6 +7,8 @@ namespace zk
 
 class acl;
 class acl_list;
+struct acl_version;
+struct child_version;
 class client;
 class connection;
 enum class create_mode : unsigned int;
@@ -16,8 +18,9 @@ class event;
 class exists_result;
 enum class error_code : int;
 enum class event_type : int;
-class get_result;
+class get_acl_result;
 class get_children_result;
+class get_result;
 class multi_result;
 class multi_op;
 class op;

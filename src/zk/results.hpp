@@ -9,6 +9,7 @@
 #include <string>
 #include <vector>
 
+#include "acl.hpp"
 #include "buffer.hpp"
 #include "future.hpp"
 #include "optional.hpp"
@@ -128,6 +129,30 @@ private:
 std::ostream& operator<<(std::ostream&, const set_result&);
 
 std::string to_string(const set_result&);
+
+/** The result type of \c client::get_acl. **/
+class get_acl_result final
+{
+public:
+    explicit get_acl_result(zk::acl_list acl, const zk::stat& stat) noexcept;
+
+    virtual ~get_acl_result() noexcept;
+
+    const zk::acl_list& acl() const & { return _acl; }
+    zk::acl_list&       acl() &       { return _acl; }
+    zk::acl_list        acl() &&      { return std::move(_acl); }
+
+    const zk::stat& stat() const { return _stat; }
+    zk::stat&       stat()       { return _stat; }
+
+private:
+    zk::acl_list _acl;
+    zk::stat     _stat;
+};
+
+std::ostream& operator<<(std::ostream&, const get_acl_result&);
+
+std::string to_string(const get_acl_result&);
 
 /** Data delivered when a watched event triggers.
  *

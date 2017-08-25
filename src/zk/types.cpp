@@ -57,6 +57,52 @@ std::string to_string(const version& self)
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// acl_version                                                                                                        //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+std::ostream& operator<<(std::ostream& os, const acl_version& self)
+{
+    os << "acl_version(";
+    if (self == acl_version::any())
+        os << "any";
+    else if (self == acl_version::invalid())
+        os << "invalid";
+    else
+        os << self.value;
+    return os << ')';
+}
+
+std::string to_string(const acl_version& self)
+{
+    std::ostringstream os;
+    os << self;
+    return os.str();
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// child_version                                                                                                      //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+std::ostream& operator<<(std::ostream& os, const child_version& self)
+{
+    os << "child_version(";
+    if (self == child_version::any())
+        os << "any";
+    else if (self == child_version::invalid())
+        os << "invalid";
+    else
+        os << self.value;
+    return os << ')';
+}
+
+std::string to_string(const child_version& self)
+{
+    std::ostringstream os;
+    os << self;
+    return os.str();
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // transaction_id                                                                                                     //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

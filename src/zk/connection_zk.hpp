@@ -48,6 +48,10 @@ public:
 
     virtual future<void> erase(string_view path, version check) override;
 
+    virtual future<get_acl_result> get_acl(string_view path) const override;
+
+    virtual future<void> set_acl(string_view path, const acl_list& acl, acl_version check) override;
+
     virtual future<multi_result> commit(multi_op&& txn) override;
 
     virtual future<void> load_fence() override;

@@ -120,6 +120,8 @@ public:
     using size_type      = std::size_t;
 
 public:
+    acl_list() = default;
+
     acl_list(std::vector<acl> acls) noexcept;
 
     acl_list(std::initializer_list<acl> acls) :
@@ -140,9 +142,20 @@ public:
     const_iterator end() const  { return _impl.end(); }
     const_iterator cend() const { return _impl.end(); }
 
+    void reserve(size_type sz) { _impl.reserve(sz); }
+
+    template <typename... TArgs>
+    void emplace_back(TArgs&&... args)
+    {
+        _impl.emplace_back(std::forward<TArgs>(args)...);
+    }
+
 private:
     std::vector<acl> _impl;
 };
+
+[[gnu::pure]] bool operator==(const acl_list& lhs, const acl_list& rhs);
+[[gnu::pure]] bool operator!=(const acl_list& lhs, const acl_list& rhs);
 
 std::ostream& operator<<(std::ostream&, const acl_list&);
 

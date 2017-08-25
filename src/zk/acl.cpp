@@ -116,6 +116,16 @@ acl_list::acl_list(std::vector<acl> acls) noexcept :
 acl_list::~acl_list() noexcept
 { }
 
+bool operator==(const acl_list& lhs, const acl_list& rhs)
+{
+    return std::equal(lhs.cbegin(), lhs.cend(), rhs.cbegin(), rhs.cend());
+}
+
+bool operator!=(const acl_list& lhs, const acl_list& rhs)
+{
+    return !(lhs == rhs);
+}
+
 std::ostream& operator<<(std::ostream& os, const acl_list& self)
 {
     os << '[';

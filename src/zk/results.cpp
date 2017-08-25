@@ -167,6 +167,28 @@ std::string to_string(const set_result& self)
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// get_acl_result                                                                                                     //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+get_acl_result::get_acl_result(zk::acl_list acl, const zk::stat& stat) noexcept :
+        _acl(std::move(acl)),
+        _stat(stat)
+{ }
+
+get_acl_result::~get_acl_result() noexcept
+{ }
+
+std::ostream& operator<<(std::ostream& os, const get_acl_result& self)
+{
+    return os << "get_acl_result{" << self.acl() << ' ' << self.stat() << '}';
+}
+
+std::string to_string(const get_acl_result& self)
+{
+    return to_string_generic(self);
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // event                                                                                                              //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

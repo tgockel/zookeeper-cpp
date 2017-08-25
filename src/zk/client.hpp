@@ -131,6 +131,24 @@ public:
     **/
     future<set_result> set(string_view path, const buffer& data, version check = version::any());
 
+    /** Return the ACL and \c stat of the node of the given path.
+     *
+     *  \throws no_node If no node with the given path exists, the future will be deliever with \c no_node.
+    **/
+    future<get_acl_result> get_acl(string_view path) const;
+
+    /** Set the ACL for the node of the given \a path if such a node exists and the given version \a check matches the
+     *  version of the node.
+     *
+     *  \param check If specified, check that the ACL matches. Keep in mind this is the \c acl_version, not the data
+     *   \c version -- there is no way to have this operation fail on changes to \c stat::data_version.
+     *
+     *  \throws no_node If no node with the given \a path exists, the future will be delivered with \c no_node.
+     *  \throws bad_version If the given version \a check does not match the node's version, the future will be
+     *   delivered with \c bad_version.
+    **/
+    future<void> set_acl(string_view path, const acl_list& acl, acl_version check = acl_version::any());
+
     /** Erase the node with the given \a path. The call will succeed if such a node exists, and the given version
      *  \a check matches the node's version (if the given version is \c version::any, it matches any node's versions).
      *  This operation, if successful, will trigger all the watches on the node of the given path left by \c watch API
