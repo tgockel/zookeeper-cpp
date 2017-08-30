@@ -15,7 +15,7 @@ namespace zk
 {
 
 class connection_zk_tests :
-        public server::server_fixture
+        public server::single_server_fixture
 { };
 
 static buffer buffer_from(string_view str)

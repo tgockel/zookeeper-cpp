@@ -39,13 +39,43 @@ client server_fixture::get_connected_client() const
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// single_server_fixture                                                                                              //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+static std::shared_ptr<server> single_server_server;
+static std::string             single_server_conn_string;
+
+void single_server_fixture::SetUpTestCase()
+{
+    single_server_server = server::create(test_package_registry::instance());
+    single_server_conn_string = "zk://127.0.0.1:2181";
+}
+
+void single_server_fixture::TearDownTestCase()
+{
+    single_server_server->shutdown();
+    single_server_server.reset();
+    single_server_conn_string.clear();
+}
+
+const std::string& single_server_fixture::get_connection_string()
+{
+    return single_server_conn_string;
+}
+
+client single_server_fixture::get_connected_client()
+{
+    return client(client::connect(get_connection_string()).get());
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Unit Tests                                                                                                         //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 GTEST_TEST(server_tests, start_stop)
 {
     auto svr = server::create(test_package_registry::instance());
-    std::this_thread::sleep_for(std::chrono::seconds(5));
+    std::this_thread::sleep_for(std::chrono::seconds(1));
     svr->shutdown();
 }
 
