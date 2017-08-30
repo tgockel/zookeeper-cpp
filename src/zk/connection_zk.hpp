@@ -38,10 +38,10 @@ public:
 
     virtual future<watch_exists_result> watch_exists(string_view path) override;
 
-    virtual future<create_result> create(string_view     path,
-                                         const buffer&   data,
-                                         const acl_list& acl,
-                                         create_mode     mode
+    virtual future<create_result> create(string_view   path,
+                                         const buffer& data,
+                                         const acl&    rules,
+                                         create_mode   mode
                                         ) override;
 
     virtual future<set_result> set(string_view path, const buffer& data, version check) override;
@@ -50,7 +50,7 @@ public:
 
     virtual future<get_acl_result> get_acl(string_view path) const override;
 
-    virtual future<void> set_acl(string_view path, const acl_list& acl, acl_version check) override;
+    virtual future<void> set_acl(string_view path, const acl& rules, acl_version check) override;
 
     virtual future<multi_result> commit(multi_op&& txn) override;
 

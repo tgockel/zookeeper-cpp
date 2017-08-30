@@ -170,7 +170,7 @@ std::string to_string(const set_result& self)
 // get_acl_result                                                                                                     //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-get_acl_result::get_acl_result(zk::acl_list acl, const zk::stat& stat) noexcept :
+get_acl_result::get_acl_result(zk::acl acl, const zk::stat& stat) noexcept :
         _acl(std::move(acl)),
         _stat(stat)
 { }

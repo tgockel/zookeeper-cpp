@@ -35,7 +35,7 @@ auto with_str(string_view src, FAction&& action)
     return std::forward<FAction>(action)(buffer);
 }
 
-static ACL encode_acl_part(const acl& src)
+static ACL encode_acl_part(const acl_rule& src)
 {
     ACL out;
     out.perms     = static_cast<int>(src.permissions());
@@ -45,15 +45,15 @@ static ACL encode_acl_part(const acl& src)
 }
 
 template <typename FAction>
-auto with_acl(const acl_list& acls, FAction&& action)
+auto with_acl(const acl& rules, FAction&& action)
         -> decltype(std::forward<FAction>(action)(ptr<ACL_vector>()))
 {
-    ACL parts[acls.size()];
-    for (std::size_t idx = 0; idx < acls.size(); ++idx)
-        parts[idx] = encode_acl_part(acls[idx]);
+    ACL parts[rules.size()];
+    for (std::size_t idx = 0; idx < rules.size(); ++idx)
+        parts[idx] = encode_acl_part(rules[idx]);
 
     ACL_vector vec;
-    vec.count = int(acls.size());
+    vec.count = int(rules.size());
     vec.data  = parts;
     return std::forward<FAction>(action)(&vec);
 }
@@ -103,11 +103,11 @@ static std::vector<std::string> string_vector_from_raw(const struct String_vecto
     return out;
 }
 
-static acl_list acl_from_raw(const struct ACL_vector& raw)
+static acl acl_from_raw(const struct ACL_vector& raw)
 {
     auto sz = std::size_t(raw.count);
 
-    acl_list out;
+    acl out;
     out.reserve(sz);
     for (std::size_t idx = 0; idx < sz; ++idx)
     {
@@ -466,10 +466,10 @@ future<watch_exists_result> connection_zk::watch_exists(string_view path)
     });
 }
 
-future<create_result> connection_zk::create(string_view     path,
-                                            const buffer&   data,
-                                            const acl_list& acl,
-                                            create_mode     mode
+future<create_result> connection_zk::create(string_view   path,
+                                            const buffer& data,
+                                            const acl&    rules,
+                                            create_mode   mode
                                            )
 {
     ::string_completion_t callback =
@@ -486,17 +486,18 @@ future<create_result> connection_zk::create(string_view     path,
         return with_str(path, [&] (ptr<const char> path)
         {
             auto ppromise = std::make_unique<promise<create_result>>();
-            auto rc = with_acl(acl, [&] (ptr<const ACL_vector> acl)
+            auto rc = with_acl(rules, [&] (ptr<const ACL_vector> rules)
             {
                 return error_code_from_raw(::zoo_acreate(_handle,
                                                          path,
                                                          data.data(),
                                                          int(data.size()),
-                                                         acl,
+                                                         rules,
                                                          static_cast<int>(mode),
                                                          callback,
                                                          ppromise.get()
-                                                        ));
+                                                        )
+                                          );
             });
             if (rc == error_code::ok)
             {
@@ -612,7 +613,7 @@ future<get_acl_result> connection_zk::get_acl(string_view path) const
     });
 }
 
-future<void> connection_zk::set_acl(string_view path, const acl_list& acl, acl_version check)
+future<void> connection_zk::set_acl(string_view path, const acl& rules, acl_version check)
 {
     ::void_completion_t callback =
         [] (int rc_in, ptr<const void> prom_in)
@@ -627,13 +628,13 @@ future<void> connection_zk::set_acl(string_view path, const acl_list& acl, acl_v
 
     return with_str(path, [&] (ptr<const char> path)
     {
-        return with_acl(acl, [&] (ptr<struct ACL_vector> enc_acl)
+        return with_acl(rules, [&] (ptr<struct ACL_vector> rules)
         {
             auto ppromise = std::make_unique<promise<void>>();
             auto rc = error_code_from_raw(::zoo_aset_acl(_handle,
                                                          path,
                                                          check.value,
-                                                         enc_acl,
+                                                         rules,
                                                          callback,
                                                          ppromise.get()
                                                         )
@@ -717,7 +718,7 @@ future<multi_result> connection_zk::commit(multi_op&& txn_in)
             if (tx.type() == op_type::create)
             {
                 ++create_op_count;
-                acl_piece_count += tx.as_create().acl.size();
+                acl_piece_count += tx.as_create().rules.size();
             }
         }
         ACL_vector      encoded_acls[create_op_count];
@@ -737,9 +738,9 @@ future<multi_result> connection_zk::commit(multi_op&& txn_in)
                 case op_type::create:
                 {
                     const auto& cdata = src_op.as_create();
-                    encoded_acl_iter->count = int(cdata.acl.size());
+                    encoded_acl_iter->count = int(cdata.rules.size());
                     encoded_acl_iter->data  = acl_piece_iter;
-                    for (const auto& acl : cdata.acl)
+                    for (const auto& acl : cdata.rules)
                     {
                         *acl_piece_iter = encode_acl_part(acl);
                         ++acl_piece_iter;

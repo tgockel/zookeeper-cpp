@@ -45,14 +45,14 @@ public:
     {
         std::string path;
         buffer      data;
-        acl_list    acl;
+        acl         rules;
         create_mode mode;
 
-        explicit create_data(std::string path, buffer data, acl_list acl, create_mode mode);
+        explicit create_data(std::string path, buffer data, acl rules, create_mode mode);
     };
 
     /// \see client::create
-    static op create(std::string path, buffer data, acl_list acl, create_mode mode = create_mode::normal);
+    static op create(std::string path, buffer data, acl rules, create_mode mode = create_mode::normal);
     static op create(std::string path, buffer data, create_mode mode = create_mode::normal);
 
     struct erase_data

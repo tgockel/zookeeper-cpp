@@ -95,7 +95,7 @@ public:
      *  \param path The path or path pattern (if using \c create_mode::sequential) to create.
      *  \param data The data to create inside the node.
      *  \param mode Specifies the behavior of the created node (see \c create_mode for more information).
-     *  \param acls The ACL for the created znode. If unspecified, it is equivalent to providing \c acls::open_unsafe.
+     *  \param rules The ACL for the created znode. If unspecified, it is equivalent to providing \c acls::open_unsafe.
      *  \returns A future which will be filled with the name of the created znode and its \c stat.
      *
      *  \throws node_exists If a node with the same actual path already exists in the ZooKeeper, the future will be
@@ -109,14 +109,14 @@ public:
      *  \throws invalid_arguments The maximum allowable size of the data array is 1 MiB (1,048,576 bytes). If \a data
      *   is larger than this the future will be delivered with \c invalid_arguments.
     **/
-    future<create_result> create(string_view     path,
-                                 const buffer&   data,
-                                 const acl_list& acls,
-                                 create_mode     mode = create_mode::normal
+    future<create_result> create(string_view   path,
+                                 const buffer& data,
+                                 const acl&    rules,
+                                 create_mode   mode = create_mode::normal
                                 );
-    future<create_result> create(string_view     path,
-                                 const buffer&   data,
-                                 create_mode     mode = create_mode::normal
+    future<create_result> create(string_view   path,
+                                 const buffer& data,
+                                 create_mode   mode = create_mode::normal
                                 );
 
     /** Set the data for the node of the given \a path if such a node exists and the given version matches the version
@@ -147,7 +147,7 @@ public:
      *  \throws bad_version If the given version \a check does not match the node's version, the future will be
      *   delivered with \c bad_version.
     **/
-    future<void> set_acl(string_view path, const acl_list& acl, acl_version check = acl_version::any());
+    future<void> set_acl(string_view path, const acl& rules, acl_version check = acl_version::any());
 
     /** Erase the node with the given \a path. The call will succeed if such a node exists, and the given version
      *  \a check matches the node's version (if the given version is \c version::any, it matches any node's versions).

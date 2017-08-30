@@ -55,20 +55,13 @@ std::ostream& operator<<(std::ostream&, const permission&);
 
 std::string to_string(const permission&);
 
-/** An access control list. In general, the ACL system is similar to UNIX file access permissions, where znodes act as
- *  files. Unlike UNIX, each znode can have any number of ACLs to correspond with the potentially limitless (and
- *  pluggable) authentication schemes. A more surprising difference is that ACLs are not recursive: If \c /path is only
- *  readable by a single user, but \c /path/sub is world-readable, then anyone will be able to read \c /path/sub.
- *
- *  \see https://zookeeper.apache.org/doc/trunk/zookeeperProgrammers.html#sc_ZooKeeperAccessControl
-**/
-class acl final
+class acl_rule final
 {
 public:
     /** Create an ACL under the given \a scheme and \a id with the given \a permissions. **/
-    acl(std::string scheme, std::string id, permission permissions);
+    acl_rule(std::string scheme, std::string id, permission permissions);
 
-    ~acl() noexcept;
+    ~acl_rule() noexcept;
 
     /** The authentication scheme this list is used for. The most common scheme is `"auth"`, which allows any
      *  authenticated user to perform actions (see \c acls::creator_all).
@@ -98,41 +91,48 @@ private:
     permission  _permissions;
 };
 
-std::size_t hash(const acl&);
+std::size_t hash(const acl_rule&);
 
-[[gnu::pure]] bool operator==(const acl& lhs, const acl& rhs);
-[[gnu::pure]] bool operator!=(const acl& lhs, const acl& rhs);
-[[gnu::pure]] bool operator< (const acl& lhs, const acl& rhs);
-[[gnu::pure]] bool operator<=(const acl& lhs, const acl& rhs);
-[[gnu::pure]] bool operator> (const acl& lhs, const acl& rhs);
-[[gnu::pure]] bool operator>=(const acl& lhs, const acl& rhs);
+[[gnu::pure]] bool operator==(const acl_rule& lhs, const acl_rule& rhs);
+[[gnu::pure]] bool operator!=(const acl_rule& lhs, const acl_rule& rhs);
+[[gnu::pure]] bool operator< (const acl_rule& lhs, const acl_rule& rhs);
+[[gnu::pure]] bool operator<=(const acl_rule& lhs, const acl_rule& rhs);
+[[gnu::pure]] bool operator> (const acl_rule& lhs, const acl_rule& rhs);
+[[gnu::pure]] bool operator>=(const acl_rule& lhs, const acl_rule& rhs);
 
-std::ostream& operator<<(std::ostream&, const acl&);
+std::ostream& operator<<(std::ostream&, const acl_rule&);
 
-std::string to_string(const acl&);
+std::string to_string(const acl_rule&);
 
-/** A list of ACLs. In general, this is a wrapper around a \c std::vector of \c acl instances. **/
-class acl_list final
+/** An access control list is a wrapper around \c acl_rule instances. In general, the ACL system is similar to UNIX file
+ *  access permissions, where znodes act as files. Unlike UNIX, each znode can have any number of ACLs to correspond
+ *  with the potentially limitless (and pluggable) authentication schemes. A more surprising difference is that ACLs are
+ *  not recursive: If \c /path is only readable by a single user, but \c /path/sub is world-readable, then anyone will
+ *  be able to read \c /path/sub.
+ *
+ *  \see https://zookeeper.apache.org/doc/trunk/zookeeperProgrammers.html#sc_ZooKeeperAccessControl
+**/
+class acl final
 {
 public:
-    using iterator       = std::vector<acl>::iterator;
-    using const_iterator = std::vector<acl>::const_iterator;
+    using iterator       = std::vector<acl_rule>::iterator;
+    using const_iterator = std::vector<acl_rule>::const_iterator;
     using size_type      = std::size_t;
 
 public:
-    acl_list() = default;
+    acl() = default;
 
-    acl_list(std::vector<acl> acls) noexcept;
+    acl(std::vector<acl_rule> rules) noexcept;
 
-    acl_list(std::initializer_list<acl> acls) :
-            acl_list(std::vector<acl>(acls))
+    acl(std::initializer_list<acl_rule> rules) :
+            acl(std::vector<acl_rule>(rules))
     { }
 
-    ~acl_list() noexcept;
+    ~acl() noexcept;
 
     size_type size() const { return _impl.size(); }
 
-    const acl& operator[](size_type idx) const { return _impl[idx]; }
+    const acl_rule& operator[](size_type idx) const { return _impl[idx]; }
 
     iterator begin()              { return _impl.begin(); }
     const_iterator begin() const  { return _impl.begin(); }
@@ -151,28 +151,28 @@ public:
     }
 
 private:
-    std::vector<acl> _impl;
+    std::vector<acl_rule> _impl;
 };
 
-[[gnu::pure]] bool operator==(const acl_list& lhs, const acl_list& rhs);
-[[gnu::pure]] bool operator!=(const acl_list& lhs, const acl_list& rhs);
+[[gnu::pure]] bool operator==(const acl& lhs, const acl& rhs);
+[[gnu::pure]] bool operator!=(const acl& lhs, const acl& rhs);
 
-std::ostream& operator<<(std::ostream&, const acl_list&);
+std::ostream& operator<<(std::ostream&, const acl&);
 
-std::string to_string(const acl_list& self);
+std::string to_string(const acl& self);
 
 /** Convenience operations around commonly-used ACLs. **/
 class acls
 {
 public:
     /** This ACL gives the creators authentication id's all permissions. **/
-    static const acl_list& creator_all();
+    static const acl& creator_all();
 
     /** This is a completely open ACL. **/
-    static const acl_list& open_unsafe();
+    static const acl& open_unsafe();
 
     /** This ACL gives the world the ability to read. **/
-    static const acl_list& read_unsafe();
+    static const acl& read_unsafe();
 };
 
 }
@@ -181,10 +181,10 @@ namespace std
 {
 
 template <>
-class hash<zk::acl>
+class hash<zk::acl_rule>
 {
 public:
-    using argument_type = zk::acl;
+    using argument_type = zk::acl_rule;
     using result_type   = std::size_t;
 
     result_type operator()(const argument_type& x) const

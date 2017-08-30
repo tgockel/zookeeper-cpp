@@ -6,7 +6,7 @@ namespace zk
 {
 
 class acl;
-class acl_list;
+class acl_rule;
 struct acl_version;
 struct child_version;
 class client;

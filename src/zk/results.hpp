@@ -134,20 +134,20 @@ std::string to_string(const set_result&);
 class get_acl_result final
 {
 public:
-    explicit get_acl_result(zk::acl_list acl, const zk::stat& stat) noexcept;
+    explicit get_acl_result(zk::acl acl, const zk::stat& stat) noexcept;
 
     virtual ~get_acl_result() noexcept;
 
-    const zk::acl_list& acl() const & { return _acl; }
-    zk::acl_list&       acl() &       { return _acl; }
-    zk::acl_list        acl() &&      { return std::move(_acl); }
+    const zk::acl& acl() const & { return _acl; }
+    zk::acl&       acl() &       { return _acl; }
+    zk::acl        acl() &&      { return std::move(_acl); }
 
     const zk::stat& stat() const { return _stat; }
     zk::stat&       stat()       { return _stat; }
 
 private:
-    zk::acl_list _acl;
-    zk::stat     _stat;
+    zk::acl  _acl;
+    zk::stat _stat;
 };
 
 std::ostream& operator<<(std::ostream&, const get_acl_result&);

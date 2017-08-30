@@ -30,20 +30,20 @@ GTEST_TEST(permission_tests, stringification)
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// acl                                                                                                                //
+// acl_rule                                                                                                           //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-GTEST_TEST(acl_tests, stringification)
+GTEST_TEST(acl_rule_tests, stringification)
 {
     CHECK_EQ("(ip:80.23.0.0/16, read|write)",
-             to_string(acl("ip", "80.23.0.0/16", permission::read | permission::write))
+             to_string(acl_rule("ip", "80.23.0.0/16", permission::read | permission::write))
             );
 }
 
-GTEST_TEST(acl_tests, comparisons)
+GTEST_TEST(acl_rule_tests, comparisons)
 {
-    acl creator_all = { "auth", "", permission::all };
-    acl world_open  = { "world", "anyone", permission::all };
+    acl_rule creator_all = { "auth", "", permission::all };
+    acl_rule world_open  = { "world", "anyone", permission::all };
 
     CHECK_EQ(creator_all, creator_all);
     CHECK_NE(creator_all, world_open);
@@ -53,26 +53,26 @@ GTEST_TEST(acl_tests, comparisons)
     CHECK_GE(world_open, creator_all);
 }
 
-GTEST_TEST(acl_tests, hashing)
+GTEST_TEST(acl_rule_tests, hashing)
 {
-    acl creator_all = { "auth", "", permission::all };
-    acl world_open  = { "world", "anyone", permission::all };
+    acl_rule creator_all = { "auth", "", permission::all };
+    acl_rule world_open  = { "world", "anyone", permission::all };
 
     CHECK_EQ(hash(creator_all), hash(creator_all));
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// acl_list                                                                                                           //
+// acl                                                                                                                //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-GTEST_TEST(acl_list_tests, stringification)
+GTEST_TEST(acl_tests, stringification)
 {
     CHECK_EQ("[(auth, all)]",          to_string(acls::creator_all()));
     CHECK_EQ("[(world:anyone, all)]",  to_string(acls::open_unsafe()));
     CHECK_EQ("[(world:anyone, read)]", to_string(acls::read_unsafe()));
 
     CHECK_EQ("[(auth, read), (ip:50.40.30.0/24, all)]",
-             to_string(acl_list({ { "auth", "", permission::read }, { "ip", "50.40.30.0/24", permission::all } }))
+             to_string(acl({ { "auth", "", permission::read }, { "ip", "50.40.30.0/24", permission::all } }))
             );
 }
 

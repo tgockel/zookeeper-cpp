@@ -95,13 +95,13 @@ future<watch_exists_result> client::watch_exists(string_view path) const
     return _conn->watch_exists(path);
 }
 
-future<create_result> client::create(string_view     path,
-                                     const buffer&   data,
-                                     const acl_list& acls,
-                                     create_mode     mode
+future<create_result> client::create(string_view   path,
+                                     const buffer& data,
+                                     const acl&    rules,
+                                     create_mode   mode
                                     )
 {
-    return _conn->create(path, data, acls, mode);
+    return _conn->create(path, data, rules, mode);
 }
 
 future<create_result> client::create(string_view   path,
@@ -122,9 +122,9 @@ future<get_acl_result> client::get_acl(string_view path) const
     return _conn->get_acl(path);
 }
 
-future<void> client::set_acl(string_view path, const acl_list& acl, acl_version check)
+future<void> client::set_acl(string_view path, const acl& rules, acl_version check)
 {
-    return _conn->set_acl(path, acl, check);
+    return _conn->set_acl(path, rules, check);
 }
 
 future<void> client::erase(string_view path, version check)

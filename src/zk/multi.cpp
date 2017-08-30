@@ -73,10 +73,10 @@ const op::check_data& op::as_check() const
 
 // create
 
-op::create_data::create_data(std::string path, buffer data, acl_list acl, create_mode mode) :
+op::create_data::create_data(std::string path, buffer data, acl rules, create_mode mode) :
         path(std::move(path)),
         data(std::move(data)),
-        acl(std::move(acl)),
+        rules(std::move(rules)),
         mode(mode)
 { }
 
@@ -84,13 +84,13 @@ std::ostream& operator<<(std::ostream& os, const op::create_data& self)
 {
     os << '{' << self.path;
     os << ' ' << self.mode;
-    os << ' ' << self.acl;
+    os << ' ' << self.rules;
     return os << '}';
 }
 
-op op::create(std::string path, buffer data, acl_list acl, create_mode mode)
+op op::create(std::string path, buffer data, acl rules, create_mode mode)
 {
-    return op(create_data(std::move(path), std::move(data), std::move(acl), mode));
+    return op(create_data(std::move(path), std::move(data), std::move(rules), mode));
 }
 
 op op::create(std::string path, buffer data, create_mode mode)

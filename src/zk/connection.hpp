@@ -35,10 +35,10 @@ public:
 
     virtual future<watch_exists_result> watch_exists(string_view path) = 0;
 
-    virtual future<create_result> create(string_view     path,
-                                         const buffer&   data,
-                                         const acl_list& acls,
-                                         create_mode     mode
+    virtual future<create_result> create(string_view   path,
+                                         const buffer& data,
+                                         const acl&    rules,
+                                         create_mode   mode
                                         ) = 0;
 
     virtual future<set_result> set(string_view path, const buffer& data, version check) = 0;
@@ -47,7 +47,7 @@ public:
 
     virtual future<get_acl_result> get_acl(string_view path) const = 0;
 
-    virtual future<void> set_acl(string_view path, const acl_list& acl, acl_version check) = 0;
+    virtual future<void> set_acl(string_view path, const acl& rules, acl_version check) = 0;
 
     virtual future<multi_result> commit(multi_op&& txn) = 0;
 

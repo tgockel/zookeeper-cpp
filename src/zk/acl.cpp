@@ -38,58 +38,58 @@ std::string to_string(const permission& self)
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// acl                                                                                                                //
+// acl_rule                                                                                                           //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-acl::acl(std::string scheme, std::string id, permission permissions) :
+acl_rule::acl_rule(std::string scheme, std::string id, permission permissions) :
         _scheme(std::move(scheme)),
         _id(std::move(id)),
         _permissions(permissions)
 { }
 
-acl::~acl() noexcept
+acl_rule::~acl_rule() noexcept
 { }
 
-std::size_t hash(const acl& self)
+std::size_t hash(const acl_rule& self)
 {
     return std::hash<std::string>{}(self.scheme())
          ^ std::hash<std::string>{}(self.id())
          ^ std::hash<unsigned int>{}(static_cast<unsigned int>(self.permissions()));
 }
 
-bool operator==(const acl& lhs, const acl& rhs)
+bool operator==(const acl_rule& lhs, const acl_rule& rhs)
 {
     return lhs.scheme()      == rhs.scheme()
         && lhs.id()          == rhs.id()
         && lhs.permissions() == rhs.permissions();
 }
 
-bool operator!=(const acl& lhs, const acl& rhs)
+bool operator!=(const acl_rule& lhs, const acl_rule& rhs)
 {
     return !(lhs == rhs);
 }
 
-bool operator< (const acl& lhs, const acl& rhs)
+bool operator< (const acl_rule& lhs, const acl_rule& rhs)
 {
     return std::tie(lhs.scheme(), lhs.id(), lhs.permissions()) < std::tie(rhs.scheme(), rhs.id(), rhs.permissions());
 }
 
-bool operator<=(const acl& lhs, const acl& rhs)
+bool operator<=(const acl_rule& lhs, const acl_rule& rhs)
 {
     return !(rhs < lhs);
 }
 
-bool operator> (const acl& lhs, const acl& rhs)
+bool operator> (const acl_rule& lhs, const acl_rule& rhs)
 {
     return rhs < lhs;
 }
 
-bool operator>=(const acl& lhs, const acl& rhs)
+bool operator>=(const acl_rule& lhs, const acl_rule& rhs)
 {
     return !(lhs < rhs);
 }
 
-std::ostream& operator<<(std::ostream& os, const acl& self)
+std::ostream& operator<<(std::ostream& os, const acl_rule& self)
 {
     os << '(' << self.scheme();
     if (!self.id().empty())
@@ -98,7 +98,7 @@ std::ostream& operator<<(std::ostream& os, const acl& self)
     return os;
 }
 
-std::string to_string(const acl& self)
+std::string to_string(const acl_rule& self)
 {
     std::ostringstream os;
     os << self;
@@ -106,27 +106,27 @@ std::string to_string(const acl& self)
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// acl_list                                                                                                           //
+// acl                                                                                                                //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-acl_list::acl_list(std::vector<acl> acls) noexcept :
-        _impl(std::move(acls))
+acl::acl(std::vector<acl_rule> rules) noexcept :
+        _impl(std::move(rules))
 { }
 
-acl_list::~acl_list() noexcept
+acl::~acl() noexcept
 { }
 
-bool operator==(const acl_list& lhs, const acl_list& rhs)
+bool operator==(const acl& lhs, const acl& rhs)
 {
     return std::equal(lhs.cbegin(), lhs.cend(), rhs.cbegin(), rhs.cend());
 }
 
-bool operator!=(const acl_list& lhs, const acl_list& rhs)
+bool operator!=(const acl& lhs, const acl& rhs)
 {
     return !(lhs == rhs);
 }
 
-std::ostream& operator<<(std::ostream& os, const acl_list& self)
+std::ostream& operator<<(std::ostream& os, const acl& self)
 {
     os << '[';
     bool first = true;
@@ -141,7 +141,7 @@ std::ostream& operator<<(std::ostream& os, const acl_list& self)
     return os << ']';
 }
 
-std::string to_string(const acl_list& self)
+std::string to_string(const acl& self)
 {
     std::ostringstream os;
     os << self;
@@ -152,21 +152,21 @@ std::string to_string(const acl_list& self)
 // acls                                                                                                               //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-const acl_list& acls::creator_all()
+const acl& acls::creator_all()
 {
-    static acl_list instance = { { "auth", "", permission::all } };
+    static acl instance = { { "auth", "", permission::all } };
     return instance;
 }
 
-const acl_list& acls::open_unsafe()
+const acl& acls::open_unsafe()
 {
-    static acl_list instance = { { "world", "anyone", permission::all } };
+    static acl instance = { { "world", "anyone", permission::all } };
     return instance;
 }
 
-const acl_list& acls::read_unsafe()
+const acl& acls::read_unsafe()
 {
-    static acl_list instance = { { "world", "anyone", permission::read } };
+    static acl instance = { { "world", "anyone", permission::read } };
     return instance;
 }
 
