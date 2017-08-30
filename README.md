@@ -1,46 +1,38 @@
-ZooKeeper C++
-=============
+# ZooKeeper C++
 
 A ZooKeeper client for C++.
 
 Features include (but are not necessarily limited to):
 
 - Simple
-
   - Connect with just a connection string
   - Clients should not require factories
   - Does not require *any* knowledge of the Java or C APIs
 
 - Configurable
-
   - Use the parts you need
   - Change parts to fit in your application
 
 - Safe
-
   - In the best case, illegal code should fail to compile
   - An illegal action should throw an exception
-  - Utility functions have a `strong exception guarantee <http://www.gotw.ca/gotw/082.htm>`_
+  - Utility functions have a [strong exception guarantee](http://www.gotw.ca/gotw/082.htm>)
 
 - Stable
-
   - Worry less about upgrading -- the API and ABI will not change out from under you
 
 - Documented
-
   - Consumable by human beings
   - Answers questions you might actually ask
 
 **NOTE**: This library is a work-in-progress.
 All documentation you see here is subject to change and non-existence.
 
-.. image:: https://travis-ci.org/tgockel/zookeeper-cpp.svg?branch=master
-    :target: https://travis-ci.org/tgockel/zookeeper-cpp
+[![Build Status](https://travis-ci.org/tgockel/zookeeper-cpp.svg?branch=master)](https://travis-ci.org/tgockel/zookeeper-cpp)
 
-Usage
------
+## Usage
 
-Ultimately, the usage looks like this (assuming you have a ZooKeeper server running on your local host)::
+Ultimately, the usage looks like this (assuming you have a ZooKeeper server running on your local host):
 
     #include <zk/client.hpp>
     #include <zk/multi.hpp>
@@ -108,71 +100,62 @@ Ultimately, the usage looks like this (assuming you have a ZooKeeper server runn
         client.close();
     }
 
-Value-Added Features
---------------------
+## Value-Added Features
 
-The core library of ``libzkpp`` provides the primitives for connecting to and manipulating a ZooKeeper database.
+The core library of `libzkpp` provides the primitives for connecting to and manipulating a ZooKeeper database.
 This library also bundles a number of other features that are commonly required when working with a ZooKeeper cluster.
 
-``zk/curator``
-^^^^^^^^^^^^^^
+### `zk/curator`
 
-Things in ``zk/curator`` have features found in the `Apache Curator <http://curator.apache.org/>`_ project.
+Things in `zk/curator` have features found in the [Apache Curator](http://curator.apache.org/) project.
 
 * Elections
-
-  * `Leader Latch <https://github.com/tgockel/zookeeper-cpp/issues/1>`_
-  * `Leader Election <https://github.com/tgockel/zookeeper-cpp/issues/2>`_
+  * [Leader Latch](https://github.com/tgockel/zookeeper-cpp/issues/1)
+  * [Leader Election](https://github.com/tgockel/zookeeper-cpp/issues/2)
 
 * Locks
-
-  * `Shared Reentrant Lock <https://github.com/tgockel/zookeeper-cpp/issues/3>`_
-  * `Shared Lock <https://github.com/tgockel/zookeeper-cpp/issues/4>`_
-  * `Shared Reentrant Read Write Lock <https://github.com/tgockel/zookeeper-cpp/issues/5>`_
-  * `Shared Semaphore <https://github.com/tgockel/zookeeper-cpp/issues/6>`_
-  * `Multi Shared Lock <https://github.com/tgockel/zookeeper-cpp/issues/7>`_
+  * [Shared Reentrant Lock](https://github.com/tgockel/zookeeper-cpp/issues/3)
+  * [Shared Lock](https://github.com/tgockel/zookeeper-cpp/issues/4)
+  * [Shared Reentrant Read Write Lock](https://github.com/tgockel/zookeeper-cpp/issues/5)
+  * [Shared Semaphore](https://github.com/tgockel/zookeeper-cpp/issues/6)
+  * [Multi Shared Lock](https://github.com/tgockel/zookeeper-cpp/issues/7)
 
 * Barriers
-
-  * `Barrier <https://github.com/tgockel/zookeeper-cpp/issues/8>`_
-  * `Double Barrier <https://github.com/tgockel/zookeeper-cpp/issues/9>`_
+  * [Barrier](https://github.com/tgockel/zookeeper-cpp/issues/8)
+  * [Double Barrier](https://github.com/tgockel/zookeeper-cpp/issues/9)
 
 * Counters
-
-  * `Shared Counter <https://github.com/tgockel/zookeeper-cpp/issues/10>`_
-  * `Distributed Atomic Long <https://github.com/tgockel/zookeeper-cpp/issues/11>`_
+  * [Shared Counter](https://github.com/tgockel/zookeeper-cpp/issues/10)
+  * [Distributed Atomic Long](https://github.com/tgockel/zookeeper-cpp/issues/11)
 
 * Caches
-
-  * `Path Cache <https://github.com/tgockel/zookeeper-cpp/issues/12>`_
-  * `Node Cache <https://github.com/tgockel/zookeeper-cpp/issues/13>`_
-  * `Tree Cache <https://github.com/tgockel/zookeeper-cpp/issues/14>`_
+  * [Path Cache](https://github.com/tgockel/zookeeper-cpp/issues/12)
+  * [Node Cache](https://github.com/tgockel/zookeeper-cpp/issues/13)
+  * [Tree Cache](https://github.com/tgockel/zookeeper-cpp/issues/14)
 
 * Nodes
-
-  * `Persistent Node <https://github.com/tgockel/zookeeper-cpp/issues/15>`_
-  * `Persistent TTL Node <https://github.com/tgockel/zookeeper-cpp/issues/16>`_
-  * `Group Member <https://github.com/tgockel/zookeeper-cpp/issues/17>`_
+  * [Persistent Node](https://github.com/tgockel/zookeeper-cpp/issues/15)
+  * [Persistent TTL Node](https://github.com/tgockel/zookeeper-cpp/issues/16)
+  * [Group Member](https://github.com/tgockel/zookeeper-cpp/issues/17)
 
 None of the queue types are planned to be implemented.
-The `Curator Documentation (TN4) <https://cwiki.apache.org/confluence/display/CURATOR/TN4>`_ advises against their use,
+The [Curator Documentation (TN4)](https://cwiki.apache.org/confluence/display/CURATOR/TN4) advises against their use,
 claiming "it is a bad idea to use ZooKeeper as a Queue."
 The authors of this library agree with this claim.
 
-``zk/fake``
-^^^^^^^^^^^
+### `zk/fake`
 
 This library also provides a fake version of ZooKeeper which operates in-memory.
 It is meant to be used in your unit testing, when fine-grained control of behavior of ZooKeeper is needed.
 This allows for the injection of arbitrary behavior into ZK, allowing you to simulate some of the hard-to-reproduce
-issues like ``zk::event_type::not_watching``, ``zk::marshalling_error``, or timing bugs.
+issues like `zk::event_type::not_watching`, `zk::marshalling_error`, or timing bugs.
 It also allows for fast creation and teardown of entire databases, which is commonly done in unit testing.
 
-It is connected to through using a connection string of the form::
+It is connected to through using a connection string of the form:
 
     fake://{name}
 
-To use this in unit tests link to ``libzkpp_fake`` and ``zk::fake::server``::
+To use this in unit tests link to `libzkpp_fake` and use `zk::fake::server`:
 
     TEST(my_test)
     {
@@ -185,97 +168,85 @@ To use this in unit tests link to ``libzkpp_fake`` and ``zk::fake::server``::
         // use client normally
     }
 
-``zk/server``
-^^^^^^^^^^^^^
+### `zk/server`
 
 This library controls a ZooKeeper Java process on this machine.
 It is meant to be used in applications that manage a ZooKeeper cluster from native code.
 
-Unsupported Functionality
--------------------------
+## Unsupported Functionality
 
 If you are used to using ZooKeeper via the Java or C APIs, there are a few things that are explicitly not supported in
 this library.
 
-Global Watches
-^^^^^^^^^^^^^^
+### Global Watches
 
 There are two main ways to receive watch notifications: the global watch or through use a watcher objects.
-In the Java API, the ``ZooKeeper`` client allows for a global
-`Watcher <https://zookeeper.apache.org/doc/r3.4.10/api/org/apache/zookeeper/Watcher.html>`_.
-In the C API, ``zookeeper_init`` can be provided with a global function with the signature
-``void (*)(zhandle_t* zh, int type, int state, const char* path, void* watcherCtx)`` to achieve this same result.
+In the Java API, the `ZooKeeper` client allows for a global
+[Watcher](https://zookeeper.apache.org/doc/r3.4.10/api/org/apache/zookeeper/Watcher.html).
+In the C API, `zookeeper_init` can be provided with a global function with the signature
+`void (*)(zhandle_t* zh, int type, int state, const char* path, void* watcherCtx)` to achieve this same result.
 The ZooKeeper community considers global watches as "legacy" and prefers the use of watcher objects set on a per-path
 basis.
 As such, global watches are *not* supported by this library.
 
-Synchronous API
-^^^^^^^^^^^^^^^
+### Synchronous API
 
 The C library offers both a synchronous and an asynchronous API.
 This library offers only an asynchronous version.
-If you prefer a synchronous API, call ``get()`` on the returned ``future`` to block until you receive the response.
+If you prefer a synchronous API, call `get()` on the returned `future` to block until you receive the response.
 
-Non-Linux
-^^^^^^^^^
+### Non-Linux
 
 Can you get this library working on platforms that are not Linux?
 Maybe.
 But Linux is the primary development, testing, and deployment platform of people writing distributed applications, so
 this library is targetted at Linux.
 
-License
--------
+## License
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
 the License. You may obtain a copy of the License at
-`http://www.apache.org/licenses/LICENSE-2.0 <http://www.apache.org/licenses/LICENSE-2.0>`_.
+[http://www.apache.org/licenses/LICENSE-2.0](http://www.apache.org/licenses/LICENSE-2.0).
 
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
 an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
 specific language governing permissions and limitations under the License.
 
-F.A.Q.
-------
+## F.A.Q.
 
-Why ``erase`` instead of ``delete``?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+### Why `erase` instead of `delete`?
 
-In the Java and C APIs, the act of removing a ZNode is called ``delete`` and ``zoo_delete``, respectively.
-However, ``delete`` is a C++ keyword and cannot be used as a member function.
-So, this library uses ``erase``, which falls in line with standard C++ containers.
-Alternatives such as calling the operation ``delete_`` look a bit worse (in the author's opinion).
+In the Java and C APIs, the act of removing a ZNode is called `delete` and `zoo_delete`, respectively.
+However, `delete` is a C++ keyword and cannot be used as a member function.
+So, this library uses `erase`, which falls in line with standard C++ containers.
+Alternatives such as calling the operation `delete_` look a bit worse (in the author's opinion).
 
-Why are watch calls separate?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+### Why are watch calls separate?
 
-In the Java and C APIs, adding a watch to a ZNode is an additional parameter to the ``get``, ``get_children``, or
-``exists`` calls while this library uses ``watch``, ``watch_children``, and ``watch_exists`` calls.
+In the Java and C APIs, adding a watch to a ZNode is an additional parameter to the `get`, `get_children`, or `exists`
+calls while this library uses separate `watch`, `watch_children`, and `watch_exists` calls.
 This is done because the return types are different between a simple fetch and setting a watch.
-While ``get`` returns a ``future<get_result>``, ``watch`` returns the slightly more complicated
-``future<watch_result>``.
-The ``future`` in ``watch_result::next()`` would be disabled in cases where a flag is not set, and it would be ignored
-with the majority of use cases.
+While `get` returns a `future<get_result>`, `watch` returns the slightly more complicated `future<watch_result>`.
+The `future` in `watch_result::next()` would be disabled in cases where a flag is not set, and it would be ignored with
+the majority of use cases.
 This leads to an awkward API for simple calls.
 
-An alternative used by other libraries is to provide a ``std::function``, implying to not watch when the function is not
+An alternative used by other libraries is to provide a `std::function`, implying to not watch when the function is not
 passed in.
 This has a number of disadvantages:
 
 - There is no good way to cancel a watch without giving an extra parameter.
-  With a ``future``, you simply let it fall out of scope.
-- Watches are delivered only once, which is obvious from a ``future``-like API, but not obvious from a ``function``-like
+  With a `future`, you simply let it fall out of scope.
+- Watches are delivered only once, which is obvious from a `future`-like API, but not obvious from a `function`-like
   API.
 - It is not obvious what the behavior should be if the original call returns in error.
-  With a ``future``, the behavior is obvious, since you never receive the mechanisms to perform the watch.
+  With a `future`, the behavior is obvious, since you never receive the mechanisms to perform the watch.
 
 In Java, the method of choice is to use the
-`Watcher <https://zookeeper.apache.org/doc/r3.4.10/api/org/apache/zookeeper/Watcher.html>`_ interface, but this feels
+[Watcher](https://zookeeper.apache.org/doc/r3.4.10/api/org/apache/zookeeper/Watcher.html) interface, but this feels
 extremely out of place in C++ code.
 
-How can I contribute?
-^^^^^^^^^^^^^^^^^^^^^
+### How can I contribute?
 
-Pick an `open issue <https://github.com/tgockel/zookeeper-cpp/issues>`_ and start working on it!
-For more details, read the `CONTRIBUTING <https://github.com/tgockel/zookeeper-cpp/blob/master/CONTRIBUTING.rst>`_
-guide.
+Pick an [open issue](https://github.com/tgockel/zookeeper-cpp/issues) and start working on it!
+For more details, read the [CONTRIBUTING](https://github.com/tgockel/zookeeper-cpp/blob/master/CONTRIBUTING.rst) guide.
