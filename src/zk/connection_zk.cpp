@@ -882,7 +882,10 @@ void connection_zk::on_session_event_raw(ptr<zhandle_t>  handle,
                                         ) noexcept
 {
     auto self = static_cast<ptr<connection_zk>>(watcher_ctx);
-    assert(self->_handle == handle);
+    // Most of the time, self's _handle will be the same thing that ZK provides to us. However, if we connect very
+    // quickly, a session event will happen trigger *before* we set the _handle. This isn't a problem, just something to
+    // be aware of.
+    assert(self->_handle == nullptr || self->_handle == handle);
     auto ev = event_from_raw(ev_type);
     auto st = state_from_raw(state);
     auto path = string_view(path_ptr);
