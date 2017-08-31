@@ -46,6 +46,7 @@ namespace zk
     item(ephemeral_on_local_session,    -120,   ZEPHEMERALONLOCALSESSION)   \
     item(no_watcher,                    -121,   ZNOWATCHER)                 \
     item(reconfiguration_disabled,      -123,   ZRECONFIGDISABLED)          \
+    item(transaction_failed,            -199,   ZTRANSACTIONFAILED)         \
 
 enum class error_code : int
 {
@@ -363,13 +364,39 @@ public:
     virtual ~reconfiguration_disabled() noexcept;
 };
 
+/** Thrown from \c client::commit when a transaction cannot be committed to the system. Check the \c underlying_cause to
+ *  see the specific error and \c failed_op_index to see what operation failed.
+**/
+class transaction_failed final :
+        public api_error
+{
+public:
+    explicit transaction_failed(error_code code, std::size_t op_index);
+
+    virtual ~transaction_failed() noexcept;
+
+    /** The underlying cause that caused this transaction to be aborted. For example, if a \c set operation is attempted
+     *  on a node that does not exist, this will be \c error_code::no_node.
+    **/
+    error_code underlying_cause() const { return _underlying_cause; }
+
+    /** The transaction index which caused the error (0 indexed). If the 3rd operation in the \c multi_op could not be
+     *  committed, this will be \c 2.
+    **/
+    std::size_t failed_op_index() const { return _op_index; }
+
+private:
+    error_code  _underlying_cause;
+    std::size_t _op_index;
+};
+
 class unknown_error final :
         public error
 {
 public:
     explicit unknown_error(error_code code);
 
-    virtual ~unknown_error();
+    virtual ~unknown_error() noexcept;
 };
 
 /** \} **/

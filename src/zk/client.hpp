@@ -206,6 +206,15 @@ public:
     **/
     future<void> load_fence() const;
 
+    /** Commit the transaction specified by \a txn. The operations are performed atomically: They will either all
+     *  succeed or all fail.
+     *
+     *  \throws transaction_failed If the transaction does not complete with an error in the transaction itself (any
+     *   \c error_code that fits \c is_api_error), the future will be delivered with \c transaction_failed. Check the
+     *   thrown \c transaction_failed::underlying_cause for more information.
+     *  \throws system_error For the same reasons any other operation might fail, the future will be delivered with a
+     *   specific \c system_error.
+    **/
     future<multi_result> commit(multi_op txn);
 
 private:

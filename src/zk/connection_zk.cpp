@@ -1,5 +1,6 @@
 #include "connection_zk.hpp"
 
+#include <algorithm>
 #include <cassert>
 #include <cerrno>
 #include <cstring>
@@ -665,7 +666,10 @@ struct connection_zk_commit_completer
     explicit connection_zk_commit_completer(multi_op&& src) :
             source_txn(std::move(src)),
             raw_results(source_txn.size())
-    { }
+    {
+        for (zoo_op_result_t& x : raw_results)
+            x.err = -42;
+    }
 
     ptr<Stat> raw_stat_at(std::size_t idx)
     {
@@ -685,9 +689,41 @@ struct connection_zk_commit_completer
         try
         {
             if (rc == error_code::ok)
-                prom.set_value(multi_result());
+            {
+                multi_result out;
+                out.reserve(raw_results.size());
+                for (std::size_t idx = 0; idx < source_txn.size(); ++idx)
+                {
+                    const auto& raw_res = raw_results[idx];
+
+                    switch (source_txn[idx].type())
+                    {
+                    case op_type::create:
+                        out.emplace_back(create_result(std::string(raw_res.value)));
+                        break;
+                    case op_type::set:
+                        out.emplace_back(set_result(stat_from_raw(*raw_res.stat)));
+                        break;
+                    default:
+                        out.emplace_back(source_txn[idx].type(), nullptr);
+                        break;
+                    }
+                }
+
+                prom.set_value(std::move(out));
+            }
+            else if (is_api_error(rc))
+            {
+                // All results until the failure are 0, equal to rc where we care, and runtime_inconsistency after that.
+                auto iter = std::partition_point(raw_results.begin(), raw_results.end(),
+                                                 [] (auto res) { return res.err == 0; }
+                                                );
+                throw transaction_failed(rc, std::size_t(std::distance(raw_results.begin(), iter)));
+            }
             else
+            {
                 throw_error(rc);
+            }
         }
         catch (...)
         {

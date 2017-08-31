@@ -73,6 +73,7 @@ void throw_error(error_code code)
     case error_code::ephemeral_on_local_session:    throw ephemeral_on_local_session();
     case error_code::no_watcher:                    throw no_watcher();
     case error_code::reconfiguration_disabled:      throw reconfiguration_disabled();
+    case error_code::transaction_failed:            throw transaction_failed(code, 0);
     default:                                        throw unknown_error(code);
     }
 }
@@ -284,6 +285,17 @@ reconfiguration_disabled::reconfiguration_disabled() :
 { }
 
 reconfiguration_disabled::~reconfiguration_disabled() noexcept = default;
+
+transaction_failed::transaction_failed(error_code underlying_cause, std::size_t op_index) :
+        api_error(error_code::transaction_failed,
+                  std::string("Could not commit transaction due to ") + to_string(underlying_cause) + " on operation "
+                  + std::to_string(op_index)
+                 ),
+        _underlying_cause(underlying_cause),
+        _op_index(op_index)
+{ }
+
+transaction_failed::~transaction_failed() noexcept = default;
 
 unknown_error::unknown_error(error_code code) :
         error(code, "Error code not recognized")

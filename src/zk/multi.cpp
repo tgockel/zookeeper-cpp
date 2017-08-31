@@ -8,6 +8,14 @@
 namespace zk
 {
 
+template <typename T>
+static std::string to_string_generic(const T& self)
+{
+    std::ostringstream os;
+    os << self;
+    return os.str();
+}
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // op_type                                                                                                            //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -26,9 +34,7 @@ std::ostream& operator<<(std::ostream& os, const op_type& self)
 
 std::string to_string(const op_type& self)
 {
-    std::ostringstream os;
-    os << self;
-    return os.str();
+    return to_string_generic(self);
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -291,5 +297,128 @@ std::ostream& operator<<(std::ostream& os, const multi_op& self)
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // multi_result                                                                                                       //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+multi_result::any_result::any_result(std::nullptr_t) noexcept
+{ }
+
+multi_result::part::part(op_type type, std::nullptr_t) noexcept :
+        _type(type),
+        _storage(nullptr)
+{ }
+
+multi_result::any_result::any_result(create_result&& res) noexcept :
+        create(std::move(res))
+{ }
+
+multi_result::part::part(create_result res) noexcept :
+        _type(op_type::create),
+        _storage(std::move(res))
+{ }
+
+multi_result::any_result::any_result(set_result&& res) noexcept :
+        set(std::move(res))
+{ }
+
+multi_result::part::part(set_result res) noexcept :
+        _type(op_type::set),
+        _storage(std::move(res))
+{ }
+
+multi_result::any_result::~any_result() noexcept
+{
+    // handled in ~part
+}
+
+multi_result::part::part(const part& src) :
+        _type(src._type),
+        _storage(nullptr)
+{
+    switch (_type)
+    {
+        case op_type::create: place_new(&_storage.create, src._storage.create); break;
+        case op_type::set:    place_new(&_storage.set,    src._storage.set);    break;
+        default:                                                break;
+    }
+}
+
+multi_result::part::part(part&& src) noexcept :
+        _type(src._type),
+        _storage(nullptr)
+{
+    switch (_type)
+    {
+        case op_type::create: place_new(&_storage.create, std::move(src._storage.create)); break;
+        case op_type::set:    place_new(&_storage.set,    std::move(src._storage.set));    break;
+        default:                                                break;
+    }
+}
+
+multi_result::part::~part() noexcept
+{
+    switch (_type)
+    {
+        case op_type::create: _storage.create.~create_result(); break;
+        case op_type::set:    _storage.set.~set_result();       break;
+        default:                                                break;
+    }
+}
+
+const create_result& multi_result::part::as_create() const
+{
+    if (_type != op_type::create)
+        throw std::logic_error("Invalid part type for as_create: " + to_string(_type));
+    else
+        return _storage.create;
+}
+
+const set_result& multi_result::part::as_set() const
+{
+    if (_type != op_type::set)
+        throw std::logic_error("Invalid part type for as_set: " + to_string(_type));
+    else
+        return _storage.set;
+}
+
+multi_result::multi_result(std::vector<part> parts) noexcept :
+        _parts(std::move(parts))
+{ }
+
+multi_result::~multi_result() noexcept
+{ }
+
+std::ostream& operator<<(std::ostream& os, const multi_result::part& self)
+{
+    switch (self.type())
+    {
+        case op_type::create: return os << self.as_create();
+        case op_type::set:    return os << self.as_set();
+        default:              return os << self.type() << "_result{}";
+    }
+}
+
+std::ostream& operator<<(std::ostream& os, const multi_result& self)
+{
+    os << '[';
+    bool first = true;
+    for (const auto& x : self)
+    {
+        if (first)
+            first = false;
+        else
+            os << ", ";
+        os << x;
+    }
+    return os << ']';
+}
+
+std::string to_string(const multi_result::part& self)
+{
+    return to_string_generic(self);
+}
+
+std::string to_string(const multi_result& self)
+{
+    return to_string_generic(self);
+}
 
 }
