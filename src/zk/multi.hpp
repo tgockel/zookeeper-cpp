@@ -15,6 +15,10 @@
 namespace zk
 {
 
+/** \addtogroup Client
+ *  \{
+**/
+
 enum class op_type : int
 {
     check,
@@ -186,5 +190,7 @@ std::string to_string(const multi_op&);
 class multi_result final
 {
 };
+
+/** \} **/
 
 }

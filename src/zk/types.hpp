@@ -9,6 +9,10 @@
 namespace zk
 {
 
+/** \addtogroup Client
+ *  \{
+**/
+
 /** Base type for creating strong ID types. **/
 template <typename TReal, typename TId>
 struct strong_id
@@ -336,6 +340,8 @@ enum class state : int
 std::ostream& operator<<(std::ostream&, const state&);
 
 std::string to_string(const state&);
+
+/** \} **/
 
 }
 

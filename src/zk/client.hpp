@@ -16,13 +16,20 @@
 namespace zk
 {
 
-/** A ZooKeeper client connection. This is the primary class for interacting with the ZooKeeper cluster. **/
+/** \defgroup Client
+ *  Interacting with ZooKeeper as a \ref client.
+ *  \{
+**/
+
+/** A ZooKeeper client connection. This is the primary class for interacting with the ZooKeeper cluster. The best way to
+ *  create a client is with the static \ref connect function.
+**/
 class client final
 {
 public:
     client() noexcept;
 
-    /** Create a client connected to the cluster specified by \c conn_string. See \c connection::create for
+    /** Create a client connected to the cluster specified by \c conn_string. See \c connection::connect for
      *  documentation on connection strings.
     **/
     explicit client(string_view conn_string);
@@ -30,7 +37,7 @@ public:
     /** Create a client connected with \a conn. **/
     explicit client(std::shared_ptr<connection> conn) noexcept;
 
-    /** Create a client connected to the cluster specified by \c conn_string. See \c connection::create for
+    /** Create a client connected to the cluster specified by \c conn_string. See \c connection::connect for
      *  documentation on connection strings.
      *
      *  \returns A future which will be filled when the conneciton is established. The future will be filled in error if
@@ -204,5 +211,7 @@ public:
 private:
     std::shared_ptr<connection> _conn;
 };
+
+/** \} **/
 
 }

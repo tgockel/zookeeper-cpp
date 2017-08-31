@@ -12,6 +12,10 @@
 namespace zk::server
 {
 
+/** \addtogroup Server
+ *  \{
+**/
+
 /** The package registry tracks configuration of classpaths and JARs needed to run various ZooKeeper versions.
  *
  *  \note{Thread Safety}
@@ -72,5 +76,7 @@ private:
     std::shared_ptr<void>              _lifetime;
     std::map<std::string, std::string> _registrations;
 };
+
+/** \} **/
 
 }

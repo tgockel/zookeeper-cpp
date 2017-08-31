@@ -9,8 +9,14 @@
 namespace zk::server
 {
 
+/** \defgroup Server
+ *  Control a ZooKeeper \ref server process.
+ *  \{
+**/
+
 class package_registry;
 
+/** Controls a ZooKeeper server process on this local machine. **/
 class server final
 {
 public:
@@ -38,5 +44,7 @@ private:
     bool               _running;
     std::thread        _worker;
 };
+
+/** \} **/
 
 }

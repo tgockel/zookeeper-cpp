@@ -6,6 +6,10 @@
 
 #include <zk/config.hpp>
 
+/** \addtogroup Client
+ *  \{
+**/
+
 /** \def ZKPP_FUTURE_USE_STD_EXPERIMENTAL
  *  Set this to 1 to use \c std::experimental::future and \c std::experimental::promise as the backing types for
  *  \c zk::future and \c zk::promise.
@@ -63,13 +67,21 @@
 
 #include ZKPP_FUTURE_INCLUDE
 
+/** \} **/
+
 namespace zk
 {
+
+/** \addtogroup Client
+ *  \{
+**/
 
 template <typename T>
 using future = ZKPP_FUTURE_TEMPLATE<T>;
 
 template <typename T>
 using promise = ZKPP_PROMISE_TEMPLATE<T>;
+
+/** \} **/
 
 }

@@ -7,6 +7,10 @@
 
 #include <type_traits>
 
+/** \addtogroup Client
+ *  \{
+**/
+
 /** \def ZKPP_BUFFER_USE_CUSTOM
  *  Set this to 1 to use a custom definitions for \c zk::buffer. If this is set, you must also set
  *  \c ZKPP_BUFFER_INCLUDE and \c ZKPP_BUFFER_TYPE.
@@ -37,10 +41,16 @@
 #   error "Unknown type to use for zk::buffer"
 #endif
 
+/** \} **/
+
 #include ZKPP_BUFFER_INCLUDE
 
 namespace zk
 {
+
+/** \addtogroup Client
+ *  \{
+**/
 
 /** The \c buffer type. By default, this is an \c std::vector<char>, but this can be altered by compile-time flags such
  *  as \c ZKPP_BUFFER_USE_CUSTOM. The requirements for a custom buffer are minimal -- the type must fit this criteria:
@@ -71,5 +81,7 @@ static_assert(std::is_constructible<ptr<const buffer::value_type>,
                                   >::value,
               "buffer::data() must return ptr<const buffer::value_type>"
              );
+
+/** \} **/
 
 }

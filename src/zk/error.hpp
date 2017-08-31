@@ -10,7 +10,7 @@
 namespace zk
 {
 
-/** \addtogroup Errors
+/** \addtogroup Client
  *  \{
 **/
 
@@ -372,6 +372,6 @@ public:
     virtual ~unknown_error();
 };
 
-//! \}
+/** \} **/
 
 }

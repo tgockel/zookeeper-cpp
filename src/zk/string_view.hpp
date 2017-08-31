@@ -6,6 +6,10 @@
 
 #include <zk/config.hpp>
 
+/** \addtogroup Client
+ *  \{
+**/
+
 #ifndef ZKPP_STRING_VIEW_USE_STD_EXPERIMENTAL
 #   define ZKPP_STRING_VIEW_USE_STD_EXPERIMENTAL 0
 #endif
@@ -45,3 +49,5 @@ namespace zk
 using string_view = ZKPP_STRING_VIEW_TYPE;
 
 }
+
+/** \} **/

@@ -13,6 +13,10 @@
 namespace zk
 {
 
+/** \addtogroup Client
+ *  \{
+**/
+
 /** Describes the ability of a user to perform a certain action. Permissions can be mixed together like integers with
  *  \c | and \c &.
 **/
@@ -55,6 +59,11 @@ std::ostream& operator<<(std::ostream&, const permission&);
 
 std::string to_string(const permission&);
 
+/** An individual rule in an \c acl. It consists of a \c scheme and \c id pair to identify the \e who and a
+ *  \c permission set to determine what they are allowed to do.
+ *
+ *  \see https://zookeeper.apache.org/doc/r3.1.2/zookeeperProgrammers.html#sc_ACLPermissions
+**/
 class acl_rule final
 {
 public:
@@ -174,6 +183,8 @@ public:
     /** This ACL gives the world the ability to read. **/
     static const acl& read_unsafe();
 };
+
+/** \} **/
 
 }
 

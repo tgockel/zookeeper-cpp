@@ -14,10 +14,14 @@
 namespace zk
 {
 
+/** \addtogroup Client
+ *  \{
+**/
+
 class connection
 {
 public:
-    static std::shared_ptr<connection> create(string_view conn_string);
+    static std::shared_ptr<connection> connect(string_view conn_string);
 
     virtual ~connection() noexcept;
 
@@ -68,5 +72,7 @@ private:
     mutable std::mutex              _state_change_promises_protect;
     std::vector<promise<zk::state>> _state_change_promises;
 };
+
+/** \} **/
 
 }

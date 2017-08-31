@@ -11,7 +11,7 @@ namespace zk
 connection::~connection() noexcept
 { }
 
-std::shared_ptr<connection> connection::create(string_view conn_string)
+std::shared_ptr<connection> connection::connect(string_view conn_string)
 {
     return std::make_shared<connection_zk>(conn_string);
 }

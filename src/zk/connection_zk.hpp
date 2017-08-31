@@ -12,6 +12,10 @@ typedef struct _zhandle zhandle_t;
 namespace zk
 {
 
+/** \addtogroup Client
+ *  \{
+**/
+
 class connection_zk final :
         public connection
 {
@@ -67,5 +71,7 @@ private:
 private:
     ptr<zhandle_t> _handle;
 };
+
+/** \} **/
 
 }

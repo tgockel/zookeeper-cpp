@@ -18,6 +18,10 @@
 namespace zk
 {
 
+/** \addtogroup Client
+ *  \{
+**/
+
 /** The result type of \c client::get. **/
 class get_result final
 {
@@ -272,5 +276,7 @@ private:
 std::ostream& operator<<(std::ostream&, const watch_exists_result&);
 
 std::string to_string(const watch_exists_result&);
+
+/** \} **/
 
 }

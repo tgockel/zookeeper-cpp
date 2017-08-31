@@ -1,5 +1,9 @@
 #pragma once
 
+/** \addtogroup Client
+ *  \{
+**/
+
 /** \def ZKPP_USER_CONFIG
  *  A user-defined configuration file to be included before all other ZooKeeper C++ content.
 **/
@@ -55,13 +59,21 @@
 #   define ZKPP_HIDDEN
 #endif
 
+/** \} **/
+
 namespace zk
 {
+
+/** \addtogroup Client
+ *  \{
+**/
 
 /** A simple, unowned pointer. It operates exactly like using \c *, but removes the question of \c * associativity and
  *  is easier to read when \c const qualifiers are involved.
 **/
 template <typename T>
 using ptr = T*;
+
+/** \} **/
 
 }

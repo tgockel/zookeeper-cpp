@@ -7,6 +7,10 @@
 
 #include <zk/config.hpp>
 
+/** \addtogroup Client
+ *  \{
+**/
+
 /** \def ZKPP_OPTIONAL_USE_STD_EXPERIMENTAL
  *  Set this to 1 to use \c std::experimental::optional, \c std::experimental::nullopt_t, and
  *  \c std::experimental::nullopt as the backing types for \c zk::optional, \c zk::nullopt_t, and \c zk::nullopt.
@@ -67,10 +71,16 @@
 #   error "Unknown type to use for zk::optional, zk::nullopt_t, and zk::nullopt"
 #endif
 
+/** \} **/
+
 #include ZKPP_OPTIONAL_INCLUDE
 
 namespace zk
 {
+
+/** \addtogroup Client
+ *  \{
+**/
 
 template <typename T>
 using optional = ZKPP_OPTIONAL_TEMPLATE<T>;
@@ -78,5 +88,7 @@ using optional = ZKPP_OPTIONAL_TEMPLATE<T>;
 using nullopt_t = ZKPP_NULLOPT_TYPE;
 
 using ZKPP_NULLOPT_VALUE;
+
+/** \} **/
 
 }
