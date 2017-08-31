@@ -33,7 +33,8 @@ var hierarchy =
             [ "zk::reconfiguration_disabled", "classzk_1_1reconfiguration__disabled.html", null ],
             [ "zk::server_read_only", "classzk_1_1server__read__only.html", null ],
             [ "zk::session_expired", "classzk_1_1session__expired.html", null ],
-            [ "zk::session_moved", "classzk_1_1session__moved.html", null ]
+            [ "zk::session_moved", "classzk_1_1session__moved.html", null ],
+            [ "zk::transaction_failed", "classzk_1_1transaction__failed.html", null ]
           ] ],
           [ "zk::system_error", "classzk_1_1system__error.html", [
             [ "zk::connection_loss", "classzk_1_1connection__loss.html", null ],
@@ -64,6 +65,7 @@ var hierarchy =
     [ "zk::multi_result", "classzk_1_1multi__result.html", null ],
     [ "zk::op", "classzk_1_1op.html", null ],
     [ "zk::server::package_registry", "classzk_1_1server_1_1package__registry.html", null ],
+    [ "zk::multi_result::part", "classzk_1_1multi__result_1_1part.html", null ],
     [ "zk::server::detail::pipe", "classzk_1_1server_1_1detail_1_1pipe.html", null ],
     [ "zk::server::package_registry::registration_info", "structzk_1_1server_1_1package__registry_1_1registration__info.html", null ],
     [ "zk::server::server", "classzk_1_1server_1_1server.html", null ],

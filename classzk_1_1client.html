@@ -181,8 +181,8 @@ future&lt; <a class="el" href="classzk_1_1create__result.html">create_result</a>
 <tr class="memitem:a931607b8758e9961d8f11aec569878fe"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a931607b8758e9961d8f11aec569878fe"></a>
 future&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>load_fence</b> () const </td></tr>
 <tr class="separator:a931607b8758e9961d8f11aec569878fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae34b4c97f7c9fd09e5d9569e6c47e7ca"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae34b4c97f7c9fd09e5d9569e6c47e7ca"></a>
-future&lt; <a class="el" href="classzk_1_1multi__result.html">multi_result</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>commit</b> (<a class="el" href="classzk_1_1multi__op.html">multi_op</a> txn)</td></tr>
+<tr class="memitem:ae34b4c97f7c9fd09e5d9569e6c47e7ca"><td class="memItemLeft" align="right" valign="top">future&lt; <a class="el" href="classzk_1_1multi__result.html">multi_result</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1client.html#ae34b4c97f7c9fd09e5d9569e6c47e7ca">commit</a> (<a class="el" href="classzk_1_1multi__op.html">multi_op</a> txn)</td></tr>
+<tr class="memdesc:ae34b4c97f7c9fd09e5d9569e6c47e7ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Commit the transaction specified by <em>txn</em>.  <a href="#ae34b4c97f7c9fd09e5d9569e6c47e7ca">More...</a><br/></td></tr>
 <tr class="separator:ae34b4c97f7c9fd09e5d9569e6c47e7ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
@@ -255,6 +255,34 @@ Static Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="ae34b4c97f7c9fd09e5d9569e6c47e7ca"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">future&lt; <a class="el" href="classzk_1_1multi__result.html">multi_result</a> &gt; zk::client::commit </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classzk_1_1multi__op.html">multi_op</a>&#160;</td>
+          <td class="paramname"><em>txn</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Commit the transaction specified by <em>txn</em>. </p>
+<p>The operations are performed atomically: They will either all succeed or all fail.</p>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classzk_1_1transaction__failed.html" title="Thrown from client::commit when a transaction cannot be committed to the system. ">transaction_failed</a></td><td>If the transaction does not complete with an error in the transaction itself (any <code>error_code</code> that fits <code>is_api_error</code>), the future will be delivered with <code><a class="el" href="classzk_1_1transaction__failed.html" title="Thrown from client::commit when a transaction cannot be committed to the system. ">transaction_failed</a></code>. Check the thrown <code><a class="el" href="classzk_1_1transaction__failed.html#ac0fafad294d24efa4e2837dd4886f581" title="The underlying cause that caused this transaction to be aborted. ">transaction_failed::underlying_cause</a></code> for more information. </td></tr>
+    <tr><td class="paramname"><a class="el" href="classzk_1_1system__error.html">system_error</a></td><td>For the same reasons any other operation might fail, the future will be delivered with a specific <code><a class="el" href="classzk_1_1system__error.html">system_error</a></code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="client_8cpp_source.html#l00140">140</a> of file <a class="el" href="client_8cpp_source.html">client.cpp</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="aaf900305a3a57f9707078e2f61db3770"></a>
 <div class="memitem">
 <div class="memproto">

@@ -15,6 +15,7 @@ var searchData=
   ['close_5fwrite',['close_write',['../classzk_1_1server_1_1detail_1_1pipe.html#a7a44f0afae4d83825224475c930df472',1,'zk::server::detail::pipe']]],
   ['closed',['closed',['../group__Client.html#gga8954c7138ce0280422d42d02b3d951eaa349e686330723975502e9ef4f939a5ac',1,'zk']]],
   ['closing',['closing',['../classzk_1_1closing.html',1,'zk']]],
+  ['commit',['commit',['../classzk_1_1client.html#ae34b4c97f7c9fd09e5d9569e6c47e7ca',1,'zk::client']]],
   ['connect',['connect',['../classzk_1_1client.html#aaf900305a3a57f9707078e2f61db3770',1,'zk::client']]],
   ['connected',['connected',['../group__Client.html#gga8954c7138ce0280422d42d02b3d951eaa06aa6fa8bdc2078e7e1bd903e70c8f6a',1,'zk']]],
   ['connecting',['connecting',['../group__Client.html#gga8954c7138ce0280422d42d02b3d951eaa9a27316fbc5ef38b2a19c202dbdc29b7',1,'zk']]],

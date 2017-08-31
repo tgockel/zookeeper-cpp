@@ -216,9 +216,15 @@ var group__Client =
       [ "reconfiguration_disabled", "classzk_1_1reconfiguration__disabled.html#af9e94d0a53357916cf53b6f8ede4b216", null ],
       [ "~reconfiguration_disabled", "classzk_1_1reconfiguration__disabled.html#ab70bc2ae76ff65940f670ee10bc62431", null ]
     ] ],
+    [ "transaction_failed", "classzk_1_1transaction__failed.html", [
+      [ "transaction_failed", "classzk_1_1transaction__failed.html#a992c5a760d9b1a6efa2ab50ff7cbb0ca", null ],
+      [ "~transaction_failed", "classzk_1_1transaction__failed.html#ad0b9bc8546d294b25f1b6581b6205511", null ],
+      [ "failed_op_index", "classzk_1_1transaction__failed.html#aee7593cc6ab83bfe4017e62a4a9c94ad", null ],
+      [ "underlying_cause", "classzk_1_1transaction__failed.html#ac0fafad294d24efa4e2837dd4886f581", null ]
+    ] ],
     [ "unknown_error", "classzk_1_1unknown__error.html", [
       [ "unknown_error", "classzk_1_1unknown__error.html#a8a53c2fb70dc68953f31e24d18ac335a", null ],
-      [ "~unknown_error", "classzk_1_1unknown__error.html#a195fedaf21abe40f1e8f46d3ef28618e", null ]
+      [ "~unknown_error", "classzk_1_1unknown__error.html#a5b1e6992cd432062e62224a311880f19", null ]
     ] ],
     [ "op", "classzk_1_1op.html", [
       [ "check_data", "structzk_1_1op_1_1check__data.html", [
@@ -259,6 +265,7 @@ var group__Client =
       [ "const_iterator", "classzk_1_1multi__op.html#af313d9c3a28cdc41d89309a2a1b4f6ec", null ],
       [ "iterator", "classzk_1_1multi__op.html#a7bd8b9d60add7f534a6db542174f0896", null ],
       [ "size_type", "classzk_1_1multi__op.html#ab3bfa5724d9fd71d9e7dda48d5cfe09a", null ],
+      [ "multi_op", "classzk_1_1multi__op.html#ad709c9ed1ce73bdd6354a302bb7385d2", null ],
       [ "multi_op", "classzk_1_1multi__op.html#afcea7e73ef5f3a1f2fb51f3c0acec637", null ],
       [ "multi_op", "classzk_1_1multi__op.html#aa61322beb32e1b68bde5ad630bb79c2c", null ],
       [ "~multi_op", "classzk_1_1multi__op.html#afda10bf61816643b29985d18370022b7", null ],
@@ -276,7 +283,40 @@ var group__Client =
       [ "reserve", "classzk_1_1multi__op.html#a41aab0700a93fb710da50ae2e8a387ee", null ],
       [ "size", "classzk_1_1multi__op.html#ab2f705306e490344f9458ed56a54f7d2", null ]
     ] ],
-    [ "multi_result", "classzk_1_1multi__result.html", null ],
+    [ "multi_result", "classzk_1_1multi__result.html", [
+      [ "part", "classzk_1_1multi__result_1_1part.html", [
+        [ "part", "classzk_1_1multi__result_1_1part.html#a7458174615a2b177da4938026564beeb", null ],
+        [ "part", "classzk_1_1multi__result_1_1part.html#a0860b2dd1aa647997ea683f4e6eac722", null ],
+        [ "part", "classzk_1_1multi__result_1_1part.html#aba8ab40b7117554fbc77b844f5f80a0b", null ],
+        [ "part", "classzk_1_1multi__result_1_1part.html#ad2425b48d429343c4cb7f880f08992a3", null ],
+        [ "part", "classzk_1_1multi__result_1_1part.html#a57be0ae14e20361a9f60b6183f122d5a", null ],
+        [ "~part", "classzk_1_1multi__result_1_1part.html#a02b9ba638fd9278ad1bee2db60f23ef1", null ],
+        [ "as_create", "classzk_1_1multi__result_1_1part.html#a8da9d9059b509d32de8a3d5d100aa115", null ],
+        [ "as_set", "classzk_1_1multi__result_1_1part.html#aca828b38e054709527cb5c58640da4c6", null ],
+        [ "operator=", "classzk_1_1multi__result_1_1part.html#ab5a863c111e5d37d9055f015ff9839b1", null ],
+        [ "operator=", "classzk_1_1multi__result_1_1part.html#a8304daa4b1e3259b00e567cdc53bc430", null ],
+        [ "type", "classzk_1_1multi__result_1_1part.html#a94358de184c955fa490c2563c9cf38ff", null ]
+      ] ],
+      [ "const_iterator", "classzk_1_1multi__result.html#afa8bdc99350fb4d6985462b131a1a1e9", null ],
+      [ "iterator", "classzk_1_1multi__result.html#a7182979ef39e21a722658f7ef6e078bf", null ],
+      [ "size_type", "classzk_1_1multi__result.html#a003a398313435d438fe58526032d2ad4", null ],
+      [ "multi_result", "classzk_1_1multi__result.html#a80f22b5464f6533ae6121d57a99e9af4", null ],
+      [ "multi_result", "classzk_1_1multi__result.html#ab49b94fea0ed190e6a547abd61d6769c", null ],
+      [ "~multi_result", "classzk_1_1multi__result.html#a9f7732ed17d6db6b1cd08a795050c0f9", null ],
+      [ "begin", "classzk_1_1multi__result.html#a31d0b16ad74b67c9e50bd249760f321c", null ],
+      [ "begin", "classzk_1_1multi__result.html#aaf915ca1e741b8809e9ea4bbaefe85d5", null ],
+      [ "cbegin", "classzk_1_1multi__result.html#aa6365e1d8021c640d1c9f12cd84d7614", null ],
+      [ "cend", "classzk_1_1multi__result.html#a33c732919a0620397c496c76e8bb3473", null ],
+      [ "emplace_back", "classzk_1_1multi__result.html#ae7ad61b8590ecec74550a244b5567c83", null ],
+      [ "end", "classzk_1_1multi__result.html#a0893b2314febd0a792b147394d75e1a3", null ],
+      [ "end", "classzk_1_1multi__result.html#adb96b8ff7fb0d8ec7064c2ec1415a771", null ],
+      [ "operator[]", "classzk_1_1multi__result.html#a12b0d2c06ce6f655e40d4dc098b7ba51", null ],
+      [ "operator[]", "classzk_1_1multi__result.html#a2cc0e42c1f616fb081fee608a49f2a2f", null ],
+      [ "push_back", "classzk_1_1multi__result.html#a4ce26ef93fa00838b2bcba17887d09b7", null ],
+      [ "push_back", "classzk_1_1multi__result.html#a20a6a0a7c180b853eb25acaa1d794fe6", null ],
+      [ "reserve", "classzk_1_1multi__result.html#af32eea83726b58594bb38285e083455e", null ],
+      [ "size", "classzk_1_1multi__result.html#ade86651e849155a7ca7294f5be99a432", null ]
+    ] ],
     [ "get_result", "classzk_1_1get__result.html", [
       [ "get_result", "classzk_1_1get__result.html#a0398a755ab669d6c78b44b284261f601", null ],
       [ "~get_result", "classzk_1_1get__result.html#a937ece760d8a47b90e8664312c069e41", null ],

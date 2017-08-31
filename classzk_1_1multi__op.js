@@ -3,6 +3,7 @@ var classzk_1_1multi__op =
     [ "const_iterator", "classzk_1_1multi__op.html#af313d9c3a28cdc41d89309a2a1b4f6ec", null ],
     [ "iterator", "classzk_1_1multi__op.html#a7bd8b9d60add7f534a6db542174f0896", null ],
     [ "size_type", "classzk_1_1multi__op.html#ab3bfa5724d9fd71d9e7dda48d5cfe09a", null ],
+    [ "multi_op", "classzk_1_1multi__op.html#ad709c9ed1ce73bdd6354a302bb7385d2", null ],
     [ "multi_op", "classzk_1_1multi__op.html#afcea7e73ef5f3a1f2fb51f3c0acec637", null ],
     [ "multi_op", "classzk_1_1multi__op.html#aa61322beb32e1b68bde5ad630bb79c2c", null ],
     [ "~multi_op", "classzk_1_1multi__op.html#afda10bf61816643b29985d18370022b7", null ],
