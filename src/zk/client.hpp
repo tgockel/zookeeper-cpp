@@ -190,7 +190,6 @@ public:
      *  fenced, no matter what path is specified. In the future, ZooKeeper might support partitioning, in which case the
      *  \c path parameter might become relevant.
      *
-     *  \example{Client: load_fence}
      *  It is often not necessary to wait for the fence future to be returned, as future reads will be synced without
      *  waiting. However, there is no guarantee on the ordering of the read if the future returned from \c load_fence
      *  is completed in error.
