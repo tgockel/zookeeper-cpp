@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['zookeeper_20c_2b_2b',['ZooKeeper C++',['../index.html',1,'']]],
   ['zkpp_5fbuffer_5fuse_5fcustom',['ZKPP_BUFFER_USE_CUSTOM',['../group__Client.html#ga39e71b216e23cb584a0026e266883521',1,'buffer.hpp']]],
   ['zkpp_5fbuffer_5fuse_5fstd_5fvector',['ZKPP_BUFFER_USE_STD_VECTOR',['../group__Client.html#gab00a9abf8077b95dafdea60961c6a86a',1,'buffer.hpp']]],
   ['zkpp_5fdebug',['ZKPP_DEBUG',['../group__Client.html#ga9edcf8f1536cdb8f721f3a8c4a479e10',1,'config.hpp']]],

@@ -23,7 +23,7 @@ var searchData=
   ['connection_5fzk',['connection_zk',['../classzk_1_1connection__zk.html',1,'zk']]],
   ['connection_5fzk_5fcommit_5fcompleter',['connection_zk_commit_completer',['../structzk_1_1connection__zk__commit__completer.html',1,'zk']]],
   ['container',['container',['../group__Client.html#gga9f10c37f69a7d1084b08cac07ebb7918a5f0b6ebc4bea10285ba2b8a6ce78b863',1,'zk']]],
-  ['create',['create',['../classzk_1_1client.html#a45f67fc3c1bcba32dfd2f848d050d376',1,'zk::client::create()'],['../classzk_1_1op.html#a6641e7dd6e0153a0d7fcbdbad4cfc2db',1,'zk::op::create()'],['../classzk_1_1server_1_1server.html#a705566556bf8a88bd0050209a2f17f01',1,'zk::server::server::create()'],['../group__Client.html#gga75dfaeeb3b2f4e1588380b3bf68ecc08a76ea0bebb3c22822b4f0dd9c9fd021c5',1,'zk::create()']]],
+  ['create',['create',['../classzk_1_1client.html#a45f67fc3c1bcba32dfd2f848d050d376',1,'zk::client::create()'],['../classzk_1_1op.html#a6641e7dd6e0153a0d7fcbdbad4cfc2db',1,'zk::op::create()'],['../classzk_1_1server_1_1server.html#a35b190e8f4118ede75edfc2eab00f2b1',1,'zk::server::server::create()'],['../group__Client.html#gga75dfaeeb3b2f4e1588380b3bf68ecc08a76ea0bebb3c22822b4f0dd9c9fd021c5',1,'zk::create()']]],
   ['create_5fdata',['create_data',['../structzk_1_1op_1_1create__data.html',1,'zk::op']]],
   ['create_5fmode',['create_mode',['../group__Client.html#ga9f10c37f69a7d1084b08cac07ebb7918',1,'zk']]],
   ['create_5fresult',['create_result',['../classzk_1_1create__result.html',1,'zk']]],
