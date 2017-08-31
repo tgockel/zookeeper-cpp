@@ -1,0 +1,3 @@
+#!/bin/bash -e
+mkdir -p build/doc
+doxygen doc/Doxyfile

@@ -14,3 +14,19 @@ before_install:
 script:
 - echo ${COVERALLS_REPO_TOKEN} > ${TRAVIS_BUILD_DIR}/coveralls-repo-token
 - docker run -v ${TRAVIS_BUILD_DIR}:/root/zookeeper-cpp dev/zookeeper-cpp/${DISTRO}
+after_success:
+- GIT_CURRENT_HASH=$(git rev-parse HEAD)
+- GIT_MASTER_HASH=$(git rev-parse master)
+- GIT_REMOTE_NAME=$(git remote)
+- GIT_REMOTE_FETCH_PATH=$(git remote --verbose | grep -P '^'${GIT_REMOTE_NAME}'.*\(fetch\)$'
+  | awk '{print $2}')
+- GIT_EXPECTED_PATH=https://github.com/tgockel/zookeeper-cpp.git
+- echo "GIT_CURRENT_HASH=${GIT_CURRENT_HASH} GIT_REMOTE_NAME=${GIT_REMOTE_NAME} GIT_REMOTE_FETCH_PATH=${GIT_REMOTE_FETCH_PATH}"
+- if [[ ${PUBLISH_DOCS} == 0 ]]; then echo "Skipping documentation publishing due PUBLISH_DOCS=${PUBLISH_DOCS}"; exit 0; fi
+- if [[ ${GIT_CURRENT_HASH} != ${GIT_MASTER_HASH} ]]; then echo "Skipping documentation publishing due to non-master ${GIT_CURRENT_HASH} (master=${GIT_MASTER_HASH})"; exit 0; fi
+- if [[ ${GIT_REMOTE_FETCH_PATH} != ${GIT_EXPECTED_PATH} ]]; then echo "Skipping documentation publishing due to non-mainline remote ${GIT_REMOTE_FETCH_PATH}"; exit 0; fi
+- sudo apt-get install --yes doxygen graphviz texlive-full
+- openssl aes-256-cbc -K $encrypted_513b1ad04072_key -iv $encrypted_513b1ad04072_iv -in config/travisci_rsa.enc -out config/travisci_rsa -d
+- chmod 0600 config/travisci_ecdsa
+- cp config/travisci_ecdsa ~/.ssh/id_ecdsa
+- "./config/publish-doxygen"
