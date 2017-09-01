@@ -81,9 +81,11 @@ function(build_module)
   endif()
 
   set(all_library_cpps)
+  set(all_library_hpps)
   set(main_name)
   foreach(subpath ${MODULE_PATH})
     file(${CPP_SEARCH} local_library_cpps RELATIVE_PATH "." "${subpath}/*.cpp")
+    file(${CPP_SEARCH} local_library_hpps RELATIVE_PATH "." "${subpath}/*.hpp")
     file(GLOB          local_main_name    RELATIVE_PATH "." "${subpath}/main.cpp")
 
     if(local_main_name)
@@ -95,9 +97,11 @@ function(build_module)
       list(REMOVE_ITEM local_library_cpps ${local_main_name})
     endif()
     list(APPEND all_library_cpps ${local_library_cpps})
+    list(APPEND all_library_hpps ${local_library_hpps})
   endforeach()
 
   list_split(library_test_cpps library_cpps "${all_library_cpps}" "_tests.cpp")
+  list_split(library_test_hpps library_hpps "${all_library_hpps}" "_tests.hpp")
   set(MODULE_TARGETS)
 
   if(main_name)
@@ -109,6 +113,7 @@ function(build_module)
                           PROPERTIES
                             OUTPUT_NAME ${MODULE_NAME}
                          )
+    set(${MODULE_NAME}_MAIN_SOURCES main_name PARENT_SCOPE)
   endif()
 
   if(library_cpps)
@@ -125,6 +130,8 @@ function(build_module)
     if(main_name)
       target_link_libraries(${MODULE_NAME}_prog ${MODULE_NAME})
     endif()
+    set(${MODULE_NAME}_LIBRARY_SOURCES ${library_cpps} PARENT_SCOPE)
+    set(${MODULE_NAME}_LIBRARY_HEADERS ${library_hpps} PARENT_SCOPE)
   endif()
 
   if(library_test_cpps)

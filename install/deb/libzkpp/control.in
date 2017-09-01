@@ -1,0 +1,9 @@
+Package: libzkpp@ZKPP_SO_VERSION@
+Version: @ZKPP_VERSION@
+Priority: optional
+Maintainer: Travis Gockel <travis@gockelhut.com>
+Architecture: amd64
+Build-Depends: debhelper (>= 9), cmake (>= 3.5)
+Section: libs
+Homepage: https://tgockel.github.io/zookeeper-cpp/
+Description: A ZooKeeper client for C++.

@@ -226,3 +226,55 @@ if(ZKPP_BUILD_OPTION_CODE_COVERAGE)
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fprofile-arcs -ftest-coverage")
   setup_target_for_coverage(test-coverage zkpp_tests_prog coverage "--gtest_death_test_style=threadsafe")
 endif()
+
+################################################################################
+# Packaging                                                                    #
+################################################################################
+
+set(ZKPP_PACKAGE_SYSTEM ""
+    CACHE STRING "The packaging system to generate a package build file for (leave blank to not build a package)"
+   )
+if(ZKPP_PACKAGE_SYSTEM)
+  message(STATUS "Packaging system ${ZKPP_PACKAGE_SYSTEM}:")
+  foreach(module zkpp)
+    message(STATUS "  ${module}:")
+
+    if(ZKPP_PACKAGE_SYSTEM STREQUAL "DEB")
+      if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/install/deb/lib${module}")
+        message(STATUS "    lib${module}")
+        configure_file("${CMAKE_CURRENT_SOURCE_DIR}/install/deb/lib${module}/control.in"
+                       "${CMAKE_CURRENT_BINARY_DIR}/install/lib${module}${PROJECT_SO_VERSION}/DEBIAN/control"
+                       @ONLY IMMEDIATE
+                      )
+        add_custom_target("lib${module}.deb"
+                          BYPRODUCTS "install/lib${module}${PROJECT_SO_VERSION}.deb"
+                          COMMAND mkdir -p "install/lib${module}${PROJECT_SO_VERSION}/usr/local/lib"
+                          COMMAND cp "$<TARGET_FILE:${module}>" "install/lib${module}${PROJECT_SO_VERSION}/usr/local/lib"
+                          COMMAND dpkg --build "install/lib${module}${PROJECT_SO_VERSION}"
+                          DEPENDS
+                            "${CMAKE_CURRENT_BINARY_DIR}/install/lib${module}${PROJECT_SO_VERSION}/DEBIAN/control"
+                            ${module}
+                          )
+      endif()
+
+      if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/install/deb/lib${module}-dev")
+        message(STATUS "    lib${module}-dev")
+        configure_file("${CMAKE_CURRENT_SOURCE_DIR}/install/deb/lib${module}-dev/control.in"
+                       "${CMAKE_CURRENT_BINARY_DIR}/install/lib${module}${PROJECT_SO_VERSION}-dev/DEBIAN/control"
+                       @ONLY IMMEDIATE
+                      )
+        add_custom_target("lib${module}-dev.deb"
+                          BYPRODUCTS "install/lib${module}${PROJECT_SO_VERSION}-dev/usr/local/lib"
+                          COMMAND mkdir -p "install/lib${module}${PROJECT_SO_VERSION}-dev/usr/local/include/zk"
+                          COMMAND cp -t "install/lib${module}${PROJECT_SO_VERSION}-dev/usr/local/include/zk" ${${module}_LIBRARY_HEADERS}
+                          COMMAND dpkg --build "install/lib${module}${PROJECT_SO_VERSION}-dev"
+                          DEPENDS
+                            "${CMAKE_CURRENT_BINARY_DIR}/install/lib${module}${PROJECT_SO_VERSION}-dev/DEBIAN/control"
+                            ${${module}_LIBRARY_HEADERS}
+                         )
+      endif()
+    else()
+      message(FATAL_ERROR "Unknown ZKPP_PACKAGE_SYSTEM=${ZKPP_PACKAGE_SYSTEM}")
+    endif()
+  endforeach()
+endif()

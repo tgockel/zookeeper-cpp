@@ -1,0 +1,9 @@
+Package: libzkpp@ZKPP_SO_VERSION@-dev
+Version: @ZKPP_VERSION@
+Priority: optional
+Maintainer: Travis Gockel <travis@gockelhut.com>
+Section: libdevel
+Architecture: any
+Depends: libzkpp@ZKPP_SO_VERSION@ (= @ZKPP_SO_VERSION@)
+Description: development files for zkpp
+ A ZooKeeper client for C++.
