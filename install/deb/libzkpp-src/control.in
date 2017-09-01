@@ -1,0 +1,10 @@
+Package: libzkpp@PROJECT_SO_VERSION@-src
+Version: @PROJECT_PACKAGE_VERSION@
+Priority: optional
+Maintainer: Travis Gockel <travis@gockelhut.com>
+Architecture: all
+Section: libdevel
+Depends: libzookeeper-mt-dev (>= 3.4), libzkpp@PROJECT_SO_VERSION@-dev (= @PROJECT_PACKAGE_VERSION@)
+Homepage: https://tgockel.github.io/zookeeper-cpp/
+Description: Source files for libzkpp.
+ A ZooKeeper client for C++.

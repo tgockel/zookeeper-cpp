@@ -236,6 +236,17 @@ set(ZKPP_PACKAGE_SYSTEM ""
    )
 if(ZKPP_PACKAGE_SYSTEM)
   message(STATUS "Packaging system ${ZKPP_PACKAGE_SYSTEM}:")
+  set(PROJECT_PACKAGE_VERSION "${PROJECT_VERSION}-1") # TODO: Allow arbitrary tags here.
+
+  if(CMAKE_SYSTEM_PROCESSOR STREQUAL "x86_64")
+    set(PROJECT_BUILD_ARCHITECTURE "amd64")
+  elseif(CMAKE_SYSTEM_PROCESSOR STREQUAL "x86")
+    set(PROJECT_BUILD_ARCHITECTURE "i386")
+  else()
+    set(PROJECT_BUILD_ARCHITECTURE ${CMAKE_SYSTEM_PROCESSOR})
+  endif()
+
+  set(all_packages)
   foreach(module zkpp)
     message(STATUS "  ${module}:")
 
@@ -255,6 +266,7 @@ if(ZKPP_PACKAGE_SYSTEM)
                             "${CMAKE_CURRENT_BINARY_DIR}/install/lib${module}${PROJECT_SO_VERSION}/DEBIAN/control"
                             ${module}
                           )
+        list(APPEND all_packages "lib${module}.deb")
       endif()
 
       if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/install/deb/lib${module}-dev")
@@ -264,7 +276,7 @@ if(ZKPP_PACKAGE_SYSTEM)
                        @ONLY IMMEDIATE
                       )
         add_custom_target("lib${module}-dev.deb"
-                          BYPRODUCTS "install/lib${module}${PROJECT_SO_VERSION}-dev/usr/local/lib"
+                          BYPRODUCTS "install/lib${module}${PROJECT_SO_VERSION}-dev.deb"
                           COMMAND mkdir -p "install/lib${module}${PROJECT_SO_VERSION}-dev/usr/local/include/zk"
                           COMMAND cp -t "install/lib${module}${PROJECT_SO_VERSION}-dev/usr/local/include/zk" ${${module}_LIBRARY_HEADERS}
                           COMMAND dpkg --build "install/lib${module}${PROJECT_SO_VERSION}-dev"
@@ -272,9 +284,32 @@ if(ZKPP_PACKAGE_SYSTEM)
                             "${CMAKE_CURRENT_BINARY_DIR}/install/lib${module}${PROJECT_SO_VERSION}-dev/DEBIAN/control"
                             ${${module}_LIBRARY_HEADERS}
                          )
+        list(APPEND all_packages "lib${module}-dev.deb")
+      endif()
+
+      if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/install/deb/lib${module}-src")
+        message(STATUS "    lib${module}-src")
+        configure_file("${CMAKE_CURRENT_SOURCE_DIR}/install/deb/lib${module}-src/control.in"
+                       "${CMAKE_CURRENT_BINARY_DIR}/install/lib${module}${PROJECT_SO_VERSION}-src/DEBIAN/control"
+                       @ONLY IMMEDIATE
+                      )
+        add_custom_target("lib${module}-src.deb"
+                          BYPRODUCTS "install/lib${module}${PROJECT_SO_VERSION}-src.deb"
+                          COMMAND mkdir -p "install/lib${module}${PROJECT_SO_VERSION}-dev/usr/local/include/zk"
+                          COMMAND cp -t "install/lib${module}${PROJECT_SO_VERSION}-dev/usr/local/include/zk" ${${module}_LIBRARY_SOURCES}
+                          COMMAND dpkg --build "install/lib${module}${PROJECT_SO_VERSION}-src"
+                          DEPENDS
+                            "${CMAKE_CURRENT_BINARY_DIR}/install/lib${module}${PROJECT_SO_VERSION}-src/DEBIAN/control"
+                            ${${module}_LIBRARY_SOURCES}
+                         )
+        list(APPEND all_packages "lib${module}-src.deb")
       endif()
     else()
       message(FATAL_ERROR "Unknown ZKPP_PACKAGE_SYSTEM=${ZKPP_PACKAGE_SYSTEM}")
     endif()
   endforeach()
+  add_custom_target(package
+                    DEPENDS ${all_packages}
+                    COMMENT "Built all packages"
+                   )
 endif()
