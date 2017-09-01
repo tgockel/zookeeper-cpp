@@ -3,19 +3,24 @@ sudo: required
 dist: trusty
 env:
   matrix:
-  - DISTRO=ubuntu-16.04
-  - DISTRO=ubuntu-17.04
-  - DISTRO=ubuntu-17.10
-  - DISTRO=opensuse-42.3
+  - DISTRO=ubuntu-16.04 CONFIG=Debug
+  - DISTRO=ubuntu-16.04 CONFIG=Release
+  - DISTRO=ubuntu-17.04 CONFIG=Debug
+  - DISTRO=ubuntu-17.04 CONFIG=Release
+  - DISTRO=ubuntu-17.10 CONFIG=Debug
+  - DISTRO=ubuntu-17.10 CONFIG=Release
+  - DISTRO=opensuse-42.3 CONFIG=Debug
 services:
 - docker
 before_install:
 - docker build config/docker/${DISTRO} -t dev/zookeeper-cpp/${DISTRO}
 script:
 - echo ${COVERALLS_REPO_TOKEN} > ${TRAVIS_BUILD_DIR}/coveralls-repo-token
-- docker run -v ${TRAVIS_BUILD_DIR}:/root/zookeeper-cpp dev/zookeeper-cpp/${DISTRO}
+- if [[ ${CONFIG} == "Debug" ]] then docker run -v ${TRAVIS_BUILD_DIR}:/root/zookeeper-cpp dev/zookeeper-cpp/${DISTRO}; fi
+- if [[ ${CONFIG} == "Release" ]] then docker run -it -v ${TRAVIS_BUILD_DIR}:/root/zookeeper-cpp dev/zookeeper-cpp/${DISTRO} /root/zookeeper-cpp/config/make-package; fi
 after_success:
 - if [[ ${DISTRO} != "ubuntu-16.04" ]]; then echo "Skipping documentation publishing due to non-main build environment"; exit 0; fi
+- if [[ ${CONFIG} != "Debug" ]]; then echo "Skipp documentation publishing due to non-debug build"; exit 0; fi
 - GIT_CURRENT_HASH=$(git rev-parse HEAD)
 - GIT_MASTER_HASH=$(git rev-parse master)
 - GIT_REMOTE_NAME=$(git remote)
