@@ -18,16 +18,15 @@ var NAVTREE =
         [ "All", "globals.html", null ],
         [ "Macros", "globals_defs.html", null ]
       ] ]
-    ] ],
-    [ "Examples", "examples.html", "examples" ]
+    ] ]
   ] ]
 ];
 
 var NAVTREEINDEX =
 [
 ".html",
-"classzk_1_1no__watcher.html",
-"package__registry_8hpp_source.html"
+"classzk_1_1node__exists.html",
+"structstd_1_1hash_3_01zk_1_1version_01_4.html#ac5a087c2a1d286cb0d7c11ffaeed47d1"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

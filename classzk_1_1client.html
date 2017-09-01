@@ -48,7 +48,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="modules.html"><span>Modules</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
-      <li><a href="examples.html"><span>Examples</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -178,8 +177,8 @@ future&lt; <a class="el" href="classzk_1_1create__result.html">create_result</a>
 <tr class="memitem:a7ea06ca1328a6d1e09b53ef3eb506802"><td class="memItemLeft" align="right" valign="top">future&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1client.html#a7ea06ca1328a6d1e09b53ef3eb506802">erase</a> (string_view path, <a class="el" href="structzk_1_1version.html">version</a> check=<a class="el" href="structzk_1_1basic__version.html#ad2886aa35fd1834251655e52261f035e">version::any</a>())</td></tr>
 <tr class="memdesc:a7ea06ca1328a6d1e09b53ef3eb506802"><td class="mdescLeft">&#160;</td><td class="mdescRight">Erase the node with the given <em>path</em>.  <a href="#a7ea06ca1328a6d1e09b53ef3eb506802">More...</a><br /></td></tr>
 <tr class="separator:a7ea06ca1328a6d1e09b53ef3eb506802"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a931607b8758e9961d8f11aec569878fe"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a931607b8758e9961d8f11aec569878fe"></a>
-future&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>load_fence</b> () const </td></tr>
+<tr class="memitem:a931607b8758e9961d8f11aec569878fe"><td class="memItemLeft" align="right" valign="top">future&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1client.html#a931607b8758e9961d8f11aec569878fe">load_fence</a> () const </td></tr>
+<tr class="memdesc:a931607b8758e9961d8f11aec569878fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ensure that all subsequent reads observe the data at the transaction on the server at or past real-time <em>now</em>.  <a href="#a931607b8758e9961d8f11aec569878fe">More...</a><br /></td></tr>
 <tr class="separator:a931607b8758e9961d8f11aec569878fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae34b4c97f7c9fd09e5d9569e6c47e7ca"><td class="memItemLeft" align="right" valign="top">future&lt; <a class="el" href="classzk_1_1multi__result.html">multi_result</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1client.html#ae34b4c97f7c9fd09e5d9569e6c47e7ca">commit</a> (<a class="el" href="classzk_1_1multi__op.html">multi_op</a> txn)</td></tr>
 <tr class="memdesc:ae34b4c97f7c9fd09e5d9569e6c47e7ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Commit the transaction specified by <em>txn</em>.  <a href="#ae34b4c97f7c9fd09e5d9569e6c47e7ca">More...</a><br /></td></tr>
@@ -511,6 +510,35 @@ Static Public Member Functions</h2></td></tr>
 </dl>
 
 <p>Definition at line <a class="el" href="client_8cpp_source.html#l00078">78</a> of file <a class="el" href="client_8cpp_source.html">client.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a931607b8758e9961d8f11aec569878fe"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">future&lt; void &gt; zk::client::load_fence </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ensure that all subsequent reads observe the data at the transaction on the server at or past real-time <em>now</em>. </p>
+<p>If your application communicates only through reads and writes of ZooKeeper, this operation is never needed. However, if your application communicates a change in ZooKeeper state through means outside of ZooKeeper (called a "hidden channel" in ZooKeeper vernacular), then it is possible for a receiver to attempt to react to a change before it can observe it through ZooKeeper state.</p>
+<dl class="section warning"><dt>Warning</dt><dd>The internal pipeline for this operation is not the same as modifying operations (<code>set</code>, <code>create</code>, etc.). In cases of leader failure, there is a chance that the leader does not have support from the quorum, as it has switched to a new leader. While this is rare, it is still <em>possible</em> that not all updates have been processed.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Other APIs call this operation <code>sync</code> and allow you to provide a <code>path</code> parameter. There are a few issues with this. First: that name conflicts with the commonly-used POSIX <code>sync</code> command, leading to confusion that data in ZooKeeper does not have integrity. Secondly, this operation has more in common with <code>std::atomic_thread_fence</code> or the x86 <code>lfence</code> instruction than <code>sync</code> (on the server, "flush" is an appropriate term &ndash; just like fence implementations in CPUs). Finally, the <code>path</code> parameter is ignored by the server &ndash; all future fetches are fenced, no matter what path is specified. In the future, ZooKeeper might support partitioning, in which case the <code>path</code> parameter might become relevant.</dd></dl>
+<p>It is often not necessary to wait for the fence future to be returned, as future reads will be synced without waiting. However, there is no guarantee on the ordering of the read if the future returned from <code>load_fence</code> is completed in error.</p>
+<div class="fragment"><div class="line"><span class="keyword">auto</span> fence_future = client.load_fence();</div>
+<div class="line"><span class="comment">// data_future will be completed with the load_fence, even though we haven&#39;t waited to complete</span></div>
+<div class="line"><span class="keyword">auto</span> data_future = client.get(<span class="stringliteral">&quot;/some/path&quot;</span>);</div>
+<div class="line"></div>
+<div class="line"><span class="comment">// Useful to use when_all to concat and error check (C++ Extensions for Concurrency, ISO/IEC TS 19571:2016)</span></div>
+<div class="line"><span class="keyword">auto</span> guaranteed_future = std::when_all(std::move(fence_future), std::move(data_future));</div>
+</div><!-- fragment --> 
+<p>Definition at line <a class="el" href="client_8cpp_source.html#l00135">135</a> of file <a class="el" href="client_8cpp_source.html">client.cpp</a>.</p>
 
 </div>
 </div>

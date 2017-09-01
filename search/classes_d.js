@@ -13,6 +13,5 @@ var searchData=
   ['strong_5fid_3c_20transaction_5fid_2c_20std_3a_3asize_5ft_20_3e',['strong_id&lt; transaction_id, std::size_t &gt;',['../structzk_1_1strong__id.html',1,'zk']]],
   ['strong_5fid_3c_20treal_2c_20std_3a_3aint32_5ft_20_3e',['strong_id&lt; TReal, std::int32_t &gt;',['../structzk_1_1strong__id.html',1,'zk']]],
   ['strong_5fid_3c_20version_2c_20std_3a_3aint32_5ft_20_3e',['strong_id&lt; version, std::int32_t &gt;',['../structzk_1_1strong__id.html',1,'zk']]],
-  ['subprocess',['subprocess',['../classzk_1_1server_1_1detail_1_1subprocess.html',1,'zk::server::detail']]],
   ['system_5ferror',['system_error',['../classzk_1_1system__error.html',1,'zk']]]
 ];

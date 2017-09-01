@@ -48,7 +48,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="modules.html"><span>Modules</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
-      <li><a href="examples.html"><span>Examples</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -176,15 +175,15 @@ $(document).ready(function(){initNavTree('client_8hpp_source.html','');});
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;</div>
 <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    future&lt;void&gt; <a class="code" href="classzk_1_1client.html#a7ea06ca1328a6d1e09b53ef3eb506802">erase</a>(string_view path, <a class="code" href="structzk_1_1version.html">version</a> check = <a class="code" href="structzk_1_1basic__version.html#ad2886aa35fd1834251655e52261f035e">version::any</a>());</div>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    future&lt;void&gt; load_fence() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    future&lt;multi_result&gt; <a class="code" href="classzk_1_1client.html#ae34b4c97f7c9fd09e5d9569e6c47e7ca">commit</a>(<a class="code" href="classzk_1_1multi__op.html">multi_op</a> txn);</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    std::shared_ptr&lt;connection&gt; _conn;</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;};</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;}</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    future&lt;void&gt; <a class="code" href="classzk_1_1client.html#a931607b8758e9961d8f11aec569878fe">load_fence</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    future&lt;multi_result&gt; <a class="code" href="classzk_1_1client.html#ae34b4c97f7c9fd09e5d9569e6c47e7ca">commit</a>(<a class="code" href="classzk_1_1multi__op.html">multi_op</a> txn);</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    std::shared_ptr&lt;connection&gt; _conn;</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;};</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;}</div>
 <div class="ttc" id="results_8hpp_html"><div class="ttname"><a href="results_8hpp.html">results.hpp</a></div><div class="ttdoc">Describes the various result types of client operations. </div></div>
 <div class="ttc" id="optional_8hpp_html"><div class="ttname"><a href="optional_8hpp.html">optional.hpp</a></div><div class="ttdoc">Controls the import of the optional and nullopt_t types, as well as the nullopt constexpr. </div></div>
 <div class="ttc" id="classzk_1_1client_html_ae34b4c97f7c9fd09e5d9569e6c47e7ca"><div class="ttname"><a href="classzk_1_1client.html#ae34b4c97f7c9fd09e5d9569e6c47e7ca">zk::client::commit</a></div><div class="ttdeci">future&lt; multi_result &gt; commit(multi_op txn)</div><div class="ttdoc">Commit the transaction specified by txn. </div><div class="ttdef"><b>Definition:</b> <a href="client_8cpp_source.html#l00140">client.cpp:140</a></div></div>
@@ -196,6 +195,7 @@ $(document).ready(function(){initNavTree('client_8hpp_source.html','');});
 <div class="ttc" id="group__Client_html_ga9f10c37f69a7d1084b08cac07ebb7918"><div class="ttname"><a href="group__Client.html#ga9f10c37f69a7d1084b08cac07ebb7918">zk::create_mode</a></div><div class="ttdeci">create_mode</div><div class="ttdoc">When used in client::set, this value determines how the znode is created on the server. </div><div class="ttdef"><b>Definition:</b> <a href="types_8hpp_source.html#l00252">types.hpp:252</a></div></div>
 <div class="ttc" id="group__Client_html_gga9f10c37f69a7d1084b08cac07ebb7918afea087517c26fadd409bd4b9dc642555"><div class="ttname"><a href="group__Client.html#gga9f10c37f69a7d1084b08cac07ebb7918afea087517c26fadd409bd4b9dc642555">zk::create_mode::normal</a></div><div class="ttdoc">Standard behavior of a znode – the opposite of doing any of the options. </div></div>
 <div class="ttc" id="classzk_1_1client_html_aaf900305a3a57f9707078e2f61db3770"><div class="ttname"><a href="classzk_1_1client.html#aaf900305a3a57f9707078e2f61db3770">zk::client::connect</a></div><div class="ttdeci">static future&lt; client &gt; connect(string_view conn_string)</div><div class="ttdoc">Create a client connected to the cluster specified by conn_string. </div><div class="ttdef"><b>Definition:</b> <a href="client_8cpp_source.html#l00024">client.cpp:24</a></div></div>
+<div class="ttc" id="classzk_1_1client_html_a931607b8758e9961d8f11aec569878fe"><div class="ttname"><a href="classzk_1_1client.html#a931607b8758e9961d8f11aec569878fe">zk::client::load_fence</a></div><div class="ttdeci">future&lt; void &gt; load_fence() const </div><div class="ttdoc">Ensure that all subsequent reads observe the data at the transaction on the server at or past real-ti...</div><div class="ttdef"><b>Definition:</b> <a href="client_8cpp_source.html#l00135">client.cpp:135</a></div></div>
 <div class="ttc" id="classzk_1_1multi__op_html"><div class="ttname"><a href="classzk_1_1multi__op.html">zk::multi_op</a></div><div class="ttdef"><b>Definition:</b> <a href="multi_8hpp_source.html#l00136">multi.hpp:136</a></div></div>
 <div class="ttc" id="future_8hpp_html"><div class="ttname"><a href="future_8hpp.html">future.hpp</a></div><div class="ttdoc">Controls the import of future and promise types. </div></div>
 <div class="ttc" id="string__view_8hpp_html"><div class="ttname"><a href="string__view_8hpp.html">string_view.hpp</a></div><div class="ttdoc">Controls the import of the string_view type. </div></div>

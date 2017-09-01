@@ -1,8 +1,6 @@
 var searchData=
 [
-  ['underlying_5fcause',['underlying_cause',['../classzk_1_1transaction__failed.html#ac0fafad294d24efa4e2837dd4886f581',1,'zk::transaction_failed']]],
-  ['unimplemented',['unimplemented',['../classzk_1_1unimplemented.html',1,'zk']]],
-  ['unknown_5ferror',['unknown_error',['../classzk_1_1unknown__error.html',1,'zk']]],
-  ['unknown_5fsession',['unknown_session',['../classzk_1_1unknown__session.html',1,'zk']]],
-  ['unregister_5fserver',['unregister_server',['../classzk_1_1server_1_1package__registry.html#a63b39522b176f754fdd1d4cfbe5c41fe',1,'zk::server::package_registry']]]
+  ['transaction_5ffailed',['transaction_failed',['../classzk_1_1transaction__failed.html',1,'zk']]],
+  ['transaction_5fid',['transaction_id',['../structzk_1_1transaction__id.html',1,'zk']]],
+  ['type',['type',['../classzk_1_1multi__result_1_1part.html#a94358de184c955fa490c2563c9cf38ff',1,'zk::multi_result::part::type()'],['../classzk_1_1event.html#a3d4d8519e6c2511842072a3f5031dc77',1,'zk::event::type()']]]
 ];

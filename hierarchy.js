@@ -50,8 +50,7 @@ var hierarchy =
             [ "zk::unknown_session", "classzk_1_1unknown__session.html", null ]
           ] ],
           [ "zk::unknown_error", "classzk_1_1unknown__error.html", null ]
-        ] ],
-        [ "zk::server::detail::pipe_closed", "classzk_1_1server_1_1detail_1_1pipe__closed.html", null ]
+        ] ]
       ] ]
     ] ],
     [ "zk::exists_result", "classzk_1_1exists__result.html", null ],
@@ -66,7 +65,6 @@ var hierarchy =
     [ "zk::op", "classzk_1_1op.html", null ],
     [ "zk::server::package_registry", "classzk_1_1server_1_1package__registry.html", null ],
     [ "zk::multi_result::part", "classzk_1_1multi__result_1_1part.html", null ],
-    [ "zk::server::detail::pipe", "classzk_1_1server_1_1detail_1_1pipe.html", null ],
     [ "zk::server::package_registry::registration_info", "structzk_1_1server_1_1package__registry_1_1registration__info.html", null ],
     [ "zk::server::server", "classzk_1_1server_1_1server.html", null ],
     [ "zk::op::set_data", "structzk_1_1op_1_1set__data.html", null ],
@@ -94,7 +92,6 @@ var hierarchy =
         [ "zk::version", "structzk_1_1version.html", null ]
       ] ]
     ] ],
-    [ "zk::server::detail::subprocess", "classzk_1_1server_1_1detail_1_1subprocess.html", null ],
     [ "zk::watch_children_result", "classzk_1_1watch__children__result.html", null ],
     [ "zk::watch_exists_result", "classzk_1_1watch__exists__result.html", null ],
     [ "zk::watch_result", "classzk_1_1watch__result.html", null ]

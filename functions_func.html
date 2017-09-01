@@ -48,7 +48,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="modules.html"><span>Modules</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
-      <li><a href="examples.html"><span>Examples</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -90,6 +89,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="#index_f"><span>f</span></a></li>
       <li><a href="#index_g"><span>g</span></a></li>
       <li><a href="#index_i"><span>i</span></a></li>
+      <li><a href="#index_l"><span>l</span></a></li>
       <li><a href="#index_n"><span>n</span></a></li>
       <li><a href="#index_o"><span>o</span></a></li>
       <li><a href="#index_p"><span>p</span></a></li>
@@ -148,15 +148,6 @@ $(document).ready(function(){initNavTree('functions_func.html','');});
 </li>
 <li>client()
 : <a class="el" href="classzk_1_1client.html#afadb45f36fee021748a4d0096978746f">zk::client</a>
-</li>
-<li>close()
-: <a class="el" href="classzk_1_1server_1_1detail_1_1pipe.html#a4be07ad4c8fbef5f80a3bcabdc225ec1">zk::server::detail::pipe</a>
-</li>
-<li>close_read()
-: <a class="el" href="classzk_1_1server_1_1detail_1_1pipe.html#a9b4ddc67f5acd79ce1ae5fa9ce200a0d">zk::server::detail::pipe</a>
-</li>
-<li>close_write()
-: <a class="el" href="classzk_1_1server_1_1detail_1_1pipe.html#a7a44f0afae4d83825224475c930df472">zk::server::detail::pipe</a>
 </li>
 <li>commit()
 : <a class="el" href="classzk_1_1client.html#ae34b4c97f7c9fd09e5d9569e6c47e7ca">zk::client</a>
@@ -230,13 +221,14 @@ $(document).ready(function(){initNavTree('functions_func.html','');});
 </ul>
 
 
+<h3><a class="anchor" id="index_l"></a>- l -</h3><ul>
+<li>load_fence()
+: <a class="el" href="classzk_1_1client.html#a931607b8758e9961d8f11aec569878fe">zk::client</a>
+</li>
+</ul>
+
+
 <h3><a class="anchor" id="index_n"></a>- n -</h3><ul>
-<li>native_read_handle()
-: <a class="el" href="classzk_1_1server_1_1detail_1_1pipe.html#a90cbaae6fecd9e5b646f25e3b3003904">zk::server::detail::pipe</a>
-</li>
-<li>native_write_handle()
-: <a class="el" href="classzk_1_1server_1_1detail_1_1pipe.html#aa6b4e55172caac866e86894a55ca5c81">zk::server::detail::pipe</a>
-</li>
 <li>next()
 : <a class="el" href="classzk_1_1watch__children__result.html#af599d1a0f0955c9e48acf1ad545d9633">zk::watch_children_result</a>
 , <a class="el" href="classzk_1_1watch__exists__result.html#a5997dfd2c6253a40caba2d8911d8bf82">zk::watch_exists_result</a>
@@ -259,16 +251,10 @@ $(document).ready(function(){initNavTree('functions_func.html','');});
 <li>permissions()
 : <a class="el" href="classzk_1_1acl__rule.html#abca592d33d047f5a96f55b83238b3d7b">zk::acl_rule</a>
 </li>
-<li>pipe()
-: <a class="el" href="classzk_1_1server_1_1detail_1_1pipe.html#a6a12e145a29a1159f47a27bea2f2027f">zk::server::detail::pipe</a>
-</li>
 </ul>
 
 
 <h3><a class="anchor" id="index_r"></a>- r -</h3><ul>
-<li>read()
-: <a class="el" href="classzk_1_1server_1_1detail_1_1pipe.html#af9ce7c843267e908f7cb833fab87b847">zk::server::detail::pipe</a>
-</li>
 <li>read_unsafe()
 : <a class="el" href="classzk_1_1acls.html#aecbb4d41a7ea06477f3e6d92e254a1aa">zk::acls</a>
 </li>
@@ -292,17 +278,11 @@ $(document).ready(function(){initNavTree('functions_func.html','');});
 <li>set_acl()
 : <a class="el" href="classzk_1_1client.html#a448da87bda74a24a3fe1df90021558af">zk::client</a>
 </li>
-<li>signal()
-: <a class="el" href="classzk_1_1server_1_1detail_1_1subprocess.html#a4bfc00af0109d9d1dbf79175d71cb635">zk::server::detail::subprocess</a>
-</li>
 <li>size()
 : <a class="el" href="classzk_1_1server_1_1package__registry.html#a89823c7c5d52cab49db9252dd4ac0ac7">zk::server::package_registry</a>
 </li>
 <li>state()
 : <a class="el" href="classzk_1_1event.html#ad0aa32a655a3a3a4173492ca1746cb2c">zk::event</a>
-</li>
-<li>subsume_write()
-: <a class="el" href="classzk_1_1server_1_1detail_1_1pipe.html#a91e4fe83bd51048e394908dbda5b0ab4">zk::server::detail::pipe</a>
 </li>
 </ul>
 
@@ -337,9 +317,6 @@ $(document).ready(function(){initNavTree('functions_func.html','');});
 </li>
 <li>watch_state()
 : <a class="el" href="classzk_1_1connection.html#af74f4dacf3a350c3d5b782d08a0d4366">zk::connection</a>
-</li>
-<li>write()
-: <a class="el" href="classzk_1_1server_1_1detail_1_1pipe.html#aa99622fc4e731832178db1adc2828526">zk::server::detail::pipe</a>
 </li>
 </ul>
 </div><!-- contents -->

@@ -3,9 +3,6 @@ var NAVTREEINDEX0 =
 ".html":[1,0,0],
 ".html":[1,0,1],
 ".html":[1,0,1,0],
-".html":[1,0,1,0,0],
-"Client-example.html":[3,1],
-"_2home_2travis_2build_2tgockel_2zookeeper-cpp_2src_2zk_2server_2detail_2pipe_8hpp-example.html":[3,0],
 "acl_8cpp_source.html":[2,0,0,1],
 "acl_8hpp_source.html":[2,0,0,2],
 "annotated.html":[1,0],
@@ -249,5 +246,8 @@ var NAVTREEINDEX0 =
 "classzk_1_1no__node.html#a60ba1faa9a09ff5c4d67b5bc73543be6":[0,0,20,0],
 "classzk_1_1no__response.html":[0,0,31],
 "classzk_1_1no__response.html#a1c9d0fcac0e618bfd9ef1471fe419476":[0,0,31,0],
-"classzk_1_1no__response.html#a4e620093c0dc7b50c48e8c281517e478":[0,0,31,1]
+"classzk_1_1no__response.html#a4e620093c0dc7b50c48e8c281517e478":[0,0,31,1],
+"classzk_1_1no__watcher.html":[0,0,35],
+"classzk_1_1no__watcher.html#a07f5f232df35abde61298ed061ed2292":[0,0,35,1],
+"classzk_1_1no__watcher.html#a35bf40eed384f135222d1e0dc9fcd40c":[0,0,35,0]
 };

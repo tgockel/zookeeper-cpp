@@ -7,11 +7,6 @@ var annotated =
     ] ],
     [ "zk", null, [
       [ "server", null, [
-        [ "detail", null, [
-          [ "pipe", "classzk_1_1server_1_1detail_1_1pipe.html", "classzk_1_1server_1_1detail_1_1pipe" ],
-          [ "pipe_closed", "classzk_1_1server_1_1detail_1_1pipe__closed.html", "classzk_1_1server_1_1detail_1_1pipe__closed" ],
-          [ "subprocess", "classzk_1_1server_1_1detail_1_1subprocess.html", "classzk_1_1server_1_1detail_1_1subprocess" ]
-        ] ],
         [ "package_registry", "classzk_1_1server_1_1package__registry.html", "classzk_1_1server_1_1package__registry" ],
         [ "server", "classzk_1_1server_1_1server.html", "classzk_1_1server_1_1server" ]
       ] ],

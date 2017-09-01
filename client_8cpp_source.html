@@ -48,7 +48,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="modules.html"><span>Modules</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
-      <li><a href="examples.html"><span>Examples</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -239,7 +238,7 @@ $(document).ready(function(){initNavTree('client_8cpp_source.html','');});
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    <span class="keywordflow">return</span> _conn-&gt;erase(path, check);</div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;}</div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;future&lt;void&gt; client::load_fence()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00135"></a><span class="lineno"><a class="line" href="classzk_1_1client.html#a931607b8758e9961d8f11aec569878fe">  135</a></span>&#160;future&lt;void&gt; <a class="code" href="classzk_1_1client.html#a931607b8758e9961d8f11aec569878fe">client::load_fence</a>()<span class="keyword"> const</span></div>
 <div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="keyword"></span>{</div>
 <div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    <span class="keywordflow">return</span> _conn-&gt;load_fence();</div>
 <div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;}</div>
@@ -260,6 +259,7 @@ $(document).ready(function(){initNavTree('client_8cpp_source.html','');});
 <div class="ttc" id="group__Client_html_ga9f10c37f69a7d1084b08cac07ebb7918"><div class="ttname"><a href="group__Client.html#ga9f10c37f69a7d1084b08cac07ebb7918">zk::create_mode</a></div><div class="ttdeci">create_mode</div><div class="ttdoc">When used in client::set, this value determines how the znode is created on the server. </div><div class="ttdef"><b>Definition:</b> <a href="types_8hpp_source.html#l00252">types.hpp:252</a></div></div>
 <div class="ttc" id="classzk_1_1client_html_aaf900305a3a57f9707078e2f61db3770"><div class="ttname"><a href="classzk_1_1client.html#aaf900305a3a57f9707078e2f61db3770">zk::client::connect</a></div><div class="ttdeci">static future&lt; client &gt; connect(string_view conn_string)</div><div class="ttdoc">Create a client connected to the cluster specified by conn_string. </div><div class="ttdef"><b>Definition:</b> <a href="client_8cpp_source.html#l00024">client.cpp:24</a></div></div>
 <div class="ttc" id="classzk_1_1acls_html_ad3f828c2a71a2ad7c213a51da7663414"><div class="ttname"><a href="classzk_1_1acls.html#ad3f828c2a71a2ad7c213a51da7663414">zk::acls::open_unsafe</a></div><div class="ttdeci">static const acl &amp; open_unsafe()</div><div class="ttdoc">This is a completely open ACL. </div><div class="ttdef"><b>Definition:</b> <a href="acl_8cpp_source.html#l00161">acl.cpp:161</a></div></div>
+<div class="ttc" id="classzk_1_1client_html_a931607b8758e9961d8f11aec569878fe"><div class="ttname"><a href="classzk_1_1client.html#a931607b8758e9961d8f11aec569878fe">zk::client::load_fence</a></div><div class="ttdeci">future&lt; void &gt; load_fence() const </div><div class="ttdoc">Ensure that all subsequent reads observe the data at the transaction on the server at or past real-ti...</div><div class="ttdef"><b>Definition:</b> <a href="client_8cpp_source.html#l00135">client.cpp:135</a></div></div>
 <div class="ttc" id="group__Client_html_gga8954c7138ce0280422d42d02b3d951eaa06aa6fa8bdc2078e7e1bd903e70c8f6a"><div class="ttname"><a href="group__Client.html#gga8954c7138ce0280422d42d02b3d951eaa06aa6fa8bdc2078e7e1bd903e70c8f6a">zk::state::connected</a></div><div class="ttdoc">The client is in the connected state – it is connected to a server in the ensemble (one of the serve...</div></div>
 <div class="ttc" id="classzk_1_1multi__op_html"><div class="ttname"><a href="classzk_1_1multi__op.html">zk::multi_op</a></div><div class="ttdef"><b>Definition:</b> <a href="multi_8hpp_source.html#l00136">multi.hpp:136</a></div></div>
 <div class="ttc" id="classzk_1_1client_html_a26fb59acdde99cbe1c34a239dc6d2d5d"><div class="ttname"><a href="classzk_1_1client.html#a26fb59acdde99cbe1c34a239dc6d2d5d">zk::client::get_acl</a></div><div class="ttdeci">future&lt; get_acl_result &gt; get_acl(string_view path) const </div><div class="ttdoc">Return the ACL and stat of the node of the given path. </div><div class="ttdef"><b>Definition:</b> <a href="client_8cpp_source.html#l00120">client.cpp:120</a></div></div>
