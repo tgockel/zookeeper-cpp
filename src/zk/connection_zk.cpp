@@ -874,7 +874,7 @@ future<void> connection_zk::load_fence()
     }
 }
 
-void connection_zk::on_session_event_raw(ptr<zhandle_t>  handle,
+void connection_zk::on_session_event_raw(ptr<zhandle_t>  handle      [[gnu::unused]],
                                          int             ev_type,
                                          int             state,
                                          ptr<const char> path_ptr,
