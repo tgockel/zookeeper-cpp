@@ -101,7 +101,9 @@ function(build_module)
   endforeach()
 
   list_split(library_test_cpps library_cpps "${all_library_cpps}" "_tests.cpp")
-  list_split(library_test_hpps library_hpps "${all_library_hpps}" "_tests.hpp")
+  list_split(library_test_hpps library_notest_hpps "${all_library_hpps}" "_tests.hpp")
+  list_split(library_detail_hpps library_hpps "${library_notest_hpps}" "detail")
+  list(APPEND library_cpps ${library_detail_hpps})
   set(MODULE_TARGETS)
 
   if(main_name)
@@ -137,18 +139,18 @@ function(build_module)
   if(library_test_cpps)
     list(LENGTH library_test_cpps library_test_cpps_length)
     message(STATUS "  + test library (${library_test_cpps_length})")
-    list(APPEND MODULE_TARGETS ${MODULE_NAME}__tests)
-    add_library(${MODULE_NAME}__tests SHARED ${library_test_cpps})
-    set_target_properties(${MODULE_NAME}__tests
+    list(APPEND MODULE_TARGETS ${MODULE_NAME}_tests)
+    add_library(${MODULE_NAME}_tests SHARED ${library_test_cpps})
+    set_target_properties(${MODULE_NAME}_tests
                           PROPERTIES
                               SOVERSION ${PROJECT_SO_VERSION}
                               VERSION   ${PROJECT_SO_VERSION}
                          )
-    target_link_libraries(${MODULE_NAME}__tests zkpp_tests)
+    target_link_libraries(${MODULE_NAME}_tests zkpp-tests)
     if(library_cpps)
-      target_link_libraries(${MODULE_NAME}__tests ${MODULE_NAME})
+      target_link_libraries(${MODULE_NAME}_tests ${MODULE_NAME})
     endif()
-    target_link_libraries(zkpp_tests_prog ${MODULE_NAME}__tests)
+    target_link_libraries(zkpp-tests_prog ${MODULE_NAME}_tests)
   endif()
 
   if(MODULE_PROTOTYPE)

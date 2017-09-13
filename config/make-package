@@ -16,3 +16,8 @@ cmake .. -DZKPP_PACKAGE_SYSTEM=DEB -DCMAKE_BUILD_TYPE=Release
 make VERBOSE=1
 make test
 make package
+
+for debfile in $(ls ${BUILD_DIR}/install/*.deb); do
+  echo "PACKAGE $debfile"
+  dpkg --contents $debfile
+done

@@ -1,0 +1,10 @@
+Package: libzkpp-server@PROJECT_SO_VERSION@-dev
+Version: @PROJECT_PACKAGE_VERSION@
+Priority: optional
+Maintainer: Travis Gockel <travis@gockelhut.com>
+Architecture: all
+Section: libdevel
+Depends: libzkpp@PROJECT_SO_VERSION@-dev (= @PROJECT_PACKAGE_VERSION@),
+         libzkpp-server@PROJECT_SO_VERSION@ (= @PROJECT_PACKAGE_VERSION@)
+Description: development files for zkpp_server@PROJECT_SO_VERSION@
+ Control a ZooKeeper Java process on a single machine.

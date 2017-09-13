@@ -1,0 +1,10 @@
+Package: libzkpp-server@PROJECT_SO_VERSION@
+Version: @PROJECT_PACKAGE_VERSION@
+Priority: optional
+Maintainer: Travis Gockel <travis@gockelhut.com>
+Architecture: @PROJECT_BUILD_ARCHITECTURE@
+Section: libs
+Depends: libzkpp@PROJECT_SO_VERSION@ (= @PROJECT_PACKAGE_VERSION@)
+Build-Depends: debhelper (>= 9), cmake (>= 3.5)
+Homepage: https://tgockel.github.io/zookeeper-cpp/
+Description: Control a ZooKeeper Java process on a single machine.

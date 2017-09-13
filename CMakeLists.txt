@@ -159,7 +159,7 @@ endif()
 # Building                                                                     #
 ################################################################################
 
-build_module(NAME zkpp_tests
+build_module(NAME zkpp-tests
              PATH src/zk/tests
              LINK_LIBRARIES
                ${gtest_LIBRARIES}
@@ -172,13 +172,13 @@ build_module(NAME zkpp
                ${zookeeper_LIBRARIES}
             )
 
-build_module(NAME zkpp_server
+build_module(NAME zkpp-server
              PATH src/zk/server
              LINK_LIBRARIES
                zkpp
             )
 
-target_link_libraries(zkpp__tests zkpp_server zkpp_server__tests)
+target_link_libraries(zkpp_tests zkpp-server zkpp-server_tests)
 
 ################################################################################
 # ZooKeeper Server Testing                                                     #
@@ -190,7 +190,7 @@ foreach(server_version IN LISTS ZKPP_SERVER_VERSIONS)
                        )
   set(generated_cpp "${CMAKE_CURRENT_BINARY_DIR}/generated/src/zk/server/classpath_registration_${server_version}.cpp")
   configure_file(src/zk/server/classpath_registration_template.cpp.in "${generated_cpp}" @ONLY)
-  target_sources(zkpp_server__tests PRIVATE "${generated_cpp}")
+  target_sources(zkpp-server_tests PRIVATE "${generated_cpp}")
 endforeach()
 
 ################################################################################
@@ -198,10 +198,10 @@ endforeach()
 ################################################################################
 
 add_custom_target(test
-                  COMMAND $<TARGET_FILE:zkpp_tests_prog>
+                  COMMAND $<TARGET_FILE:zkpp-tests_prog>
                           "--gtest_output=xml:test-results.xml"
                           "--gtest_death_test_style=threadsafe"
-                  DEPENDS zkpp_tests_prog
+                  DEPENDS zkpp-tests_prog
                   BYPRODUCTS test-results.xml
                   USES_TERMINAL
                  )
@@ -210,12 +210,12 @@ add_custom_target(test
 add_custom_target(gdbtest
                   COMMAND "gdb"
                           "-args"
-                          $<TARGET_FILE:zkpp_tests_prog>
+                          $<TARGET_FILE:zkpp-tests_prog>
                           "--gtest_output=xml:test-results-gdb.xml"
                           "--gtest_death_test_style=threadsafe"
                           "--gtest_break_on_failure=1"
                           "--gtest_catch_exceptions=0"
-                  DEPENDS zkpp_tests_prog
+                  DEPENDS zkpp-tests_prog
                   BYPRODUCTS test-results-gdb.xml
                   USES_TERMINAL
                  )
@@ -224,7 +224,7 @@ if(ZKPP_BUILD_OPTION_CODE_COVERAGE)
   include(CodeCoverage)
 
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fprofile-arcs -ftest-coverage")
-  setup_target_for_coverage(test-coverage zkpp_tests_prog coverage "--gtest_death_test_style=threadsafe")
+  setup_target_for_coverage(test-coverage zkpp-tests_prog coverage "--gtest_death_test_style=threadsafe")
 endif()
 
 ################################################################################
@@ -247,62 +247,61 @@ if(ZKPP_PACKAGE_SYSTEM)
   endif()
 
   set(all_packages)
-  foreach(module zkpp)
+  foreach(module zkpp zkpp-server)
     message(STATUS "  ${module}:")
+    set(package_name ${module})
+    string(REGEX REPLACE "-"  "/" header_path "${module}")
+    string(REGEX REPLACE "pp" ""  header_path "${header_path}")
 
     if(ZKPP_PACKAGE_SYSTEM STREQUAL "DEB")
-      if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/install/deb/lib${module}")
-        message(STATUS "    lib${module}")
-        configure_file("${CMAKE_CURRENT_SOURCE_DIR}/install/deb/lib${module}/control.in"
-                       "${CMAKE_CURRENT_BINARY_DIR}/install/lib${module}${PROJECT_SO_VERSION}/DEBIAN/control"
+      if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/install/deb/lib${package_name}")
+        message(STATUS "    lib${package_name}")
+        configure_file("${CMAKE_CURRENT_SOURCE_DIR}/install/deb/lib${package_name}/control.in"
+                       "${CMAKE_CURRENT_BINARY_DIR}/install/lib${package_name}${PROJECT_SO_VERSION}/DEBIAN/control"
                        @ONLY IMMEDIATE
                       )
-        add_custom_target("lib${module}.deb"
-                          BYPRODUCTS "install/lib${module}${PROJECT_SO_VERSION}.deb"
-                          COMMAND mkdir -p "install/lib${module}${PROJECT_SO_VERSION}/usr/local/lib"
-                          COMMAND cp "$<TARGET_FILE:${module}>" "install/lib${module}${PROJECT_SO_VERSION}/usr/local/lib"
-                          COMMAND dpkg --build "install/lib${module}${PROJECT_SO_VERSION}"
+        if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/install/deb/lib${package_name}/postinst.in")
+          configure_file("${CMAKE_CURRENT_SOURCE_DIR}/install/deb/lib${package_name}/postinst.in"
+                         "${CMAKE_CURRENT_BINARY_DIR}/intermediate/lib${package_name}${PROJECT_SO_VERSION}/DEBIAN/postinst"
+                         @ONLY IMMEDIATE
+                        )
+          file(COPY "${CMAKE_CURRENT_BINARY_DIR}/intermediate/lib${package_name}${PROJECT_SO_VERSION}/DEBIAN/postinst"
+               DESTINATION "${CMAKE_CURRENT_BINARY_DIR}/install/lib${package_name}${PROJECT_SO_VERSION}/DEBIAN"
+               FILE_PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE
+              )
+        endif()
+
+        add_custom_target("lib${package_name}.deb"
+                          BYPRODUCTS "install/lib${package_name}${PROJECT_SO_VERSION}.deb"
+                          COMMAND rm -rf "install/lib${package_name}${PROJECT_SO_VERSION}/usr/local/lib"
+                          COMMAND mkdir -p "install/lib${package_name}${PROJECT_SO_VERSION}/usr/local/lib"
+                          COMMAND cp "$<TARGET_FILE:${module}>" "install/lib${package_name}${PROJECT_SO_VERSION}/usr/local/lib"
+                          COMMAND dpkg --build "install/lib${package_name}${PROJECT_SO_VERSION}"
                           DEPENDS
-                            "${CMAKE_CURRENT_BINARY_DIR}/install/lib${module}${PROJECT_SO_VERSION}/DEBIAN/control"
+                            "${CMAKE_CURRENT_BINARY_DIR}/install/lib${package_name}${PROJECT_SO_VERSION}/DEBIAN/control"
                             ${module}
                           )
-        list(APPEND all_packages "lib${module}.deb")
+        list(APPEND all_packages "lib${package_name}.deb")
       endif()
 
-      if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/install/deb/lib${module}-dev")
-        message(STATUS "    lib${module}-dev")
-        configure_file("${CMAKE_CURRENT_SOURCE_DIR}/install/deb/lib${module}-dev/control.in"
-                       "${CMAKE_CURRENT_BINARY_DIR}/install/lib${module}${PROJECT_SO_VERSION}-dev/DEBIAN/control"
+      if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/install/deb/lib${package_name}-dev")
+        message(STATUS "    lib${package_name}-dev")
+        set(staging_dir "install/lib${package_name}${PROJECT_SO_VERSION}-dev/usr/local/include/${header_path}")
+        configure_file("${CMAKE_CURRENT_SOURCE_DIR}/install/deb/lib${package_name}-dev/control.in"
+                       "${CMAKE_CURRENT_BINARY_DIR}/install/lib${package_name}${PROJECT_SO_VERSION}-dev/DEBIAN/control"
                        @ONLY IMMEDIATE
                       )
-        add_custom_target("lib${module}-dev.deb"
-                          BYPRODUCTS "install/lib${module}${PROJECT_SO_VERSION}-dev.deb"
-                          COMMAND mkdir -p "install/lib${module}${PROJECT_SO_VERSION}-dev/usr/local/include/zk"
-                          COMMAND cp -t "install/lib${module}${PROJECT_SO_VERSION}-dev/usr/local/include/zk" ${${module}_LIBRARY_HEADERS}
-                          COMMAND dpkg --build "install/lib${module}${PROJECT_SO_VERSION}-dev"
+        add_custom_target("lib${package_name}-dev.deb"
+                          BYPRODUCTS "install/lib${package_name}${PROJECT_SO_VERSION}-dev.deb"
+                          COMMAND rm -rf "${staging_dir}"
+                          COMMAND mkdir -p "${staging_dir}"
+                          COMMAND cp -t "${staging_dir}" ${${module}_LIBRARY_HEADERS}
+                          COMMAND dpkg --build "install/lib${package_name}${PROJECT_SO_VERSION}-dev"
                           DEPENDS
-                            "${CMAKE_CURRENT_BINARY_DIR}/install/lib${module}${PROJECT_SO_VERSION}-dev/DEBIAN/control"
+                            "${CMAKE_CURRENT_BINARY_DIR}/install/lib${package_name}${PROJECT_SO_VERSION}-dev/DEBIAN/control"
                             ${${module}_LIBRARY_HEADERS}
                          )
-        list(APPEND all_packages "lib${module}-dev.deb")
-      endif()
-
-      if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/install/deb/lib${module}-src")
-        message(STATUS "    lib${module}-src")
-        configure_file("${CMAKE_CURRENT_SOURCE_DIR}/install/deb/lib${module}-src/control.in"
-                       "${CMAKE_CURRENT_BINARY_DIR}/install/lib${module}${PROJECT_SO_VERSION}-src/DEBIAN/control"
-                       @ONLY IMMEDIATE
-                      )
-        add_custom_target("lib${module}-src.deb"
-                          BYPRODUCTS "install/lib${module}${PROJECT_SO_VERSION}-src.deb"
-                          COMMAND mkdir -p "install/lib${module}${PROJECT_SO_VERSION}-dev/usr/local/include/zk"
-                          COMMAND cp -t "install/lib${module}${PROJECT_SO_VERSION}-dev/usr/local/include/zk" ${${module}_LIBRARY_SOURCES}
-                          COMMAND dpkg --build "install/lib${module}${PROJECT_SO_VERSION}-src"
-                          DEPENDS
-                            "${CMAKE_CURRENT_BINARY_DIR}/install/lib${module}${PROJECT_SO_VERSION}-src/DEBIAN/control"
-                            ${${module}_LIBRARY_SOURCES}
-                         )
-        list(APPEND all_packages "lib${module}-src.deb")
+        list(APPEND all_packages "lib${package_name}-dev.deb")
       endif()
     else()
       message(FATAL_ERROR "Unknown ZKPP_PACKAGE_SYSTEM=${ZKPP_PACKAGE_SYSTEM}")

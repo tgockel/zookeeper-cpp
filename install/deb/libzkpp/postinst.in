@@ -1,0 +1,3 @@
+#!/bin/sh -e
+
+update-alternatives --install /usr/local/lib/libzkpp.so libzkpp /usr/local/lib/libzkpp.so.@PROJECT_SO_VERSION@ 10
