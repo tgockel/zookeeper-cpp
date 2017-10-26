@@ -58,3 +58,14 @@ Developing
 6. Watch your tests pass for all environments in TravisCI.
 7. Issue a pull request from your branch to the master branch of the main repository.
 8. Close the branch in your repository (not actually required, but clean repos are nice).
+
+Sign Your Commits
+"""""""""""""""""
+
+When committing code, please `sign commits with GPG <https://help.github.com/articles/signing-commits-using-gpg/>`_.
+This lets me know that work submitted by you was really created by you (security or something like that).
+If you always want to sign commits instead of specifying ``-S`` on the command line every time, add it to your global
+configuration::
+
+    $> git config --global user.signingkey ${YOUR_KEY_ID}
+    $> git config --global commit.gpgsign true
