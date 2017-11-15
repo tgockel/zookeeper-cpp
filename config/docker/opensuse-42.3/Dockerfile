@@ -16,8 +16,6 @@ RUN zypper install -y       \
     lcov                    \
     libzookeeper2-devel
 
-# There's probably a better way to do this...
-RUN rm -f /usr/bin/c++
-RUN ln -s /usr/bin/g++-7 /usr/bin/c++
+RUN update-alternatives --install /usr/bin/c++ c++ /usr/bin/g++-7 99
 
 CMD ["/root/zookeeper-cpp/config/run-tests"]

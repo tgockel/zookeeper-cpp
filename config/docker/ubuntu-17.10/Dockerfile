@@ -14,6 +14,6 @@ RUN apt-get install --yes   \
     libgtest-dev            \
     libzookeeper-mt-dev
 
-RUN update-alternatives --install /usr/bin/c++ c++ /usr/bin/g++-7 1
+RUN update-alternatives --install /usr/bin/c++ c++ /usr/bin/g++-7 99
 
 CMD ["/root/zookeeper-cpp/config/run-tests"]
