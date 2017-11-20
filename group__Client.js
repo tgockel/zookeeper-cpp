@@ -72,8 +72,25 @@ var group__Client =
       [ "watch_exists", "classzk_1_1connection.html#a15f9e6570b2232a6e3b2d9c7b61b25d0", null ],
       [ "watch_state", "classzk_1_1connection.html#af74f4dacf3a350c3d5b782d08a0d4366", null ]
     ] ],
+    [ "connection_params", "classzk_1_1connection__params.html", [
+      [ "host_list", "classzk_1_1connection__params.html#ae285f63a9e94330e6d5299de3babbf33", null ],
+      [ "connection_params", "classzk_1_1connection__params.html#a6b5478ba86ab687e5e6ac473f2a7d9a1", null ],
+      [ "~connection_params", "classzk_1_1connection__params.html#a2bcdfb820c87f178c8d3ec7d6c1f9db7", null ],
+      [ "chroot", "classzk_1_1connection__params.html#a83bfb8cc8f46b37e3f742692e247471a", null ],
+      [ "chroot", "classzk_1_1connection__params.html#a6336ff354135e2e5d9dd032797b3f447", null ],
+      [ "connection_schema", "classzk_1_1connection__params.html#a36c08bc22f334899f9b67f54835b2ff9", null ],
+      [ "connection_schema", "classzk_1_1connection__params.html#a39bcf7306afe4c6243431b55eaf9b776", null ],
+      [ "hosts", "classzk_1_1connection__params.html#a268bd04c66cf57925cd0c8f8c6f494fb", null ],
+      [ "hosts", "classzk_1_1connection__params.html#a23a9eb878d804455b68f5dadd32b5773", null ],
+      [ "randomize_hosts", "classzk_1_1connection__params.html#a7f39e4fa44b7e296bb080e0b8197bf48", null ],
+      [ "randomize_hosts", "classzk_1_1connection__params.html#a7a665bd059664f9342068c039b04f16a", null ],
+      [ "read_only", "classzk_1_1connection__params.html#a67d40eb90d97a75ad4fbbf0707e53091", null ],
+      [ "read_only", "classzk_1_1connection__params.html#a3e2b7b4521a034faff461c410be27d2f", null ],
+      [ "timeout", "classzk_1_1connection__params.html#acad9dbded7ce103c4621a45092ca16a3", null ],
+      [ "timeout", "classzk_1_1connection__params.html#a3ee37e584d47c8470ca9911451f4b6e5", null ]
+    ] ],
     [ "connection_zk", "classzk_1_1connection__zk.html", [
-      [ "connection_zk", "classzk_1_1connection__zk.html#ad905b26a406a0f663207954107b88ee1", null ],
+      [ "connection_zk", "classzk_1_1connection__zk.html#a4322745703e6425e0011195da001a5b6", null ],
       [ "~connection_zk", "classzk_1_1connection__zk.html#aa8127623089df82a6c92334a7deaabd7", null ],
       [ "close", "classzk_1_1connection__zk.html#aa1f058f4af17fc843746788e58feae0e", null ],
       [ "commit", "classzk_1_1connection__zk.html#a971ba34808a85a71a8d22cc985869da7", null ],

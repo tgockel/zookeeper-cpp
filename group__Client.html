@@ -126,6 +126,9 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1connection.html">zk::connection</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1connection__params.html">zk::connection_params</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Used to specify parameters for a <code>connection</code>.  <a href="classzk_1_1connection__params.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1connection__zk.html">zk::connection_zk</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1error.html">zk::error</a></td></tr>
@@ -485,6 +488,18 @@ std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>zk::ope
 <tr class="memitem:ga22d18132e66bc04a5ce09e354f4170f0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga22d18132e66bc04a5ce09e354f4170f0"></a>
 std::string&#160;</td><td class="memItemRight" valign="bottom"><b>zk::to_string</b> (const acl &amp;self)</td></tr>
 <tr class="separator:ga22d18132e66bc04a5ce09e354f4170f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7a7d11e9241e85f2110f5eb6d9ad87ee"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga7a7d11e9241e85f2110f5eb6d9ad87ee"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>zk::operator==</b> (const connection_params &amp;lhs, const connection_params &amp;rhs)</td></tr>
+<tr class="separator:ga7a7d11e9241e85f2110f5eb6d9ad87ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1f48bbbe1de252bdb466b685ac5bfe19"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga1f48bbbe1de252bdb466b685ac5bfe19"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>zk::operator!=</b> (const connection_params &amp;lhs, const connection_params &amp;rhs)</td></tr>
+<tr class="separator:ga1f48bbbe1de252bdb466b685ac5bfe19"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac7e3e2f2814aa5a2afc1582c0fa92d7e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gac7e3e2f2814aa5a2afc1582c0fa92d7e"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>zk::to_string</b> (const connection_params &amp;x)</td></tr>
+<tr class="separator:gac7e3e2f2814aa5a2afc1582c0fa92d7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabd426bcd339b4edf6444e6cb2f3e954d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gabd426bcd339b4edf6444e6cb2f3e954d"></a>
+std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>zk::operator&lt;&lt;</b> (std::ostream &amp;os, const connection_params &amp;x)</td></tr>
+<tr class="separator:gabd426bcd339b4edf6444e6cb2f3e954d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga21261607e808913fcce15da1e7f0caf8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga21261607e808913fcce15da1e7f0caf8"></a>
 std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>zk::operator&lt;&lt;</b> (std::ostream &amp;os, const error_code &amp;code)</td></tr>
 <tr class="separator:ga21261607e808913fcce15da1e7f0caf8"><td class="memSeparator" colspan="2">&#160;</td></tr>

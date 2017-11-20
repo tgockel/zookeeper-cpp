@@ -23,6 +23,7 @@ var annotated =
       [ "closing", "classzk_1_1closing.html", "classzk_1_1closing" ],
       [ "connection", "classzk_1_1connection.html", "classzk_1_1connection" ],
       [ "connection_loss", "classzk_1_1connection__loss.html", "classzk_1_1connection__loss" ],
+      [ "connection_params", "classzk_1_1connection__params.html", "classzk_1_1connection__params" ],
       [ "connection_zk", "classzk_1_1connection__zk.html", "classzk_1_1connection__zk" ],
       [ "connection_zk_commit_completer", "structzk_1_1connection__zk__commit__completer.html", "structzk_1_1connection__zk__commit__completer" ],
       [ "create_result", "classzk_1_1create__result.html", "classzk_1_1create__result" ],

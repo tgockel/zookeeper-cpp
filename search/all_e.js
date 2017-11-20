@@ -1,7 +1,8 @@
 var searchData=
 [
+  ['randomize_5fhosts',['randomize_hosts',['../classzk_1_1connection__params.html#a7f39e4fa44b7e296bb080e0b8197bf48',1,'zk::connection_params']]],
   ['read',['read',['../group__Client.html#gga75dfaeeb3b2f4e1588380b3bf68ecc08aecae13117d6f0584c25a9da6c8f8415e',1,'zk']]],
-  ['read_5fonly',['read_only',['../group__Client.html#gga8954c7138ce0280422d42d02b3d951eaabefe72871b2de8f4f0e20108517e31fe',1,'zk']]],
+  ['read_5fonly',['read_only',['../classzk_1_1connection__params.html#a67d40eb90d97a75ad4fbbf0707e53091',1,'zk::connection_params::read_only()'],['../group__Client.html#gga8954c7138ce0280422d42d02b3d951eaabefe72871b2de8f4f0e20108517e31fe',1,'zk::read_only()']]],
   ['read_5funsafe',['read_unsafe',['../classzk_1_1acls.html#aecbb4d41a7ea06477f3e6d92e254a1aa',1,'zk::acls']]],
   ['reconfiguration_5fdisabled',['reconfiguration_disabled',['../classzk_1_1reconfiguration__disabled.html',1,'zk']]],
   ['reconfiguration_5fin_5fprogress',['reconfiguration_in_progress',['../classzk_1_1reconfiguration__in__progress.html',1,'zk']]],

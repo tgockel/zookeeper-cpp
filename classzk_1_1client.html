@@ -219,7 +219,12 @@ Static Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Create a client connected to the cluster specified by <code>conn_string</code>. </p>
-<p>See <code>connection::connect</code> for documentation on connection strings. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">conn_string</td><td>A ZooKeeper <a class="el" href="classzk_1_1connection__params.html#ConnectionStrings">connection string</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p>Definition at line <a class="el" href="client_8cpp_source.html#l00016">16</a> of file <a class="el" href="client_8cpp_source.html">client.cpp</a>.</p>
 
@@ -305,7 +310,12 @@ Static Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Create a client connected to the cluster specified by <code>conn_string</code>. </p>
-<p>See <code>connection::connect</code> for documentation on connection strings.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">conn_string</td><td>A ZooKeeper <a class="el" href="classzk_1_1connection__params.html#ConnectionStrings">connection string</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section return"><dt>Returns</dt><dd>A future which will be filled when the conneciton is established. The future will be filled in error if the client will never be able to connect to the cluster (for example: a bad connection string). </dd></dl>
 
 <p>Definition at line <a class="el" href="client_8cpp_source.html#l00024">24</a> of file <a class="el" href="client_8cpp_source.html">client.cpp</a>.</p>

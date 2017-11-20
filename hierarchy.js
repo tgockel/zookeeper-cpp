@@ -8,6 +8,7 @@ var hierarchy =
     [ "zk::connection", "classzk_1_1connection.html", [
       [ "zk::connection_zk", "classzk_1_1connection__zk.html", null ]
     ] ],
+    [ "zk::connection_params", "classzk_1_1connection__params.html", null ],
     [ "zk::connection_zk_commit_completer", "structzk_1_1connection__zk__commit__completer.html", null ],
     [ "zk::op::create_data", "structzk_1_1op_1_1create__data.html", null ],
     [ "zk::create_result", "classzk_1_1create__result.html", null ],
