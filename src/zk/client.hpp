@@ -29,17 +29,18 @@ class client final
 public:
     client() noexcept;
 
-    /** Create a client connected to the cluster specified by \c conn_string. See \c connection::connect for
-     *  documentation on connection strings.
+    /** Create a client connected to the cluster specified by \c conn_string.
+     *
+     *  \param conn_string A ZooKeeper \ref ConnectionStrings "connection string".
     **/
     explicit client(string_view conn_string);
 
     /** Create a client connected with \a conn. **/
     explicit client(std::shared_ptr<connection> conn) noexcept;
 
-    /** Create a client connected to the cluster specified by \c conn_string. See \c connection::connect for
-     *  documentation on connection strings.
+    /** Create a client connected to the cluster specified by \c conn_string.
      *
+     *  \param conn_string A ZooKeeper \ref ConnectionStrings "connection string".
      *  \returns A future which will be filled when the conneciton is established. The future will be filled in error if
      *   the client will never be able to connect to the cluster (for example: a bad connection string).
     **/

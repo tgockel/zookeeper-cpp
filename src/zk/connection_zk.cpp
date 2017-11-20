@@ -7,6 +7,7 @@
 #include <iostream>
 #include <map>
 #include <memory>
+#include <sstream>
 #include <stdexcept>
 #include <string>
 #include <system_error>
@@ -122,27 +123,36 @@ static acl acl_from_raw(const struct ACL_vector& raw)
 // connection_zk                                                                                                      //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-connection_zk::connection_zk(string_view conn_string, std::chrono::milliseconds recv_timeout) :
+connection_zk::connection_zk(const connection_params& params) :
         _handle(nullptr)
 {
-    if (conn_string.find("zk://") != 0U)
-        throw std::invalid_argument(std::string("Invalid connection string \"") + std::string(conn_string) + "\"");
-    conn_string.remove_prefix(5);
+    if (params.connection_schema() != "zk")
+        throw std::invalid_argument(std::string("Invalid connection string \"") + to_string(params) + "\"");
 
-    _handle = with_str
-              (
-                  conn_string,
-                  [&] (ptr<const char> conn_c_string)
-                  {
-                      return ::zookeeper_init(conn_c_string,
-                                              on_session_event_raw,
-                                              static_cast<int>(recv_timeout.count()),
-                                              nullptr,
-                                              this,
-                                              0
-                                             );
-                  }
-              );
+    auto conn_string = [&] ()
+                       {
+                           std::ostringstream os;
+                           bool first = true;
+                           for (const auto& host : params.hosts())
+                           {
+                               if (first)
+                                   first = false;
+                               else
+                                   os << ',';
+
+                               os << host;
+                           }
+                           return os.str();
+                       }();
+
+    _handle = ::zookeeper_init(conn_string.c_str(),
+                               on_session_event_raw,
+                               static_cast<int>(params.timeout().count()),
+                               nullptr,
+                               this,
+                               0
+                              );
+
     if (!_handle)
         std::system_error(errno, std::system_category(), "Failed to create ZooKeeper client");
 }

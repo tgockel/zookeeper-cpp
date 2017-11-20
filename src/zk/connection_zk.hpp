@@ -20,9 +20,7 @@ class connection_zk final :
         public connection
 {
 public:
-    explicit connection_zk(string_view               conn_string,
-                           std::chrono::milliseconds recv_timeout = std::chrono::milliseconds(10000)
-                          );
+    explicit connection_zk(const connection_params& params);
 
     virtual ~connection_zk() noexcept;
 

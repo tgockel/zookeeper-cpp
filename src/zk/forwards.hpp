@@ -11,6 +11,7 @@ struct acl_version;
 struct child_version;
 class client;
 class connection;
+class connection_params;
 enum class create_mode : unsigned int;
 class create_result;
 class error;
