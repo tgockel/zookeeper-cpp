@@ -3,6 +3,9 @@
 #include <zk/config.hpp>
 
 #include <chrono>
+#include <memory>
+#include <mutex>
+#include <unordered_map>
 
 #include "connection.hpp"
 #include "string_view.hpp"
@@ -66,8 +69,31 @@ private:
                                      ptr<void>       watcher_ctx
                                     ) noexcept;
 
+    using watch_function = void (*)(ptr<zhandle_t>, int type_in, int state_in, ptr<const char>, ptr<void>);
+
+    class watcher;
+
+    template <typename TResult>
+    class basic_watcher;
+
+    class data_watcher;
+
+    class child_watcher;
+
+    class exists_watcher;
+
+    /** Erase the watch tracker for the watch with the value \a p.
+     *
+     *  \returns \c true if it was deleted (the watch should be delivered); \c false if \a p was not in the list.
+    **/
+    std::shared_ptr<watcher> try_extract_watch(ptr<const void> p);
+
+    static void deliver_watch(ptr<zhandle_t> zh, int type_in, int state_in, ptr<const char>, ptr<void> proms_in);
+
 private:
-    ptr<zhandle_t> _handle;
+    ptr<zhandle_t>                                                _handle;
+    std::unordered_map<ptr<const void>, std::shared_ptr<watcher>> _watches;
+    mutable std::mutex                                            _watches_protect;
 };
 
 /** \} **/

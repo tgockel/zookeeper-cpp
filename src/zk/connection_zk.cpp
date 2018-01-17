@@ -11,6 +11,7 @@
 #include <stdexcept>
 #include <string>
 #include <system_error>
+#include <tuple>
 
 #include <zookeeper/zookeeper.h>
 
@@ -162,6 +163,104 @@ connection_zk::~connection_zk() noexcept
     close();
 }
 
+class connection_zk::watcher
+{
+public:
+    watcher() :
+            _event_delivered(false)
+    { }
+
+    virtual ~watcher() noexcept {}
+
+    virtual void deliver_event(event ev)
+    {
+        if (!_event_delivered.exchange(true, std::memory_order_relaxed))
+        {
+            _event_promise.set_value(std::move(ev));
+        }
+    }
+
+    future<event> get_event_future()
+    {
+        return _event_promise.get_future();
+    }
+
+protected:
+    std::atomic<bool> _event_delivered;
+    promise<event>    _event_promise;
+};
+
+template <typename TResult>
+class connection_zk::basic_watcher :
+        public connection_zk::watcher
+{
+public:
+    basic_watcher() :
+            _data_delivered(false)
+    { }
+
+    future<TResult> get_data_future()
+    {
+        return _data_promise.get_future();
+    }
+
+    virtual void deliver_event(event ev) override
+    {
+        if (!_data_delivered.load(std::memory_order_relaxed))
+        {
+            deliver_data(nullopt, get_exception_ptr_of(error_code::closing));
+        }
+
+        watcher::deliver_event(std::move(ev));
+    }
+
+    void deliver_data(optional<TResult> data, std::exception_ptr ex_ptr)
+    {
+        if (!_data_delivered.exchange(true, std::memory_order_relaxed))
+        {
+            if (ex_ptr)
+            {
+                _data_promise.set_exception(std::move(ex_ptr));
+            }
+            else
+            {
+                _data_promise.set_value(std::move(*data));
+            }
+        }
+    }
+
+private:
+    std::atomic<bool> _data_delivered;
+    promise<TResult>  _data_promise;
+};
+
+std::shared_ptr<connection_zk::watcher> connection_zk::try_extract_watch(ptr<const void> addr)
+{
+    std::unique_lock<std::mutex> ax(_watches_protect);
+    auto iter = _watches.find(addr);
+    if (iter != _watches.end())
+        return _watches.extract(iter).mapped();
+    else
+        return nullptr;
+}
+
+static ptr<connection_zk> connection_from_context(ptr<zhandle_t> zh)
+{
+    return (ptr<connection_zk>) zoo_get_context(zh);
+}
+
+void connection_zk::deliver_watch(ptr<zhandle_t>  zh,
+                                  int             type_in,
+                                  int             state_in,
+                                  ptr<const char> path     [[gnu::unused]],
+                                  ptr<void>       proms_in
+                                 )
+{
+    auto& self = *connection_from_context(zh);
+    if (auto watcher = self.try_extract_watch(proms_in))
+        watcher->deliver_event(event(event_from_raw(type_in), state_from_raw(state_in)));
+}
+
 void connection_zk::close()
 {
     if (_handle)
@@ -171,6 +270,13 @@ void connection_zk::close()
             throw_error(err);
 
         _handle = nullptr;
+
+        // Deliver a session event as if there was a close.
+        std::unique_lock<std::mutex> ax(_watches_protect);
+        auto l_watches = std::move(_watches);
+        ax.unlock();
+        for (const auto& pair : l_watches)
+            pair.second->deliver_event(event(event_type::session, zk::state::closed));
     }
 }
 
@@ -213,59 +319,55 @@ future<get_result> connection_zk::get(string_view path)
     });
 }
 
-future<watch_result> connection_zk::watch(string_view path)
+class connection_zk::data_watcher :
+        public connection_zk::basic_watcher<watch_result>
 {
-    using watch_promises = std::pair<std::promise<watch_result>, std::promise<event>>;
-
-    ::data_completion_t data_callback =
-        [] (int rc_in, ptr<const char> data, int data_sz, ptr<const struct Stat> pstat, ptr<const void> prom_in) noexcept
-        {
-            std::unique_ptr<watch_promises> prom((ptr<watch_promises>) prom_in);
-            auto rc = error_code_from_raw(rc_in);
-            if (rc == error_code::ok)
-            {
-                prom->first.set_value(watch_result(get_result(buffer(data, data + data_sz), stat_from_raw(*pstat)),
-                                                   prom->second.get_future()
-                                                  )
-                                     );
-                // Since there was no error, we know the watch will be triggered
-                prom.release();
-            }
-            else
-            {
-                prom->first.set_exception(get_exception_ptr_of(rc));
-            }
-        };
-
-    ::watcher_fn watch_callback =
-        [] (ptr<zhandle_t>, int type_in, int state_in, ptr<const char>, ptr<void> proms_in)
-        {
-            std::unique_ptr<watch_promises> prom(static_cast<ptr<watch_promises>>(proms_in));
-            prom->second.set_value(event(event_from_raw(type_in), state_from_raw(state_in)));
-        };
-
-    return with_str(path, [&] (ptr<const char> path)
+public:
+    static void deliver_raw(int                    rc_in,
+                            ptr<const char>        data,
+                            int                    data_sz,
+                            ptr<const struct Stat> pstat,
+                            ptr<const void>        self_in
+                           ) noexcept
     {
-        auto ppromises = std::make_unique<watch_promises>();
-        auto rc = error_code_from_raw(::zoo_awget(_handle,
-                                                  path,
-                                                  watch_callback,
-                                                  ppromises.get(),
-                                                  data_callback,
-                                                  ppromises.get()
-                                                 )
-                                     );
+        auto& self = *static_cast<ptr<data_watcher>>(const_cast<ptr<void>>(self_in));
+        auto  rc   = error_code_from_raw(rc_in);
+
         if (rc == error_code::ok)
         {
-            auto f = ppromises->first.get_future();
-            ppromises.release();
-            return f;
+            self.deliver_data(watch_result(get_result(buffer(data, data + data_sz), stat_from_raw(*pstat)),
+                                           self.get_event_future()
+                                          ),
+                              std::exception_ptr()
+                             );
         }
         else
         {
-            ppromises->first.set_exception(get_exception_ptr_of(rc));
-            return ppromises->first.get_future();
+            self.deliver_data(nullopt, get_exception_ptr_of(rc));
         }
+    }
+};
+
+future<watch_result> connection_zk::watch(string_view path)
+{
+    return with_str(path, [&] (ptr<const char> path)
+    {
+        std::unique_lock<std::mutex> ax(_watches_protect);
+        auto watcher = std::make_shared<data_watcher>();
+        auto rc      = error_code_from_raw(::zoo_awget(_handle,
+                                                       path,
+                                                       deliver_watch,
+                                                       watcher.get(),
+                                                       data_watcher::deliver_raw,
+                                                       watcher.get()
+                                                      )
+                                          );
+        if (rc == error_code::ok)
+            _watches.emplace(watcher.get(), watcher);
+        else
+            watcher->deliver_data(nullopt, get_exception_ptr_of(rc));
+
+        return watcher->get_data_future();
     });
 }
 
@@ -317,67 +419,60 @@ future<get_children_result> connection_zk::get_children(string_view path)
     });
 }
 
+class connection_zk::child_watcher :
+        public connection_zk::basic_watcher<watch_children_result>
+{
+public:
+    static void deliver_raw(int                             rc_in,
+                            ptr<const struct String_vector> strings_in,
+                            ptr<const struct Stat>          stat_in,
+                            ptr<const void>                 prom_in
+                           ) noexcept
+    {
+        auto& self = *static_cast<ptr<child_watcher>>(const_cast<ptr<void>>(prom_in));
+        auto  rc   = error_code_from_raw(rc_in);
+
+        try
+        {
+            if (rc != error_code::ok)
+                throw_error(rc);
+
+            self.deliver_data(watch_children_result(get_children_result(string_vector_from_raw(*strings_in),
+                                                                        stat_from_raw(*stat_in)
+                                                                       ),
+                                                    self.get_event_future()
+                                                   ),
+                              std::exception_ptr()
+                             );
+        }
+        catch (...)
+        {
+            self.deliver_data(nullopt, std::current_exception());
+        }
+
+    }
+};
+
 future<watch_children_result> connection_zk::watch_children(string_view path)
 {
-    using watch_promises = std::pair<std::promise<watch_children_result>, std::promise<event>>;
-
-    ::strings_stat_completion_t data_callback =
-        [] (int                             rc_in,
-            ptr<const struct String_vector> strings_in,
-            ptr<const struct Stat>          stat_in,
-            ptr<const void>                 prom_in
-           )
-        {
-            std::unique_ptr<watch_promises> prom((ptr<watch_promises>) prom_in);
-            auto rc = error_code_from_raw(rc_in);
-            try
-            {
-                if (rc != error_code::ok)
-                    throw_error(rc);
-
-                prom->first.set_value(watch_children_result(get_children_result(string_vector_from_raw(*strings_in),
-                                                                                stat_from_raw(*stat_in)
-                                                                               ),
-                                                            prom->second.get_future()
-                                                           )
-                                     );
-                prom.release();
-            }
-            catch (...)
-            {
-                prom->first.set_exception(std::current_exception());
-            }
-        };
-
-    ::watcher_fn watch_callback =
-        [] (ptr<zhandle_t>, int type_in, int state_in, ptr<const char>, ptr<void> proms_in)
-        {
-            std::unique_ptr<watch_promises> proms(static_cast<ptr<watch_promises>>(proms_in));
-            proms->second.set_value(event(event_from_raw(type_in), state_from_raw(state_in)));
-        };
-
     return with_str(path, [&] (ptr<const char> path)
     {
-        auto ppromises = std::make_unique<watch_promises>();
-        auto rc = error_code_from_raw(::zoo_awget_children2(_handle,
-                                                            path,
-                                                            watch_callback,
-                                                            ppromises.get(),
-                                                            data_callback,
-                                                            ppromises.get()
-                                                           )
-                                     );
+        std::unique_lock<std::mutex> ax(_watches_protect);
+        auto watcher = std::make_shared<child_watcher>();
+        auto rc      = error_code_from_raw(::zoo_awget_children2(_handle,
+                                                                 path,
+                                                                 deliver_watch,
+                                                                 watcher.get(),
+                                                                 child_watcher::deliver_raw,
+                                                                 watcher.get()
+                                                                )
+                                          );
         if (rc == error_code::ok)
-        {
-            auto f = ppromises->first.get_future();
-            ppromises.release();
-            return f;
-        }
+            _watches.emplace(watcher.get(), watcher);
         else
-        {
-            ppromises->first.set_exception(get_exception_ptr_of(rc));
-            return ppromises->first.get_future();
-        }
+            watcher->deliver_data(nullopt, get_exception_ptr_of(rc));
+
+        return watcher->get_data_future();
     });
 }
 
@@ -414,66 +509,54 @@ future<exists_result> connection_zk::exists(string_view path)
     });
 }
 
-future<watch_exists_result> connection_zk::watch_exists(string_view path)
+class connection_zk::exists_watcher :
+        public connection_zk::basic_watcher<watch_exists_result>
 {
-    using watch_promises = std::pair<std::promise<watch_exists_result>, std::promise<event>>;
-
-    ::stat_completion_t data_callback =
-        [] (int rc_in, ptr<const struct Stat> stat_in, ptr<const void> proms_in)
-        {
-            std::unique_ptr<watch_promises> proms((ptr<watch_promises>) proms_in);
-            auto rc = error_code_from_raw(rc_in);
-            if (rc == error_code::ok)
-            {
-                proms->first.set_value(watch_exists_result(exists_result(stat_from_raw(*stat_in)),
-                                                           proms->second.get_future()
-                                                          )
-                                      );
-                proms.release();
-            }
-            else if (rc == error_code::no_node)
-            {
-                proms->first.set_value(watch_exists_result(exists_result(nullopt),
-                                                           proms->second.get_future()
-                                                          )
-                                      );
-                proms.release();
-            }
-            else
-            {
-                proms->first.set_exception(get_exception_ptr_of(rc));
-            }
-        };
-
-    ::watcher_fn watch_callback =
-        [] (ptr<zhandle_t>, int type_in, int state_in, ptr<const char>, ptr<void> proms_in)
-        {
-            std::unique_ptr<watch_promises> proms(static_cast<ptr<watch_promises>>(proms_in));
-            proms->second.set_value(event(event_from_raw(type_in), state_from_raw(state_in)));
-        };
-
-    return with_str(path, [&] (ptr<const char> path)
+public:
+    static void deliver_raw(int rc_in, ptr<const struct Stat> stat_in, ptr<const void> self_in)
     {
-        auto ppromises = std::make_unique<watch_promises>();
-        auto rc = error_code_from_raw(::zoo_awexists(_handle,
-                                                     path,
-                                                     watch_callback,
-                                                     ppromises.get(),
-                                                     data_callback,
-                                                     ppromises.get()
-                                                    )
-                                     );
+        auto& self = *static_cast<ptr<exists_watcher>>(const_cast<ptr<void>>(self_in));
+        auto  rc   = error_code_from_raw(rc_in);
+
         if (rc == error_code::ok)
         {
-            auto f = ppromises->first.get_future();
-            ppromises.release();
-            return f;
+            self.deliver_data(watch_exists_result(exists_result(stat_from_raw(*stat_in)), self.get_event_future()),
+                              std::exception_ptr()
+                             );
+        }
+        else if (rc == error_code::no_node)
+        {
+            self.deliver_data(watch_exists_result(exists_result(nullopt), self.get_event_future()),
+                              std::exception_ptr()
+                             );
         }
         else
         {
-            ppromises->first.set_exception(get_exception_ptr_of(rc));
-            return ppromises->first.get_future();
+            self.deliver_data(nullopt, get_exception_ptr_of(rc));
         }
+    }
+};
+
+future<watch_exists_result> connection_zk::watch_exists(string_view path)
+{
+    return with_str(path, [&] (ptr<const char> path)
+    {
+        std::unique_lock<std::mutex> ax(_watches_protect);
+        auto watcher = std::make_shared<exists_watcher>();
+        auto rc      = error_code_from_raw(::zoo_awexists(_handle,
+                                                          path,
+                                                          deliver_watch,
+                                                          watcher.get(),
+                                                          exists_watcher::deliver_raw,
+                                                          watcher.get()
+                                                         )
+                                          );
+        if (rc == error_code::ok)
+            _watches.emplace(watcher.get(), watcher);
+        else
+            watcher->deliver_data(nullopt, get_exception_ptr_of(rc));
+
+        return watcher->get_data_future();
     });
 }
 
@@ -899,6 +982,7 @@ void connection_zk::on_session_event_raw(ptr<zhandle_t>  handle      [[gnu::unus
     auto ev = event_from_raw(ev_type);
     auto st = state_from_raw(state);
     auto path = string_view(path_ptr);
+
     if (ev != event_type::session)
     {
         // TODO: Remove this usage of std::cerr
