@@ -5,8 +5,6 @@ env:
   matrix:
   - DISTRO=ubuntu-16.04 CONFIG=Debug
   - DISTRO=ubuntu-16.04 CONFIG=Release
-  - DISTRO=ubuntu-17.04 CONFIG=Debug
-  - DISTRO=ubuntu-17.04 CONFIG=Release
   - DISTRO=ubuntu-17.10 CONFIG=Debug
   - DISTRO=ubuntu-17.10 CONFIG=Release
   - DISTRO=ubuntu-18.04 CONFIG=Debug
