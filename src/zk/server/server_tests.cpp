@@ -79,4 +79,10 @@ GTEST_TEST(server_tests, start_stop)
     svr->shutdown();
 }
 
+GTEST_TEST(server_tests, shutdown_and_wait)
+{
+    auto svr = server::create(test_package_registry::instance());
+    svr->shutdown(true);
+}
+
 }
