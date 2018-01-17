@@ -1,11 +1,7 @@
-FROM ubuntu:17.04
+FROM ubuntu:18.04
 MAINTAINER Travis Gockel <travis@gockelhut.com>
 
 RUN apt-get update
-RUN apt-get install --yes software-properties-common
-RUN add-apt-repository --yes ppa:ubuntu-toolchain-r/test
-RUN apt-get update
-
 RUN apt-get install --yes   \
     cmake                   \
     grep                    \
