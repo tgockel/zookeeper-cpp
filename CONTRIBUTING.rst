@@ -26,9 +26,9 @@ Inside Docker, you can now build::
 
     root@0ae2f54b152b:~/zookeeper-cpp# mkdir build-debug
     root@0ae2f54b152b:~/zookeeper-cpp# cd build-debug
-    root@0ae2f54b152b:~/zookeeper-cpp# cmake -GNinja ..
+    root@0ae2f54b152b:~/zookeeper-cpp/build-debug# cmake -GNinja ..
     ... output ...
-    root@0ae2f54b152b:~/zookeeper-cpp# ninja test
+    root@0ae2f54b152b:~/zookeeper-cpp/build-debug# ninja test
     ... output ...
 
 This experience is pretty decent.
