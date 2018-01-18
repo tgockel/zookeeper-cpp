@@ -246,11 +246,13 @@ var group__Client =
     [ "op", "classzk_1_1op.html", [
       [ "check_data", "structzk_1_1op_1_1check__data.html", [
         [ "check_data", "structzk_1_1op_1_1check__data.html#a74aba8ffca8d4ab2b5485fc75418e4cf", null ],
+        [ "type", "structzk_1_1op_1_1check__data.html#aba9241f672b7529b0ec1531eb00ed9ce", null ],
         [ "check", "structzk_1_1op_1_1check__data.html#a20dea56776fe3bde035f0d8f408fed48", null ],
         [ "path", "structzk_1_1op_1_1check__data.html#a92f13e04c8272f5d4b5b344185ca5af1", null ]
       ] ],
       [ "create_data", "structzk_1_1op_1_1create__data.html", [
         [ "create_data", "structzk_1_1op_1_1create__data.html#a887c8e02838d68f40c682ae3f3d45b90", null ],
+        [ "type", "structzk_1_1op_1_1create__data.html#a38e179d4e30f38c65c9d9bf7c08d6491", null ],
         [ "data", "structzk_1_1op_1_1create__data.html#a950bd850eb7adb3f6fd7420863d0c9ef", null ],
         [ "mode", "structzk_1_1op_1_1create__data.html#a1e27fdf9382165d98b8cd45f9a59a5ac", null ],
         [ "path", "structzk_1_1op_1_1create__data.html#acf5dae68d02c0f4c0e97278317400fcc", null ],
@@ -258,11 +260,13 @@ var group__Client =
       ] ],
       [ "erase_data", "structzk_1_1op_1_1erase__data.html", [
         [ "erase_data", "structzk_1_1op_1_1erase__data.html#a24638d746ccf1d23a94ad5d6809dacc0", null ],
+        [ "type", "structzk_1_1op_1_1erase__data.html#a398c8d3583ff738d59dbda7e4bb74bee", null ],
         [ "check", "structzk_1_1op_1_1erase__data.html#a0fb040840b3a870b44fe70813788c08c", null ],
         [ "path", "structzk_1_1op_1_1erase__data.html#a8d614ac4c8960aab26561e3f51a899f4", null ]
       ] ],
       [ "set_data", "structzk_1_1op_1_1set__data.html", [
         [ "set_data", "structzk_1_1op_1_1set__data.html#a3b4acc5882f4abf3eb785ef0881872a5", null ],
+        [ "type", "structzk_1_1op_1_1set__data.html#afef6ce0ba4a0b1259486f21bea400968", null ],
         [ "check", "structzk_1_1op_1_1set__data.html#a8139bcbfbb986958d059b62d47f0dc3b", null ],
         [ "data", "structzk_1_1op_1_1set__data.html#a3af4b4f6ba25e059de758b5dca13cdf1", null ],
         [ "path", "structzk_1_1op_1_1set__data.html#a4be829d0eff65844a7c832915fd01df9", null ]
@@ -276,7 +280,8 @@ var group__Client =
       [ "as_set", "classzk_1_1op.html#ab0c8552792282c9ced79821670d46911", null ],
       [ "operator=", "classzk_1_1op.html#ad6384b096bc5ac42a65bfb151c097749", null ],
       [ "operator=", "classzk_1_1op.html#a8e60086207614baf72089fe8383a3b6a", null ],
-      [ "type", "classzk_1_1op.html#a3e24ce580dea015ef409fe8593b014f4", null ]
+      [ "type", "classzk_1_1op.html#a3e24ce580dea015ef409fe8593b014f4", null ],
+      [ "operator<<", "classzk_1_1op.html#afed71766dd46f54f01a37c18f87f6d9c", null ]
     ] ],
     [ "multi_op", "classzk_1_1multi__op.html", [
       [ "const_iterator", "classzk_1_1multi__op.html#af313d9c3a28cdc41d89309a2a1b4f6ec", null ],

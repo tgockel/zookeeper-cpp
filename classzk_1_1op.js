@@ -13,5 +13,6 @@ var classzk_1_1op =
     [ "as_set", "classzk_1_1op.html#ab0c8552792282c9ced79821670d46911", null ],
     [ "operator=", "classzk_1_1op.html#ad6384b096bc5ac42a65bfb151c097749", null ],
     [ "operator=", "classzk_1_1op.html#a8e60086207614baf72089fe8383a3b6a", null ],
-    [ "type", "classzk_1_1op.html#a3e24ce580dea015ef409fe8593b014f4", null ]
+    [ "type", "classzk_1_1op.html#a3e24ce580dea015ef409fe8593b014f4", null ],
+    [ "operator<<", "classzk_1_1op.html#afed71766dd46f54f01a37c18f87f6d9c", null ]
 ];
