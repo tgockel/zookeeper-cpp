@@ -90,13 +90,19 @@ subprocess::subprocess(std::string program_name, argument_list args) :
 
 subprocess::~subprocess() noexcept
 {
-    if (_proc_id != -1)
+    auto old_sig_handler = ::signal(SIGALRM, [](int) {});
+    for (unsigned attempt = 1U; _proc_id != -1; ++attempt)
     {
-        signal(SIGTERM, true /* terminate the whole process group */);
+        signal(attempt == 1U ? SIGTERM : SIGABRT, true /* terminate the whole process group */);
 
         int rc;
-        ::waitpid(_proc_id, &rc, 0);
+        ::alarm(1);
+        if (::waitpid(_proc_id, &rc, 0) > 0)
+            _proc_id = -1;
     }
+
+    ::alarm(0);
+    ::signal(SIGALRM, old_sig_handler);
 }
 
 bool subprocess::signal(int sig_val, bool whole_group)
