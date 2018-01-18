@@ -41,6 +41,40 @@ std::string to_string(const op_type& self)
 // op                                                                                                                 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+op::op(any_data&& src) noexcept :
+        _storage(std::move(src))
+{ }
+
+op::op(const op& src) = default;
+
+op::op(op&& src) noexcept :
+        _storage(std::move(src._storage))
+{ }
+
+op::~op() noexcept = default;
+
+op_type op::type() const
+{
+    return std::visit([] (const auto& x) { return x.type(); }, _storage);
+}
+
+template <typename T>
+const T& op::as(ptr<const char> operation) const
+{
+    try
+    {
+        return std::get<T>(_storage);
+    }
+    catch (const std::bad_variant_access&)
+    {
+        throw std::logic_error( std::string("Invalid op type for op::")
+                              + std::string(operation)
+                              + std::string(": ")
+                              + to_string(type())
+                              );
+    }
+}
+
 // check
 
 op::check_data::check_data(std::string path, version check_) :
@@ -60,21 +94,9 @@ op op::check(std::string path, version check_)
     return op(check_data(std::move(path), check_));
 }
 
-op::any_data::any_data(check_data&& src) noexcept :
-        check(std::move(src))
-{ }
-
-op::op(check_data&& src) noexcept :
-        _type(op_type::check),
-        _storage(std::move(src))
-{ }
-
 const op::check_data& op::as_check() const
 {
-    if (_type != op_type::check)
-        throw std::logic_error("Invalid op type for as_check: " + to_string(_type));
-    else
-        return _storage.check;
+    return as<check_data>("as_check");
 }
 
 // create
@@ -104,21 +126,9 @@ op op::create(std::string path, buffer data, create_mode mode)
     return create(std::move(path), std::move(data), acls::open_unsafe(), mode);
 }
 
-op::any_data::any_data(create_data&& src) noexcept :
-        create(std::move(src))
-{ }
-
-op::op(create_data&& src) noexcept :
-        _type(op_type::create),
-        _storage(std::move(src))
-{ }
-
 const op::create_data& op::as_create() const
 {
-    if (_type != op_type::create)
-        throw std::logic_error("Invalid op type for as_create: " + to_string(_type));
-    else
-        return _storage.create;
+    return as<create_data>("as_create");
 }
 
 // erase
@@ -140,21 +150,9 @@ op op::erase(std::string path, version check)
     return op(erase_data(std::move(path), check));
 }
 
-op::any_data::any_data(erase_data&& src) noexcept :
-        erase(std::move(src))
-{ }
-
-op::op(erase_data&& src) noexcept :
-        _type(op_type::erase),
-        _storage(std::move(src))
-{ }
-
 const op::erase_data& op::as_erase() const
 {
-    if (_type != op_type::erase)
-        throw std::logic_error("Invalid op type for as_erase: " + to_string(_type));
-    else
-        return _storage.erase;
+    return as<erase_data>("as_erase");
 }
 
 // set
@@ -177,88 +175,18 @@ op op::set(std::string path, buffer data, version check)
     return op(set_data(std::move(path), std::move(data), check));
 }
 
-op::any_data::any_data(set_data&& src) noexcept :
-        set(std::move(src))
-{ }
-
-op::op(set_data&& src) noexcept :
-        _type(op_type::set),
-        _storage(std::move(src))
-{ }
-
 const op::set_data& op::as_set() const
 {
-    if (_type != op_type::set)
-        throw std::logic_error("Invalid op type for as_set: " + to_string(_type));
-    else
-        return _storage.set;
+    return as<set_data>("as_set");
 }
 
 // generic
 
-op::any_data::any_data(std::nullptr_t) noexcept
-{ }
-
-op::any_data::~any_data() noexcept
-{
-    // handled by ~op
-}
-
-template <typename T, typename... TArgs>
-static void place_new(ptr<T> destination, TArgs&&... args)
-        noexcept(noexcept(T(std::forward<TArgs>(args)...)))
-{
-    new (static_cast<ptr<void>>(destination)) T(std::forward<TArgs>(args)...);
-}
-
-op::op(const op& src) :
-        _type(src._type),
-        _storage(nullptr)
-{
-    switch (_type)
-    {
-    case op_type::check:  place_new(&_storage.check,  src._storage.check);  break;
-    case op_type::create: place_new(&_storage.create, src._storage.create); break;
-    case op_type::erase:  place_new(&_storage.erase,  src._storage.erase);  break;
-    case op_type::set:    place_new(&_storage.set,    src._storage.set);    break;
-    }
-}
-
-op::op(op&& src) noexcept :
-        _type(src._type),
-        _storage(nullptr)
-{
-    switch (_type)
-    {
-    case op_type::check:  place_new(&_storage.check,  std::move(src._storage.check));  break;
-    case op_type::create: place_new(&_storage.create, std::move(src._storage.create)); break;
-    case op_type::erase:  place_new(&_storage.erase,  std::move(src._storage.erase));  break;
-    case op_type::set:    place_new(&_storage.set,    std::move(src._storage.set));    break;
-    }
-}
-
-op::~op() noexcept
-{
-    switch (_type)
-    {
-    case op_type::check:  _storage.check.~auto();  break;
-    case op_type::create: _storage.create.~auto(); break;
-    case op_type::erase:  _storage.erase.~auto();  break;
-    case op_type::set:    _storage.set.~auto();    break;
-    }
-}
-
 std::ostream& operator<<(std::ostream& os, const op& self)
 {
     os << self.type();
-    switch (self.type())
-    {
-    case op_type::check:  return os << self.as_check();
-    case op_type::create: return os << self.as_create();
-    case op_type::erase:  return os << self.as_erase();
-    case op_type::set:    return os << self.as_set();
-    default:              return os << "{ ??? }";
-    }
+    std::visit([&] (const auto& x) { os << x; }, self._storage);
+    return os;
 }
 
 std::string to_string(const op& self)
@@ -298,16 +226,9 @@ std::ostream& operator<<(std::ostream& os, const multi_op& self)
 // multi_result                                                                                                       //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-multi_result::any_result::any_result(std::nullptr_t) noexcept
-{ }
-
 multi_result::part::part(op_type type, std::nullptr_t) noexcept :
         _type(type),
-        _storage(nullptr)
-{ }
-
-multi_result::any_result::any_result(create_result&& res) noexcept :
-        create(std::move(res))
+        _storage(std::monostate())
 { }
 
 multi_result::part::part(create_result res) noexcept :
@@ -315,68 +236,45 @@ multi_result::part::part(create_result res) noexcept :
         _storage(std::move(res))
 { }
 
-multi_result::any_result::any_result(set_result&& res) noexcept :
-        set(std::move(res))
-{ }
-
 multi_result::part::part(set_result res) noexcept :
         _type(op_type::set),
         _storage(std::move(res))
 { }
 
-multi_result::any_result::~any_result() noexcept
-{
-    // handled in ~part
-}
-
-multi_result::part::part(const part& src) :
-        _type(src._type),
-        _storage(nullptr)
-{
-    switch (_type)
-    {
-        case op_type::create: place_new(&_storage.create, src._storage.create); break;
-        case op_type::set:    place_new(&_storage.set,    src._storage.set);    break;
-        default:                                                break;
-    }
-}
+multi_result::part::part(const part& src) = default;
 
 multi_result::part::part(part&& src) noexcept :
         _type(src._type),
-        _storage(nullptr)
-{
-    switch (_type)
-    {
-        case op_type::create: place_new(&_storage.create, std::move(src._storage.create)); break;
-        case op_type::set:    place_new(&_storage.set,    std::move(src._storage.set));    break;
-        default:                                                break;
-    }
-}
+        _storage(std::move(src._storage))
+{ }
 
-multi_result::part::~part() noexcept
+multi_result::part::~part() noexcept = default;
+
+template <typename T>
+const T& multi_result::part::as(ptr<const char> operation) const
 {
-    switch (_type)
+    try
     {
-        case op_type::create: _storage.create.~create_result(); break;
-        case op_type::set:    _storage.set.~set_result();       break;
-        default:                                                break;
+        return std::get<T>(_storage);
+    }
+    catch (const std::bad_variant_access&)
+    {
+        throw std::logic_error( std::string("Invalid op type for multi_result::")
+                              + std::string(operation)
+                              + std::string(": ")
+                              + to_string(type())
+                              );
     }
 }
 
 const create_result& multi_result::part::as_create() const
 {
-    if (_type != op_type::create)
-        throw std::logic_error("Invalid part type for as_create: " + to_string(_type));
-    else
-        return _storage.create;
+    return as<create_result>("as_create");
 }
 
 const set_result& multi_result::part::as_set() const
 {
-    if (_type != op_type::set)
-        throw std::logic_error("Invalid part type for as_set: " + to_string(_type));
-    else
-        return _storage.set;
+    return as<set_result>("as_set");
 }
 
 multi_result::multi_result(std::vector<part> parts) noexcept :

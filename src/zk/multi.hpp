@@ -5,6 +5,7 @@
 #include <initializer_list>
 #include <iosfwd>
 #include <string>
+#include <variant>
 #include <vector>
 
 #include "acl.hpp"
@@ -41,6 +42,8 @@ public:
         version     check;
 
         explicit check_data(std::string path, version check);
+
+        op_type type() const { return op_type::check; }
     };
 
     /** Check that the given \a path exists with the provided version \a check (which can be \c version::any). **/
@@ -54,6 +57,8 @@ public:
         create_mode mode;
 
         explicit create_data(std::string path, buffer data, acl rules, create_mode mode);
+
+        op_type type() const { return op_type::create; }
     };
 
     /// \see client::create
@@ -66,6 +71,8 @@ public:
         version     check;
 
         explicit erase_data(std::string path, version check);
+
+        op_type type() const { return op_type::erase; }
     };
 
     /// \see client::erase
@@ -78,6 +85,8 @@ public:
         version     check;
 
         explicit set_data(std::string path, buffer data, version check);
+
+        op_type type() const { return op_type::set; }
     };
 
     /// \see client::set
@@ -92,7 +101,7 @@ public:
 
     ~op() noexcept;
 
-    op_type type() const { return _type; }
+    op_type type() const;
 
     const check_data& as_check() const;
 
@@ -103,29 +112,16 @@ public:
     const set_data& as_set() const;
 
 private:
-    union any_data
-    {
-        check_data  check;
-        create_data create;
-        erase_data  erase;
-        set_data    set;
+    using any_data = std::variant<check_data, create_data, erase_data, set_data>;
 
-        any_data(std::nullptr_t) noexcept;
-        any_data(check_data&&) noexcept;
-        any_data(create_data&&) noexcept;
-        any_data(erase_data&&) noexcept;
-        any_data(set_data&&) noexcept;
+    explicit op(any_data&&) noexcept;
 
-        ~any_data() noexcept;
-    };
+    template <typename T>
+    const T& as(ptr<const char> operation) const;
 
-    explicit op(check_data&&) noexcept;
-    explicit op(create_data&&) noexcept;
-    explicit op(erase_data&&) noexcept;
-    explicit op(set_data&&) noexcept;
+    friend std::ostream& operator<<(std::ostream&, const op&);
 
 private:
-    op_type  _type;
     any_data _storage;
 };
 
@@ -193,19 +189,6 @@ std::string to_string(const multi_op&);
 
 class multi_result final
 {
-private:
-    union any_result
-    {
-        create_result create;
-        set_result    set;
-
-        any_result(std::nullptr_t) noexcept;
-        any_result(create_result&&) noexcept;
-        any_result(set_result&&) noexcept;
-
-        ~any_result() noexcept;
-    };
-
 public:
     /** A part of a result. The behavior depends on the \c op_type of \c op provided to the original transaction. **/
     class part final
@@ -229,6 +212,12 @@ public:
         const create_result& as_create() const;
 
         const set_result& as_set() const;
+
+    private:
+        using any_result = std::variant<std::monostate, create_result, set_result>;
+
+        template <typename T>
+        const T& as(ptr<const char> operation) const;
 
     private:
         op_type    _type;
