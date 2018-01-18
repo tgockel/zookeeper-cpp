@@ -1,0 +1,39 @@
+#!/bin/bash -e
+# Create a build environment.
+
+PROJECT_SRC=$(realpath $(dirname $0)/..)
+
+function show_usage {
+  echo "Usage:"
+  echo ""
+  echo "$> $0 $(ls $(dirname $0)/docker | sort --random-sort | head -1)"
+  echo ""
+  echo ""
+  echo "Available options:"
+  printf "    "
+  ls $(dirname $0)/docker
+  echo ""
+  echo "Example:"
+  echo ""
+  echo "$> $0 $(ls $(dirname $0)/docker | sort --random-sort | head -1)"
+}
+
+if [[ $# -ne 1 ]]; then
+  show_usage
+  exit 1
+fi
+
+DISTRO=$1
+IMAGE_NAME=dev/zookeeper-cpp/${DISTRO}
+DOCKER_DIR=${PROJECT_SRC}/config/docker/${DISTRO}
+RUN_SHELL=/bin/bash
+
+if ! [[ -e ${DOCKER_DIR}/Dockerfile ]]; then
+  echo "Specified distro \"${DISTRO}\" does not have a Dockerfile"
+  echo ""
+  show_usage
+  exit 1
+fi
+
+docker build ${DOCKER_DIR} -t ${IMAGE_NAME}
+exec docker run --rm -v ${PROJECT_SRC}:/root/zookeeper-cpp -w /root/zookeeper-cpp -it ${IMAGE_NAME} ${RUN_SHELL}

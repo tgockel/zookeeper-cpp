@@ -2,8 +2,8 @@ FROM opensuse:42.3
 MAINTAINER Travis Gockel <travis@gockelhut.com>
 
 COPY repos /tmp/repos
-RUN zypper addrepo -f /tmp/repos/server:database.repo
-RUN zypper --gpg-auto-import-keys refresh
+RUN zypper addrepo -f /tmp/repos/server:database.repo \
+ && zypper --gpg-auto-import-keys refresh
 
 RUN zypper install -y       \
     apache-ivy              \
@@ -14,7 +14,8 @@ RUN zypper install -y       \
     googletest-devel        \
     java-1_8_0-openjdk      \
     lcov                    \
-    libzookeeper2-devel
+    libzookeeper2-devel     \
+    ninja
 
 RUN update-alternatives --install /usr/bin/c++ c++ /usr/bin/g++-7 99
 

@@ -5,6 +5,38 @@ So you want to contribute to the ZooKeeper C++ library?
 I'd love your contribution!
 Please help me.
 
+Building
+--------
+
+Building the system only requires `CMake <https://cmake.org/>`_ and the standard-issue C++ compilation tools.
+
+Docker
+^^^^^^
+
+Docker is the official mechanism for supporting multiple Linux distributions (see the
+`TravisCI <https://travis-ci.org/tgockel/zookeeper-cpp>`_ build).
+If you would like to do this at home, simply use the ``dev-env`` script::
+
+    $> cd /path/to/zookeeper-cpp
+    $> ./config/dev-env ubuntu-18.04
+
+This will create a Docker image named something like ``dev/zookeeper-cpp/ubuntu-18.04`` and run that image with the
+project's working directory mapped to ``~/zookeeper-cpp`` with you in control of a shell.
+Inside Docker, you can now build::
+
+    root@0ae2f54b152b:~/zookeeper-cpp# mkdir build-debug
+    root@0ae2f54b152b:~/zookeeper-cpp# cd build-debug
+    root@0ae2f54b152b:~/zookeeper-cpp# cmake -GNinja ..
+    ... output ...
+    root@0ae2f54b152b:~/zookeeper-cpp# ninja test
+    ... output ...
+
+This experience is pretty decent.
+The biggest annoyance is editing within the Docker image makes files you touch owned by *root* (I suspect there is a way
+to prevent this, but I am far from competent at Docker).
+If you use `KDevelop <https://www.kdevelop.org/>`_, you can use the IDE to build and debug inside of these images with
+`KDevelop Runtimes <http://www.proli.net/2017/05/23/kdevelop-runtimes-docker-and-flatpak-integration/>`_.
+
 Process
 -------
 

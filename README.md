@@ -1,13 +1,17 @@
 # ZooKeeper C++
 
 A ZooKeeper client for C++.
+It is [hosted on GitHub](https://github.com/tgockel/zookeeper-cpp),
+[documented](https://tgockel.github.io/zookeeper-cpp/)
+(including [previous versions](https://tgockel.github.io/zookeeper-cpp/version/)
+of the software), and [tested](https://travis-ci.org/tgockel/zookeeper-cpp).
 
 Features include (but are not necessarily limited to):
 
 - Simple
   - Connect with just a connection string
   - Clients should not require factories
-  - Does not require *any* knowledge of the Java or C APIs
+  - Does not require knowledge of the Java or C APIs
 
 - Configurable
   - Use the parts you need
@@ -20,10 +24,6 @@ Features include (but are not necessarily limited to):
 
 - Stable
   - Worry less about upgrading -- the API and ABI will not change out from under you
-
-- Documented
-  - Consumable by human beings
-  - Answers questions you might actually ask
 
 **NOTE**: This library is a work-in-progress.
 All documentation you see here is subject to change and non-existence.

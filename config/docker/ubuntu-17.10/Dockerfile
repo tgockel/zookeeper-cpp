@@ -12,7 +12,8 @@ RUN apt-get install --yes   \
     g++-7                   \
     ivy                     \
     libgtest-dev            \
-    libzookeeper-mt-dev
+    libzookeeper-mt-dev     \
+    ninja-build
 
 RUN update-alternatives --install /usr/bin/c++ c++ /usr/bin/g++-7 99
 

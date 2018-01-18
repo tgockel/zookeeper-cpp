@@ -16,7 +16,8 @@ RUN apt-get install --yes   \
     g++-7                   \
     ivy                     \
     libgtest-dev            \
-    libzookeeper-mt-dev
+    libzookeeper-mt-dev     \
+    ninja-build
 
 # Code Coverage
 RUN apt-get install --yes   \

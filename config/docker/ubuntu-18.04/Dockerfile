@@ -6,6 +6,7 @@ RUN apt-get install --yes   \
     cmake                   \
     grep                    \
     g++-7                   \
+    ninja-build             \
     ivy                     \
     libgtest-dev            \
     libzookeeper-mt-dev
