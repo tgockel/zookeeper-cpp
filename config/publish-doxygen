@@ -14,7 +14,7 @@ git clone -b gh-pages "${REPO_PATH}" --single-branch ${HTML_PATH}
 
 # rm all the files through git to prevent stale files.
 cd ${HTML_PATH}
-git rm -rf .
+git rm -rf *.html *.js *.png *.css search
 cd -
 
 # Generate the HTML documentation.
