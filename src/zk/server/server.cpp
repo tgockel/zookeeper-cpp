@@ -28,7 +28,7 @@ std::shared_ptr<server> server::create(package_registry& registry)
 void server::shutdown(bool wait_for_stop)
 {
     _running = false;
-    if (wait_for_stop)
+    if (wait_for_stop && _worker.joinable())
         _worker.join();
 }
 
