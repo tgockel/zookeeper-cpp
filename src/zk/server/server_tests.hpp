@@ -24,6 +24,8 @@ protected:
 
     client get_connected_client() const;
 
+    void stop_server(bool wait_for_stop = true);
+
 private:
     std::shared_ptr<server> _server;
     std::string             _conn_string;

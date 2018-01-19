@@ -38,6 +38,11 @@ client server_fixture::get_connected_client() const
     return client(client::connect(get_connection_string()).get());
 }
 
+void server_fixture::stop_server(bool wait_for_stop)
+{
+    _server->shutdown(wait_for_stop);
+}
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // single_server_fixture                                                                                              //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
