@@ -13,5 +13,6 @@ var searchData=
   ['event_5ftype',['event_type',['../group__Client.html#ga6521a380e3d01a123e5145fafe9d8d3c',1,'zk']]],
   ['exists',['exists',['../classzk_1_1client.html#a3117e705416a436959885ac04385c236',1,'zk::client']]],
   ['exists_5fresult',['exists_result',['../classzk_1_1exists__result.html',1,'zk']]],
+  ['exists_5fwatcher',['exists_watcher',['../classzk_1_1connection__zk_1_1exists__watcher.html',1,'zk::connection_zk']]],
   ['expired_5fsession',['expired_session',['../group__Client.html#gga8954c7138ce0280422d42d02b3d951eaa152004b0741ddce882b17055737bc6b5',1,'zk']]]
 ];

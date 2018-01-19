@@ -90,6 +90,23 @@ var group__Client =
       [ "timeout", "classzk_1_1connection__params.html#a3ee37e584d47c8470ca9911451f4b6e5", null ]
     ] ],
     [ "connection_zk", "classzk_1_1connection__zk.html", [
+      [ "basic_watcher", "classzk_1_1connection__zk_1_1basic__watcher.html", [
+        [ "basic_watcher", "classzk_1_1connection__zk_1_1basic__watcher.html#acf1c4434b5f49daec0ce063d2850c5ca", null ],
+        [ "deliver_data", "classzk_1_1connection__zk_1_1basic__watcher.html#ac95f6cc6a0009da34cf753778e4441ef", null ],
+        [ "deliver_event", "classzk_1_1connection__zk_1_1basic__watcher.html#a8b37318b9726f15ae56dacacd05dc3ce", null ],
+        [ "get_data_future", "classzk_1_1connection__zk_1_1basic__watcher.html#a4b8f409886571e34f9241fa2f321ab68", null ]
+      ] ],
+      [ "child_watcher", "classzk_1_1connection__zk_1_1child__watcher.html", null ],
+      [ "data_watcher", "classzk_1_1connection__zk_1_1data__watcher.html", null ],
+      [ "exists_watcher", "classzk_1_1connection__zk_1_1exists__watcher.html", null ],
+      [ "watcher", "classzk_1_1connection__zk_1_1watcher.html", [
+        [ "watcher", "classzk_1_1connection__zk_1_1watcher.html#abbb34a6e0c538a6e602a196ab357ab2b", null ],
+        [ "~watcher", "classzk_1_1connection__zk_1_1watcher.html#a3d3463e9710c548f75c3857659a61312", null ],
+        [ "deliver_event", "classzk_1_1connection__zk_1_1watcher.html#ace125f72f7633c7bce6330a1e9ce6c77", null ],
+        [ "get_event_future", "classzk_1_1connection__zk_1_1watcher.html#aac04fa9f6f402e95d3d04981f1c2b7a4", null ],
+        [ "_event_delivered", "classzk_1_1connection__zk_1_1watcher.html#a8533a179d4b187cf35cf4ff3b08d1515", null ],
+        [ "_event_promise", "classzk_1_1connection__zk_1_1watcher.html#a17f732001d82e4a2b301fcca89e7a366", null ]
+      ] ],
       [ "connection_zk", "classzk_1_1connection__zk.html#a4322745703e6425e0011195da001a5b6", null ],
       [ "~connection_zk", "classzk_1_1connection__zk.html#aa8127623089df82a6c92334a7deaabd7", null ],
       [ "close", "classzk_1_1connection__zk.html#aa1f058f4af17fc843746788e58feae0e", null ],

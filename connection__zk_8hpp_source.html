@@ -111,79 +111,106 @@ $(document).ready(function(){initNavTree('connection__zk_8hpp_source.html','');}
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;zk/config.hpp&gt;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;chrono&gt;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;connection.hpp&quot;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="string__view_8hpp.html">string_view.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;mutex&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;unordered_map&gt;</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>_zhandle zhandle_t;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">namespace </span>zk</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;{</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;connection.hpp&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="string__view_8hpp.html">string_view.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>_zhandle zhandle_t;</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
-<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="classzk_1_1connection__zk.html">   19</a></span>&#160;<span class="keyword">class </span><a class="code" href="classzk_1_1connection__zk.html">connection_zk</a> final :</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keyword">public</span> <a class="code" href="classzk_1_1connection.html">connection</a></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;{</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classzk_1_1connection__zk.html">connection_zk</a>(<span class="keyword">const</span> <a class="code" href="classzk_1_1connection__params.html">connection_params</a>&amp; params);</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keyword">virtual</span> ~<a class="code" href="classzk_1_1connection__zk.html">connection_zk</a>() noexcept;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> close() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="group__Client.html#ga8954c7138ce0280422d42d02b3d951ea">zk::state</a> <a class="code" href="group__Client.html#ga8954c7138ce0280422d42d02b3d951ea">state</a>() <span class="keyword">const override</span>;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keyword">virtual</span> future&lt;get_result&gt; <span class="keyword">get</span>(string_view path) <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keyword">virtual</span> future&lt;watch_result&gt; watch(string_view path) <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keyword">virtual</span> future&lt;get_children_result&gt; get_children(string_view path) <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keyword">virtual</span> future&lt;watch_children_result&gt; watch_children(string_view path) <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keyword">virtual</span> future&lt;exists_result&gt; exists(string_view path) <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keyword">virtual</span> future&lt;watch_exists_result&gt; watch_exists(string_view path) <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keyword">virtual</span> future&lt;create_result&gt; create(string_view   path,</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                                         <span class="keyword">const</span> <a class="code" href="group__Client.html#ga8175fa6edfc7371c269524730d3c0a9d">buffer</a>&amp; data,</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                                         <span class="keyword">const</span> <a class="code" href="classzk_1_1acl.html">acl</a>&amp;    rules,</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                                         <a class="code" href="group__Client.html#ga9f10c37f69a7d1084b08cac07ebb7918">create_mode</a>   mode</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                                        ) <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keyword">virtual</span> future&lt;set_result&gt; set(string_view path, <span class="keyword">const</span> <a class="code" href="group__Client.html#ga8175fa6edfc7371c269524730d3c0a9d">buffer</a>&amp; data, <a class="code" href="structzk_1_1version.html">version</a> check) <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keyword">virtual</span> future&lt;void&gt; erase(string_view path, <a class="code" href="structzk_1_1version.html">version</a> check) <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keyword">virtual</span> future&lt;get_acl_result&gt; get_acl(string_view path) <span class="keyword">const override</span>;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keyword">virtual</span> future&lt;void&gt; set_acl(string_view path, <span class="keyword">const</span> <a class="code" href="classzk_1_1acl.html">acl</a>&amp; rules, <a class="code" href="structzk_1_1acl__version.html">acl_version</a> check) <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keyword">virtual</span> future&lt;multi_result&gt; commit(<a class="code" href="classzk_1_1multi__op.html">multi_op</a>&amp;&amp; txn) <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keyword">virtual</span> future&lt;void&gt; load_fence() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> on_session_event_raw(<a class="code" href="group__Client.html#ga90b49f2e7c5f07873ad93fc5bd2f0e87">ptr&lt;zhandle_t&gt;</a>  handle,</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                                     <span class="keywordtype">int</span>             ev_type,</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                                     <span class="keywordtype">int</span>             state,</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                                     <a class="code" href="group__Client.html#ga90b49f2e7c5f07873ad93fc5bd2f0e87">ptr&lt;const char&gt;</a> path,</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                                     <a class="code" href="group__Client.html#ga90b49f2e7c5f07873ad93fc5bd2f0e87">ptr&lt;void&gt;</a>       watcher_ctx</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                                    ) noexcept;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <a class="code" href="group__Client.html#ga90b49f2e7c5f07873ad93fc5bd2f0e87">ptr&lt;zhandle_t&gt;</a> _handle;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;};</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;}</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">namespace </span>zk</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;{</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="classzk_1_1connection__zk.html">   22</a></span>&#160;<span class="keyword">class </span><a class="code" href="classzk_1_1connection__zk.html">connection_zk</a> final :</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keyword">public</span> <a class="code" href="classzk_1_1connection.html">connection</a></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;{</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classzk_1_1connection__zk.html">connection_zk</a>(<span class="keyword">const</span> <a class="code" href="classzk_1_1connection__params.html">connection_params</a>&amp; params);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keyword">virtual</span> ~<a class="code" href="classzk_1_1connection__zk.html">connection_zk</a>() noexcept;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> close() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="group__Client.html#ga8954c7138ce0280422d42d02b3d951ea">zk::state</a> <a class="code" href="group__Client.html#ga8954c7138ce0280422d42d02b3d951ea">state</a>() <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keyword">virtual</span> future&lt;get_result&gt; <span class="keyword">get</span>(string_view path) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keyword">virtual</span> future&lt;watch_result&gt; watch(string_view path) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keyword">virtual</span> future&lt;get_children_result&gt; get_children(string_view path) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keyword">virtual</span> future&lt;watch_children_result&gt; watch_children(string_view path) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keyword">virtual</span> future&lt;exists_result&gt; exists(string_view path) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keyword">virtual</span> future&lt;watch_exists_result&gt; watch_exists(string_view path) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keyword">virtual</span> future&lt;create_result&gt; create(string_view   path,</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                                         <span class="keyword">const</span> <a class="code" href="group__Client.html#ga8175fa6edfc7371c269524730d3c0a9d">buffer</a>&amp; data,</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                                         <span class="keyword">const</span> <a class="code" href="classzk_1_1acl.html">acl</a>&amp;    rules,</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                                         <a class="code" href="group__Client.html#ga9f10c37f69a7d1084b08cac07ebb7918">create_mode</a>   mode</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                                        ) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keyword">virtual</span> future&lt;set_result&gt; set(string_view path, <span class="keyword">const</span> <a class="code" href="group__Client.html#ga8175fa6edfc7371c269524730d3c0a9d">buffer</a>&amp; data, <a class="code" href="structzk_1_1version.html">version</a> check) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keyword">virtual</span> future&lt;void&gt; erase(string_view path, <a class="code" href="structzk_1_1version.html">version</a> check) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keyword">virtual</span> future&lt;get_acl_result&gt; get_acl(string_view path) <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keyword">virtual</span> future&lt;void&gt; set_acl(string_view path, <span class="keyword">const</span> <a class="code" href="classzk_1_1acl.html">acl</a>&amp; rules, <a class="code" href="structzk_1_1acl__version.html">acl_version</a> check) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keyword">virtual</span> future&lt;multi_result&gt; commit(<a class="code" href="classzk_1_1multi__op.html">multi_op</a>&amp;&amp; txn) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keyword">virtual</span> future&lt;void&gt; load_fence() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> on_session_event_raw(<a class="code" href="group__Client.html#ga90b49f2e7c5f07873ad93fc5bd2f0e87">ptr&lt;zhandle_t&gt;</a>  handle,</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                                     <span class="keywordtype">int</span>             ev_type,</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                                     <span class="keywordtype">int</span>             state,</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                                     <a class="code" href="group__Client.html#ga90b49f2e7c5f07873ad93fc5bd2f0e87">ptr&lt;const char&gt;</a> path,</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                                     <a class="code" href="group__Client.html#ga90b49f2e7c5f07873ad93fc5bd2f0e87">ptr&lt;void&gt;</a>       watcher_ctx</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                                    ) noexcept;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keyword">using</span> watch_function = void (*)(<a class="code" href="group__Client.html#ga90b49f2e7c5f07873ad93fc5bd2f0e87">ptr&lt;zhandle_t&gt;</a>, <span class="keywordtype">int</span> type_in, <span class="keywordtype">int</span> state_in, <a class="code" href="group__Client.html#ga90b49f2e7c5f07873ad93fc5bd2f0e87">ptr&lt;const char&gt;</a>, <a class="code" href="group__Client.html#ga90b49f2e7c5f07873ad93fc5bd2f0e87">ptr&lt;void&gt;</a>);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keyword">class </span><a class="code" href="classzk_1_1connection__zk_1_1watcher.html">watcher</a>;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> TResult&gt;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keyword">class </span><a class="code" href="classzk_1_1connection__zk_1_1basic__watcher.html">basic_watcher</a>;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keyword">class </span><a class="code" href="classzk_1_1connection__zk_1_1data__watcher.html">data_watcher</a>;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keyword">class </span><a class="code" href="classzk_1_1connection__zk_1_1child__watcher.html">child_watcher</a>;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keyword">class </span><a class="code" href="classzk_1_1connection__zk_1_1exists__watcher.html">exists_watcher</a>;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    std::shared_ptr&lt;watcher&gt; try_extract_watch(<a class="code" href="group__Client.html#ga90b49f2e7c5f07873ad93fc5bd2f0e87">ptr&lt;const void&gt;</a> p);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> deliver_watch(<a class="code" href="group__Client.html#ga90b49f2e7c5f07873ad93fc5bd2f0e87">ptr&lt;zhandle_t&gt;</a> zh, <span class="keywordtype">int</span> type_in, <span class="keywordtype">int</span> state_in, <a class="code" href="group__Client.html#ga90b49f2e7c5f07873ad93fc5bd2f0e87">ptr&lt;const char&gt;</a>, <a class="code" href="group__Client.html#ga90b49f2e7c5f07873ad93fc5bd2f0e87">ptr&lt;void&gt;</a> proms_in);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <a class="code" href="group__Client.html#ga90b49f2e7c5f07873ad93fc5bd2f0e87">ptr&lt;zhandle_t&gt;</a>                                                _handle;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    std::unordered_map&lt;ptr&lt;const void&gt;, std::shared_ptr&lt;watcher&gt;&gt; _watches;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keyword">mutable</span> std::mutex                                            _watches_protect;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;};</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;}</div>
 <div class="ttc" id="group__Client_html_ga90b49f2e7c5f07873ad93fc5bd2f0e87"><div class="ttname"><a href="group__Client.html#ga90b49f2e7c5f07873ad93fc5bd2f0e87">zk::ptr</a></div><div class="ttdeci">T * ptr</div><div class="ttdoc">A simple, unowned pointer. </div><div class="ttdef"><b>Definition:</b> <a href="config_8hpp_source.html#l00075">config.hpp:75</a></div></div>
 <div class="ttc" id="group__Client_html_ga8954c7138ce0280422d42d02b3d951ea"><div class="ttname"><a href="group__Client.html#ga8954c7138ce0280422d42d02b3d951ea">zk::state</a></div><div class="ttdeci">state</div><div class="ttdoc">Enumeration of states the client may be at when a watch triggers. </div><div class="ttdef"><b>Definition:</b> <a href="types_8hpp_source.html#l00320">types.hpp:320</a></div></div>
+<div class="ttc" id="classzk_1_1connection__zk_1_1basic__watcher_html"><div class="ttname"><a href="classzk_1_1connection__zk_1_1basic__watcher.html">zk::connection_zk::basic_watcher</a></div><div class="ttdef"><b>Definition:</b> <a href="connection__zk_8cpp_source.html#l00194">connection_zk.cpp:194</a></div></div>
 <div class="ttc" id="structzk_1_1acl__version_html"><div class="ttname"><a href="structzk_1_1acl__version.html">zk::acl_version</a></div><div class="ttdoc">Represents a version of the ACL of a ZNode. </div><div class="ttdef"><b>Definition:</b> <a href="types_8hpp_source.html#l00145">types.hpp:145</a></div></div>
 <div class="ttc" id="group__Client_html_ga9f10c37f69a7d1084b08cac07ebb7918"><div class="ttname"><a href="group__Client.html#ga9f10c37f69a7d1084b08cac07ebb7918">zk::create_mode</a></div><div class="ttdeci">create_mode</div><div class="ttdoc">When used in client::set, this value determines how the znode is created on the server. </div><div class="ttdef"><b>Definition:</b> <a href="types_8hpp_source.html#l00252">types.hpp:252</a></div></div>
+<div class="ttc" id="classzk_1_1connection__zk_1_1exists__watcher_html"><div class="ttname"><a href="classzk_1_1connection__zk_1_1exists__watcher.html">zk::connection_zk::exists_watcher</a></div><div class="ttdef"><b>Definition:</b> <a href="connection__zk_8cpp_source.html#l00512">connection_zk.cpp:512</a></div></div>
 <div class="ttc" id="classzk_1_1connection__params_html"><div class="ttname"><a href="classzk_1_1connection__params.html">zk::connection_params</a></div><div class="ttdoc">Used to specify parameters for a connection. </div><div class="ttdef"><b>Definition:</b> <a href="connection_8hpp_source.html#l00084">connection.hpp:84</a></div></div>
-<div class="ttc" id="classzk_1_1connection__zk_html"><div class="ttname"><a href="classzk_1_1connection__zk.html">zk::connection_zk</a></div><div class="ttdef"><b>Definition:</b> <a href="connection__zk_8hpp_source.html#l00019">connection_zk.hpp:19</a></div></div>
+<div class="ttc" id="classzk_1_1connection__zk_1_1data__watcher_html"><div class="ttname"><a href="classzk_1_1connection__zk_1_1data__watcher.html">zk::connection_zk::data_watcher</a></div><div class="ttdef"><b>Definition:</b> <a href="connection__zk_8cpp_source.html#l00322">connection_zk.cpp:322</a></div></div>
+<div class="ttc" id="classzk_1_1connection__zk_html"><div class="ttname"><a href="classzk_1_1connection__zk.html">zk::connection_zk</a></div><div class="ttdef"><b>Definition:</b> <a href="connection__zk_8hpp_source.html#l00022">connection_zk.hpp:22</a></div></div>
 <div class="ttc" id="classzk_1_1multi__op_html"><div class="ttname"><a href="classzk_1_1multi__op.html">zk::multi_op</a></div><div class="ttdef"><b>Definition:</b> <a href="multi_8hpp_source.html#l00132">multi.hpp:132</a></div></div>
 <div class="ttc" id="string__view_8hpp_html"><div class="ttname"><a href="string__view_8hpp.html">string_view.hpp</a></div><div class="ttdoc">Controls the import of the string_view type. </div></div>
+<div class="ttc" id="classzk_1_1connection__zk_1_1watcher_html"><div class="ttname"><a href="classzk_1_1connection__zk_1_1watcher.html">zk::connection_zk::watcher</a></div><div class="ttdef"><b>Definition:</b> <a href="connection__zk_8cpp_source.html#l00166">connection_zk.cpp:166</a></div></div>
 <div class="ttc" id="classzk_1_1acl_html"><div class="ttname"><a href="classzk_1_1acl.html">zk::acl</a></div><div class="ttdoc">An access control list is a wrapper around acl_rule instances. </div><div class="ttdef"><b>Definition:</b> <a href="acl_8hpp_source.html#l00124">acl.hpp:124</a></div></div>
+<div class="ttc" id="classzk_1_1connection__zk_1_1child__watcher_html"><div class="ttname"><a href="classzk_1_1connection__zk_1_1child__watcher.html">zk::connection_zk::child_watcher</a></div><div class="ttdef"><b>Definition:</b> <a href="connection__zk_8cpp_source.html#l00422">connection_zk.cpp:422</a></div></div>
 <div class="ttc" id="structzk_1_1version_html"><div class="ttname"><a href="structzk_1_1version.html">zk::version</a></div><div class="ttdoc">Represents a version of the data. </div><div class="ttdef"><b>Definition:</b> <a href="types_8hpp_source.html#l00131">types.hpp:131</a></div></div>
 <div class="ttc" id="group__Client_html_ga8175fa6edfc7371c269524730d3c0a9d"><div class="ttname"><a href="group__Client.html#ga8175fa6edfc7371c269524730d3c0a9d">zk::buffer</a></div><div class="ttdeci">ZKPP_BUFFER_TYPE buffer</div><div class="ttdoc">The buffer type. </div><div class="ttdef"><b>Definition:</b> <a href="buffer_8hpp_source.html#l00067">buffer.hpp:67</a></div></div>
 <div class="ttc" id="classzk_1_1connection_html"><div class="ttname"><a href="classzk_1_1connection.html">zk::connection</a></div><div class="ttdef"><b>Definition:</b> <a href="connection_8hpp_source.html#l00024">connection.hpp:24</a></div></div>

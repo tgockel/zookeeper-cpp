@@ -95,5 +95,17 @@ var hierarchy =
     ] ],
     [ "zk::watch_children_result", "classzk_1_1watch__children__result.html", null ],
     [ "zk::watch_exists_result", "classzk_1_1watch__exists__result.html", null ],
-    [ "zk::watch_result", "classzk_1_1watch__result.html", null ]
+    [ "zk::watch_result", "classzk_1_1watch__result.html", null ],
+    [ "zk::connection_zk::watcher", "classzk_1_1connection__zk_1_1watcher.html", [
+      [ "zk::connection_zk::basic_watcher< watch_children_result >", "classzk_1_1connection__zk_1_1basic__watcher.html", [
+        [ "zk::connection_zk::child_watcher", "classzk_1_1connection__zk_1_1child__watcher.html", null ]
+      ] ],
+      [ "zk::connection_zk::basic_watcher< watch_exists_result >", "classzk_1_1connection__zk_1_1basic__watcher.html", [
+        [ "zk::connection_zk::exists_watcher", "classzk_1_1connection__zk_1_1exists__watcher.html", null ]
+      ] ],
+      [ "zk::connection_zk::basic_watcher< watch_result >", "classzk_1_1connection__zk_1_1basic__watcher.html", [
+        [ "zk::connection_zk::data_watcher", "classzk_1_1connection__zk_1_1data__watcher.html", null ]
+      ] ],
+      [ "zk::connection_zk::basic_watcher< TResult >", "classzk_1_1connection__zk_1_1basic__watcher.html", null ]
+    ] ]
 ];

@@ -1,5 +1,10 @@
 var classzk_1_1connection__zk =
 [
+    [ "basic_watcher", "classzk_1_1connection__zk_1_1basic__watcher.html", "classzk_1_1connection__zk_1_1basic__watcher" ],
+    [ "child_watcher", "classzk_1_1connection__zk_1_1child__watcher.html", null ],
+    [ "data_watcher", "classzk_1_1connection__zk_1_1data__watcher.html", null ],
+    [ "exists_watcher", "classzk_1_1connection__zk_1_1exists__watcher.html", null ],
+    [ "watcher", "classzk_1_1connection__zk_1_1watcher.html", "classzk_1_1connection__zk_1_1watcher" ],
     [ "connection_zk", "classzk_1_1connection__zk.html#a4322745703e6425e0011195da001a5b6", null ],
     [ "~connection_zk", "classzk_1_1connection__zk.html#aa8127623089df82a6c92334a7deaabd7", null ],
     [ "close", "classzk_1_1connection__zk.html#aa1f058f4af17fc843746788e58feae0e", null ],

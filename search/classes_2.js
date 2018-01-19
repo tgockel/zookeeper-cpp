@@ -2,6 +2,7 @@ var searchData=
 [
   ['check_5fdata',['check_data',['../structzk_1_1op_1_1check__data.html',1,'zk::op']]],
   ['child_5fversion',['child_version',['../structzk_1_1child__version.html',1,'zk']]],
+  ['child_5fwatcher',['child_watcher',['../classzk_1_1connection__zk_1_1child__watcher.html',1,'zk::connection_zk']]],
   ['client',['client',['../classzk_1_1client.html',1,'zk']]],
   ['closing',['closing',['../classzk_1_1closing.html',1,'zk']]],
   ['connection',['connection',['../classzk_1_1connection.html',1,'zk']]],
