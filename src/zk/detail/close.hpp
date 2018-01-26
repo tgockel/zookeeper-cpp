@@ -2,7 +2,7 @@
 
 #include <zk/config.hpp>
 
-namespace zk::server::detail
+namespace zk::detail
 {
 
 /** A safe wrapper around the Linux \c close call. In particular, it transforms certain error codes that matter into

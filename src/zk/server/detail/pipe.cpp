@@ -1,5 +1,6 @@
-#include "close.hpp"
 #include "pipe.hpp"
+
+#include <zk/detail/close.hpp>
 
 #include <algorithm>
 #include <system_error>

@@ -30,35 +30,13 @@ public:
 
     virtual zk::state state() const override;
 
-    virtual future<get_result> get(string_view path) override;
+    virtual void submit(op,       std::shared_ptr<void> track) override;
+    virtual void submit(watch_op, std::shared_ptr<void> track) override;
+    virtual void submit(multi_op, std::shared_ptr<void> track) override;
 
-    virtual future<watch_result> watch(string_view path) override;
+    virtual size_type receive(ptr<notification> out, size_type max) noexcept override;
 
-    virtual future<get_children_result> get_children(string_view path) override;
-
-    virtual future<watch_children_result> watch_children(string_view path) override;
-
-    virtual future<exists_result> exists(string_view path) override;
-
-    virtual future<watch_exists_result> watch_exists(string_view path) override;
-
-    virtual future<create_result> create(string_view   path,
-                                         const buffer& data,
-                                         const acl&    rules,
-                                         create_mode   mode
-                                        ) override;
-
-    virtual future<set_result> set(string_view path, const buffer& data, version check) override;
-
-    virtual future<void> erase(string_view path, version check) override;
-
-    virtual future<get_acl_result> get_acl(string_view path) const override;
-
-    virtual future<void> set_acl(string_view path, const acl& rules, acl_version check) override;
-
-    virtual future<multi_result> commit(multi_op&& txn) override;
-
-    virtual future<void> load_fence() override;
+    virtual native_handle_type native_handle() override;
 
 private:
     static void on_session_event_raw(ptr<zhandle_t>  handle,
@@ -91,6 +69,7 @@ private:
 
 private:
     ptr<zhandle_t>                                                _handle;
+    native_handle_type                                            _receive_handle;
     std::unordered_map<ptr<const void>, std::shared_ptr<watcher>> _watches;
     mutable std::mutex                                            _watches_protect;
 };

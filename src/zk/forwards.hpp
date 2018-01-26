@@ -24,6 +24,7 @@ class get_children_result;
 class get_result;
 class multi_result;
 class multi_op;
+class notification;
 class op;
 enum class op_type : int;
 enum class permission : unsigned int;
@@ -33,6 +34,7 @@ struct transaction_id;
 struct version;
 class watch_children_result;
 class watch_exists_result;
+class watch_op;
 class watch_result;
 
 }

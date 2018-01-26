@@ -13,6 +13,8 @@
 #include <system_error>
 #include <tuple>
 
+#include <sys/eventfd.h>
+#include <unistd.h>
 #include <zookeeper/zookeeper.h>
 
 #include "acl.hpp"
@@ -165,8 +167,12 @@ static acl acl_from_raw(const struct ACL_vector& raw)
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 connection_zk::connection_zk(const connection_params& params) :
-        _handle(nullptr)
+        _handle(nullptr),
+        _receive_handle(::eventfd(0, EFD_CLOEXEC | EFD_NONBLOCK))
 {
+    if (_receive_handle < 0)
+        throw std::system_error(errno, std::system_category(), "Could not create eventfd");
+
     if (params.connection_schema() != "zk")
         throw std::invalid_argument(std::string("Invalid connection string \"") + to_string(params) + "\"");
 
@@ -195,40 +201,19 @@ connection_zk::connection_zk(const connection_params& params) :
                               );
 
     if (!_handle)
+    {
+        ::close(_receive_handle);
         std::system_error(errno, std::system_category(), "Failed to create ZooKeeper client");
+    }
 }
 
 connection_zk::~connection_zk() noexcept
 {
     close();
+
+    if (_receive_handle != -1)
+        ::close(_receive_handle);
 }
-
-class connection_zk::watcher
-{
-public:
-    watcher() :
-            _event_delivered(false)
-    { }
-
-    virtual ~watcher() noexcept {}
-
-    virtual void deliver_event(event ev)
-    {
-        if (!_event_delivered.exchange(true, std::memory_order_relaxed))
-        {
-            _event_promise.set_value(std::move(ev));
-        }
-    }
-
-    future<event> get_event_future()
-    {
-        return _event_promise.get_future();
-    }
-
-protected:
-    std::atomic<bool> _event_delivered;
-    promise<event>    _event_promise;
-};
 
 template <typename TResult>
 class connection_zk::basic_watcher :

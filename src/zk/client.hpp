@@ -49,18 +49,17 @@ public:
     static future<client> connect(connection_params conn_params);
     /// \}
 
-    client(const client&) noexcept = default;
-    client(client&&) noexcept = default;
+    client(client&&) noexcept;
 
-    client& operator=(const client&) noexcept = default;
-    client& operator=(client&&) noexcept = default;
+    client& operator=(client&&) noexcept;
 
     ~client() noexcept;
 
-    /// Close the underlying \ref connection. All outstanding operations will be cancelled and all watches will be
-    /// delivered with \ref closed. You usually do not need to call this operation, as the destructor handles this
-    /// automatically.
-    void close();
+    /// Close the underlying connection.
+    ///
+    /// \param wait_for_stop If \c true, wait until all the callbacks are delivered and the client thread has stopped
+    ///  running before returning control to the caller. If \c false, simply start the close process.
+    void close(bool wait_for_stop = true);
 
     /// Return the data and the \ref stat of the entry of the given \a path.
     ///
@@ -216,7 +215,9 @@ public:
     future<multi_result> commit(multi_op txn);
 
 private:
-    std::shared_ptr<connection> _conn;
+    struct impl;
+
+    std::unique_ptr<impl> _impl;
 };
 
 /// \}

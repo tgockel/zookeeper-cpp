@@ -1,11 +1,12 @@
 /// \file
 /// Imports of \c optional and \c nullopt_t types, as well as the \c nullopt \c constexpr. These are \c std::optional,
-/// \c std::nullopt_t, and \c std::nullopt, respectively.
+/// \c std::nullopt_t, and \c std::nullopt, respectively. It also adds the \ref map and \ref some utility functions.
 #pragma once
 
 #include <zk/config.hpp>
 
 #include <optional>
+#include <type_traits>
 
 namespace zk
 {
@@ -30,10 +31,12 @@ auto map(FUnary&& transform, const optional<T>&... x) -> optional<decltype(trans
         return nullopt;
 }
 
+/// Create an optional from \a x. This is the same as \c std::make_optional, but is less verbose and feels more familiar
+/// to those used to every other language with an \c optional type.
 template <typename T>
-optional<T> some(T x)
+optional<std::decay_t<T>> some(T&& x)
 {
-    return optional<T>(std::move(x));
+    return std::forward<T>(x);
 }
 
 /// \}

@@ -4,15 +4,11 @@
 
 #include <initializer_list>
 #include <iosfwd>
-#include <string>
-#include <variant>
 #include <vector>
 
-#include "acl.hpp"
-#include "buffer.hpp"
 #include "forwards.hpp"
+#include "op.hpp"
 #include "results.hpp"
-#include "types.hpp"
 
 namespace zk
 {
@@ -34,127 +30,31 @@ std::ostream& operator<<(std::ostream&, const op_type&);
 std::string to_string(const op_type&);
 
 /// Represents a single operation of a \ref multi_op.
-class op final
-{
-public:
     /// Data for a \ref op::check operation.
-    struct check_data
-    {
-        std::string path;
-        version     check;
-
-        explicit check_data(std::string path, version check);
-
-        op_type type() const { return op_type::check; }
-    };
-
-    /// Check that the given \a path exists with the provided version \a check (which can be \c version::any).
-    static op check(std::string path, version check = version::any());
-
     /// Data for a \ref op::create operation.
-    struct create_data
-    {
-        std::string path;
-        buffer      data;
-        acl         rules;
-        create_mode mode;
-
-        explicit create_data(std::string path, buffer data, acl rules, create_mode mode);
-
-        op_type type() const { return op_type::create; }
-    };
-
     /// \{
     /// Create a new entry at the given \a path with the \a data.
     ///
-    /// \see client::create
-    static op create(std::string path, buffer data, acl rules, create_mode mode = create_mode::normal);
-    static op create(std::string path, buffer data, create_mode mode = create_mode::normal);
     /// \}
-
     /// Data for a \ref op::erase operation.
-    struct erase_data
-    {
-        std::string path;
-        version     check;
-
-        explicit erase_data(std::string path, version check);
-
-        op_type type() const { return op_type::erase; }
-    };
-
     /// Delete the entry at the given \a path if it matches the version \a check.
     ///
-    /// \see client::erase
-    static op erase(std::string path, version check = version::any());
-
     /// Data for a \ref op::set operation.
-    struct set_data
-    {
-        std::string path;
-        buffer      data;
-        version     check;
-
-        explicit set_data(std::string path, buffer data, version check);
-
-        op_type type() const { return op_type::set; }
-    };
-
     /// Set the \a data for the entry at \a path if it matches the version \a check.
     ///
-    /// \see client::set
-    static op set(std::string path, buffer data, version check = version::any());
-
-public:
-    op(const op&);
-    op(op&&) noexcept;
-
-    op& operator=(const op&) = delete;
-    op& operator=(op&&) = delete;
-
-    ~op() noexcept;
-
     /// Get the underlying type of this operation.
-    op_type type() const;
-
     /// Get the check-specific data.
     ///
     /// \throws std::logic_error if the \ref type is not \ref op_type::check.
-    const check_data& as_check() const;
-
     /// Get the create-specific data.
     ///
     /// \throws std::logic_error if the \ref type is not \ref op_type::create.
-    const create_data& as_create() const;
-
     /// Get the erase-specific data.
     ///
     /// \throws std::logic_error if the \ref type is not \ref op_type::erase.
-    const erase_data& as_erase() const;
-
     /// Get the set-specific data.
     ///
     /// \throws std::logic_error if the \ref type is not \ref op_type::set.
-    const set_data& as_set() const;
-
-private:
-    using any_data = std::variant<check_data, create_data, erase_data, set_data>;
-
-    explicit op(any_data&&) noexcept;
-
-    template <typename T>
-    const T& as(ptr<const char> operation) const;
-
-    friend std::ostream& operator<<(std::ostream&, const op&);
-
-private:
-    any_data _storage;
-};
-
-std::ostream& operator<<(std::ostream&, const op&);
-
-std::string to_string(const op&);
-
 /// A collection of operations that will be performed atomically.
 ///
 /// \see client::commit
