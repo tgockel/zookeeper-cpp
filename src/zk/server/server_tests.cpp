@@ -25,13 +25,16 @@ void delete_directory(std::string path)
 {
     auto unlink_cb = [] (ptr<const char> fpath, ptr<const struct ::stat>, int, ptr<struct FTW>) -> int
                      {
-                         if (std::remove(fpath))
-                             throw std::system_error(errno, std::system_category());
-                         else
-                             return 0;
+                         return std::remove(fpath);
                      };
 
-    nftw(path.c_str(), unlink_cb, 64, FTW_DEPTH | FTW_PHYS);
+    if (nftw(path.c_str(), unlink_cb, 64, FTW_DEPTH | FTW_PHYS))
+    {
+        if (errno == ENOENT)
+            return;
+        else
+            throw std::system_error(errno, std::system_category());
+    }
 }
 
 }
