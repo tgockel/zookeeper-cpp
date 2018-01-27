@@ -72,22 +72,6 @@ configuration_setting(NAME    FUTURE
                         CUSTOM
                      )
 
-check_include_file_cxx("optional" HAVE_STD_OPTIONAL)
-if(HAVE_STD_OPTIONAL)
-  set(OPTIONAL_DEFAULT STD)
-else()
-  set(OPTIONAL_DEFAULT STD_EXPERIMENTAL)
-endif()
-configuration_setting(NAME    OPTIONAL
-                      DOC     "Type to use for zk::optional<T>, zk::nullopt_t, and zk::nullopt"
-                      DEFAULT STD
-                      SET     ${OPTIONAL_DEFAULT}
-                      OPTIONS
-                        STD
-                        STD_EXPERIMENTAL
-                        CUSTOM
-                     )
-
 check_include_file_cxx("string_view" HAVE_STD_STRING_VIEW)
 if(HAVE_STD_STRING_VIEW)
   set(STRING_VIEW_DEFAULT STD)
