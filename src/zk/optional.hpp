@@ -33,6 +33,12 @@ auto map(FUnary&& transform, const optional<T>&... x) -> optional<decltype(trans
         return nullopt;
 }
 
+template <typename T>
+optional<T> some(T x)
+{
+    return optional<T>(std::move(x));
+}
+
 /** \} **/
 
 }

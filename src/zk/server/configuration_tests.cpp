@@ -1,6 +1,9 @@
 #include <zk/string_view.hpp>
 #include <zk/tests/test.hpp>
 
+#include <iostream>
+#include <sstream>
+
 #include "configuration.hpp"
 
 namespace zk::server
@@ -49,5 +52,23 @@ GTEST_TEST(configuration_tests, from_example)
     auto unrecognized = parsed.unknown_settings();
     CHECK_EQ(1U, unrecognized.size());
     CHECK_EQ("Value", unrecognized.at("randomExtra"));
+
+    auto configured = configuration::make_minimal("/var/lib/zookeeper")
+                      .tick_time(std::chrono::milliseconds(2500))
+                      .init_limit(10)
+                      .sync_limit(5)
+                      .client_port(2181)
+                      .leader_serves(true)
+                      .add_server("1", "zookeeper1")
+                      .add_server("2", "zookeeper2")
+                      .add_server("3", "zookeeper3")
+                      .add_setting("randomExtra", "Value")
+                      ;
+    CHECK_EQ(configured, parsed);
+
+    std::ostringstream os;
+    parsed.save(os);
+    auto reloaded = configuration::from_string(os.str());
+    CHECK_EQ(parsed, reloaded);
 }
 }

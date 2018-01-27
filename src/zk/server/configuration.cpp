@@ -4,6 +4,7 @@
 #include <fstream>
 #include <istream>
 #include <regex>
+#include <sstream>
 #include <stdexcept>
 
 namespace zk::server
@@ -29,12 +30,34 @@ public:
 }
 
 std::uint16_t configuration::default_client_port = std::uint16_t(2181);
+std::uint16_t configuration::default_peer_port   = std::uint16_t(2888);
+std::uint16_t configuration::default_leader_port = std::uint16_t(3888);
 
 configuration::duration_type configuration::default_tick_time = std::chrono::milliseconds(2000);
+
+template <typename T>
+configuration::setting<T>::setting() noexcept :
+        value(nullopt),
+        line(not_a_line)
+{ }
+
+template <typename T>
+configuration::setting<T>::setting(T value, std::size_t line) noexcept :
+        value(std::move(value)),
+        line(line)
+{ }
 
 configuration::configuration() = default;
 
 configuration::~configuration() noexcept = default;
+
+configuration configuration::make_minimal(std::string data_directory, std::uint16_t client_port)
+{
+    configuration out;
+    out.data_directory(std::move(data_directory))
+       .client_port(client_port);
+    return out;
+}
 
 configuration configuration::from_lines(std::vector<std::string> lines)
 {
@@ -129,107 +152,208 @@ configuration configuration::from_string(string_view value)
     return from_stream(stream);
 }
 
-template <typename T>
-configuration::setting<T> configuration::add_no_line(optional<T> value)
+template <typename T, typename FEncode>
+void configuration::set(setting<T>& target, optional<T> value, string_view key, const FEncode& encode)
 {
-    return map([] (T x) -> setting_data<T> { return { std::move(x), not_a_line }; }, std::move(value));
+    std::string target_line;
+    if (value)
+    {
+        std::ostringstream os;
+        os << key << '=' << encode(*value);
+        target_line = os.str();
+    }
+
+    if (target.line == not_a_line && value)
+    {
+        target.line = _lines.size();
+        _lines.emplace_back(std::move(target_line));
+    }
+    else if (target.line == not_a_line && !value)
+    {
+        // do nothing -- no line means no value
+    }
+    else
+    {
+        target.value        = std::move(value);
+        _lines[target.line] = std::move(target_line);
+    }
 }
 
 template <typename T>
-T configuration::value_or(const setting<T>& value, const T& alternative)
+void configuration::set(setting<T>& target, optional<T> value, string_view key)
 {
-    return map([] (const setting_data<T>& x) { return x.value; }, value)
-           .value_or(alternative);
-}
-
-template <typename T>
-optional<T> configuration::value(const setting<T>& value)
-{
-    return map([] (const setting_data<T>& x) { return x.value; }, value);
+    return set(target, std::move(value), key, [] (const T& x) -> const T& { return x; });
 }
 
 std::uint16_t configuration::client_port() const
 {
-    return value_or(_client_port, default_client_port);
+    return _client_port.value.value_or(default_client_port);
 }
 
 configuration& configuration::client_port(optional<std::uint16_t> port)
 {
-    _client_port = add_no_line(port);
+    set(_client_port, port, "clientPort");
     return *this;
 }
 
 optional<string_view> configuration::data_directory() const
 {
-    return map([] (const auto& x) -> string_view { return x.value; }, _data_directory);
+    return map([] (const auto& x) -> string_view { return x; }, _data_directory.value);
 }
 
 configuration& configuration::data_directory(optional<std::string> path)
 {
-    _data_directory = add_no_line(std::move(path));
+    set(_data_directory, std::move(path), "dataDir");
     return *this;
 }
 
 configuration::duration_type configuration::tick_time() const
 {
-    return value_or(_tick_time, default_tick_time);
+    return _tick_time.value.value_or(default_tick_time);
 }
 
 configuration& configuration::tick_time(optional<duration_type> tick_time)
 {
-    _tick_time = add_no_line(tick_time);
+    set(_tick_time, tick_time, "tickTime", [] (duration_type x) { return x.count(); });
     return *this;
 }
 
 optional<std::size_t> configuration::init_limit() const
 {
-    return value(_init_limit);
+    return _init_limit.value;
 }
 
 configuration& configuration::init_limit(optional<std::size_t> limit)
 {
-    _init_limit = add_no_line(limit);
+    set(_init_limit, limit, "initLimit");
     return *this;
 }
 
 optional<std::size_t> configuration::sync_limit() const
 {
-    return value(_sync_limit);
+    return _sync_limit.value;
 }
 
 configuration& configuration::sync_limit(optional<std::size_t> limit)
 {
-    _sync_limit = add_no_line(limit);
+    set(_sync_limit, limit, "syncLimit");
     return *this;
 }
 
 optional<bool> configuration::leader_serves() const
 {
-    return value(_leader_serves);
+    return _leader_serves.value;
 }
 
 configuration& configuration::leader_serves(optional<bool> serve)
 {
-    _leader_serves = add_no_line(serve);
+    set(_leader_serves, serve, "leaderServes", [] (bool x) { return x ? "yes" : "no"; });
     return *this;
 }
 
-std::unordered_map<std::string, std::string> configuration::servers() const
+std::map<std::string, std::string> configuration::servers() const
 {
-    std::unordered_map<std::string, std::string> out;
+    std::map<std::string, std::string> out;
     for (const auto& entry : _server_paths)
-        out.insert({ entry.first, entry.second.value });
+        out.insert({ entry.first, *entry.second.value });
 
     return out;
 }
 
-std::unordered_map<std::string, std::string> configuration::unknown_settings() const
+configuration& configuration::add_server(std::string   name,
+                                         std::string   hostname,
+                                         std::uint16_t peer_port,
+                                         std::uint16_t leader_port
+                                        )
 {
-    std::unordered_map<std::string, std::string> out;
+    if (_server_paths.count(name))
+        throw std::runtime_error(std::string("Already a server with the name ") + name);
+
+    hostname += ":";
+    hostname += std::to_string(peer_port);
+    hostname += ":";
+    hostname += std::to_string(leader_port);
+
+    auto iter = _server_paths.emplace(std::move(name), setting<std::string>()).first;
+    set(iter->second, some(std::move(hostname)), std::string("server.") + iter->first);
+    return *this;
+}
+
+std::map<std::string, std::string> configuration::unknown_settings() const
+{
+    std::map<std::string, std::string> out;
     for (const auto& entry : _unknown_settings)
-        out.insert({ entry.first, entry.second.value });
+        out.insert({ entry.first, *entry.second.value });
 
     return out;
+}
+
+configuration& configuration::add_setting(std::string key, std::string value)
+{
+    // This process is really inefficient, but people should not be using this very often. This is done this way because
+    // it is possible to specify a key that has a known setting (such as "dataDir"), which needs to be picked up
+    // correctly. `from_lines` has this logic, so just use it. Taking that matching logic out would be the best approach
+    // to take, but since this shouldn't be used, I haven't bothered.
+    auto source_file = _source_file;
+    auto lines       = _lines;
+    lines.emplace_back(key + "=" + value);
+
+    *this        = configuration::from_lines(std::move(lines));
+    _source_file = std::move(source_file);
+    return *this;
+}
+
+void configuration::save(std::ostream& os) const
+{
+    for (const auto& line : _lines)
+        os << line << std::endl;
+
+    os.flush();
+}
+
+void configuration::save_file(std::string filename)
+{
+    std::ofstream ofs(filename.c_str());
+    save(ofs);
+    if (ofs)
+        _source_file = std::move(filename);
+    else
+        throw std::runtime_error("Error saving file");
+}
+
+bool operator==(const configuration& lhs, const configuration& rhs)
+{
+    if (&lhs == &rhs)
+        return true;
+
+    auto same_items = [] (const auto& a, const auto& b)
+                      {
+                          return a.first        == b.first
+                              && a.second.value == b.second.value;
+                      };
+
+    return lhs.client_port()            == rhs.client_port()
+        && lhs.data_directory()         == rhs.data_directory()
+        && lhs.tick_time()              == rhs.tick_time()
+        && lhs.init_limit()             == rhs.init_limit()
+        && lhs.sync_limit()             == rhs.sync_limit()
+        && lhs.leader_serves()          == rhs.leader_serves()
+        && lhs._server_paths.size()     == rhs._server_paths.size()
+        && lhs._server_paths.end()      == std::mismatch(lhs._server_paths.begin(), lhs._server_paths.end(),
+                                                         rhs._server_paths.begin(), rhs._server_paths.end(),
+                                                         same_items
+                                                        ).first
+        && lhs._unknown_settings.size() == rhs._unknown_settings.size()
+        && lhs._unknown_settings.end()  == std::mismatch(lhs._unknown_settings.begin(), lhs._unknown_settings.end(),
+                                                         rhs._unknown_settings.begin(), rhs._unknown_settings.end(),
+                                                         same_items
+                                                        ).first
+        ;
+}
+
+bool operator!=(const configuration& lhs, const configuration& rhs)
+{
+    return !(lhs == rhs);
 }
 
 }
