@@ -152,6 +152,13 @@ configuration configuration::from_string(string_view value)
     return from_stream(stream);
 }
 
+bool configuration::is_minimal() const
+{
+    return _data_directory.value
+        && _client_port.value
+        && _lines.size() == 2U;
+}
+
 template <typename T, typename FEncode>
 void configuration::set(setting<T>& target, optional<T> value, string_view key, const FEncode& encode)
 {
@@ -165,7 +172,8 @@ void configuration::set(setting<T>& target, optional<T> value, string_view key, 
 
     if (target.line == not_a_line && value)
     {
-        target.line = _lines.size();
+        target.value = std::move(value);
+        target.line  = _lines.size();
         _lines.emplace_back(std::move(target_line));
     }
     else if (target.line == not_a_line && !value)

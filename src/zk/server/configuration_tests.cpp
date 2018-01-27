@@ -71,4 +71,13 @@ GTEST_TEST(configuration_tests, from_example)
     auto reloaded = configuration::from_string(os.str());
     CHECK_EQ(parsed, reloaded);
 }
+
+GTEST_TEST(configuration_tests, minimal)
+{
+    auto minimal = configuration::make_minimal("/some/path", 2345);
+    CHECK_EQ("/some/path", minimal.data_directory().value());
+    CHECK_EQ(2345,         minimal.client_port());
+    CHECK_TRUE(minimal.is_minimal());
+}
+
 }

@@ -44,6 +44,11 @@ public:
     /** Get the source file. This will only have a value if this was created by \c from_file. **/
     const optional<std::string>& source_file() const { return _source_file; }
 
+    /** Check if this is a "minimal" configuration -- meaning it only has a \c data_directory and \c client_port set.
+     *  Configurations which are minimal can be started directly from the command line.
+    **/
+    bool is_minimal() const;
+
     std::uint16_t  client_port() const;
     configuration& client_port(optional<std::uint16_t> port);
 
