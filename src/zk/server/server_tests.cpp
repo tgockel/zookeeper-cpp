@@ -1,9 +1,14 @@
 #include <zk/tests/test.hpp>
 #include <zk/client.hpp>
 
+#include <cerrno>
 #include <chrono>
 #include <iostream>
+#include <system_error>
 #include <thread>
+
+#include <ftw.h>
+#include <unistd.h>
 
 #include "configuration.hpp"
 #include "package_registry_tests.hpp"
@@ -13,12 +18,31 @@
 namespace zk::server
 {
 
+namespace
+{
+
+void delete_directory(std::string path)
+{
+    auto unlink_cb = [] (ptr<const char> fpath, ptr<const struct ::stat>, int, ptr<struct FTW>) -> int
+                     {
+                         if (std::remove(fpath))
+                             throw std::system_error(errno, std::system_category());
+                         else
+                             return 0;
+                     };
+
+    nftw(path.c_str(), unlink_cb, 64, FTW_DEPTH | FTW_PHYS);
+}
+
+}
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // server_fixture                                                                                                     //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 void server_fixture::SetUp()
 {
+    delete_directory("zk-data");
     _server = server::create(test_package_registry::instance(), configuration::make_minimal("zk-data"));
     _conn_string = "zk://127.0.0.1:2181";
 }
@@ -54,6 +78,7 @@ static std::string             single_server_conn_string;
 
 void single_server_fixture::SetUpTestCase()
 {
+    delete_directory("zk-data");
     single_server_server = server::create(test_package_registry::instance(), configuration::make_minimal("zk-data"));
     single_server_conn_string = "zk://127.0.0.1:2181";
 }
