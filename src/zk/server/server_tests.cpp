@@ -10,7 +10,9 @@
 #include <ftw.h>
 #include <unistd.h>
 
+#include "classpath.hpp"
 #include "configuration.hpp"
+#include "package_registry.hpp"
 #include "package_registry_tests.hpp"
 #include "server.hpp"
 #include "server_tests.hpp"
@@ -41,7 +43,9 @@ void delete_directory(std::string path)
 void server_fixture::SetUp()
 {
     delete_directory("zk-data");
-    _server = server::create(test_package_registry::instance(), configuration::make_minimal("zk-data"));
+    _server = std::make_shared<server>(test_package_registry::instance().find_newest_classpath().value(),
+                                       configuration::make_minimal("zk-data")
+                                      );
     _conn_string = "zk://127.0.0.1:2181";
 }
 
@@ -77,7 +81,9 @@ static std::string             single_server_conn_string;
 void single_server_fixture::SetUpTestCase()
 {
     delete_directory("zk-data");
-    single_server_server = server::create(test_package_registry::instance(), configuration::make_minimal("zk-data"));
+    single_server_server = std::make_shared<server>(test_package_registry::instance().find_newest_classpath().value(),
+                                                    configuration::make_minimal("zk-data")
+                                                   );
     single_server_conn_string = "zk://127.0.0.1:2181";
 }
 
@@ -104,15 +110,19 @@ client single_server_fixture::get_connected_client()
 
 GTEST_TEST(server_tests, start_stop)
 {
-    auto svr = server::create(test_package_registry::instance(), configuration::make_minimal("zk-data"));
+    server svr(test_package_registry::instance().find_newest_classpath().value(),
+               configuration::make_minimal("zk-data")
+              );
     std::this_thread::sleep_for(std::chrono::seconds(1));
-    svr->shutdown();
+    svr.shutdown();
 }
 
 GTEST_TEST(server_tests, shutdown_and_wait)
 {
-    auto svr = server::create(test_package_registry::instance(), configuration::make_minimal("zk-data"));
-    svr->shutdown(true);
+    server svr(test_package_registry::instance().find_newest_classpath().value(),
+               configuration::make_minimal("zk-data")
+              );
+    svr.shutdown(true);
 }
 
 }

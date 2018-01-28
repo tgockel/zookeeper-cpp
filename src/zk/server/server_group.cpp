@@ -10,8 +10,9 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 
-#include "server.hpp"
+#include "classpath.hpp"
 #include "configuration.hpp"
+#include "server.hpp"
 
 namespace zk::server
 {
@@ -119,7 +120,7 @@ const std::string& server_group::get_connection_string()
     return _conn_string;
 }
 
-void server_group::start_all_servers(const package_registry& packages)
+void server_group::start_all_servers(const classpath& packages)
 {
     for (auto& [name, srvr] : _servers)
     {
@@ -127,7 +128,7 @@ void server_group::start_all_servers(const package_registry& packages)
 
         if (!srvr->instance)
         {
-            srvr->instance = server::create(packages, srvr->settings);
+            srvr->instance = std::make_shared<server>(packages, srvr->settings);
         }
     }
 }

@@ -24,27 +24,40 @@ public:
     using duration_type = std::chrono::milliseconds;
 
 public:
+    //! The default value for \c client_port.
     static std::uint16_t default_client_port;
 
+    //! The default value for \c peer_port.
     static std::uint16_t default_peer_port;
 
+    //! The default value for \c leader_port.
     static std::uint16_t default_leader_port;
 
+    //! The default value for \c tick_time.
     static duration_type default_tick_time;
 
+    //! The default value for \c init_limit.
     static std::size_t default_init_limit;
 
+    //! The default value for \c sync_limit.
     static std::size_t default_sync_limit;
 
 public:
+    /** Creates a minimal configuration, setting the four needed values. The resulting \c configuration can be run
+     *  through a file with \c save or it can run directly from the command line.
+    **/
     static configuration make_minimal(std::string data_directory, std::uint16_t client_port = default_client_port);
 
+    /** Load the configuration from a file. **/
     static configuration from_file(std::string filename);
 
+    /** Load configuration from the provided \a stream. **/
     static configuration from_stream(std::istream& stream);
 
+    /** Load configuration from the provided \a lines. **/
     static configuration from_lines(std::vector<std::string> lines);
 
+    /** Load configuration directly from the in-memory \a value. **/
     static configuration from_string(string_view value);
 
     ~configuration() noexcept;
@@ -85,8 +98,8 @@ public:
      *
      *  \param name The entry name for this server. By convention, this is a number.
      *  \param hostname The address of the server to connect to.
-     *  \param peer_port
-     *  \param leader_port
+     *  \param peer_port The port used to move ZooKeeper data on.
+     *  \param leader_port The port used for leader election.
      *  \throws std::runtime_error if there is already a server with the given \a name.
     **/
     configuration& add_server(std::string   name,

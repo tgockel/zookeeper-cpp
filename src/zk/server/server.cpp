@@ -7,9 +7,9 @@
 
 #include <signal.h>
 
+#include "classpath.hpp"
 #include "configuration.hpp"
 #include "detail/subprocess.hpp"
-#include "package_registry.hpp"
 
 namespace zk::server
 {
@@ -26,29 +26,24 @@ static void validate_settings(const configuration& settings)
     }
 }
 
-server::server(std::string classpath, configuration settings) :
+server::server(classpath packages, configuration settings) :
         _running(true)
 {
     validate_settings(settings);
-    _worker = std::thread([this,
-                           classpath    = std::move(classpath),
-                           settings     = std::move(settings)
-                          ] () mutable
+    _worker = std::thread([this, packages = std::move(packages), settings = std::move(settings)] ()
                           {
-                              this->run_process(std::move(classpath), std::move(settings));
+                              this->run_process(packages, settings);
                           }
                          );
 }
 
+server::server(configuration settings) :
+        server(classpath::system_default(), std::move(settings))
+{ }
+
 server::~server() noexcept
 {
     shutdown(true);
-}
-
-std::shared_ptr<server> server::create(const package_registry& registry, configuration settings)
-{
-    // TODO: Handle the nullopt case
-    return std::make_shared<server>(registry.find_newest_classpath().value(), std::move(settings));
 }
 
 void server::shutdown(bool wait_for_stop)
@@ -58,9 +53,9 @@ void server::shutdown(bool wait_for_stop)
         _worker.join();
 }
 
-void server::run_process(std::string classpath, configuration&& settings)
+void server::run_process(const classpath& packages, const configuration& settings)
 {
-    detail::subprocess::argument_list args = { "-cp", std::move(classpath),
+    detail::subprocess::argument_list args = { "-cp", packages.command_line(),
                                                "org.apache.zookeeper.server.quorum.QuorumPeerMain",
                                              };
     if (settings.is_minimal())

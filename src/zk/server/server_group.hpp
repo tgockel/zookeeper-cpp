@@ -15,8 +15,8 @@ namespace zk::server
  *  \{
 **/
 
+class classpath;
 class configuration;
-class package_registry;
 class server;
 
 /** Create and manage a group of \c server instances on this local machine (most likely in a single ensemble). This is
@@ -42,7 +42,7 @@ public:
     const std::string& get_connection_string();
 
     /** Start all servers in the group. **/
-    void start_all_servers(const package_registry& packages);
+    void start_all_servers(const classpath& packages);
 
     std::size_t size() const { return _servers.size(); }
 

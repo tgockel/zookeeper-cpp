@@ -32,11 +32,11 @@ package_registry::~package_registry() noexcept
     _lifetime.reset();
 }
 
-package_registry::registration package_registry::register_classpath_server(std::string version, std::string classpath)
+package_registry::registration package_registry::register_classpath_server(std::string version, classpath packages)
 {
     std::unique_lock<std::mutex> ax(_protect);
 
-    auto ret = _registrations.insert({ std::move(version), std::move(classpath) });
+    auto ret = _registrations.insert({ std::move(version), std::move(packages) });
     if (!ret.second)
         throw std::invalid_argument(version + " is already registered");
 
@@ -63,7 +63,7 @@ package_registry::size_type package_registry::size() const
     return _registrations.size();
 }
 
-optional<std::string> package_registry::find_newest_classpath() const
+optional<classpath> package_registry::find_newest_classpath() const
 {
     std::unique_lock<std::mutex> ax(_protect);
     if (_registrations.empty())
