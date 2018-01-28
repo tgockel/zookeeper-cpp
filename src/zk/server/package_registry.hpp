@@ -9,6 +9,8 @@
 #include <mutex>
 #include <string>
 
+#include "classpath.hpp"
+
 namespace zk::server
 {
 
@@ -39,11 +41,11 @@ public:
      *
      *  \param version A version string used to look up the server when creating them. While this can be a lie, it
      *   should not be.
-     *  \param classpath The Java classpath used to run the server. This will be the \c cp argument to Java.
+     *  \param packages The Java classpath used to run the server. This will be the \c cp argument to Java.
      *  \returns a registration that can be used to \c unregister_server.
      *  \throws std::invalid_argument if \a version is already registered.
     **/
-    registration register_classpath_server(std::string version, std::string classpath);
+    registration register_classpath_server(std::string version, classpath packages);
 
     /** Attempt to unregister the server associated with the provided registration. Unregistering will prevent future
      *  servers from being created with the particular setup, but will not teardown servers which might be running with
@@ -69,12 +71,12 @@ public:
      *  This function is nonsense and will be deprecated. The concept is fine, but returning an \c std::string as a
      *  classpath is terrible. It should be replaced by a dedicated \c run_settings class.
     **/
-    optional<std::string> find_newest_classpath() const;
+    optional<classpath> find_newest_classpath() const;
 
 private:
-    mutable std::mutex                 _protect;
-    std::shared_ptr<void>              _lifetime;
-    std::map<std::string, std::string> _registrations;
+    mutable std::mutex               _protect;
+    std::shared_ptr<void>            _lifetime;
+    std::map<std::string, classpath> _registrations;
 };
 
 /** \} **/

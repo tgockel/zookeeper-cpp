@@ -2,6 +2,8 @@
 
 #include <zk/config.hpp>
 
+#include <atomic>
+#include <exception>
 #include <memory>
 #include <string>
 #include <thread>
@@ -14,35 +16,46 @@ namespace zk::server
  *  \{
 **/
 
-class package_registry;
+class classpath;
+class configuration;
 
 /** Controls a ZooKeeper server process on this local machine. **/
 class server final
 {
 public:
-    /** \warning
-     *  See \c create for why this shouldn't be used.
+    /** Create a running server process with the specified \a packages and \a settings.
+     *
+     *  \param packages The classpath to use to find ZooKeeper's \c QuorumPeerMain class.
+     *  \param settings The server settings to run with.
+     *  \throws std::invalid_argument If `settings.is_minimal()` is \c false and `settings.source_file()` is \c nullopt.
+     *   This is because non-minimal configurations require ZooKeeper to be launched with a file.
     **/
-    explicit server(std::string classpath);
+    explicit server(classpath packages, configuration settings);
+
+    /** Create a running server with the specified \a settings using the system-provided default packages for ZooKeeper
+     *  (see \ref classpath::system_default).
+     *
+     *  \param settings The server settings to run with.
+     *  \throws std::invalid_argument If `settings.is_minimal()` is \c false and `settings.source_file()` is \c nullopt.
+     *   This is because non-minimal configurations require ZooKeeper to be launched with a file.
+    **/
+    explicit server(configuration settings);
+
+    server(const server&) = delete;
 
     ~server() noexcept;
-
-    /** Create a running server process with the best (newest) version from the provided \a registry.
-     *
-     *  \warning
-     *  This interface, while convenient, is probably totally broken. Expect it to be deprecated in the not-too-distant
-     *  future.
-    **/
-    static std::shared_ptr<server> create(package_registry& registry);
 
     void shutdown(bool wait_for_stop = false);
 
 private:
-    void run_process(std::string classpath);
+    void run_process(const classpath&, const configuration&);
 
 private:
-    bool               _running;
-    std::thread        _worker;
+    std::atomic<bool> _running;
+    std::thread       _worker;
+
+    // NOTE: The configuration is NOT stored in the server object. This is because configuration can be changed by the
+    // ZK process in cases like ensemble reconfiguration. It is the job of run_process to deal with this.
 };
 
 /** \} **/

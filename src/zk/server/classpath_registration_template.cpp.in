@@ -1,4 +1,5 @@
 #include <zk/config.hpp>
+#include <zk/server/classpath.hpp>
 #include <zk/server/package_registry.hpp>
 #include <zk/server/package_registry_tests.hpp>
 
@@ -12,7 +13,7 @@ auto registration = test_package_registry::instance()
                     .register_classpath_server
                      (
                         R"(@server_version@)",
-                        R"(@server_classpath@)"
+                        classpath({R"(@server_classpath@)"})
                      );
 
 }

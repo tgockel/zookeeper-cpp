@@ -1,5 +1,6 @@
 #include <zk/tests/test.hpp>
 
+#include "classpath.hpp"
 #include "package_registry.hpp"
 #include "package_registry_tests.hpp"
 
@@ -33,11 +34,11 @@ GTEST_TEST(package_registry_tests, registration)
     package_registry registry;
     CHECK_TRUE(registry.empty());
 
-    auto registration1 = registry.register_classpath_server("1.0", "RANDOM");
+    auto registration1 = registry.register_classpath_server("1.0", classpath({ "RANDOM" }));
     CHECK_EQ(1U, registry.size());
-    CHECK_THROWS(std::invalid_argument) { registry.register_classpath_server("1.0", "RANDOM"); };
+    CHECK_THROWS(std::invalid_argument) { registry.register_classpath_server("1.0", classpath({ "RANDOM" })); };
 
-    auto registration2 = registry.register_classpath_server("2.0", "RANDOM");
+    auto registration2 = registry.register_classpath_server("2.0", classpath({ "RANDOM" }));
     CHECK_EQ(2U, registry.size());
     registration2.reset();
     CHECK_EQ(1U, registry.size());
