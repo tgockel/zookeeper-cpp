@@ -38,7 +38,7 @@ public:
      *  This interface, while convenient, is probably totally broken. Expect it to be deprecated in the not-too-distant
      *  future.
     **/
-    static std::shared_ptr<server> create(package_registry& registry, configuration settings);
+    static std::shared_ptr<server> create(const package_registry& registry, configuration settings);
 
     void shutdown(bool wait_for_stop = false);
 

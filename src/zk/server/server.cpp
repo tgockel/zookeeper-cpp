@@ -45,7 +45,7 @@ server::~server() noexcept
     shutdown(true);
 }
 
-std::shared_ptr<server> server::create(package_registry& registry, configuration settings)
+std::shared_ptr<server> server::create(const package_registry& registry, configuration settings)
 {
     // TODO: Handle the nullopt case
     return std::make_shared<server>(registry.find_newest_classpath().value(), std::move(settings));
