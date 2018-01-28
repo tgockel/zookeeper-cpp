@@ -38,8 +38,8 @@ GTEST_TEST(configuration_tests, from_example)
 {
     auto parsed = configuration::from_string(configuration_source_file_example);
     CHECK_EQ(2500U, parsed.tick_time().count());
-    CHECK_EQ(10U,   parsed.init_limit().value());
-    CHECK_EQ(5U,    parsed.sync_limit().value());
+    CHECK_EQ(10U,   parsed.init_limit());
+    CHECK_EQ(5U,    parsed.sync_limit());
     CHECK_EQ(2181U, parsed.client_port());
     CHECK_TRUE(parsed.leader_serves().value());
 

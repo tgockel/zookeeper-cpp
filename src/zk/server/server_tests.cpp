@@ -18,9 +18,6 @@
 namespace zk::server
 {
 
-namespace
-{
-
 void delete_directory(std::string path)
 {
     auto unlink_cb = [] (ptr<const char> fpath, ptr<const struct ::stat>, int, ptr<struct FTW>) -> int
@@ -35,8 +32,6 @@ void delete_directory(std::string path)
         else
             throw std::system_error(errno, std::system_category());
     }
-}
-
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

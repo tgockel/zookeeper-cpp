@@ -35,6 +35,9 @@ std::uint16_t configuration::default_leader_port = std::uint16_t(3888);
 
 configuration::duration_type configuration::default_tick_time = std::chrono::milliseconds(2000);
 
+std::size_t configuration::default_init_limit = 10U;
+std::size_t configuration::default_sync_limit =  5U;
+
 template <typename T>
 configuration::setting<T>::setting() noexcept :
         value(nullopt),
@@ -55,7 +58,10 @@ configuration configuration::make_minimal(std::string data_directory, std::uint1
 {
     configuration out;
     out.data_directory(std::move(data_directory))
-       .client_port(client_port);
+       .client_port(client_port)
+       .init_limit(default_init_limit)
+       .sync_limit(default_sync_limit)
+       ;
     return out;
 }
 
@@ -156,7 +162,9 @@ bool configuration::is_minimal() const
 {
     return _data_directory.value
         && _client_port.value
-        && _lines.size() == 2U;
+        && _init_limit.value     && init_limit() == default_init_limit
+        && _sync_limit.value     && sync_limit() == default_sync_limit
+        && _lines.size() == 4U;
 }
 
 template <typename T, typename FEncode>
@@ -204,9 +212,9 @@ configuration& configuration::client_port(optional<std::uint16_t> port)
     return *this;
 }
 
-optional<string_view> configuration::data_directory() const
+const optional<std::string>& configuration::data_directory() const
 {
-    return map([] (const auto& x) -> string_view { return x; }, _data_directory.value);
+    return _data_directory.value;
 }
 
 configuration& configuration::data_directory(optional<std::string> path)
@@ -226,9 +234,9 @@ configuration& configuration::tick_time(optional<duration_type> tick_time)
     return *this;
 }
 
-optional<std::size_t> configuration::init_limit() const
+std::size_t configuration::init_limit() const
 {
-    return _init_limit.value;
+    return _init_limit.value.value_or(default_init_limit);
 }
 
 configuration& configuration::init_limit(optional<std::size_t> limit)
@@ -237,9 +245,9 @@ configuration& configuration::init_limit(optional<std::size_t> limit)
     return *this;
 }
 
-optional<std::size_t> configuration::sync_limit() const
+std::size_t configuration::sync_limit() const
 {
-    return _sync_limit.value;
+    return _sync_limit.value.value_or(default_sync_limit);
 }
 
 configuration& configuration::sync_limit(optional<std::size_t> limit)

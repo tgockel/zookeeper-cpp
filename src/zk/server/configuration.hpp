@@ -14,6 +14,10 @@
 namespace zk::server
 {
 
+/** \addtogroup Server
+ *  \{
+**/
+
 class configuration final
 {
 public:
@@ -27,6 +31,10 @@ public:
     static std::uint16_t default_leader_port;
 
     static duration_type default_tick_time;
+
+    static std::size_t default_init_limit;
+
+    static std::size_t default_sync_limit;
 
 public:
     static configuration make_minimal(std::string data_directory, std::uint16_t client_port = default_client_port);
@@ -52,8 +60,8 @@ public:
     std::uint16_t  client_port() const;
     configuration& client_port(optional<std::uint16_t> port);
 
-    optional<string_view> data_directory() const;
-    configuration&        data_directory(optional<std::string> path);
+    const optional<std::string>& data_directory() const;
+    configuration&               data_directory(optional<std::string> path);
 
     duration_type  tick_time() const;
     configuration& tick_time(optional<duration_type> time);
@@ -61,12 +69,12 @@ public:
     /** The number of ticks that the initial synchronization phase can take. This limits the length of time the
      *  ZooKeeper servers in quorum have to connect to a leader.
     **/
-    optional<std::size_t> init_limit() const;
-    configuration&        init_limit(optional<std::size_t> limit);
+    std::size_t    init_limit() const;
+    configuration& init_limit(optional<std::size_t> limit);
 
     /** Limits how far out of date a server can be from a leader. **/
-    optional<std::size_t> sync_limit() const;
-    configuration&        sync_limit(optional<std::size_t> limit);
+    std::size_t    sync_limit() const;
+    configuration& sync_limit(optional<std::size_t> limit);
 
     optional<bool> leader_serves() const;
     configuration& leader_serves(optional<bool> serve);
@@ -148,4 +156,7 @@ private:
     std::map<std::string, setting<std::string>> _server_paths;
     std::map<std::string, setting<std::string>> _unknown_settings;
 };
+
+/** \} **/
+
 }
