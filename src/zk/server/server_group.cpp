@@ -30,11 +30,17 @@ struct server_group::info
     { }
 };
 
-server_group::server_group() noexcept = default;
+server_group::server_group() noexcept
+{ }
 
 server_group::server_group(server_group&&) noexcept = default;
 
-server_group& server_group::operator=(server_group&&) noexcept = default;
+server_group& server_group::operator=(server_group&& src) noexcept
+{
+    _servers     = std::move(src._servers);
+    _conn_string = std::move(src._conn_string);
+    return *this;
+}
 
 static void create_directory(const std::string& path)
 {
