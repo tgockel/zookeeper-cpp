@@ -6,8 +6,8 @@ var classzk_1_1server_1_1package__registry =
     [ "package_registry", "classzk_1_1server_1_1package__registry.html#aacc74d4bec1f2bec1e6a42016b5475a8", null ],
     [ "~package_registry", "classzk_1_1server_1_1package__registry.html#a6dc4df847f14c9556f83c0b555c2e96a", null ],
     [ "empty", "classzk_1_1server_1_1package__registry.html#a6e2abf1fb56c1bd16e737a4f3ebc9e8f", null ],
-    [ "find_newest_classpath", "classzk_1_1server_1_1package__registry.html#a55398aeda89df0e39008bd556d6f0ede", null ],
-    [ "register_classpath_server", "classzk_1_1server_1_1package__registry.html#a830ed4633450be11adeb39a4fefe9bb4", null ],
+    [ "find_newest_classpath", "classzk_1_1server_1_1package__registry.html#a65af1c22fa88448a119199b37d49097e", null ],
+    [ "register_classpath_server", "classzk_1_1server_1_1package__registry.html#a908f11d0c0bd4c5063f5947ee7c52e6a", null ],
     [ "size", "classzk_1_1server_1_1package__registry.html#a89823c7c5d52cab49db9252dd4ac0ac7", null ],
     [ "unregister_server", "classzk_1_1server_1_1package__registry.html#a63b39522b176f754fdd1d4cfbe5c41fe", null ],
     [ "unregister_server", "classzk_1_1server_1_1package__registry.html#aed41d069ff25a5176947958019371e1f", null ]

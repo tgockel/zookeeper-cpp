@@ -92,7 +92,7 @@ $(document).ready(function(){initNavTree('optional_8hpp.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Groups</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Groups</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -103,56 +103,44 @@ $(document).ready(function(){initNavTree('optional_8hpp.html','');});
 
 <div class="header">
   <div class="summary">
-<a href="#define-members">Macros</a> &#124;
-<a href="#typedef-members">Typedefs</a>  </div>
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">optional.hpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Controls the import of the <code>optional</code> and <code>nullopt_t</code> types, as well as the <code>nullopt</code> <code>constexpr</code>.  
+<p>Imports of <code>optional</code> and <code>nullopt_t</code> types, as well as the <code>nullopt</code> <code>constexpr</code>.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;zk/config.hpp&gt;</code><br />
+<code>#include &lt;optional&gt;</code><br />
 </div>
 <p><a href="optional_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:ga3200797b7fb785e83218cb5aeae98c6e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Client.html#ga3200797b7fb785e83218cb5aeae98c6e">ZKPP_OPTIONAL_USE_STD_EXPERIMENTAL</a>&#160;&#160;&#160;0</td></tr>
-<tr class="memdesc:ga3200797b7fb785e83218cb5aeae98c6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set this to 1 to use <code>std::experimental::optional</code>, <code>std::experimental::nullopt_t</code>, and <code>std::experimental::nullopt</code> as the backing types for <code>zk::optional</code>, <code>zk::nullopt_t</code>, and <code>zk::nullopt</code>.  <a href="group__Client.html#ga3200797b7fb785e83218cb5aeae98c6e">More...</a><br /></td></tr>
-<tr class="separator:ga3200797b7fb785e83218cb5aeae98c6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga601acdf80bdcc2e0727537543a1e2e53"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Client.html#ga601acdf80bdcc2e0727537543a1e2e53">ZKPP_OPTIONAL_USE_CUSTOM</a>&#160;&#160;&#160;0</td></tr>
-<tr class="memdesc:ga601acdf80bdcc2e0727537543a1e2e53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set this to 1 to use custom definitions for <code>zk::optional</code>, <code>zk::nullopt_t</code>, and <code>zk::nullopt</code>.  <a href="group__Client.html#ga601acdf80bdcc2e0727537543a1e2e53">More...</a><br /></td></tr>
-<tr class="separator:ga601acdf80bdcc2e0727537543a1e2e53"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gacc5ef41229a13ad8f9898301ebb78db3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Client.html#gacc5ef41229a13ad8f9898301ebb78db3">ZKPP_OPTIONAL_USE_STD</a>&#160;&#160;&#160;1</td></tr>
-<tr class="memdesc:gacc5ef41229a13ad8f9898301ebb78db3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set this to 1 to use <code>std::optional</code>, <code>std::nullopt_t</code>, and <code>std::nullopt</code> as the backing types for <code>zk::optional</code>, <code>zk::nullopt_t</code>, and <code>zk::nullopt</code>.  <a href="group__Client.html#gacc5ef41229a13ad8f9898301ebb78db3">More...</a><br /></td></tr>
-<tr class="separator:gacc5ef41229a13ad8f9898301ebb78db3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2c6e9b122cb56bb7b55b9d46bfef2471"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Client.html#ga2c6e9b122cb56bb7b55b9d46bfef2471">ZKPP_OPTIONAL_INCLUDE</a>&#160;&#160;&#160;&lt;optional&gt;</td></tr>
-<tr class="memdesc:ga2c6e9b122cb56bb7b55b9d46bfef2471"><td class="mdescLeft">&#160;</td><td class="mdescRight">The file to include to get the implementation for <code>optional</code>, <code>nullopt_t</code>, and <code>nullopt</code>.  <a href="group__Client.html#ga2c6e9b122cb56bb7b55b9d46bfef2471">More...</a><br /></td></tr>
-<tr class="separator:ga2c6e9b122cb56bb7b55b9d46bfef2471"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab866d8214dfeffb1c45303030298b51f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Client.html#gab866d8214dfeffb1c45303030298b51f">ZKPP_OPTIONAL_TEMPLATE</a>&#160;&#160;&#160;std::optional</td></tr>
-<tr class="memdesc:gab866d8214dfeffb1c45303030298b51f"><td class="mdescLeft">&#160;</td><td class="mdescRight">The template to use for <code>zk::optional</code>.  <a href="group__Client.html#gab866d8214dfeffb1c45303030298b51f">More...</a><br /></td></tr>
-<tr class="separator:gab866d8214dfeffb1c45303030298b51f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaca268f5635882310103f0baa93a91382"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Client.html#gaca268f5635882310103f0baa93a91382">ZKPP_NULLOPT_TYPE</a>&#160;&#160;&#160;std::nullopt_t</td></tr>
-<tr class="memdesc:gaca268f5635882310103f0baa93a91382"><td class="mdescLeft">&#160;</td><td class="mdescRight">The type to use for <code>zk::nullopt_t</code>.  <a href="group__Client.html#gaca268f5635882310103f0baa93a91382">More...</a><br /></td></tr>
-<tr class="separator:gaca268f5635882310103f0baa93a91382"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa0ca42827d88eff5167343f918b7f99c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Client.html#gaa0ca42827d88eff5167343f918b7f99c">ZKPP_NULLOPT_VALUE</a>&#160;&#160;&#160;std::nullopt</td></tr>
-<tr class="memdesc:gaa0ca42827d88eff5167343f918b7f99c"><td class="mdescLeft">&#160;</td><td class="mdescRight">The value to use for <code>zk::nullopt</code>.  <a href="group__Client.html#gaa0ca42827d88eff5167343f918b7f99c">More...</a><br /></td></tr>
-<tr class="separator:gaa0ca42827d88eff5167343f918b7f99c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:gad52c8cfd0a56dfb4ac13b4dbc124feff"><td class="memTemplParams" colspan="2"><a class="anchor" id="gad52c8cfd0a56dfb4ac13b4dbc124feff"></a>
+<tr class="memitem:ga461956779f76128260292b56a4b3d7f8"><td class="memTemplParams" colspan="2"><a class="anchor" id="ga461956779f76128260292b56a4b3d7f8"></a>
 template&lt;typename T &gt; </td></tr>
-<tr class="memitem:gad52c8cfd0a56dfb4ac13b4dbc124feff"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>zk::optional</b> = <a class="el" href="group__Client.html#gab866d8214dfeffb1c45303030298b51f">ZKPP_OPTIONAL_TEMPLATE</a>&lt; T &gt;</td></tr>
-<tr class="separator:gad52c8cfd0a56dfb4ac13b4dbc124feff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2db85c45f7ec01f2bfb4ab9b41cd110f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga2db85c45f7ec01f2bfb4ab9b41cd110f"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>zk::nullopt_t</b> = <a class="el" href="group__Client.html#gaca268f5635882310103f0baa93a91382">ZKPP_NULLOPT_TYPE</a></td></tr>
-<tr class="separator:ga2db85c45f7ec01f2bfb4ab9b41cd110f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga461956779f76128260292b56a4b3d7f8"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>zk::optional</b> = std::optional&lt; T &gt;</td></tr>
+<tr class="separator:ga461956779f76128260292b56a4b3d7f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7197f57770521f748a5bdacff7b27dd4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga7197f57770521f748a5bdacff7b27dd4"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>zk::nullopt_t</b> = std::nullopt_t</td></tr>
+<tr class="separator:ga7197f57770521f748a5bdacff7b27dd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:gad895648faa9ce5a5ef73bb4403b982e1"><td class="memTemplParams" colspan="2">template&lt;typename FUnary , typename... T&gt; </td></tr>
+<tr class="memitem:gad895648faa9ce5a5ef73bb4403b982e1"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__Client.html#gad895648faa9ce5a5ef73bb4403b982e1">zk::map</a> (FUnary &amp;&amp;transform, const optional&lt; T &gt; &amp;...x) -&gt; optional&lt; decltype(transform(x.value()...))&gt;</td></tr>
+<tr class="memdesc:gad895648faa9ce5a5ef73bb4403b982e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply <em>transform</em> with the arguments in <em>x</em> iff all of them have a value.  <a href="group__Client.html#gad895648faa9ce5a5ef73bb4403b982e1">More...</a><br /></td></tr>
+<tr class="separator:gad895648faa9ce5a5ef73bb4403b982e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga50064bc1ecbf252f26f9782bb235f02a"><td class="memTemplParams" colspan="2"><a class="anchor" id="ga50064bc1ecbf252f26f9782bb235f02a"></a>
+template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ga50064bc1ecbf252f26f9782bb235f02a"><td class="memTemplItemLeft" align="right" valign="top">optional&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>zk::some</b> (T x)</td></tr>
+<tr class="separator:ga50064bc1ecbf252f26f9782bb235f02a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Controls the import of the <code>optional</code> and <code>nullopt_t</code> types, as well as the <code>nullopt</code> <code>constexpr</code>. </p>
-<p>These are probably <code>std::optional</code>, <code>std::nullopt_t</code>, and <code>std::nullopt</code>, respectively, but can be your custom types (as long as they behave in a manner similar enough to <code>std::optional</code>, <code>std::nullopt_t</code>, and <code>std::nullopt</code>). </p>
+<div class="textblock"><p>Imports of <code>optional</code> and <code>nullopt_t</code> types, as well as the <code>nullopt</code> <code>constexpr</code>. </p>
+<p>These are <code>std::optional</code>, <code>std::nullopt_t</code>, and <code>std::nullopt</code>, respectively. </p>
 
 <p>Definition in file <a class="el" href="optional_8hpp_source.html">optional.hpp</a>.</p>
 </div></div><!-- contents -->

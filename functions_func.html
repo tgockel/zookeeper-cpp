@@ -79,6 +79,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="functions.html"><span>All</span></a></li>
       <li class="current"><a href="functions_func.html"><span>Functions</span></a></li>
       <li><a href="functions_vars.html"><span>Variables</span></a></li>
+      <li><a href="functions_rela.html"><span>Related&#160;Functions</span></a></li>
     </ul>
   </div>
   <div id="navrow4" class="tabs3">
@@ -91,6 +92,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="#index_h"><span>h</span></a></li>
       <li><a href="#index_i"><span>i</span></a></li>
       <li><a href="#index_l"><span>l</span></a></li>
+      <li><a href="#index_m"><span>m</span></a></li>
       <li><a href="#index_n"><span>n</span></a></li>
       <li><a href="#index_o"><span>o</span></a></li>
       <li><a href="#index_p"><span>p</span></a></li>
@@ -121,7 +123,7 @@ $(document).ready(function(){initNavTree('functions_func.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Groups</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Groups</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -137,6 +139,12 @@ $(document).ready(function(){initNavTree('functions_func.html','');});
 <li>acl_rule()
 : <a class="el" href="classzk_1_1acl__rule.html#a13918f819b8745a8d2a3a8c764291094">zk::acl_rule</a>
 </li>
+<li>add_server()
+: <a class="el" href="classzk_1_1server_1_1configuration.html#a357c7de82051fcad59d46366aaaad115">zk::server::configuration</a>
+</li>
+<li>add_setting()
+: <a class="el" href="classzk_1_1server_1_1configuration.html#aaeea54c459a522fe56814f56b8d78e46">zk::server::configuration</a>
+</li>
 <li>any()
 : <a class="el" href="structzk_1_1basic__version.html#ad2886aa35fd1834251655e52261f035e">zk::basic_version&lt; TReal &gt;</a>
 </li>
@@ -151,7 +159,10 @@ $(document).ready(function(){initNavTree('functions_func.html','');});
 : <a class="el" href="classzk_1_1connection__params.html#a83bfb8cc8f46b37e3f742692e247471a">zk::connection_params</a>
 </li>
 <li>client()
-: <a class="el" href="classzk_1_1client.html#afadb45f36fee021748a4d0096978746f">zk::client</a>
+: <a class="el" href="classzk_1_1client.html#a4897d1b54544316ba9632984f70f1783">zk::client</a>
+</li>
+<li>command_line()
+: <a class="el" href="classzk_1_1server_1_1classpath.html#a90cc62f322943a33c01271beb4e7d1ec">zk::server::classpath</a>
 </li>
 <li>commit()
 : <a class="el" href="classzk_1_1client.html#ae34b4c97f7c9fd09e5d9569e6c47e7ca">zk::client</a>
@@ -168,7 +179,6 @@ $(document).ready(function(){initNavTree('functions_func.html','');});
 <li>create()
 : <a class="el" href="classzk_1_1client.html#a45f67fc3c1bcba32dfd2f848d050d376">zk::client</a>
 , <a class="el" href="classzk_1_1op.html#a6641e7dd6e0153a0d7fcbdbad4cfc2db">zk::op</a>
-, <a class="el" href="classzk_1_1server_1_1server.html#a35b190e8f4118ede75edfc2eab00f2b1">zk::server::server</a>
 </li>
 <li>creator_all()
 : <a class="el" href="classzk_1_1acls.html#a57c471388490881ee507e292c0463770">zk::acls</a>
@@ -195,7 +205,19 @@ $(document).ready(function(){initNavTree('functions_func.html','');});
 : <a class="el" href="classzk_1_1transaction__failed.html#aee7593cc6ab83bfe4017e62a4a9c94ad">zk::transaction_failed</a>
 </li>
 <li>find_newest_classpath()
-: <a class="el" href="classzk_1_1server_1_1package__registry.html#a55398aeda89df0e39008bd556d6f0ede">zk::server::package_registry</a>
+: <a class="el" href="classzk_1_1server_1_1package__registry.html#a65af1c22fa88448a119199b37d49097e">zk::server::package_registry</a>
+</li>
+<li>from_file()
+: <a class="el" href="classzk_1_1server_1_1configuration.html#a5723ee792b047cb44e427bf3d1d477fb">zk::server::configuration</a>
+</li>
+<li>from_lines()
+: <a class="el" href="classzk_1_1server_1_1configuration.html#a81c5b0a8178af1a6a4010204a31c24b9">zk::server::configuration</a>
+</li>
+<li>from_stream()
+: <a class="el" href="classzk_1_1server_1_1configuration.html#aff4b2cac25a5ea6ce233cc87c551637f">zk::server::configuration</a>
+</li>
+<li>from_string()
+: <a class="el" href="classzk_1_1server_1_1configuration.html#a5ffb4df8a55a1c3d541e5cd64a53f7ad">zk::server::configuration</a>
 </li>
 </ul>
 
@@ -209,6 +231,9 @@ $(document).ready(function(){initNavTree('functions_func.html','');});
 </li>
 <li>get_children()
 : <a class="el" href="classzk_1_1client.html#ad02c6c09fcd3ec0c596be9968cf407d9">zk::client</a>
+</li>
+<li>get_connection_string()
+: <a class="el" href="classzk_1_1server_1_1server__group.html#a668e88e8855897d840a6536c766544b8">zk::server::server_group</a>
 </li>
 </ul>
 
@@ -224,6 +249,9 @@ $(document).ready(function(){initNavTree('functions_func.html','');});
 <li>id()
 : <a class="el" href="classzk_1_1acl__rule.html#aff8914638fd6a76d145e9126bd7759e1">zk::acl_rule</a>
 </li>
+<li>init_limit()
+: <a class="el" href="classzk_1_1server_1_1configuration.html#afa3ec3a3d68a82a1755d9e7f5aae922e">zk::server::configuration</a>
+</li>
 <li>initial()
 : <a class="el" href="classzk_1_1watch__children__result.html#aef7959452451a431b47ee26b70d65537">zk::watch_children_result</a>
 , <a class="el" href="classzk_1_1watch__exists__result.html#ab06b6488b13707c623dc6be83ccc5b68">zk::watch_exists_result</a>
@@ -235,12 +263,25 @@ $(document).ready(function(){initNavTree('functions_func.html','');});
 <li>is_ephemeral()
 : <a class="el" href="structzk_1_1stat.html#a5e8518d9de88c33067b9ee30d3e5735c">zk::stat</a>
 </li>
+<li>is_minimal()
+: <a class="el" href="classzk_1_1server_1_1configuration.html#ac2248cec031540ca3a7993d69259bed9">zk::server::configuration</a>
+</li>
 </ul>
 
 
 <h3><a class="anchor" id="index_l"></a>- l -</h3><ul>
 <li>load_fence()
 : <a class="el" href="classzk_1_1client.html#a931607b8758e9961d8f11aec569878fe">zk::client</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_m"></a>- m -</h3><ul>
+<li>make_ensemble()
+: <a class="el" href="classzk_1_1server_1_1server__group.html#afe1fc9e26912d8834cb812978d10710b">zk::server::server_group</a>
+</li>
+<li>make_minimal()
+: <a class="el" href="classzk_1_1server_1_1configuration.html#a49c3bd6d6109ab64c64b6aec5c4a7965">zk::server::configuration</a>
 </li>
 </ul>
 
@@ -285,17 +326,23 @@ $(document).ready(function(){initNavTree('functions_func.html','');});
 : <a class="el" href="classzk_1_1acls.html#aecbb4d41a7ea06477f3e6d92e254a1aa">zk::acls</a>
 </li>
 <li>register_classpath_server()
-: <a class="el" href="classzk_1_1server_1_1package__registry.html#a830ed4633450be11adeb39a4fefe9bb4">zk::server::package_registry</a>
+: <a class="el" href="classzk_1_1server_1_1package__registry.html#a908f11d0c0bd4c5063f5947ee7c52e6a">zk::server::package_registry</a>
 </li>
 </ul>
 
 
 <h3><a class="anchor" id="index_s"></a>- s -</h3><ul>
+<li>save()
+: <a class="el" href="classzk_1_1server_1_1configuration.html#a5ef1433ba2ca36fcb0f44bde69c0d817">zk::server::configuration</a>
+</li>
+<li>save_file()
+: <a class="el" href="classzk_1_1server_1_1configuration.html#a1e72779df1c3788ee4c5ca5c436a7476">zk::server::configuration</a>
+</li>
 <li>scheme()
 : <a class="el" href="classzk_1_1acl__rule.html#a61102c57a8ec8b098791e649689cdb1e">zk::acl_rule</a>
 </li>
 <li>server()
-: <a class="el" href="classzk_1_1server_1_1server.html#a67ddf8222d7f9ebf854e90c6c876c5e9">zk::server::server</a>
+: <a class="el" href="classzk_1_1server_1_1server.html#ace6d095f60bc798abd2634df89a0e328">zk::server::server</a>
 </li>
 <li>set()
 : <a class="el" href="classzk_1_1client.html#a45b579013b53fb89c1a690f0520c4edf">zk::client</a>
@@ -307,8 +354,20 @@ $(document).ready(function(){initNavTree('functions_func.html','');});
 <li>size()
 : <a class="el" href="classzk_1_1server_1_1package__registry.html#a89823c7c5d52cab49db9252dd4ac0ac7">zk::server::package_registry</a>
 </li>
+<li>source_file()
+: <a class="el" href="classzk_1_1server_1_1configuration.html#a0b1ccc440366a0ed2012036840b13488">zk::server::configuration</a>
+</li>
+<li>start_all_servers()
+: <a class="el" href="classzk_1_1server_1_1server__group.html#aa8e15b4a0c1af2f3336a67c325186f7f">zk::server::server_group</a>
+</li>
 <li>state()
 : <a class="el" href="classzk_1_1event.html#ad0aa32a655a3a3a4173492ca1746cb2c">zk::event</a>
+</li>
+<li>sync_limit()
+: <a class="el" href="classzk_1_1server_1_1configuration.html#a35e72c359e41b1f8720daeda3a3a4a13">zk::server::configuration</a>
+</li>
+<li>system_default()
+: <a class="el" href="classzk_1_1server_1_1classpath.html#ae2b173799b0662f46c97775f6b4dae99">zk::server::classpath</a>
 </li>
 </ul>
 

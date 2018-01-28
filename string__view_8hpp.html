@@ -92,7 +92,7 @@ $(document).ready(function(){initNavTree('string__view_8hpp.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Groups</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Groups</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -103,46 +103,27 @@ $(document).ready(function(){initNavTree('string__view_8hpp.html','');});
 
 <div class="header">
   <div class="summary">
-<a href="#define-members">Macros</a> &#124;
 <a href="#typedef-members">Typedefs</a>  </div>
   <div class="headertitle">
 <div class="title">string_view.hpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Controls the import of the <code>string_view</code> type.  
+<p>Imports the <code>string_view</code> type as <code>std::string_view</code>.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;zk/config.hpp&gt;</code><br />
+<code>#include &lt;string_view&gt;</code><br />
 </div>
 <p><a href="string__view_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:ga027311a4575715fb1ecef7fe3388befc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga027311a4575715fb1ecef7fe3388befc"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>ZKPP_STRING_VIEW_USE_STD_EXPERIMENTAL</b>&#160;&#160;&#160;0</td></tr>
-<tr class="separator:ga027311a4575715fb1ecef7fe3388befc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae0f7d7a572fb8d6117b4f34c109406bb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gae0f7d7a572fb8d6117b4f34c109406bb"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>ZKPP_STRING_VIEW_USE_CUSTOM</b>&#160;&#160;&#160;0</td></tr>
-<tr class="separator:gae0f7d7a572fb8d6117b4f34c109406bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga9e7c72f38b9c784aeba1e79805ce419f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga9e7c72f38b9c784aeba1e79805ce419f"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>ZKPP_STRING_VIEW_USE_STD</b>&#160;&#160;&#160;1</td></tr>
-<tr class="separator:ga9e7c72f38b9c784aeba1e79805ce419f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaadfd8ba9b57915f10cf37de313056252"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaadfd8ba9b57915f10cf37de313056252"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>ZKPP_STRING_VIEW_INCLUDE</b>&#160;&#160;&#160;&lt;string_view&gt;</td></tr>
-<tr class="separator:gaadfd8ba9b57915f10cf37de313056252"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga79baf8af1b5de88f74455aadb3be74ae"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga79baf8af1b5de88f74455aadb3be74ae"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>ZKPP_STRING_VIEW_TYPE</b>&#160;&#160;&#160;std::string_view</td></tr>
-<tr class="separator:ga79baf8af1b5de88f74455aadb3be74ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a6ddac2a85276ae8e4ad48a0aacbeec50"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6ddac2a85276ae8e4ad48a0aacbeec50"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>zk::string_view</b> = ZKPP_STRING_VIEW_TYPE</td></tr>
-<tr class="separator:a6ddac2a85276ae8e4ad48a0aacbeec50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab8116f1135b5657f134dd1e806139e98"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gab8116f1135b5657f134dd1e806139e98"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>zk::string_view</b> = std::string_view</td></tr>
+<tr class="separator:gab8116f1135b5657f134dd1e806139e98"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Controls the import of the <code>string_view</code> type. </p>
-<p>This is probably <code>std::string_view</code>, but can be a custom type (as long as it behaves in a manner similar enough to <code>std::string_view</code>). </p>
+<div class="textblock"><p>Imports the <code>string_view</code> type as <code>std::string_view</code>. </p>
 
 <p>Definition in file <a class="el" href="string__view_8hpp_source.html">string_view.hpp</a>.</p>
 </div></div><!-- contents -->

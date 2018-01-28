@@ -92,7 +92,7 @@ $(document).ready(function(){initNavTree('server_8cpp_source.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Groups</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Groups</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -106,61 +106,91 @@ $(document).ready(function(){initNavTree('server_8cpp_source.html','');});
 <div class="title">server.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &quot;detail/subprocess.hpp&quot;</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &quot;package_registry.hpp&quot;</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;server.hpp&quot;</span></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &quot;server.hpp&quot;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="future_8hpp.html">zk/future.hpp</a>&gt;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;signal.h&gt;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">namespace </span>zk::server</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;{</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;server::server(std::string classpath) :</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        _running(true),</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        _worker([this, classpath = std::move(classpath)] () mutable { this-&gt;run_process(std::move(classpath)); })</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;{ }</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;exception&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;signal.h&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;classpath.hpp&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;configuration.hpp&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;detail/subprocess.hpp&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">namespace </span>zk::server</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;{</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;server::~server() noexcept</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> validate_settings(<span class="keyword">const</span> configuration&amp; settings)</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;{</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    shutdown(<span class="keyword">true</span>);</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;}</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;std::shared_ptr&lt;server&gt; <a class="code" href="group__Client.html#gga75dfaeeb3b2f4e1588380b3bf68ecc08a76ea0bebb3c22822b4f0dd9c9fd021c5">server::create</a>(package_registry&amp; registry)</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;{</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="comment">// TODO: Handle the nullopt case</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordflow">return</span> std::make_shared&lt;server&gt;(registry.find_newest_classpath().value());</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;}</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keywordtype">void</span> server::shutdown(<span class="keywordtype">bool</span> wait_for_stop)</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;{</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    _running = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordflow">if</span> (wait_for_stop &amp;&amp; _worker.joinable())</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        _worker.join();</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;}</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keywordtype">void</span> server::run_process(std::string classpath)</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;{</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    detail::subprocess proc(<span class="stringliteral">&quot;java&quot;</span>,</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                            {</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                                <span class="stringliteral">&quot;-cp&quot;</span>, std::move(classpath),</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                                <span class="stringliteral">&quot;org.apache.zookeeper.server.quorum.QuorumPeerMain&quot;</span>,</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                                <span class="stringliteral">&quot;2181&quot;</span>,</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                                <span class="stringliteral">&quot;zk-data&quot;</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                            }</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                           );</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordflow">while</span> (_running)</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    {</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        std::cout &lt;&lt; proc.stdout().read();</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        std::cerr &lt;&lt; proc.stderr().read();</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    }</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    proc.signal(SIGTERM);</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordflow">if</span> (settings.is_minimal())</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    {</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    }</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (!settings.source_file())</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    {</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;Configuration has not been saved to a file&quot;</span>);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    }</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;}</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="classzk_1_1server_1_1server.html#ace6d095f60bc798abd2634df89a0e328">   29</a></span>&#160;<a class="code" href="classzk_1_1server_1_1server.html">server::server</a>(<a class="code" href="classzk_1_1server_1_1classpath.html">classpath</a> packages, <a class="code" href="classzk_1_1server_1_1configuration.html">configuration</a> settings) :</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        _running(true)</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;{</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    validate_settings(settings);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    _worker = std::thread([<span class="keyword">this</span>, packages = std::move(packages), settings = std::move(settings)] ()</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                          {</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                              this-&gt;run_process(packages, settings);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                          }</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                         );</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;}</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="classzk_1_1server_1_1server.html#a809c53ccbcd76f912654c0c8932d003d">   40</a></span>&#160;<a class="code" href="classzk_1_1server_1_1server.html">server::server</a>(<a class="code" href="classzk_1_1server_1_1configuration.html">configuration</a> settings) :</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <a class="code" href="classzk_1_1server_1_1server.html">server</a>(<a class="code" href="classzk_1_1server_1_1classpath.html">classpath</a>::system_default(), std::move(settings))</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;{ }</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;server::~server() noexcept</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;{</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    shutdown(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;}</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keywordtype">void</span> server::shutdown(<span class="keywordtype">bool</span> wait_for_stop)</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;{</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    _running = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordflow">if</span> (wait_for_stop &amp;&amp; _worker.joinable())</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        _worker.join();</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;}</div>
-<div class="ttc" id="group__Client_html_gga75dfaeeb3b2f4e1588380b3bf68ecc08a76ea0bebb3c22822b4f0dd9c9fd021c5"><div class="ttname"><a href="group__Client.html#gga75dfaeeb3b2f4e1588380b3bf68ecc08a76ea0bebb3c22822b4f0dd9c9fd021c5">zk::permission::create</a></div><div class="ttdoc">You can create a child node. </div></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keywordtype">void</span> server::run_process(<span class="keyword">const</span> classpath&amp; packages, <span class="keyword">const</span> configuration&amp; settings)</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;{</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    detail::subprocess::argument_list args = { <span class="stringliteral">&quot;-cp&quot;</span>, packages.command_line(),</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                                               <span class="stringliteral">&quot;org.apache.zookeeper.server.quorum.QuorumPeerMain&quot;</span>,</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                                             };</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordflow">if</span> (settings.is_minimal())</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        args.emplace_back(std::to_string(settings.client_port()));</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        args.emplace_back(settings.data_directory().value());</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    }</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    {</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        args.emplace_back(settings.source_file().value());</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    }</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    detail::subprocess proc(<span class="stringliteral">&quot;java&quot;</span>, std::move(args));</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordflow">while</span> (_running.load(std::memory_order_relaxed))</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    {</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        std::cout &lt;&lt; proc.stdout().read();</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        std::cerr &lt;&lt; proc.stderr().read();</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    }</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    proc.signal(SIGTERM);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;}</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;}</div>
+<div class="ttc" id="classzk_1_1server_1_1classpath_html"><div class="ttname"><a href="classzk_1_1server_1_1classpath.html">zk::server::classpath</a></div><div class="ttdoc">Represents a collection of JARs or other Java entities that should be provided as the --classpath to ...</div><div class="ttdef"><b>Definition:</b> <a href="classpath_8hpp_source.html#l00020">classpath.hpp:20</a></div></div>
+<div class="ttc" id="classzk_1_1server_1_1server_html"><div class="ttname"><a href="classzk_1_1server_1_1server.html">zk::server::server</a></div><div class="ttdoc">Controls a ZooKeeper server process on this local machine. </div><div class="ttdef"><b>Definition:</b> <a href="server_8hpp_source.html#l00023">server.hpp:23</a></div></div>
+<div class="ttc" id="future_8hpp_html"><div class="ttname"><a href="future_8hpp.html">future.hpp</a></div><div class="ttdoc">Controls the import of future and promise types. </div></div>
+<div class="ttc" id="classzk_1_1server_1_1configuration_html"><div class="ttname"><a href="classzk_1_1server_1_1configuration.html">zk::server::configuration</a></div><div class="ttdef"><b>Definition:</b> <a href="configuration_8hpp_source.html#l00021">configuration.hpp:21</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

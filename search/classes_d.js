@@ -1,6 +1,7 @@
 var searchData=
 [
   ['server',['server',['../classzk_1_1server_1_1server.html',1,'zk::server']]],
+  ['server_5fgroup',['server_group',['../classzk_1_1server_1_1server__group.html',1,'zk::server']]],
   ['server_5fread_5fonly',['server_read_only',['../classzk_1_1server__read__only.html',1,'zk']]],
   ['session_5fexpired',['session_expired',['../classzk_1_1session__expired.html',1,'zk']]],
   ['session_5fmoved',['session_moved',['../classzk_1_1session__moved.html',1,'zk']]],

@@ -7,8 +7,11 @@ var annotated =
     ] ],
     [ "zk", null, [
       [ "server", null, [
+        [ "classpath", "classzk_1_1server_1_1classpath.html", "classzk_1_1server_1_1classpath" ],
+        [ "configuration", "classzk_1_1server_1_1configuration.html", "classzk_1_1server_1_1configuration" ],
         [ "package_registry", "classzk_1_1server_1_1package__registry.html", "classzk_1_1server_1_1package__registry" ],
-        [ "server", "classzk_1_1server_1_1server.html", "classzk_1_1server_1_1server" ]
+        [ "server", "classzk_1_1server_1_1server.html", "classzk_1_1server_1_1server" ],
+        [ "server_group", "classzk_1_1server_1_1server__group.html", "classzk_1_1server_1_1server__group" ]
       ] ],
       [ "acl", "classzk_1_1acl.html", "classzk_1_1acl" ],
       [ "acl_rule", "classzk_1_1acl__rule.html", "classzk_1_1acl__rule" ],

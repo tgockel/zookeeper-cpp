@@ -86,7 +86,7 @@ $(document).ready(function(){initNavTree('group__Client.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Groups</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Groups</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -273,17 +273,14 @@ Macros</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>ZKPP_VERSION_MAJOR</b>&#160;&#160;&#160;0</td></tr>
 <tr class="separator:ga16ba20280dac45579be2134d0e5787e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaa07d8d45b1ab6a3860e0b90a480ad18f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaa07d8d45b1ab6a3860e0b90a480ad18f"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>ZKPP_VERSION_MINOR</b>&#160;&#160;&#160;1</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>ZKPP_VERSION_MINOR</b>&#160;&#160;&#160;2</td></tr>
 <tr class="separator:gaa07d8d45b1ab6a3860e0b90a480ad18f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga2cd39ef10edc9cebd8d1a0fe6416f861"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga2cd39ef10edc9cebd8d1a0fe6416f861"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>ZKPP_VERSION_PATCH</b>&#160;&#160;&#160;1</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>ZKPP_VERSION_PATCH</b>&#160;&#160;&#160;0</td></tr>
 <tr class="separator:ga2cd39ef10edc9cebd8d1a0fe6416f861"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga9edcf8f1536cdb8f721f3a8c4a479e10"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Client.html#ga9edcf8f1536cdb8f721f3a8c4a479e10">ZKPP_DEBUG</a>&#160;&#160;&#160;0</td></tr>
 <tr class="memdesc:ga9edcf8f1536cdb8f721f3a8c4a479e10"><td class="mdescLeft">&#160;</td><td class="mdescRight">Was ZooKeeper C++ compiled in debug mode? This value must be the same between when the SO was built and when you are compiling.  <a href="#ga9edcf8f1536cdb8f721f3a8c4a479e10">More...</a><br /></td></tr>
 <tr class="separator:ga9edcf8f1536cdb8f721f3a8c4a479e10"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga360803f618ea544feca8edca1479d607"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Client.html#ga360803f618ea544feca8edca1479d607">ZKPP_SO</a>&#160;&#160;&#160;1</td></tr>
-<tr class="memdesc:ga360803f618ea544feca8edca1479d607"><td class="mdescLeft">&#160;</td><td class="mdescRight">Are you using shared objects (DLLs in Windows)?  <a href="#ga360803f618ea544feca8edca1479d607">More...</a><br /></td></tr>
-<tr class="separator:ga360803f618ea544feca8edca1479d607"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga6c420f76a61335959d146fb99fc5a75a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga6c420f76a61335959d146fb99fc5a75a"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>ZKPP_ERROR_CODE_LIST</b>(item)</td></tr>
 <tr class="separator:ga6c420f76a61335959d146fb99fc5a75a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -308,42 +305,6 @@ Macros</h2></td></tr>
 <tr class="memitem:gab319a820b6421775473c62a5000031cc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Client.html#gab319a820b6421775473c62a5000031cc">ZKPP_FUTURE_USE_STD</a>&#160;&#160;&#160;1</td></tr>
 <tr class="memdesc:gab319a820b6421775473c62a5000031cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set this to 1 to use <code>std::future</code> and <code>std::promise</code> as the backing types for <code>zk::future</code> and <code>zk::promise</code>.  <a href="#gab319a820b6421775473c62a5000031cc">More...</a><br /></td></tr>
 <tr class="separator:gab319a820b6421775473c62a5000031cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga3200797b7fb785e83218cb5aeae98c6e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Client.html#ga3200797b7fb785e83218cb5aeae98c6e">ZKPP_OPTIONAL_USE_STD_EXPERIMENTAL</a>&#160;&#160;&#160;0</td></tr>
-<tr class="memdesc:ga3200797b7fb785e83218cb5aeae98c6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set this to 1 to use <code>std::experimental::optional</code>, <code>std::experimental::nullopt_t</code>, and <code>std::experimental::nullopt</code> as the backing types for <code>zk::optional</code>, <code>zk::nullopt_t</code>, and <code>zk::nullopt</code>.  <a href="#ga3200797b7fb785e83218cb5aeae98c6e">More...</a><br /></td></tr>
-<tr class="separator:ga3200797b7fb785e83218cb5aeae98c6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga601acdf80bdcc2e0727537543a1e2e53"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Client.html#ga601acdf80bdcc2e0727537543a1e2e53">ZKPP_OPTIONAL_USE_CUSTOM</a>&#160;&#160;&#160;0</td></tr>
-<tr class="memdesc:ga601acdf80bdcc2e0727537543a1e2e53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set this to 1 to use custom definitions for <code>zk::optional</code>, <code>zk::nullopt_t</code>, and <code>zk::nullopt</code>.  <a href="#ga601acdf80bdcc2e0727537543a1e2e53">More...</a><br /></td></tr>
-<tr class="separator:ga601acdf80bdcc2e0727537543a1e2e53"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2c6e9b122cb56bb7b55b9d46bfef2471"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Client.html#ga2c6e9b122cb56bb7b55b9d46bfef2471">ZKPP_OPTIONAL_INCLUDE</a>&#160;&#160;&#160;&lt;optional&gt;</td></tr>
-<tr class="memdesc:ga2c6e9b122cb56bb7b55b9d46bfef2471"><td class="mdescLeft">&#160;</td><td class="mdescRight">The file to include to get the implementation for <code>optional</code>, <code>nullopt_t</code>, and <code>nullopt</code>.  <a href="#ga2c6e9b122cb56bb7b55b9d46bfef2471">More...</a><br /></td></tr>
-<tr class="separator:ga2c6e9b122cb56bb7b55b9d46bfef2471"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab866d8214dfeffb1c45303030298b51f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Client.html#gab866d8214dfeffb1c45303030298b51f">ZKPP_OPTIONAL_TEMPLATE</a>&#160;&#160;&#160;std::optional</td></tr>
-<tr class="memdesc:gab866d8214dfeffb1c45303030298b51f"><td class="mdescLeft">&#160;</td><td class="mdescRight">The template to use for <code>zk::optional</code>.  <a href="#gab866d8214dfeffb1c45303030298b51f">More...</a><br /></td></tr>
-<tr class="separator:gab866d8214dfeffb1c45303030298b51f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaca268f5635882310103f0baa93a91382"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Client.html#gaca268f5635882310103f0baa93a91382">ZKPP_NULLOPT_TYPE</a>&#160;&#160;&#160;std::nullopt_t</td></tr>
-<tr class="memdesc:gaca268f5635882310103f0baa93a91382"><td class="mdescLeft">&#160;</td><td class="mdescRight">The type to use for <code>zk::nullopt_t</code>.  <a href="#gaca268f5635882310103f0baa93a91382">More...</a><br /></td></tr>
-<tr class="separator:gaca268f5635882310103f0baa93a91382"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa0ca42827d88eff5167343f918b7f99c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Client.html#gaa0ca42827d88eff5167343f918b7f99c">ZKPP_NULLOPT_VALUE</a>&#160;&#160;&#160;std::nullopt</td></tr>
-<tr class="memdesc:gaa0ca42827d88eff5167343f918b7f99c"><td class="mdescLeft">&#160;</td><td class="mdescRight">The value to use for <code>zk::nullopt</code>.  <a href="#gaa0ca42827d88eff5167343f918b7f99c">More...</a><br /></td></tr>
-<tr class="separator:gaa0ca42827d88eff5167343f918b7f99c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gacc5ef41229a13ad8f9898301ebb78db3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Client.html#gacc5ef41229a13ad8f9898301ebb78db3">ZKPP_OPTIONAL_USE_STD</a>&#160;&#160;&#160;1</td></tr>
-<tr class="memdesc:gacc5ef41229a13ad8f9898301ebb78db3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set this to 1 to use <code>std::optional</code>, <code>std::nullopt_t</code>, and <code>std::nullopt</code> as the backing types for <code>zk::optional</code>, <code>zk::nullopt_t</code>, and <code>zk::nullopt</code>.  <a href="#gacc5ef41229a13ad8f9898301ebb78db3">More...</a><br /></td></tr>
-<tr class="separator:gacc5ef41229a13ad8f9898301ebb78db3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga027311a4575715fb1ecef7fe3388befc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga027311a4575715fb1ecef7fe3388befc"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>ZKPP_STRING_VIEW_USE_STD_EXPERIMENTAL</b>&#160;&#160;&#160;0</td></tr>
-<tr class="separator:ga027311a4575715fb1ecef7fe3388befc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae0f7d7a572fb8d6117b4f34c109406bb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gae0f7d7a572fb8d6117b4f34c109406bb"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>ZKPP_STRING_VIEW_USE_CUSTOM</b>&#160;&#160;&#160;0</td></tr>
-<tr class="separator:gae0f7d7a572fb8d6117b4f34c109406bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga9e7c72f38b9c784aeba1e79805ce419f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga9e7c72f38b9c784aeba1e79805ce419f"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>ZKPP_STRING_VIEW_USE_STD</b>&#160;&#160;&#160;1</td></tr>
-<tr class="separator:ga9e7c72f38b9c784aeba1e79805ce419f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaadfd8ba9b57915f10cf37de313056252"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaadfd8ba9b57915f10cf37de313056252"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>ZKPP_STRING_VIEW_INCLUDE</b>&#160;&#160;&#160;&lt;string_view&gt;</td></tr>
-<tr class="separator:gaadfd8ba9b57915f10cf37de313056252"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga79baf8af1b5de88f74455aadb3be74ae"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga79baf8af1b5de88f74455aadb3be74ae"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>ZKPP_STRING_VIEW_TYPE</b>&#160;&#160;&#160;std::string_view</td></tr>
-<tr class="separator:ga79baf8af1b5de88f74455aadb3be74ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
@@ -362,13 +323,16 @@ template&lt;typename T &gt; </td></tr>
 template&lt;typename T &gt; </td></tr>
 <tr class="memitem:ga13b599025757a05a6c94bf37eb3aeeec"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>zk::promise</b> = <a class="el" href="group__Client.html#ga110a4d4b175e4666da6398afab7a3d95">ZKPP_PROMISE_TEMPLATE</a>&lt; T &gt;</td></tr>
 <tr class="separator:ga13b599025757a05a6c94bf37eb3aeeec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad52c8cfd0a56dfb4ac13b4dbc124feff"><td class="memTemplParams" colspan="2"><a class="anchor" id="gad52c8cfd0a56dfb4ac13b4dbc124feff"></a>
+<tr class="memitem:ga461956779f76128260292b56a4b3d7f8"><td class="memTemplParams" colspan="2"><a class="anchor" id="ga461956779f76128260292b56a4b3d7f8"></a>
 template&lt;typename T &gt; </td></tr>
-<tr class="memitem:gad52c8cfd0a56dfb4ac13b4dbc124feff"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>zk::optional</b> = <a class="el" href="group__Client.html#gab866d8214dfeffb1c45303030298b51f">ZKPP_OPTIONAL_TEMPLATE</a>&lt; T &gt;</td></tr>
-<tr class="separator:gad52c8cfd0a56dfb4ac13b4dbc124feff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2db85c45f7ec01f2bfb4ab9b41cd110f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga2db85c45f7ec01f2bfb4ab9b41cd110f"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>zk::nullopt_t</b> = <a class="el" href="group__Client.html#gaca268f5635882310103f0baa93a91382">ZKPP_NULLOPT_TYPE</a></td></tr>
-<tr class="separator:ga2db85c45f7ec01f2bfb4ab9b41cd110f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga461956779f76128260292b56a4b3d7f8"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>zk::optional</b> = std::optional&lt; T &gt;</td></tr>
+<tr class="separator:ga461956779f76128260292b56a4b3d7f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7197f57770521f748a5bdacff7b27dd4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga7197f57770521f748a5bdacff7b27dd4"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>zk::nullopt_t</b> = std::nullopt_t</td></tr>
+<tr class="separator:ga7197f57770521f748a5bdacff7b27dd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab8116f1135b5657f134dd1e806139e98"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gab8116f1135b5657f134dd1e806139e98"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>zk::string_view</b> = std::string_view</td></tr>
+<tr class="separator:gab8116f1135b5657f134dd1e806139e98"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -552,6 +516,14 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>zk::to_string<
 <tr class="memitem:gafc756953347ccc2fabfe8bf442ccf8bb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gafc756953347ccc2fabfe8bf442ccf8bb"></a>
 std::string&#160;</td><td class="memItemRight" valign="bottom"><b>zk::to_string</b> (const multi_result &amp;self)</td></tr>
 <tr class="separator:gafc756953347ccc2fabfe8bf442ccf8bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad895648faa9ce5a5ef73bb4403b982e1"><td class="memTemplParams" colspan="2">template&lt;typename FUnary , typename... T&gt; </td></tr>
+<tr class="memitem:gad895648faa9ce5a5ef73bb4403b982e1"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__Client.html#gad895648faa9ce5a5ef73bb4403b982e1">zk::map</a> (FUnary &amp;&amp;transform, const optional&lt; T &gt; &amp;...x) -&gt; optional&lt; decltype(transform(x.value()...))&gt;</td></tr>
+<tr class="memdesc:gad895648faa9ce5a5ef73bb4403b982e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply <em>transform</em> with the arguments in <em>x</em> iff all of them have a value.  <a href="#gad895648faa9ce5a5ef73bb4403b982e1">More...</a><br /></td></tr>
+<tr class="separator:gad895648faa9ce5a5ef73bb4403b982e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga50064bc1ecbf252f26f9782bb235f02a"><td class="memTemplParams" colspan="2"><a class="anchor" id="ga50064bc1ecbf252f26f9782bb235f02a"></a>
+template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ga50064bc1ecbf252f26f9782bb235f02a"><td class="memTemplItemLeft" align="right" valign="top">optional&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>zk::some</b> (T x)</td></tr>
+<tr class="separator:ga50064bc1ecbf252f26f9782bb235f02a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga1653b5b29a0233c0ffc8e2a775a7d9f4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga1653b5b29a0233c0ffc8e2a775a7d9f4"></a>
 std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>zk::operator&lt;&lt;</b> (std::ostream &amp;os, const get_result &amp;self)</td></tr>
 <tr class="separator:ga1653b5b29a0233c0ffc8e2a775a7d9f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -840,124 +812,6 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>zk::to_string<
 
 </div>
 </div>
-<a class="anchor" id="gaca268f5635882310103f0baa93a91382"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ZKPP_NULLOPT_TYPE&#160;&#160;&#160;std::nullopt_t</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>The type to use for <code>zk::nullopt_t</code>. </p>
-<p>By default, this is <code>std::nullopt_t</code>. </p>
-
-<p>Definition at line <a class="el" href="optional_8hpp_source.html#l00058">58</a> of file <a class="el" href="optional_8hpp_source.html">optional.hpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="gaa0ca42827d88eff5167343f918b7f99c"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ZKPP_NULLOPT_VALUE&#160;&#160;&#160;std::nullopt</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>The value to use for <code>zk::nullopt</code>. </p>
-<p>By default, this is <code>std::nullopt</code>. </p>
-
-<p>Definition at line <a class="el" href="optional_8hpp_source.html#l00059">59</a> of file <a class="el" href="optional_8hpp_source.html">optional.hpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="ga2c6e9b122cb56bb7b55b9d46bfef2471"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ZKPP_OPTIONAL_INCLUDE&#160;&#160;&#160;&lt;optional&gt;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>The file to include to get the implementation for <code>optional</code>, <code>nullopt_t</code>, and <code>nullopt</code>. </p>
-<p>By default, this pulls from the standard library. </p>
-
-<p>Definition at line <a class="el" href="optional_8hpp_source.html#l00056">56</a> of file <a class="el" href="optional_8hpp_source.html">optional.hpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="gab866d8214dfeffb1c45303030298b51f"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ZKPP_OPTIONAL_TEMPLATE&#160;&#160;&#160;std::optional</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>The template to use for <code>zk::optional</code>. </p>
-<p>By default, this is <code>std::optional</code>. </p>
-
-<p>Definition at line <a class="el" href="optional_8hpp_source.html#l00057">57</a> of file <a class="el" href="optional_8hpp_source.html">optional.hpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="ga601acdf80bdcc2e0727537543a1e2e53"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ZKPP_OPTIONAL_USE_CUSTOM&#160;&#160;&#160;0</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Set this to 1 to use custom definitions for <code>zk::optional</code>, <code>zk::nullopt_t</code>, and <code>zk::nullopt</code>. </p>
-<p>If this is set, you must also set <code>ZKPP_OPTIONAL_INCLUDE</code>, <code>ZKPP_NULLOPT_TYPE</code>, and <code>ZKPP_NULLOPT_VALUE</code>. </p>
-
-<p>Definition at line <a class="el" href="optional_8hpp_source.html#l00040">40</a> of file <a class="el" href="optional_8hpp_source.html">optional.hpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="gacc5ef41229a13ad8f9898301ebb78db3"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ZKPP_OPTIONAL_USE_STD&#160;&#160;&#160;1</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Set this to 1 to use <code>std::optional</code>, <code>std::nullopt_t</code>, and <code>std::nullopt</code> as the backing types for <code>zk::optional</code>, <code>zk::nullopt_t</code>, and <code>zk::nullopt</code>. </p>
-<p>This is the default behavior. </p>
-
-<p>Definition at line <a class="el" href="optional_8hpp_source.html#l00051">51</a> of file <a class="el" href="optional_8hpp_source.html">optional.hpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="ga3200797b7fb785e83218cb5aeae98c6e"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ZKPP_OPTIONAL_USE_STD_EXPERIMENTAL&#160;&#160;&#160;0</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Set this to 1 to use <code>std::experimental::optional</code>, <code>std::experimental::nullopt_t</code>, and <code>std::experimental::nullopt</code> as the backing types for <code>zk::optional</code>, <code>zk::nullopt_t</code>, and <code>zk::nullopt</code>. </p>
-
-<p>Definition at line <a class="el" href="optional_8hpp_source.html#l00019">19</a> of file <a class="el" href="optional_8hpp_source.html">optional.hpp</a>.</p>
-
-</div>
-</div>
 <a class="anchor" id="ga110a4d4b175e4666da6398afab7a3d95"></a>
 <div class="memitem">
 <div class="memproto">
@@ -972,22 +826,6 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>zk::to_string<
 <p>This should be highly related to <code>ZKPP_FUTURE_TEMPLATE</code> </p>
 
 <p>Definition at line <a class="el" href="future_8hpp_source.html#l00054">54</a> of file <a class="el" href="future_8hpp_source.html">future.hpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="ga360803f618ea544feca8edca1479d607"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ZKPP_SO&#160;&#160;&#160;1</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Are you using shared objects (DLLs in Windows)? </p>
-
-<p>Definition at line <a class="el" href="config_8hpp_source.html#l00034">34</a> of file <a class="el" href="config_8hpp_source.html">config.hpp</a>.</p>
 
 </div>
 </div>
@@ -1040,7 +878,7 @@ template&lt;typename T &gt; </div>
 <p>A simple, unowned pointer. </p>
 <p>It operates exactly like using <code>*</code>, but removes the question of <code>*</code> associativity and is easier to read when <code>const</code> qualifiers are involved. </p>
 
-<p>Definition at line <a class="el" href="config_8hpp_source.html#l00075">75</a> of file <a class="el" href="config_8hpp_source.html">config.hpp</a>.</p>
+<p>Definition at line <a class="el" href="config_8hpp_source.html#l00043">43</a> of file <a class="el" href="config_8hpp_source.html">config.hpp</a>.</p>
 
 </div>
 </div>
@@ -1293,6 +1131,40 @@ template&lt;typename T &gt; </div>
 <p>Check that <em>self</em> has <em>flags</em> set. </p>
 
 <p>Definition at line <a class="el" href="types_8hpp_source.html#l00288">288</a> of file <a class="el" href="types_8hpp_source.html">types.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gad895648faa9ce5a5ef73bb4403b982e1"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename FUnary , typename... T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">auto zk::map </td>
+          <td>(</td>
+          <td class="paramtype">FUnary &amp;&amp;&#160;</td>
+          <td class="paramname"><em>transform</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const optional&lt; T &gt; &amp;...&#160;</td>
+          <td class="paramname"><em>x</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> -&gt; optional&lt;decltype(transform(x.value()...))&gt;
+</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Apply <em>transform</em> with the arguments in <em>x</em> iff all of them have a value. </p>
+<p>Otherwise, <code>nullopt</code> will be returned. </p>
+
+<p>Definition at line <a class="el" href="optional_8hpp_source.html#l00028">28</a> of file <a class="el" href="optional_8hpp_source.html">optional.hpp</a>.</p>
 
 </div>
 </div>

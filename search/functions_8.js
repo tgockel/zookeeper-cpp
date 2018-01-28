@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['next',['next',['../classzk_1_1watch__result.html#a20ad8a501736b00d45192ad323c3a47f',1,'zk::watch_result::next()'],['../classzk_1_1watch__children__result.html#af599d1a0f0955c9e48acf1ad545d9633',1,'zk::watch_children_result::next()'],['../classzk_1_1watch__exists__result.html#a5997dfd2c6253a40caba2d8911d8bf82',1,'zk::watch_exists_result::next()']]]
+  ['make_5fensemble',['make_ensemble',['../classzk_1_1server_1_1server__group.html#afe1fc9e26912d8834cb812978d10710b',1,'zk::server::server_group']]],
+  ['make_5fminimal',['make_minimal',['../classzk_1_1server_1_1configuration.html#a49c3bd6d6109ab64c64b6aec5c4a7965',1,'zk::server::configuration']]],
+  ['map',['map',['../group__Client.html#gad895648faa9ce5a5ef73bb4403b982e1',1,'zk']]]
 ];

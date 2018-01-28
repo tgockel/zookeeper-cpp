@@ -94,7 +94,7 @@ $(document).ready(function(){initNavTree('classzk_1_1server_1_1server.html','');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Groups</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Groups</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -106,7 +106,6 @@ $(document).ready(function(){initNavTree('classzk_1_1server_1_1server.html','');
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="classzk_1_1server_1_1server-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">zk::server::server Class Reference<span class="mlabels"><span class="mlabel">final</span></span><div class="ingroups"><a class="el" href="group__Server.html">Server</a></div></div>  </div>
@@ -120,24 +119,25 @@ $(document).ready(function(){initNavTree('classzk_1_1server_1_1server.html','');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a67ddf8222d7f9ebf854e90c6c876c5e9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1server_1_1server.html#a67ddf8222d7f9ebf854e90c6c876c5e9">server</a> (std::string classpath)</td></tr>
-<tr class="separator:a67ddf8222d7f9ebf854e90c6c876c5e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace6d095f60bc798abd2634df89a0e328"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1server_1_1server.html#ace6d095f60bc798abd2634df89a0e328">server</a> (<a class="el" href="classzk_1_1server_1_1classpath.html">classpath</a> packages, <a class="el" href="classzk_1_1server_1_1configuration.html">configuration</a> settings)</td></tr>
+<tr class="memdesc:ace6d095f60bc798abd2634df89a0e328"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a running server process with the specified <em>packages</em> and <em>settings</em>.  <a href="#ace6d095f60bc798abd2634df89a0e328">More...</a><br /></td></tr>
+<tr class="separator:ace6d095f60bc798abd2634df89a0e328"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a809c53ccbcd76f912654c0c8932d003d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1server_1_1server.html#a809c53ccbcd76f912654c0c8932d003d">server</a> (<a class="el" href="classzk_1_1server_1_1configuration.html">configuration</a> settings)</td></tr>
+<tr class="memdesc:a809c53ccbcd76f912654c0c8932d003d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a running server with the specified <em>settings</em> using the system-provided default packages for ZooKeeper (see <a class="el" href="classzk_1_1server_1_1classpath.html#ae2b173799b0662f46c97775f6b4dae99">classpath::system_default</a>).  <a href="#a809c53ccbcd76f912654c0c8932d003d">More...</a><br /></td></tr>
+<tr class="separator:a809c53ccbcd76f912654c0c8932d003d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8232863640ff8dc6184c502b81f62039"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8232863640ff8dc6184c502b81f62039"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>server</b> (const <a class="el" href="classzk_1_1server_1_1server.html">server</a> &amp;)=delete</td></tr>
+<tr class="separator:a8232863640ff8dc6184c502b81f62039"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a74901bc03a4e84c8a9b7e43d289ffd37"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a74901bc03a4e84c8a9b7e43d289ffd37"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>shutdown</b> (bool wait_for_stop=false)</td></tr>
 <tr class="separator:a74901bc03a4e84c8a9b7e43d289ffd37"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
-Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a35b190e8f4118ede75edfc2eab00f2b1"><td class="memItemLeft" align="right" valign="top">static std::shared_ptr&lt; <a class="el" href="classzk_1_1server_1_1server.html">server</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1server_1_1server.html#a35b190e8f4118ede75edfc2eab00f2b1">create</a> (<a class="el" href="classzk_1_1server_1_1package__registry.html">package_registry</a> &amp;registry)</td></tr>
-<tr class="memdesc:a35b190e8f4118ede75edfc2eab00f2b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a running server process with the best (newest) version from the provided <em>registry</em>.  <a href="#a35b190e8f4118ede75edfc2eab00f2b1">More...</a><br /></td></tr>
-<tr class="separator:a35b190e8f4118ede75edfc2eab00f2b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Controls a ZooKeeper server process on this local machine. </p>
 
-<p>Definition at line <a class="el" href="server_8hpp_source.html#l00020">20</a> of file <a class="el" href="server_8hpp_source.html">server.hpp</a>.</p>
+<p>Definition at line <a class="el" href="server_8hpp_source.html#l00023">23</a> of file <a class="el" href="server_8hpp_source.html">server.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a67ddf8222d7f9ebf854e90c6c876c5e9"></a>
+<a class="anchor" id="ace6d095f60bc798abd2634df89a0e328"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -147,8 +147,59 @@ Static Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">zk::server::server::server </td>
           <td>(</td>
-          <td class="paramtype">std::string&#160;</td>
-          <td class="paramname"><em>classpath</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classzk_1_1server_1_1classpath.html">classpath</a>&#160;</td>
+          <td class="paramname"><em>packages</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classzk_1_1server_1_1configuration.html">configuration</a>&#160;</td>
+          <td class="paramname"><em>settings</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Create a running server process with the specified <em>packages</em> and <em>settings</em>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">packages</td><td>The classpath to use to find ZooKeeper's <code>QuorumPeerMain</code> class. </td></tr>
+    <tr><td class="paramname">settings</td><td>The server settings to run with. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::invalid_argument</td><td>If <code>settings.is_minimal()</code> is <code>false</code> and <code>settings.source_file()</code> is <code>nullopt</code>. This is because non-minimal configurations require ZooKeeper to be launched with a file. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="server_8cpp_source.html#l00029">29</a> of file <a class="el" href="server_8cpp_source.html">server.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a809c53ccbcd76f912654c0c8932d003d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">zk::server::server::server </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classzk_1_1server_1_1configuration.html">configuration</a>&#160;</td>
+          <td class="paramname"><em>settings</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -158,40 +209,28 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="section warning"><dt>Warning</dt><dd>See <code>create</code> for why this shouldn't be used. </dd></dl>
+
+<p>Create a running server with the specified <em>settings</em> using the system-provided default packages for ZooKeeper (see <a class="el" href="classzk_1_1server_1_1classpath.html#ae2b173799b0662f46c97775f6b4dae99">classpath::system_default</a>). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">settings</td><td>The server settings to run with. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::invalid_argument</td><td>If <code>settings.is_minimal()</code> is <code>false</code> and <code>settings.source_file()</code> is <code>nullopt</code>. This is because non-minimal configurations require ZooKeeper to be launched with a file. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="server_8cpp_source.html#l00040">40</a> of file <a class="el" href="server_8cpp_source.html">server.cpp</a>.</p>
 
 </div>
 </div>
-<h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a35b190e8f4118ede75edfc2eab00f2b1"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static std::shared_ptr&lt;<a class="el" href="classzk_1_1server_1_1server.html">server</a>&gt; zk::server::server::create </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classzk_1_1server_1_1package__registry.html">package_registry</a> &amp;&#160;</td>
-          <td class="paramname"><em>registry</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Create a running server process with the best (newest) version from the provided <em>registry</em>. </p>
-<dl class="section warning"><dt>Warning</dt><dd>This interface, while convenient, is probably totally broken. Expect it to be deprecated in the not-too-distant future. </dd></dl>
-
-</div>
-</div>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>zk/server/<a class="el" href="server_8hpp_source.html">server.hpp</a></li>
+<li>zk/server/<a class="el" href="server_8cpp_source.html">server.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

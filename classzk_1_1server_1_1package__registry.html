@@ -94,7 +94,7 @@ $(document).ready(function(){initNavTree('classzk_1_1server_1_1package__registry
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Groups</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Groups</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -135,9 +135,9 @@ using&#160;</td><td class="memItemRight" valign="bottom"><b>registration</b> = s
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a830ed4633450be11adeb39a4fefe9bb4"><td class="memItemLeft" align="right" valign="top">registration&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1server_1_1package__registry.html#a830ed4633450be11adeb39a4fefe9bb4">register_classpath_server</a> (std::string <a class="el" href="structzk_1_1version.html">version</a>, std::string classpath)</td></tr>
-<tr class="memdesc:a830ed4633450be11adeb39a4fefe9bb4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register a server that can be created via the specified Java <em>classpath</em>.  <a href="#a830ed4633450be11adeb39a4fefe9bb4">More...</a><br /></td></tr>
-<tr class="separator:a830ed4633450be11adeb39a4fefe9bb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a908f11d0c0bd4c5063f5947ee7c52e6a"><td class="memItemLeft" align="right" valign="top">registration&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1server_1_1package__registry.html#a908f11d0c0bd4c5063f5947ee7c52e6a">register_classpath_server</a> (std::string <a class="el" href="structzk_1_1version.html">version</a>, <a class="el" href="classzk_1_1server_1_1classpath.html">classpath</a> packages)</td></tr>
+<tr class="memdesc:a908f11d0c0bd4c5063f5947ee7c52e6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register a server that can be created via the specified Java <em>classpath</em>.  <a href="#a908f11d0c0bd4c5063f5947ee7c52e6a">More...</a><br /></td></tr>
+<tr class="separator:a908f11d0c0bd4c5063f5947ee7c52e6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a63b39522b176f754fdd1d4cfbe5c41fe"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1server_1_1package__registry.html#a63b39522b176f754fdd1d4cfbe5c41fe">unregister_server</a> (registration reg)</td></tr>
 <tr class="memdesc:a63b39522b176f754fdd1d4cfbe5c41fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attempt to unregister the server associated with the provided registration.  <a href="#a63b39522b176f754fdd1d4cfbe5c41fe">More...</a><br /></td></tr>
 <tr class="separator:a63b39522b176f754fdd1d4cfbe5c41fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -150,15 +150,15 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>unregister_server</b>
 <tr class="memitem:a6e2abf1fb56c1bd16e737a4f3ebc9e8f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1server_1_1package__registry.html#a6e2abf1fb56c1bd16e737a4f3ebc9e8f">empty</a> () const </td></tr>
 <tr class="memdesc:a6e2abf1fb56c1bd16e737a4f3ebc9e8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Is this registry empty?  <a href="#a6e2abf1fb56c1bd16e737a4f3ebc9e8f">More...</a><br /></td></tr>
 <tr class="separator:a6e2abf1fb56c1bd16e737a4f3ebc9e8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a55398aeda89df0e39008bd556d6f0ede"><td class="memItemLeft" align="right" valign="top">optional&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1server_1_1package__registry.html#a55398aeda89df0e39008bd556d6f0ede">find_newest_classpath</a> () const </td></tr>
-<tr class="memdesc:a55398aeda89df0e39008bd556d6f0ede"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the classpath for running the newest registered server version.  <a href="#a55398aeda89df0e39008bd556d6f0ede">More...</a><br /></td></tr>
-<tr class="separator:a55398aeda89df0e39008bd556d6f0ede"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65af1c22fa88448a119199b37d49097e"><td class="memItemLeft" align="right" valign="top">optional&lt; <a class="el" href="classzk_1_1server_1_1classpath.html">classpath</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1server_1_1package__registry.html#a65af1c22fa88448a119199b37d49097e">find_newest_classpath</a> () const </td></tr>
+<tr class="memdesc:a65af1c22fa88448a119199b37d49097e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the classpath for running the newest registered server version.  <a href="#a65af1c22fa88448a119199b37d49097e">More...</a><br /></td></tr>
+<tr class="separator:a65af1c22fa88448a119199b37d49097e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The package registry tracks configuration of classpaths and JARs needed to run various ZooKeeper versions. </p>
 <dl class="section note"><dt>Note</dt><dd>{Thread Safety} Registering and unregistering configurations is thread-safe. However, it is <em>not</em> safe when a <code><a class="el" href="classzk_1_1server_1_1package__registry.html" title="The package registry tracks configuration of classpaths and JARs needed to run various ZooKeeper vers...">package_registry</a></code> is being destroyed. </dd></dl>
 
-<p>Definition at line <a class="el" href="package__registry_8hpp_source.html#l00025">25</a> of file <a class="el" href="package__registry_8hpp_source.html">package_registry.hpp</a>.</p>
+<p>Definition at line <a class="el" href="package__registry_8hpp_source.html#l00027">27</a> of file <a class="el" href="package__registry_8hpp_source.html">package_registry.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="a6e2abf1fb56c1bd16e737a4f3ebc9e8f"></a>
 <div class="memitem">
@@ -183,16 +183,16 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>unregister_server</b>
 
 <p>Is this registry empty? </p>
 
-<p>Definition at line <a class="el" href="package__registry_8hpp_source.html#l00061">61</a> of file <a class="el" href="package__registry_8hpp_source.html">package_registry.hpp</a>.</p>
+<p>Definition at line <a class="el" href="package__registry_8hpp_source.html#l00063">63</a> of file <a class="el" href="package__registry_8hpp_source.html">package_registry.hpp</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a55398aeda89df0e39008bd556d6f0ede"></a>
+<a class="anchor" id="a65af1c22fa88448a119199b37d49097e"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">optional&lt; std::string &gt; zk::server::package_registry::find_newest_classpath </td>
+          <td class="memname">optional&lt; <a class="el" href="classzk_1_1server_1_1classpath.html">classpath</a> &gt; zk::server::package_registry::find_newest_classpath </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -207,7 +207,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>unregister_server</b>
 
 </div>
 </div>
-<a class="anchor" id="a830ed4633450be11adeb39a4fefe9bb4"></a>
+<a class="anchor" id="a908f11d0c0bd4c5063f5947ee7c52e6a"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -220,8 +220,8 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>unregister_server</b>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::string&#160;</td>
-          <td class="paramname"><em>classpath</em>&#160;</td>
+          <td class="paramtype"><a class="el" href="classzk_1_1server_1_1classpath.html">classpath</a>&#160;</td>
+          <td class="paramname"><em>packages</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -235,7 +235,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>unregister_server</b>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">version</td><td>A version string used to look up the server when creating them. While this can be a lie, it should not be. </td></tr>
-    <tr><td class="paramname">classpath</td><td>The Java classpath used to run the server. This will be the <code>cp</code> argument to Java. </td></tr>
+    <tr><td class="paramname">packages</td><td>The Java classpath used to run the server. This will be the <code>cp</code> argument to Java. </td></tr>
   </table>
   </dd>
 </dl>

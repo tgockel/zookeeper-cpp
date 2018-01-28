@@ -4,7 +4,9 @@ var hierarchy =
     [ "zk::acl_rule", "classzk_1_1acl__rule.html", null ],
     [ "zk::acls", "classzk_1_1acls.html", null ],
     [ "zk::op::check_data", "structzk_1_1op_1_1check__data.html", null ],
+    [ "zk::server::classpath", "classzk_1_1server_1_1classpath.html", null ],
     [ "zk::client", "classzk_1_1client.html", null ],
+    [ "zk::server::configuration", "classzk_1_1server_1_1configuration.html", null ],
     [ "zk::connection", "classzk_1_1connection.html", [
       [ "zk::connection_zk", "classzk_1_1connection__zk.html", null ]
     ] ],
@@ -61,6 +63,7 @@ var hierarchy =
     [ "std::hash< zk::acl_rule >", "classstd_1_1hash_3_01zk_1_1acl__rule_01_4.html", null ],
     [ "std::hash< zk::transaction_id >", "structstd_1_1hash_3_01zk_1_1transaction__id_01_4.html", null ],
     [ "std::hash< zk::version >", "structstd_1_1hash_3_01zk_1_1version_01_4.html", null ],
+    [ "zk::server::server_group::info", "structzk_1_1server_1_1server__group_1_1info.html", null ],
     [ "zk::multi_op", "classzk_1_1multi__op.html", null ],
     [ "zk::multi_result", "classzk_1_1multi__result.html", null ],
     [ "zk::op", "classzk_1_1op.html", null ],
@@ -68,6 +71,7 @@ var hierarchy =
     [ "zk::multi_result::part", "classzk_1_1multi__result_1_1part.html", null ],
     [ "zk::server::package_registry::registration_info", "structzk_1_1server_1_1package__registry_1_1registration__info.html", null ],
     [ "zk::server::server", "classzk_1_1server_1_1server.html", null ],
+    [ "zk::server::server_group", "classzk_1_1server_1_1server__group.html", null ],
     [ "zk::op::set_data", "structzk_1_1op_1_1set__data.html", null ],
     [ "zk::set_result", "classzk_1_1set__result.html", null ],
     [ "zk::stat", "structzk_1_1stat.html", null ],

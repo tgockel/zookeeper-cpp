@@ -483,15 +483,7 @@ var group__Client =
     [ "ZKPP_FUTURE_USE_CUSTOM", "group__Client.html#ga42a1c1be42cdb0a7a33ed67d18aa0590", null ],
     [ "ZKPP_FUTURE_USE_STD", "group__Client.html#gab319a820b6421775473c62a5000031cc", null ],
     [ "ZKPP_FUTURE_USE_STD_EXPERIMENTAL", "group__Client.html#ga8c493b58d7ea01a57c43b471eaf2a08a", null ],
-    [ "ZKPP_NULLOPT_TYPE", "group__Client.html#gaca268f5635882310103f0baa93a91382", null ],
-    [ "ZKPP_NULLOPT_VALUE", "group__Client.html#gaa0ca42827d88eff5167343f918b7f99c", null ],
-    [ "ZKPP_OPTIONAL_INCLUDE", "group__Client.html#ga2c6e9b122cb56bb7b55b9d46bfef2471", null ],
-    [ "ZKPP_OPTIONAL_TEMPLATE", "group__Client.html#gab866d8214dfeffb1c45303030298b51f", null ],
-    [ "ZKPP_OPTIONAL_USE_CUSTOM", "group__Client.html#ga601acdf80bdcc2e0727537543a1e2e53", null ],
-    [ "ZKPP_OPTIONAL_USE_STD", "group__Client.html#gacc5ef41229a13ad8f9898301ebb78db3", null ],
-    [ "ZKPP_OPTIONAL_USE_STD_EXPERIMENTAL", "group__Client.html#ga3200797b7fb785e83218cb5aeae98c6e", null ],
     [ "ZKPP_PROMISE_TEMPLATE", "group__Client.html#ga110a4d4b175e4666da6398afab7a3d95", null ],
-    [ "ZKPP_SO", "group__Client.html#ga360803f618ea544feca8edca1479d607", null ],
     [ "buffer", "group__Client.html#ga8175fa6edfc7371c269524730d3c0a9d", null ],
     [ "ptr", "group__Client.html#ga90b49f2e7c5f07873ad93fc5bd2f0e87", null ],
     [ "create_mode", "group__Client.html#ga9f10c37f69a7d1084b08cac07ebb7918", [
@@ -528,5 +520,6 @@ var group__Client =
       [ "authentication_failed", "group__Client.html#gga8954c7138ce0280422d42d02b3d951eaa047ef5b1ba6d5dcc4dbee37c075a2088", null ]
     ] ],
     [ "allows", "group__Client.html#ga805d7e2c38e80ec6abdc6043087bfae8", null ],
-    [ "is_set", "group__Client.html#gadf4975c092411a75981c0c7008b34ebd", null ]
+    [ "is_set", "group__Client.html#gadf4975c092411a75981c0c7008b34ebd", null ],
+    [ "map", "group__Client.html#gad895648faa9ce5a5ef73bb4403b982e1", null ]
 ];
