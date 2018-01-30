@@ -128,8 +128,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a8232863640ff8dc6184c502b81f62039"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8232863640ff8dc6184c502b81f62039"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>server</b> (const <a class="el" href="classzk_1_1server_1_1server.html">server</a> &amp;)=delete</td></tr>
 <tr class="separator:a8232863640ff8dc6184c502b81f62039"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a74901bc03a4e84c8a9b7e43d289ffd37"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a74901bc03a4e84c8a9b7e43d289ffd37"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>shutdown</b> (bool wait_for_stop=false)</td></tr>
+<tr class="memitem:a74901bc03a4e84c8a9b7e43d289ffd37"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1server_1_1server.html#a74901bc03a4e84c8a9b7e43d289ffd37">shutdown</a> (bool wait_for_stop=false)</td></tr>
+<tr class="memdesc:a74901bc03a4e84c8a9b7e43d289ffd37"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initiate shutting down the server process.  <a href="#a74901bc03a4e84c8a9b7e43d289ffd37">More...</a><br /></td></tr>
 <tr class="separator:a74901bc03a4e84c8a9b7e43d289ffd37"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -225,6 +225,34 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>shutdown</b> (bool wa
 </dl>
 
 <p>Definition at line <a class="el" href="server_8cpp_source.html#l00040">40</a> of file <a class="el" href="server_8cpp_source.html">server.cpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a74901bc03a4e84c8a9b7e43d289ffd37"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void zk::server::server::shutdown </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>wait_for_stop</em> = <code>false</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initiate shutting down the server process. </p>
+<p>For most usage, this is not needed, as it is called automatically from the destructor.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">wait_for_stop</td><td>If <code>true</code>, wait for the process to run until termination instead of simply initiating the termination. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="server_8cpp_source.html#l00049">49</a> of file <a class="el" href="server_8cpp_source.html">server.cpp</a>.</p>
 
 </div>
 </div>

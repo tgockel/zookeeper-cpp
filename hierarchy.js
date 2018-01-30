@@ -61,6 +61,9 @@ var hierarchy =
     [ "zk::get_children_result", "classzk_1_1get__children__result.html", null ],
     [ "zk::get_result", "classzk_1_1get__result.html", null ],
     [ "std::hash< zk::acl_rule >", "classstd_1_1hash_3_01zk_1_1acl__rule_01_4.html", null ],
+    [ "std::hash< zk::acl_version >", "structstd_1_1hash_3_01zk_1_1acl__version_01_4.html", null ],
+    [ "std::hash< zk::child_version >", "structstd_1_1hash_3_01zk_1_1child__version_01_4.html", null ],
+    [ "std::hash< zk::server::server_id >", "structstd_1_1hash_3_01zk_1_1server_1_1server__id_01_4.html", null ],
     [ "std::hash< zk::transaction_id >", "structstd_1_1hash_3_01zk_1_1transaction__id_01_4.html", null ],
     [ "std::hash< zk::version >", "structstd_1_1hash_3_01zk_1_1version_01_4.html", null ],
     [ "zk::server::server_group::info", "structzk_1_1server_1_1server__group_1_1info.html", null ],
@@ -85,6 +88,9 @@ var hierarchy =
       [ "zk::basic_version< child_version >", "structzk_1_1basic__version.html", [
         [ "zk::child_version", "structzk_1_1child__version.html", null ]
       ] ]
+    ] ],
+    [ "zk::strong_id< server_id, std::size_t >", "structzk_1_1strong__id.html", [
+      [ "zk::server::server_id", "structzk_1_1server_1_1server__id.html", null ]
     ] ],
     [ "zk::strong_id< transaction_id, std::size_t >", "structzk_1_1strong__id.html", [
       [ "zk::transaction_id", "structzk_1_1transaction__id.html", null ]

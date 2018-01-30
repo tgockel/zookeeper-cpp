@@ -159,7 +159,7 @@ $(document).ready(function(){initNavTree('server__group_8cpp_source.html','');})
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    }</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> save_id_file(<span class="keyword">const</span> std::string&amp; path, <span class="keyword">const</span> std::string&amp; <span class="keywordtype">id</span>)</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> save_id_file(<span class="keyword">const</span> std::string&amp; path, <span class="keyword">const</span> server_id&amp; <span class="keywordtype">id</span>)</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;{</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    std::ofstream ofs(path.c_str());</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordflow">if</span> (!ofs)</div>
@@ -182,72 +182,74 @@ $(document).ready(function(){initNavTree('server__group_8cpp_source.html','');})
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <a class="code" href="classzk_1_1server_1_1server__group.html">server_group</a> out;</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordflow">for</span> (std::size_t idx = 0U; idx &lt; size; ++idx)</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    {</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keyword">auto</span> px    = std::make_shared&lt;info&gt;(base_settings);</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="keyword">auto</span>&amp; x    = *px;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        x.name     = std::to_string(idx + 1);</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        x.path     = base_directory + <span class="stringliteral">&quot;/&quot;</span> + x.name;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        x.settings</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            .client_port(base_port++)</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            .data_directory(x.path + <span class="stringliteral">&quot;/data&quot;</span>)</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            ;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        x.peer_port   = base_port++;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        x.leader_port = base_port++;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        out._servers.emplace(x.name, px);</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    }</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    std::ostringstream conn_str_os;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    conn_str_os &lt;&lt; <span class="stringliteral">&quot;zk://&quot;</span>;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keywordtype">bool</span> first = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    create_directory(base_directory);</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; [name, srvr] : out._servers)</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    {</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; [name2, srvr2] : out._servers)</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        {</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            srvr-&gt;settings.add_server(name2, <span class="stringliteral">&quot;127.0.0.1&quot;</span>, srvr2-&gt;peer_port, srvr2-&gt;leader_port);</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        }</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        create_directory(srvr-&gt;path);</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        create_directory(srvr-&gt;path + <span class="stringliteral">&quot;/data&quot;</span>);</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        save_id_file(srvr-&gt;path + <span class="stringliteral">&quot;/data/myid&quot;</span>, name);</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        srvr-&gt;settings.save_file(srvr-&gt;path + <span class="stringliteral">&quot;/settings.cfg&quot;</span>);</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        <span class="keywordflow">if</span> (!std::exchange(first, <span class="keyword">false</span>))</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            conn_str_os &lt;&lt; <span class="charliteral">&#39;,&#39;</span>;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        conn_str_os &lt;&lt; <span class="stringliteral">&quot;127.0.0.1:&quot;</span> &lt;&lt; srvr-&gt;settings.client_port();</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    }</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    conn_str_os &lt;&lt; <span class="charliteral">&#39;/&#39;</span>;</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    out._conn_string = conn_str_os.str();</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keywordflow">return</span> out;</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;}</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;</div>
-<div class="line"><a name="l00118"></a><span class="lineno"><a class="line" href="classzk_1_1server_1_1server__group.html#a668e88e8855897d840a6536c766544b8">  118</a></span>&#160;<span class="keyword">const</span> std::string&amp; <a class="code" href="classzk_1_1server_1_1server__group.html#a668e88e8855897d840a6536c766544b8">server_group::get_connection_string</a>()</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;{</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="keywordflow">return</span> _conn_string;</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;}</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;</div>
-<div class="line"><a name="l00123"></a><span class="lineno"><a class="line" href="classzk_1_1server_1_1server__group.html#aa8e15b4a0c1af2f3336a67c325186f7f">  123</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classzk_1_1server_1_1server__group.html#aa8e15b4a0c1af2f3336a67c325186f7f">server_group::start_all_servers</a>(<span class="keyword">const</span> <a class="code" href="classzk_1_1server_1_1classpath.html">classpath</a>&amp; packages)</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;{</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; [name, srvr] : _servers)</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    {</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        <span class="keyword">static_cast&lt;</span><span class="keywordtype">void</span><span class="keyword">&gt;</span>(name);</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        <span class="keywordflow">if</span> (!srvr-&gt;instance)</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        {</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;            srvr-&gt;instance = std::make_shared&lt;server&gt;(packages, srvr-&gt;settings);</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        }</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    }</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;}</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;}</div>
-<div class="ttc" id="classzk_1_1server_1_1server__group_html"><div class="ttname"><a href="classzk_1_1server_1_1server__group.html">zk::server::server_group</a></div><div class="ttdoc">Create and manage a group of server instances on this local machine (most likely in a single ensemble...</div><div class="ttdef"><b>Definition:</b> <a href="server__group_8hpp_source.html#l00025">server_group.hpp:25</a></div></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keyword">auto</span> <span class="keywordtype">id</span>    = <a class="code" href="structzk_1_1server_1_1server__id.html">server_id</a>(idx + 1);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="keyword">auto</span> px    = std::make_shared&lt;info&gt;(base_settings);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="keyword">auto</span>&amp; x    = *px;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        x.name     = std::to_string(<span class="keywordtype">id</span>.value);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        x.path     = base_directory + <span class="stringliteral">&quot;/&quot;</span> + x.name;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        x.settings</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            .client_port(base_port++)</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            .data_directory(x.path + <span class="stringliteral">&quot;/data&quot;</span>)</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            ;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        x.peer_port   = base_port++;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        x.leader_port = base_port++;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        out._servers.emplace(<span class="keywordtype">id</span>, px);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    }</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    std::ostringstream conn_str_os;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    conn_str_os &lt;&lt; <span class="stringliteral">&quot;zk://&quot;</span>;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordtype">bool</span> first = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    create_directory(base_directory);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; [<span class="keywordtype">id</span>, srvr] : out._servers)</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    {</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; [id2, srvr2] : out._servers)</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        {</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            srvr-&gt;settings.add_server(id2, <span class="stringliteral">&quot;127.0.0.1&quot;</span>, srvr2-&gt;peer_port, srvr2-&gt;leader_port);</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        }</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        create_directory(srvr-&gt;path);</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        create_directory(srvr-&gt;path + <span class="stringliteral">&quot;/data&quot;</span>);</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        save_id_file(srvr-&gt;path + <span class="stringliteral">&quot;/data/myid&quot;</span>, <span class="keywordtype">id</span>);</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        srvr-&gt;settings.save_file(srvr-&gt;path + <span class="stringliteral">&quot;/settings.cfg&quot;</span>);</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <span class="keywordflow">if</span> (!std::exchange(first, <span class="keyword">false</span>))</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            conn_str_os &lt;&lt; <span class="charliteral">&#39;,&#39;</span>;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        conn_str_os &lt;&lt; <span class="stringliteral">&quot;127.0.0.1:&quot;</span> &lt;&lt; srvr-&gt;settings.client_port();</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    }</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    conn_str_os &lt;&lt; <span class="charliteral">&#39;/&#39;</span>;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    out._conn_string = conn_str_os.str();</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keywordflow">return</span> out;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;}</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;</div>
+<div class="line"><a name="l00119"></a><span class="lineno"><a class="line" href="classzk_1_1server_1_1server__group.html#a668e88e8855897d840a6536c766544b8">  119</a></span>&#160;<span class="keyword">const</span> std::string&amp; <a class="code" href="classzk_1_1server_1_1server__group.html#a668e88e8855897d840a6536c766544b8">server_group::get_connection_string</a>()</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;{</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="keywordflow">return</span> _conn_string;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;}</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;</div>
+<div class="line"><a name="l00124"></a><span class="lineno"><a class="line" href="classzk_1_1server_1_1server__group.html#aa8e15b4a0c1af2f3336a67c325186f7f">  124</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classzk_1_1server_1_1server__group.html#aa8e15b4a0c1af2f3336a67c325186f7f">server_group::start_all_servers</a>(<span class="keyword">const</span> <a class="code" href="classzk_1_1server_1_1classpath.html">classpath</a>&amp; packages)</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;{</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; [name, srvr] : _servers)</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    {</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        <span class="keyword">static_cast&lt;</span><span class="keywordtype">void</span><span class="keyword">&gt;</span>(name);</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        <span class="keywordflow">if</span> (!srvr-&gt;instance)</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        {</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;            srvr-&gt;instance = std::make_shared&lt;server&gt;(packages, srvr-&gt;settings);</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        }</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    }</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;}</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;}</div>
+<div class="ttc" id="structzk_1_1server_1_1server__id_html"><div class="ttname"><a href="structzk_1_1server_1_1server__id.html">zk::server::server_id</a></div><div class="ttdoc">Represents the ID of a server in the ensemble. </div><div class="ttdef"><b>Definition:</b> <a href="configuration_8hpp_source.html#l00030">configuration.hpp:30</a></div></div>
+<div class="ttc" id="classzk_1_1server_1_1server__group_html"><div class="ttname"><a href="classzk_1_1server_1_1server__group.html">zk::server::server_group</a></div><div class="ttdoc">Create and manage a group of server instances on this local machine (most likely in a single ensemble...</div><div class="ttdef"><b>Definition:</b> <a href="server__group_8hpp_source.html#l00026">server_group.hpp:26</a></div></div>
 <div class="ttc" id="classzk_1_1server_1_1classpath_html"><div class="ttname"><a href="classzk_1_1server_1_1classpath.html">zk::server::classpath</a></div><div class="ttdoc">Represents a collection of JARs or other Java entities that should be provided as the --classpath to ...</div><div class="ttdef"><b>Definition:</b> <a href="classpath_8hpp_source.html#l00020">classpath.hpp:20</a></div></div>
-<div class="ttc" id="classzk_1_1server_1_1configuration_html_add95cb761e8d976a353133cd1bb39fb0"><div class="ttname"><a href="classzk_1_1server_1_1configuration.html#add95cb761e8d976a353133cd1bb39fb0">zk::server::configuration::default_client_port</a></div><div class="ttdeci">static std::uint16_t default_client_port</div><div class="ttdoc">The default value for client_port. </div><div class="ttdef"><b>Definition:</b> <a href="configuration_8hpp_source.html#l00028">configuration.hpp:28</a></div></div>
-<div class="ttc" id="classzk_1_1server_1_1server__group_html_a668e88e8855897d840a6536c766544b8"><div class="ttname"><a href="classzk_1_1server_1_1server__group.html#a668e88e8855897d840a6536c766544b8">zk::server::server_group::get_connection_string</a></div><div class="ttdeci">const std::string &amp; get_connection_string()</div><div class="ttdoc">Get a connection string which can connect to any the servers in the group. </div><div class="ttdef"><b>Definition:</b> <a href="server__group_8cpp_source.html#l00118">server_group.cpp:118</a></div></div>
-<div class="ttc" id="classzk_1_1server_1_1server__group_html_aa8e15b4a0c1af2f3336a67c325186f7f"><div class="ttname"><a href="classzk_1_1server_1_1server__group.html#aa8e15b4a0c1af2f3336a67c325186f7f">zk::server::server_group::start_all_servers</a></div><div class="ttdeci">void start_all_servers(const classpath &amp;packages)</div><div class="ttdoc">Start all servers in the group. </div><div class="ttdef"><b>Definition:</b> <a href="server__group_8cpp_source.html#l00123">server_group.cpp:123</a></div></div>
-<div class="ttc" id="classzk_1_1server_1_1configuration_html"><div class="ttname"><a href="classzk_1_1server_1_1configuration.html">zk::server::configuration</a></div><div class="ttdef"><b>Definition:</b> <a href="configuration_8hpp_source.html#l00021">configuration.hpp:21</a></div></div>
+<div class="ttc" id="classzk_1_1server_1_1configuration_html_add95cb761e8d976a353133cd1bb39fb0"><div class="ttname"><a href="classzk_1_1server_1_1configuration.html#add95cb761e8d976a353133cd1bb39fb0">zk::server::configuration::default_client_port</a></div><div class="ttdeci">static std::uint16_t default_client_port</div><div class="ttdoc">The default value for client_port. </div><div class="ttdef"><b>Definition:</b> <a href="configuration_8hpp_source.html#l00053">configuration.hpp:53</a></div></div>
+<div class="ttc" id="classzk_1_1server_1_1server__group_html_a668e88e8855897d840a6536c766544b8"><div class="ttname"><a href="classzk_1_1server_1_1server__group.html#a668e88e8855897d840a6536c766544b8">zk::server::server_group::get_connection_string</a></div><div class="ttdeci">const std::string &amp; get_connection_string()</div><div class="ttdoc">Get a connection string which can connect to any the servers in the group. </div><div class="ttdef"><b>Definition:</b> <a href="server__group_8cpp_source.html#l00119">server_group.cpp:119</a></div></div>
+<div class="ttc" id="classzk_1_1server_1_1server__group_html_aa8e15b4a0c1af2f3336a67c325186f7f"><div class="ttname"><a href="classzk_1_1server_1_1server__group.html#aa8e15b4a0c1af2f3336a67c325186f7f">zk::server::server_group::start_all_servers</a></div><div class="ttdeci">void start_all_servers(const classpath &amp;packages)</div><div class="ttdoc">Start all servers in the group. </div><div class="ttdef"><b>Definition:</b> <a href="server__group_8cpp_source.html#l00124">server_group.cpp:124</a></div></div>
+<div class="ttc" id="classzk_1_1server_1_1configuration_html"><div class="ttname"><a href="classzk_1_1server_1_1configuration.html">zk::server::configuration</a></div><div class="ttdef"><b>Definition:</b> <a href="configuration_8hpp_source.html#l00046">configuration.hpp:46</a></div></div>
 <div class="ttc" id="structzk_1_1server_1_1server__group_1_1info_html"><div class="ttname"><a href="structzk_1_1server_1_1server__group_1_1info.html">zk::server::server_group::info</a></div><div class="ttdef"><b>Definition:</b> <a href="server__group_8cpp_source.html#l00020">server_group.cpp:20</a></div></div>
 <div class="ttc" id="classzk_1_1server_1_1server__group_html_afe1fc9e26912d8834cb812978d10710b"><div class="ttname"><a href="classzk_1_1server_1_1server__group.html#afe1fc9e26912d8834cb812978d10710b">zk::server::server_group::make_ensemble</a></div><div class="ttdeci">static server_group make_ensemble(std::size_t size, const configuration &amp;base_settings)</div><div class="ttdoc">Create an ensemble of the given size. </div><div class="ttdef"><b>Definition:</b> <a href="server__group_8cpp_source.html#l00063">server_group.cpp:63</a></div></div>
 </div><!-- fragment --></div><!-- contents -->

@@ -5,10 +5,15 @@ var group__Server =
       [ "command_line", "classzk_1_1server_1_1classpath.html#a90cc62f322943a33c01271beb4e7d1ec", null ],
       [ "operator<<", "classzk_1_1server_1_1classpath.html#a5b821c55470e600ab04d03cd21ca7595", null ]
     ] ],
+    [ "server_id", "structzk_1_1server_1_1server__id.html", [
+      [ "server_id", "structzk_1_1server_1_1server__id.html#a2e2cb068f7a94c54b295409f1f66e937", null ],
+      [ "ensure_valid", "structzk_1_1server_1_1server__id.html#aee8157db6e730cdd3dd03eb82b6fac9b", null ],
+      [ "operator<<", "structzk_1_1server_1_1server__id.html#a6754130abd7599952889ba57bc9b7aa3", null ]
+    ] ],
     [ "configuration", "classzk_1_1server_1_1configuration.html", [
       [ "duration_type", "classzk_1_1server_1_1configuration.html#ad2623f4b5c0984d5331b1f74ccb7e65f", null ],
       [ "~configuration", "classzk_1_1server_1_1configuration.html#a27c22b790f7e7a2889dfff0e558a98fb", null ],
-      [ "add_server", "classzk_1_1server_1_1configuration.html#a357c7de82051fcad59d46366aaaad115", null ],
+      [ "add_server", "classzk_1_1server_1_1configuration.html#a3b22bf499025f9490349c0876f5ea4fc", null ],
       [ "add_setting", "classzk_1_1server_1_1configuration.html#aaeea54c459a522fe56814f56b8d78e46", null ],
       [ "client_port", "classzk_1_1server_1_1configuration.html#a70df833da6aae590a817b7de838775a6", null ],
       [ "client_port", "classzk_1_1server_1_1configuration.html#a93e47728884e940887e58dba6d36d90a", null ],
@@ -21,7 +26,7 @@ var group__Server =
       [ "leader_serves", "classzk_1_1server_1_1configuration.html#a36f08e3d77a394377316ae84e667c3d5", null ],
       [ "save", "classzk_1_1server_1_1configuration.html#a5ef1433ba2ca36fcb0f44bde69c0d817", null ],
       [ "save_file", "classzk_1_1server_1_1configuration.html#a1e72779df1c3788ee4c5ca5c436a7476", null ],
-      [ "servers", "classzk_1_1server_1_1configuration.html#a8816928b4a95e01dd59a58860bdb72b7", null ],
+      [ "servers", "classzk_1_1server_1_1configuration.html#a1e30f6df32f367564ed64ac2a941b49c", null ],
       [ "source_file", "classzk_1_1server_1_1configuration.html#a0b1ccc440366a0ed2012036840b13488", null ],
       [ "sync_limit", "classzk_1_1server_1_1configuration.html#a35e72c359e41b1f8720daeda3a3a4a13", null ],
       [ "sync_limit", "classzk_1_1server_1_1configuration.html#a2b94aed09c8c2890211e5abe525454e9", null ],

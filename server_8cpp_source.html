@@ -151,29 +151,29 @@ $(document).ready(function(){initNavTree('server_8cpp_source.html','');});
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;server::~server() noexcept</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;{</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    shutdown(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <a class="code" href="classzk_1_1server_1_1server.html#a74901bc03a4e84c8a9b7e43d289ffd37">shutdown</a>(<span class="keyword">true</span>);</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;}</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keywordtype">void</span> server::shutdown(<span class="keywordtype">bool</span> wait_for_stop)</div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="classzk_1_1server_1_1server.html#a74901bc03a4e84c8a9b7e43d289ffd37">   49</a></span>&#160;<span class="keywordtype">void</span> server::shutdown(<span class="keywordtype">bool</span> wait_for_stop)</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;{</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    _running = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordflow">if</span> (wait_for_stop &amp;&amp; _worker.joinable())</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        _worker.join();</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;}</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keywordtype">void</span> server::run_process(<span class="keyword">const</span> classpath&amp; packages, <span class="keyword">const</span> configuration&amp; settings)</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keywordtype">void</span> server::run_process(<span class="keyword">const</span> <a class="code" href="classzk_1_1server_1_1classpath.html">classpath</a>&amp; packages, <span class="keyword">const</span> <a class="code" href="classzk_1_1server_1_1configuration.html">configuration</a>&amp; settings)</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;{</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    detail::subprocess::argument_list args = { <span class="stringliteral">&quot;-cp&quot;</span>, packages.command_line(),</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    detail::subprocess::argument_list args = { <span class="stringliteral">&quot;-cp&quot;</span>, packages.<a class="code" href="classzk_1_1server_1_1classpath.html#a90cc62f322943a33c01271beb4e7d1ec">command_line</a>(),</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                                               <span class="stringliteral">&quot;org.apache.zookeeper.server.quorum.QuorumPeerMain&quot;</span>,</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                                             };</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordflow">if</span> (settings.is_minimal())</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordflow">if</span> (settings.<a class="code" href="classzk_1_1server_1_1configuration.html#ac2248cec031540ca3a7993d69259bed9">is_minimal</a>())</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    {</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        args.emplace_back(std::to_string(settings.client_port()));</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        args.emplace_back(settings.data_directory().value());</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    }</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordflow">else</span></div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    {</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        args.emplace_back(settings.source_file().value());</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        args.emplace_back(settings.<a class="code" href="classzk_1_1server_1_1configuration.html#a0b1ccc440366a0ed2012036840b13488">source_file</a>().value());</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    }</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    detail::subprocess proc(<span class="stringliteral">&quot;java&quot;</span>, std::move(args));</div>
@@ -188,9 +188,13 @@ $(document).ready(function(){initNavTree('server_8cpp_source.html','');});
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;}</div>
 <div class="ttc" id="classzk_1_1server_1_1classpath_html"><div class="ttname"><a href="classzk_1_1server_1_1classpath.html">zk::server::classpath</a></div><div class="ttdoc">Represents a collection of JARs or other Java entities that should be provided as the --classpath to ...</div><div class="ttdef"><b>Definition:</b> <a href="classpath_8hpp_source.html#l00020">classpath.hpp:20</a></div></div>
+<div class="ttc" id="classzk_1_1server_1_1configuration_html_a0b1ccc440366a0ed2012036840b13488"><div class="ttname"><a href="classzk_1_1server_1_1configuration.html#a0b1ccc440366a0ed2012036840b13488">zk::server::configuration::source_file</a></div><div class="ttdeci">const optional&lt; std::string &gt; &amp; source_file() const </div><div class="ttdoc">Get the source file. </div><div class="ttdef"><b>Definition:</b> <a href="configuration_8hpp_source.html#l00091">configuration.hpp:91</a></div></div>
+<div class="ttc" id="classzk_1_1server_1_1configuration_html_ac2248cec031540ca3a7993d69259bed9"><div class="ttname"><a href="classzk_1_1server_1_1configuration.html#ac2248cec031540ca3a7993d69259bed9">zk::server::configuration::is_minimal</a></div><div class="ttdeci">bool is_minimal() const </div><div class="ttdoc">Check if this is a "minimal" configuration – meaning it only has a data_directory and client_port se...</div><div class="ttdef"><b>Definition:</b> <a href="configuration_8cpp_source.html#l00178">configuration.cpp:178</a></div></div>
 <div class="ttc" id="classzk_1_1server_1_1server_html"><div class="ttname"><a href="classzk_1_1server_1_1server.html">zk::server::server</a></div><div class="ttdoc">Controls a ZooKeeper server process on this local machine. </div><div class="ttdef"><b>Definition:</b> <a href="server_8hpp_source.html#l00023">server.hpp:23</a></div></div>
 <div class="ttc" id="future_8hpp_html"><div class="ttname"><a href="future_8hpp.html">future.hpp</a></div><div class="ttdoc">Controls the import of future and promise types. </div></div>
-<div class="ttc" id="classzk_1_1server_1_1configuration_html"><div class="ttname"><a href="classzk_1_1server_1_1configuration.html">zk::server::configuration</a></div><div class="ttdef"><b>Definition:</b> <a href="configuration_8hpp_source.html#l00021">configuration.hpp:21</a></div></div>
+<div class="ttc" id="classzk_1_1server_1_1classpath_html_a90cc62f322943a33c01271beb4e7d1ec"><div class="ttname"><a href="classzk_1_1server_1_1classpath.html#a90cc62f322943a33c01271beb4e7d1ec">zk::server::classpath::command_line</a></div><div class="ttdeci">std::string command_line() const </div><div class="ttdoc">Get the command-line representation of this classpath. </div><div class="ttdef"><b>Definition:</b> <a href="classpath_8cpp_source.html#l00111">classpath.cpp:111</a></div></div>
+<div class="ttc" id="classzk_1_1server_1_1server_html_a74901bc03a4e84c8a9b7e43d289ffd37"><div class="ttname"><a href="classzk_1_1server_1_1server.html#a74901bc03a4e84c8a9b7e43d289ffd37">zk::server::server::shutdown</a></div><div class="ttdeci">void shutdown(bool wait_for_stop=false)</div><div class="ttdoc">Initiate shutting down the server process. </div><div class="ttdef"><b>Definition:</b> <a href="server_8cpp_source.html#l00049">server.cpp:49</a></div></div>
+<div class="ttc" id="classzk_1_1server_1_1configuration_html"><div class="ttname"><a href="classzk_1_1server_1_1configuration.html">zk::server::configuration</a></div><div class="ttdef"><b>Definition:</b> <a href="configuration_8hpp_source.html#l00046">configuration.hpp:46</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

@@ -373,18 +373,42 @@ $(document).ready(function(){initNavTree('types_8hpp_source.html','');});
 <div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;};</div>
 <div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;</div>
 <div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;<span class="keyword">template</span> &lt;&gt;</div>
-<div class="line"><a name="l00364"></a><span class="lineno"><a class="line" href="structstd_1_1hash_3_01zk_1_1transaction__id_01_4.html">  364</a></span>&#160;<span class="keyword">struct </span>hash&lt;zk::transaction_id&gt;</div>
+<div class="line"><a name="l00364"></a><span class="lineno"><a class="line" href="structstd_1_1hash_3_01zk_1_1acl__version_01_4.html">  364</a></span>&#160;<span class="keyword">struct </span>hash&lt;zk::acl_version&gt;</div>
 <div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;{</div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;    <span class="keyword">using</span> <a class="code" href="structzk_1_1transaction__id.html">argument_type</a> = <a class="code" href="structzk_1_1transaction__id.html">zk::transaction_id</a>;</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;    <span class="keyword">using</span> <a class="code" href="structzk_1_1acl__version.html">argument_type</a> = <a class="code" href="structzk_1_1acl__version.html">zk::acl_version</a>;</div>
 <div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;    <span class="keyword">using</span> result_type   = std::size_t;</div>
 <div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;</div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;    result_type operator()(<span class="keyword">const</span> <a class="code" href="structzk_1_1transaction__id.html">argument_type</a>&amp; x)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;    result_type operator()(<span class="keyword">const</span> <a class="code" href="structzk_1_1acl__version.html">argument_type</a>&amp; x)<span class="keyword"> const</span></div>
 <div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;<span class="keyword">    </span>{</div>
 <div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;        <span class="keywordflow">return</span> zk::hash(x);</div>
 <div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;    }</div>
 <div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;};</div>
 <div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;</div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;}</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;<span class="keyword">template</span> &lt;&gt;</div>
+<div class="line"><a name="l00376"></a><span class="lineno"><a class="line" href="structstd_1_1hash_3_01zk_1_1child__version_01_4.html">  376</a></span>&#160;<span class="keyword">struct </span>hash&lt;zk::child_version&gt;</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;{</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;    <span class="keyword">using</span> <a class="code" href="structzk_1_1child__version.html">argument_type</a> = <a class="code" href="structzk_1_1child__version.html">zk::child_version</a>;</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;    <span class="keyword">using</span> result_type   = std::size_t;</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;    result_type operator()(<span class="keyword">const</span> <a class="code" href="structzk_1_1child__version.html">argument_type</a>&amp; x)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;        <span class="keywordflow">return</span> zk::hash(x);</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;    }</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;};</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;<span class="keyword">template</span> &lt;&gt;</div>
+<div class="line"><a name="l00388"></a><span class="lineno"><a class="line" href="structstd_1_1hash_3_01zk_1_1transaction__id_01_4.html">  388</a></span>&#160;<span class="keyword">struct </span>hash&lt;zk::transaction_id&gt;</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;{</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;    <span class="keyword">using</span> <a class="code" href="structzk_1_1transaction__id.html">argument_type</a> = <a class="code" href="structzk_1_1transaction__id.html">zk::transaction_id</a>;</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;    <span class="keyword">using</span> result_type   = std::size_t;</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;    result_type operator()(<span class="keyword">const</span> <a class="code" href="structzk_1_1transaction__id.html">argument_type</a>&amp; x)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;        <span class="keywordflow">return</span> zk::hash(x);</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;    }</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;};</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;}</div>
 <div class="ttc" id="structzk_1_1stat_html_ad2aa8280ea89947cd45bf0c800c391c5"><div class="ttname"><a href="structzk_1_1stat.html#ad2aa8280ea89947cd45bf0c800c391c5">zk::stat::modified_time</a></div><div class="ttdeci">time_point modified_time</div><div class="ttdoc">Last time the znode was last modified. </div><div class="ttdef"><b>Definition:</b> <a href="types_8hpp_source.html#l00218">types.hpp:218</a></div></div>
 <div class="ttc" id="structzk_1_1stat_html_a1a4fb23e4ad72a6a890d05bd207a32ee"><div class="ttname"><a href="structzk_1_1stat.html#a1a4fb23e4ad72a6a890d05bd207a32ee">zk::stat::child_modified_transaction</a></div><div class="ttdeci">transaction_id child_modified_transaction</div><div class="ttdoc">The transaction ID that last modified the children of the znode. </div><div class="ttdef"><b>Definition:</b> <a href="types_8hpp_source.html#l00204">types.hpp:204</a></div></div>
 <div class="ttc" id="structzk_1_1stat_html_a144db8e6d29e2abfe22e48c410131453"><div class="ttname"><a href="structzk_1_1stat.html#a144db8e6d29e2abfe22e48c410131453">zk::stat::children_count</a></div><div class="ttdeci">std::size_t children_count</div><div class="ttdoc">The number of children this znode has. </div><div class="ttdef"><b>Definition:</b> <a href="types_8hpp_source.html#l00236">types.hpp:236</a></div></div>

@@ -1,6 +1,7 @@
 var searchData=
 [
   ['empty',['empty',['../classzk_1_1server_1_1package__registry.html#a6e2abf1fb56c1bd16e737a4f3ebc9e8f',1,'zk::server::package_registry']]],
+  ['ensure_5fvalid',['ensure_valid',['../structzk_1_1server_1_1server__id.html#aee8157db6e730cdd3dd03eb82b6fac9b',1,'zk::server::server_id']]],
   ['ephemeral',['ephemeral',['../group__Client.html#gga9f10c37f69a7d1084b08cac07ebb7918a9a2692129ef5a8168ba61901cf6dfa27',1,'zk']]],
   ['ephemeral_5fon_5flocal_5fsession',['ephemeral_on_local_session',['../classzk_1_1ephemeral__on__local__session.html',1,'zk']]],
   ['ephemeral_5fowner',['ephemeral_owner',['../structzk_1_1stat.html#a1cbb14ebe07e3cafe2359585604a3941',1,'zk::stat']]],

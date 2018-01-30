@@ -2,6 +2,9 @@ var annotated =
 [
     [ "std", null, [
       [ "hash< zk::acl_rule >", "classstd_1_1hash_3_01zk_1_1acl__rule_01_4.html", "classstd_1_1hash_3_01zk_1_1acl__rule_01_4" ],
+      [ "hash< zk::acl_version >", "structstd_1_1hash_3_01zk_1_1acl__version_01_4.html", "structstd_1_1hash_3_01zk_1_1acl__version_01_4" ],
+      [ "hash< zk::child_version >", "structstd_1_1hash_3_01zk_1_1child__version_01_4.html", "structstd_1_1hash_3_01zk_1_1child__version_01_4" ],
+      [ "hash< zk::server::server_id >", "structstd_1_1hash_3_01zk_1_1server_1_1server__id_01_4.html", "structstd_1_1hash_3_01zk_1_1server_1_1server__id_01_4" ],
       [ "hash< zk::transaction_id >", "structstd_1_1hash_3_01zk_1_1transaction__id_01_4.html", "structstd_1_1hash_3_01zk_1_1transaction__id_01_4" ],
       [ "hash< zk::version >", "structstd_1_1hash_3_01zk_1_1version_01_4.html", "structstd_1_1hash_3_01zk_1_1version_01_4" ]
     ] ],
@@ -11,7 +14,8 @@ var annotated =
         [ "configuration", "classzk_1_1server_1_1configuration.html", "classzk_1_1server_1_1configuration" ],
         [ "package_registry", "classzk_1_1server_1_1package__registry.html", "classzk_1_1server_1_1package__registry" ],
         [ "server", "classzk_1_1server_1_1server.html", "classzk_1_1server_1_1server" ],
-        [ "server_group", "classzk_1_1server_1_1server__group.html", "classzk_1_1server_1_1server__group" ]
+        [ "server_group", "classzk_1_1server_1_1server__group.html", "classzk_1_1server_1_1server__group" ],
+        [ "server_id", "structzk_1_1server_1_1server__id.html", "structzk_1_1server_1_1server__id" ]
       ] ],
       [ "acl", "classzk_1_1acl.html", "classzk_1_1acl" ],
       [ "acl_rule", "classzk_1_1acl__rule.html", "classzk_1_1acl__rule" ],
