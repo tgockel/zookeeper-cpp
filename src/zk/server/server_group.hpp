@@ -8,6 +8,8 @@
 #include <string>
 #include <vector>
 
+#include "configuration.hpp"
+
 namespace zk::server
 {
 
@@ -16,7 +18,6 @@ namespace zk::server
 **/
 
 class classpath;
-class configuration;
 class server;
 
 /** Create and manage a group of \c server instances on this local machine (most likely in a single ensemble). This is
@@ -49,7 +50,7 @@ public:
 private:
     struct info;
 
-    using server_map_type = std::map<std::string, std::shared_ptr<info>>;
+    using server_map_type = std::map<server_id, std::shared_ptr<info>>;
 
 private:
     server_map_type _servers;

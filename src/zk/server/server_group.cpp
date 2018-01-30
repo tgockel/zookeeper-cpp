@@ -51,7 +51,7 @@ static void create_directory(const std::string& path)
     }
 }
 
-static void save_id_file(const std::string& path, const std::string& id)
+static void save_id_file(const std::string& path, const server_id& id)
 {
     std::ofstream ofs(path.c_str());
     if (!ofs)
@@ -74,9 +74,10 @@ server_group server_group::make_ensemble(std::size_t size, const configuration& 
     server_group out;
     for (std::size_t idx = 0U; idx < size; ++idx)
     {
+        auto id    = server_id(idx + 1);
         auto px    = std::make_shared<info>(base_settings);
         auto& x    = *px;
-        x.name     = std::to_string(idx + 1);
+        x.name     = std::to_string(id.value);
         x.path     = base_directory + "/" + x.name;
         x.settings
             .client_port(base_port++)
@@ -85,7 +86,7 @@ server_group server_group::make_ensemble(std::size_t size, const configuration& 
         x.peer_port   = base_port++;
         x.leader_port = base_port++;
 
-        out._servers.emplace(x.name, px);
+        out._servers.emplace(id, px);
     }
 
     std::ostringstream conn_str_os;
@@ -93,16 +94,16 @@ server_group server_group::make_ensemble(std::size_t size, const configuration& 
     bool first = true;
 
     create_directory(base_directory);
-    for (auto& [name, srvr] : out._servers)
+    for (auto& [id, srvr] : out._servers)
     {
-        for (const auto& [name2, srvr2] : out._servers)
+        for (const auto& [id2, srvr2] : out._servers)
         {
-            srvr->settings.add_server(name2, "127.0.0.1", srvr2->peer_port, srvr2->leader_port);
+            srvr->settings.add_server(id2, "127.0.0.1", srvr2->peer_port, srvr2->leader_port);
         }
 
         create_directory(srvr->path);
         create_directory(srvr->path + "/data");
-        save_id_file(srvr->path + "/data/myid", name);
+        save_id_file(srvr->path + "/data/myid", id);
         srvr->settings.save_file(srvr->path + "/settings.cfg");
 
         if (!std::exchange(first, false))

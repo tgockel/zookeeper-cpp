@@ -361,6 +361,30 @@ struct hash<zk::version>
 };
 
 template <>
+struct hash<zk::acl_version>
+{
+    using argument_type = zk::acl_version;
+    using result_type   = std::size_t;
+
+    result_type operator()(const argument_type& x) const
+    {
+        return zk::hash(x);
+    }
+};
+
+template <>
+struct hash<zk::child_version>
+{
+    using argument_type = zk::child_version;
+    using result_type   = std::size_t;
+
+    result_type operator()(const argument_type& x) const
+    {
+        return zk::hash(x);
+    }
+};
+
+template <>
 struct hash<zk::transaction_id>
 {
     using argument_type = zk::transaction_id;

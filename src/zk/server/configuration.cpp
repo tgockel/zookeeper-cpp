@@ -3,12 +3,28 @@
 #include <cstdlib>
 #include <fstream>
 #include <istream>
+#include <ostream>
 #include <regex>
 #include <sstream>
 #include <stdexcept>
 
 namespace zk::server
 {
+
+void server_id::ensure_valid() const
+{
+    if (0U < value && value < 256U)
+        return;
+
+    std::ostringstream os;
+    os << "Server ID value " << value << " is not in the valid range [1 .. 255]";
+    throw std::out_of_range(os.str());
+}
+
+std::ostream& operator<<(std::ostream& os, const server_id& self)
+{
+    return os << self.value;
+}
 
 namespace
 {
@@ -114,7 +130,8 @@ configuration configuration::from_lines(std::vector<std::string> lines)
             }
             else if (name.find("server.") == 0U)
             {
-                out._server_paths.insert({ name.substr(7U), { std::move(data), line_no } });
+                auto id = std::size_t(std::atol(name.c_str() + 7));
+                out._server_paths.insert({ server_id(id), { std::move(data), line_no } });
             }
             else
             {
@@ -267,31 +284,33 @@ configuration& configuration::leader_serves(optional<bool> serve)
     return *this;
 }
 
-std::map<std::string, std::string> configuration::servers() const
+std::map<server_id, std::string> configuration::servers() const
 {
-    std::map<std::string, std::string> out;
+    std::map<server_id, std::string> out;
     for (const auto& entry : _server_paths)
         out.insert({ entry.first, *entry.second.value });
 
     return out;
 }
 
-configuration& configuration::add_server(std::string   name,
+configuration& configuration::add_server(server_id     id,
                                          std::string   hostname,
                                          std::uint16_t peer_port,
                                          std::uint16_t leader_port
                                         )
 {
-    if (_server_paths.count(name))
-        throw std::runtime_error(std::string("Already a server with the name ") + name);
+    id.ensure_valid();
+
+    if (_server_paths.count(id))
+        throw std::runtime_error(std::string("Already a server with ID ") + std::to_string(id.value));
 
     hostname += ":";
     hostname += std::to_string(peer_port);
     hostname += ":";
     hostname += std::to_string(leader_port);
 
-    auto iter = _server_paths.emplace(std::move(name), setting<std::string>()).first;
-    set(iter->second, some(std::move(hostname)), std::string("server.") + iter->first);
+    auto iter = _server_paths.emplace(id, setting<std::string>()).first;
+    set(iter->second, some(std::move(hostname)), std::string("server.") + std::to_string(iter->first.value));
     return *this;
 }
 

@@ -3,6 +3,7 @@
 #include <zk/config.hpp>
 #include <zk/optional.hpp>
 #include <zk/string_view.hpp>
+#include <zk/types.hpp>
 
 #include <chrono>
 #include <cstdint>
@@ -17,6 +18,30 @@ namespace zk::server
 /** \addtogroup Server
  *  \{
 **/
+
+/** Represents the ID of a server in the ensemble.
+ *
+ *  \note
+ *  The backing type for this ID is a \c std::size_t, when a \c std::uint8_t would cover all valid values of the ID.
+ *  However, printing `unsigned char` types is somewhat odd, as the character value is usually printed. Beyond that,
+ *  using a \c std::uint8_t requires explicit casting when converting from a \c std::size_t when \c -Wconversion is
+ *  enabled.
+**/
+struct server_id :
+        strong_id<server_id, std::size_t>
+{
+    /** \throws std::out_of_range if \a value is not in 1-255. **/
+    explicit server_id(std::size_t value) :
+            strong_id<server_id, std::size_t>(value)
+    {
+        ensure_valid();
+    }
+
+    /** \throws std::out_of_range if \a value is not in 1-255. **/
+    void ensure_valid() const;
+
+    friend std::ostream& operator<<(std::ostream&, const server_id&);
+};
 
 class configuration final
 {
@@ -92,17 +117,18 @@ public:
     optional<bool> leader_serves() const;
     configuration& leader_serves(optional<bool> serve);
 
-    std::map<std::string, std::string> servers() const;
+    std::map<server_id, std::string> servers() const;
 
-    /** Add a
+    /** Add a new server to the configuration.
      *
-     *  \param name The entry name for this server. By convention, this is a number.
+     *  \param id The cluster unique ID of this server.
      *  \param hostname The address of the server to connect to.
      *  \param peer_port The port used to move ZooKeeper data on.
      *  \param leader_port The port used for leader election.
-     *  \throws std::runtime_error if there is already a server with the given \a name.
+     *  \throws std::out_of_range if the \a id is not in the valid range of IDs (see \ref server_id).
+     *  \throws std::runtime_error if there is already a server with the given \a id.
     **/
-    configuration& add_server(std::string   name,
+    configuration& add_server(server_id     id,
                               std::string   hostname,
                               std::uint16_t peer_port   = default_peer_port,
                               std::uint16_t leader_port = default_leader_port
@@ -166,10 +192,27 @@ private:
     setting<std::size_t>                        _init_limit;
     setting<std::size_t>                        _sync_limit;
     setting<bool>                               _leader_serves;
-    std::map<std::string, setting<std::string>> _server_paths;
+    std::map<server_id, setting<std::string>>   _server_paths;
     std::map<std::string, setting<std::string>> _unknown_settings;
 };
 
 /** \} **/
+
+}
+
+namespace std
+{
+
+template <>
+struct hash<zk::server::server_id>
+{
+    using argument_type = zk::server::server_id;
+    using result_type   = std::size_t;
+
+    result_type operator()(const argument_type& x) const
+    {
+        return zk::hash(x);
+    }
+};
 
 }
