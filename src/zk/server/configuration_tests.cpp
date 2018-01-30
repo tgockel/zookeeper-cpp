@@ -45,9 +45,9 @@ GTEST_TEST(configuration_tests, from_example)
 
     auto servers = parsed.servers();
     CHECK_EQ(3U, servers.size());
-    CHECK_EQ("zookeeper1:2888:3888", servers.at("1"));
-    CHECK_EQ("zookeeper2:2888:3888", servers.at("2"));
-    CHECK_EQ("zookeeper3:2888:3888", servers.at("3"));
+    CHECK_EQ("zookeeper1:2888:3888", servers.at(server_id(1)));
+    CHECK_EQ("zookeeper2:2888:3888", servers.at(server_id(2)));
+    CHECK_EQ("zookeeper3:2888:3888", servers.at(server_id(3)));
 
     auto unrecognized = parsed.unknown_settings();
     CHECK_EQ(1U, unrecognized.size());
@@ -59,9 +59,9 @@ GTEST_TEST(configuration_tests, from_example)
                       .sync_limit(5)
                       .client_port(2181)
                       .leader_serves(true)
-                      .add_server("1", "zookeeper1")
-                      .add_server("2", "zookeeper2")
-                      .add_server("3", "zookeeper3")
+                      .add_server(server_id(1), "zookeeper1")
+                      .add_server(server_id(2), "zookeeper2")
+                      .add_server(server_id(3), "zookeeper3")
                       .add_setting("randomExtra", "Value")
                       ;
     CHECK_EQ(configured, parsed);

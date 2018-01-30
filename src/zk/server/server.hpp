@@ -45,6 +45,12 @@ public:
 
     ~server() noexcept;
 
+    /** Initiate shutting down the server process. For most usage, this is not needed, as it is called automatically
+     *  from the destructor.
+     *
+     *  \param wait_for_stop If \c true, wait for the process to run until termination instead of simply initiating the
+     *   termination.
+    **/
     void shutdown(bool wait_for_stop = false);
 
 private:
