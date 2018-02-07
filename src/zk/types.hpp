@@ -13,7 +13,14 @@ namespace zk
  *  \{
 **/
 
-/** Base type for creating strong ID types. **/
+/** Base type for creating strong ID types. These behave similar to a \c typedef, but do not allow conversion between
+ *  different \c TReal types, even if they share the same \c TId. This makes attempting to use a \c version instead of
+ *  an \c acl_version in \ref client::set_acl a compile-time failure instead of throwing a \c bad_version at run-time.
+ *
+ *  \see version
+ *  \see child_version
+ *  \see acl_version
+**/
 template <typename TReal, typename TId>
 struct strong_id
 {
@@ -166,6 +173,12 @@ std::ostream& operator<<(std::ostream&, const child_version&);
 
 std::string to_string(const child_version&);
 
+/** Represents the ZooKeeper transaction ID in which an event happened to a ZNode.
+ *
+ *  \see stat::create_transaction
+ *  \see stat::modified_transaction
+ *  \see stat::child_modified_transaction
+**/
 struct transaction_id final :
         public strong_id<transaction_id, std::size_t>
 {
@@ -284,7 +297,10 @@ constexpr create_mode operator~(create_mode a)
     return create_mode(~static_cast<unsigned int>(a));
 }
 
-/** Check that \a self has \a flags set. **/
+/** Check that \a self has \a flags set.
+ *
+ *  \relates create_mode
+**/
 constexpr bool is_set(create_mode self, create_mode flags)
 {
     return (self & flags) == flags;
@@ -316,6 +332,14 @@ std::string to_string(const event_type&);
 
 /** Enumeration of states the client may be at when a watch triggers. It represents the state of the connection at the
  *  time the event was generated.
+ *
+ *  \note
+ *  If you are familiar with the C API, notably missing from this list is a \c ZOO_NOTCONNECTED_STATE equivalent. This
+ *  state happens in cases where the client disconnects on purpose (either on initial connection or just after ensemble
+ *  reconfiguration). However, the ability to see this state is limited to times when you call \c zk_state at just the
+ *  right moment. This state leads to a bit of confusion with \c closed and \c expired_session, so it is not in the
+ *  list. Instead, these cases are presented as just \c connecting, as the client is attempting to reconnect to the
+ *  cluster.
 **/
 enum class state : int
 {
@@ -329,7 +353,6 @@ enum class state : int
                                   //!< currently connected to the majority. The only operations allowed after receiving
                                   //!< this state is read operations. This state is generated for read-only clients only
                                   //!< since read/write clients aren't allowed to connect to read-only servers.
-    not_connected         =  999,
     expired_session       = -112, //!< The serving cluster has expired this session. The ZooKeeper client connection
                                   //!< (the session) is no longer valid. You must create a new client \c connection if
                                   //!< you with to access the ensemble.
