@@ -68,7 +68,7 @@ GTEST_TEST_F(multi_tests, commit_fail_check)
     }
     catch (const transaction_failed& ex)
     {
-        CHECK_EQ(error_code::no_node, ex.underlying_cause());
+        CHECK_EQ(error_code::no_entry, ex.underlying_cause());
         CHECK_EQ(1U, ex.failed_op_index());
     }
 }

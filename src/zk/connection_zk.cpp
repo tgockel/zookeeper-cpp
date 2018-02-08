@@ -67,6 +67,21 @@ auto with_acl(const acl& rules, FAction&& action)
 
 static error_code error_code_from_raw(int raw)
 {
+    switch (raw)
+    {
+    case ZOPERATIONTIMEOUT:
+        raw = ZCONNECTIONLOSS;
+        break;
+    case ZINVALIDCALLBACK:
+    case ZINVALIDACL:
+        raw = ZBADARGUMENTS;
+        break;
+    case ZSESSIONMOVED:
+        raw = ZCONNECTIONLOSS;
+        break;
+    default:
+        break;
+    }
     return static_cast<error_code>(raw);
 }
 
@@ -75,8 +90,33 @@ static event_type event_from_raw(int raw)
     return static_cast<event_type>(raw);
 }
 
+// ZooKeeper does not have this concept pre-3.5
+#if ZOO_MAJOR_VERSION <= 3 && ZOO_MINOR_VERSION <= 4
+static const int ZOO_NOTCONNECTED_STATE = 999;
+#endif
+
 static state state_from_raw(int raw)
 {
+    // The C client will put us into `ZOO_NOTCONNECTED_STATE` for two reasons:
+    //
+    // 1. This is the state of the initial connection (zookeeper_init_internal), which is then replaced when the adaptor
+    //    threads first call the interest function.
+    // 2. During a reconfiguration, the client disconnects and transitions to this state (update_addrs), which is then
+    //    updated the next time the I/O thread touches interest.
+    //
+    // In both cases, the state is still "connecting" from the point of view of a client.
+    if (raw == ZOO_NOTCONNECTED_STATE)
+    {
+        raw = ZOO_CONNECTING_STATE;
+    }
+    // `ZOO_ASSOCIATING_STATE` means we have connected to a server, but have not yet authenticated and created the
+    // session. We still can't perform any operations, so treat it as connecting -- the client does not care about the
+    // difference between establishing a TCP connection and negotiating credentials.
+    else if (raw == ZOO_ASSOCIATING_STATE)
+    {
+        raw = ZOO_CONNECTING_STATE;
+    }
+
     return static_cast<state>(raw);
 }
 
@@ -208,7 +248,7 @@ public:
     {
         if (!_data_delivered.load(std::memory_order_relaxed))
         {
-            deliver_data(nullopt, get_exception_ptr_of(error_code::closing));
+            deliver_data(nullopt, get_exception_ptr_of(error_code::closed));
         }
 
         watcher::deliver_event(std::move(ev));
@@ -485,7 +525,7 @@ future<exists_result> connection_zk::exists(string_view path)
             auto rc = error_code_from_raw(rc_in);
             if (rc == error_code::ok)
                 prom->set_value(exists_result(stat_from_raw(*stat_in)));
-            else if (rc == error_code::no_node)
+            else if (rc == error_code::no_entry)
                 prom->set_value(exists_result(nullopt));
             else
                 prom->set_exception(get_exception_ptr_of(rc));
@@ -524,7 +564,7 @@ public:
                               std::exception_ptr()
                              );
         }
-        else if (rc == error_code::no_node)
+        else if (rc == error_code::no_entry)
         {
             self.deliver_data(watch_exists_result(exists_result(nullopt), self.get_event_future()),
                               std::exception_ptr()
@@ -805,17 +845,13 @@ struct connection_zk_commit_completer
 
                 prom.set_value(std::move(out));
             }
-            else if (is_api_error(rc))
+            else
             {
                 // All results until the failure are 0, equal to rc where we care, and runtime_inconsistency after that.
                 auto iter = std::partition_point(raw_results.begin(), raw_results.end(),
                                                  [] (auto res) { return res.err == 0; }
                                                 );
                 throw transaction_failed(rc, std::size_t(std::distance(raw_results.begin(), iter)));
-            }
-            else
-            {
-                throw_error(rc);
             }
         }
         catch (...)

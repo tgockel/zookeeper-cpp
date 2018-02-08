@@ -56,63 +56,63 @@ public:
 
     void close();
 
-    /** Return the data and the \c stat of the node of the given \a path.
+    /** Return the data and the \c stat of the entry of the given \a path.
      *
-     *  \throws no_node If no node with the given path exists, the future will be deliever with \c no_node.
+     *  \throws no_entry If no entry exists at the given \a path, the future will be delievered with \c no_entry.
     **/
     future<get_result> get(string_view path) const;
 
-    /** Similar to \c get, but if the call is successful (no error is returned), a watch will be left on the node with
-     *  the given \a path. The watch will be triggered by a successful operation that sets data on the node or erases
-     *  the node.
+    /** Similar to \c get, but if the call is successful (no error is returned), a watch will be left on the entry with
+     *  the given \a path. The watch will be triggered by a successful operation that sets data or erases the entry.
      *
-     *  \throws no_node If no node with the given path exists, the future will be deliever with \c no_node. To watch for
-     *   the creation of a node, use \c watch_exists.
+     *  \throws no_entry If no entry exists at the given \a path, the future will be delievered with \c no_entry. To
+     *   watch for the creation of an entry, use \c watch_exists.
     **/
     future<watch_result> watch(string_view path) const;
 
-    /** Return the list of the children of the node of the given \a path. The returned values are not prefixed with the
+    /** Return the list of the children of the entry of the given \a path. The returned values are not prefixed with the
      *  provided \a path; i.e. if the database contains \c "/path/a" and \c "/path/b", the result of \c get_children for
      *  \c "/path" will be `["a", "b"]`. The list of children returned is not sorted and no guarantee is provided as to
      *  its natural or lexical order.
      *
-     *  \throws no_node If no node with the given path exists, the future will be delivered with \c no_node.
+     *  \throws no_entry If no entry exists at the given \a path, the future will be delievered with \c no_entry.
     **/
     future<get_children_result> get_children(string_view path) const;
 
     /** Similar to \c get_children, but if the call is successful (no error is returned), a watch will be left on the
-     *  node with the given \a path. The watch will be triggered by a successful operation that erases the node of the
-     *  given \e path or creates or erases a child under the node.
+     *  entry with the given \a path. The watch will be triggered by a successful operation that erases the entry at the
+     *  given \e path or creates or erases a child immediately under the path (it is not recursive).
     **/
     future<watch_children_result> watch_children(string_view path) const;
 
-    /** Return the \c stat of the node of the given \a path or \c nullopt if no such node exists. **/
+    /** Return the \c stat of the entry of the given \a path or \c nullopt if it does not exist. **/
     future<exists_result> exists(string_view path) const;
 
-    /** Similar to \c watch, but if the call is successful (no error is returned), a watch will be left on the node with
-     *  the given \a path. The watch will be triggered by a successful operation that creates the node, erases the node,
-     *  or sets the data on the node.
+    /** Similar to \c watch, but if the call is successful (no error is returned), a watch will be left on the entry
+     *  with the given \a path. The watch will be triggered by a successful operation that creates the entry, erases the
+     *  entry, or sets the data on the entry.
     **/
     future<watch_exists_result> watch_exists(string_view path) const;
 
-    /** Create a node with the given \a path.
+    /** Create an entry at the given \a path.
      *
-     *  This operation, if successful, will trigger all the watches left on the node of the given path by \c watch API
-     *  calls, and the watches left on the parent node by \c watch_children API calls.
+     *  This operation, if successful, will trigger all the watches left on the entry of the given path by \c watch API
+     *  calls, and the watches left on the parent entry by \c watch_children API calls.
      *
      *  \param path The path or path pattern (if using \c create_mode::sequential) to create.
-     *  \param data The data to create inside the node.
-     *  \param mode Specifies the behavior of the created node (see \c create_mode for more information).
-     *  \param rules The ACL for the created znode. If unspecified, it is equivalent to providing \c acls::open_unsafe.
-     *  \returns A future which will be filled with the name of the created znode and its \c stat.
+     *  \param data The data to create for the entry.
+     *  \param mode Specifies the behavior of the created entry (see \c create_mode for more information).
+     *  \param rules The ACL for the created entry. If unspecified, it is equivalent to providing
+     *   \ref acls::open_unsafe.
+     *  \returns A future which will be filled with the name of the created entry and its \ref stat.
      *
-     *  \throws node_exists If a node with the same actual path already exists in the ZooKeeper, the future will be
-     *   delivered with \c node_exists. Note that since a different actual path is used for each invocation of creating
-     *   sequential node with the same path argument, the call should never error in this manner.
-     *  \throws no_node If the parent node does not exist in the ZooKeeper, the future will be delivered with
-     *   \c no_node.
-     *  \throws no_children_for_ephemerals An ephemeral node cannot have children. If the parent node of the given path
-     *   is ephemeral, the future will be delivered with \c no_children_for_ephemerals.
+     *  \throws entry_exists If an entry with the same actual \a path already exists in the ZooKeeper, the future will
+     *   be delivered with \c entry_exists. Note that since a different actual path is used for each invocation of
+     *   creating sequential entry with the same \a path argument, the call should never error in this manner.
+     *  \throws no_entry If the parent of the given \a path does not exist, the future will be delievered with
+     *   \c no_entry.
+     *  \throws no_children_for_ephemerals An ephemeral entry cannot have children. If the parent entry of the given
+     *   path is ephemeral, the future will be delivered with \c no_children_for_ephemerals.
      *  \throws invalid_acl If the \a acl is invalid or empty, the future will be delivered with \c invalid_acl.
      *  \throws invalid_arguments The maximum allowable size of the data array is 1 MiB (1,048,576 bytes). If \a data
      *   is larger than this the future will be delivered with \c invalid_arguments.
@@ -127,46 +127,46 @@ public:
                                  create_mode   mode = create_mode::normal
                                 );
 
-    /** Set the data for the node of the given \a path if such a node exists and the given version matches the version
-     *  of the node (if the given version is \c version::any, there is no version check). This operation, if successful,
-     *  will trigger all the watches on the node of the given \c path left by \c watch calls.
+    /** Set the data for the entry of the given \a path if such an entry exists and the given version matches the
+     *  version of the entry (if the given version is \c version::any, there is no version check). This operation, if
+     *  successful, will trigger all the watches on the entry of the given \c path left by \c watch calls.
      *
-     *  \throws no_node If no node with the given \a path exists, the future will be delivered with \c no_node.
-     *  \throws bad_version If the given version \a check does not match the node's version, the future will be
-     *   delivered with \c bad_version.
+     *  \throws no_entry If no entry exists at the given \a path, the future will be delievered with \c no_entry.
+     *  \throws version_mismatch If the given version \a check does not match the entry's version, the future will be
+     *   delivered with \c version_mismatch.
      *  \throws invalid_arguments The maximum allowable size of the data array is 1 MiB (1,048,576 bytes). If \a data
      *   is larger than this the future will be delivered with \c invalid_arguments.
     **/
     future<set_result> set(string_view path, const buffer& data, version check = version::any());
 
-    /** Return the ACL and \c stat of the node of the given path.
+    /** Return the ACL and \c stat of the entry of the given path.
      *
-     *  \throws no_node If no node with the given path exists, the future will be deliever with \c no_node.
+     *  \throws no_entry If no entry exists at the given \a path, the future will be delievered with \c no_entry.
     **/
     future<get_acl_result> get_acl(string_view path) const;
 
-    /** Set the ACL for the node of the given \a path if such a node exists and the given version \a check matches the
-     *  version of the node.
+    /** Set the ACL for the entry of the given \a path if such an entry exists and the given version \a check matches
+     *  the version of the entry.
      *
      *  \param check If specified, check that the ACL matches. Keep in mind this is the \c acl_version, not the data
      *   \c version -- there is no way to have this operation fail on changes to \c stat::data_version.
      *
-     *  \throws no_node If no node with the given \a path exists, the future will be delivered with \c no_node.
-     *  \throws bad_version If the given version \a check does not match the node's version, the future will be
-     *   delivered with \c bad_version.
+     *  \throws no_entry If no entry exists at the given \a path, the future will be delievered with \c no_entry.
+     *  \throws version_mismatch If the given version \a check does not match the entry's version, the future will be
+     *   delivered with \c version_mismatch.
     **/
     future<void> set_acl(string_view path, const acl& rules, acl_version check = acl_version::any());
 
-    /** Erase the node with the given \a path. The call will succeed if such a node exists, and the given version
-     *  \a check matches the node's version (if the given version is \c version::any, it matches any node's versions).
-     *  This operation, if successful, will trigger all the watches on the node of the given path left by \c watch API
-     *  calls, watches left by \c watch_exists API calls, and the watches on the parent node left by \c watch_children
-     *  API calls.
+    /** Erase the entry at the given \a path. The call will succeed if such an entry exists, and the given version
+     *  \a check matches the entry's version (if the given version is \c version::any, it matches any entry's versions).
+     *  This operation, if successful, will trigger all the watches on the entry of the given \a path left by \c watch
+     *  API calls, watches left by \c watch_exists API calls, and the watches on the parent entry left by
+     *  \c watch_children API calls.
      *
-     *  \throws no_node If no node with the given \a path exists, the future will be delivered with \c no_node.
-     *  \throws bad_version If the given version \a check does not match the node's version, the future will be
-     *   delivered with \c bad_version.
-     *  \throws not_empty You are only allowed to erase nodes with no children. If the node has children, the future
+     *  \throws no_entry If no entry exists at the given \a path, the future will be delievered with \c no_entry.
+     *  \throws version_mismatch If the given version \a check does not match the entry's version, the future will be
+     *   delivered with \c version_mismatch.
+     *  \throws not_empty You are only allowed to erase entries with no children. If the entry has children, the future
      *   will be delievered with \c not_empty.
     **/
     future<void> erase(string_view path, version check = version::any());

@@ -145,7 +145,7 @@ std::ostream& operator<<(std::ostream&, const version&);
 
 std::string to_string(const version&);
 
-/** Represents a version of the ACL of a ZNode.
+/** Represents a version of the ACL of an entry.
  *
  *  \see stat::acl_version
 **/
@@ -159,7 +159,7 @@ std::ostream& operator<<(std::ostream&, const acl_version&);
 
 std::string to_string(const acl_version&);
 
-/** Represents a version of the children of a ZNode.
+/** Represents a version of the children of an entry.
  *
  *  \see stat::child_version
 **/
@@ -173,7 +173,7 @@ std::ostream& operator<<(std::ostream&, const child_version&);
 
 std::string to_string(const child_version&);
 
-/** Represents the ZooKeeper transaction ID in which an event happened to a ZNode.
+/** Represents the ZooKeeper transaction ID in which an event happened to an entry.
  *
  *  \see stat::create_transaction
  *  \see stat::modified_transaction
@@ -189,7 +189,7 @@ std::ostream& operator<<(std::ostream&, const transaction_id&);
 
 std::string to_string(const transaction_id&);
 
-/** Statistics about a znode, similar to the UNIX `stat` structure.
+/** Statistics about a ZooKeeper entry, similar to the UNIX `stat` structure.
  *
  *  \note{Time in ZooKeeper}
  *  The concept of time is tricky in distributed systems. ZooKeeper keeps track of time in a number of ways.
@@ -197,7 +197,7 @@ std::string to_string(const transaction_id&);
  *  - **zxid**: Every change to a ZooKeeper cluster receives a stamp in the form of a *zxid* (ZooKeeper Transaction ID).
  *    This exposes the total ordering of all changes to ZooKeeper. Each change will have a unique *zxid* -- if *zxid:a*
  *    is smaller than *zxid:b*, then the associated change to *zxid:a* happened before *zxid:b*.
- *  - **Version Numbers**: Every change to a znode will cause an increase to one of the version numbers of that node.
+ *  - **Version Numbers**: Every change to an entry will cause an increase to one of the version numbers of that entry.
  *  - **Clock Time**: ZooKeeper does not use clock time to make decisions, but it uses it to put timestamps into the
  *    \c stat structure.
 **/
@@ -207,48 +207,52 @@ public:
     using time_point = std::chrono::system_clock::time_point;
 
 public:
-    /** The transaction ID that created the znode. **/
+    /** The transaction ID that created the entry. **/
     transaction_id create_transaction;
 
-    /** The last transaction that modified the znode. **/
+    /** The last transaction that modified the entry. **/
     transaction_id modified_transaction;
 
-    /** The transaction ID that last modified the children of the znode. **/
+    /** The transaction ID that last modified the children of the entry. **/
     transaction_id child_modified_transaction;
 
-    /** Time the znode was created.
+    /** Time the entry was created.
      *
      *  \warning
      *  This should \e not be relied on for any logic. ZooKeeper sets this time based on the system clock of the master
-     *  server at the time the znode is created and performs no validity checking or synchronization with other servers
+     *  server at the time the entry is created and performs no validity checking or synchronization with other servers
      *  in the cluster. As such, there is no guarantee that this value is accurrate. There are many situations where a
-     *  znode with a higher \c create_transaction (created after) will have a lower \c create_time (appear to have been
+     *  entry with a higher \c create_transaction (created after) will have a lower \c create_time (appear to have been
      *  created before).
     **/
     time_point create_time;
 
-    /** Last time the znode was last modified. Like \c create_time, this is not a reliable source. **/
+    /** Last time the entry was last modified. Like \c create_time, this is not a reliable source. **/
     time_point modified_time;
 
-    /** The number of changes to the data of the znode. **/
+    /** The number of changes to the data of the entry. **/
     zk::version data_version;
 
-    /** The number of changes to the children of the znode. **/
+    /** The number of changes to the children of the entry. **/
     zk::child_version child_version;
 
-    /** The number of changes to the ACL of the znode. **/
+    /** The number of changes to the ACL of the entry. **/
     zk::acl_version acl_version;
 
-    /** The session ID of the owner of this znode, if it is an ephemeral entry. **/
+    /** The session ID of the owner of this entry, if it is an ephemeral entry. In general, this is not useful beyond a
+     *  check for being \c 0.
+     *
+     *  \see is_ephemeral
+    **/
     std::uint64_t ephemeral_owner;
 
-    /** The size of the data field of the znode. **/
+    /** The size of the data field of the entry. **/
     std::size_t data_size;
 
-    /** The number of children this znode has. **/
+    /** The number of children this entry has. **/
     std::size_t children_count;
 
-    /** Is the znode an ephemeral entry? **/
+    /** Is the entry an ephemeral entry? **/
     bool is_ephemeral() const
     {
         return ephemeral_owner == 0U;
@@ -259,34 +263,42 @@ std::ostream& operator<<(std::ostream&, const stat&);
 
 std::string to_string(const stat&);
 
-/** When used in \c client::set, this value determines how the znode is created on the server. These values can be ORed
+/** When used in \c client::set, this value determines how the entry is created on the server. These values can be ORed
  *  together to create combinations.
 **/
 enum class create_mode : unsigned int
 {
-    /** Standard behavior of a znode -- the opposite of doing any of the options. **/
+    /** Standard behavior of an entry -- the opposite of doing any of the options. **/
     normal = 0b0000,
-    /** The znode will be deleted upon the client's disconnect. **/
+    /** The entry will be deleted when the client session expires. **/
     ephemeral = 0b0001,
-    /** The name of the znode will be appended with a monotonically increasing number. The actual path name of a
-     *  sequential node will be the given path plus a suffix \c "i" where \c i is the current sequential number of the
-     *  node. The sequence number is always fixed length of 10 digits, 0 padded. Once such a node is created, the
+    /** The name of the entry will be appended with a monotonically increasing number. The actual path name of a
+     *  sequential entry will be the given path plus a suffix \c "i" where \c i is the current sequential number of the
+     *  entry. The sequence number is always fixed length of 10 digits, 0 padded. Once such a entry is created, the
      *  sequential number will be incremented by one.
     **/
     sequential = 0b0010,
-    /** Container nodes are special purpose nodes useful for recipes such as leader, lock, etc. When the last child of a
-     *  container is deleted, the container becomes a candidate to be deleted by the server at some point in the future.
-     *  Given this property, you should be prepared to get \c no_node when creating children inside of this container
-     *  node.
+    /** Container entries are special purpose entries useful for recipes such as leader, lock, etc. When the last child
+     *  of a container is deleted, the container becomes a candidate to be deleted by the server at some point in the
+     *  future. Given this property, you should be prepared to get \c no_entry when creating children inside of this
+     *  container entry.
     **/
     container = 0b0100,
 };
 
+/** Set union operation of \c create_mode.
+ *
+ *  \relates create_mode
+**/
 constexpr create_mode operator|(create_mode a, create_mode b)
 {
     return create_mode(static_cast<unsigned int>(a) | static_cast<unsigned int>(b));
 }
 
+/** Set intersection operation of \c create_mode.
+ *
+ *  \relates create_mode
+**/
 constexpr create_mode operator&(create_mode a, create_mode b)
 {
     return create_mode(static_cast<unsigned int>(a) & static_cast<unsigned int>(b));
@@ -314,16 +326,16 @@ std::string to_string(const create_mode&);
 enum class event_type : int
 {
     error           =  0, //!< Invalid event (this should never be issued).
-    created         =  1, //!< Issued when a znode at a given path is created.
-    erased          =  2, //!< Issued when a znode at a given path is erased.
-    changed         =  3, //!< Issued when the data of a watched znode are altered. This event value is issued whenever
+    created         =  1, //!< Issued when an entry for a given path is created.
+    erased          =  2, //!< Issued when an entry at a given path is erased.
+    changed         =  3, //!< Issued when the data of a watched entry is altered. This event value is issued whenever
                           //!< a \e set operation occurs without an actual contents check, so there is no guarantee the
                           //!< data actually changed.
-    child           =  4, //!< Issued when the children of a watched znode are created or deleted. This event is not
+    child           =  4, //!< Issued when the children of a watched entry are created or deleted. This event is not
                           //!< issued when the data within children is altered.
     session         = -1, //!< This value is issued as part of an event when the \c state changes.
     not_watching    = -2, //!< Watch has been forcefully removed. This is generated when the server for some reason
-                          //!< (probably a resource constraint), will no longer watch a node for a client.
+                          //!< (probably a resource constraint), will no longer watch an entry for a client.
 };
 
 std::ostream& operator<<(std::ostream&, const event_type&);
@@ -332,6 +344,31 @@ std::string to_string(const event_type&);
 
 /** Enumeration of states the client may be at when a watch triggers. It represents the state of the connection at the
  *  time the event was generated.
+ *
+ *  \dot
+ *  digraph G {
+ *    rankdir = LR
+ *
+ *    connecting
+ *    connected
+ *    read_only
+ *    authentication_failed
+ *    expired_session
+ *    closed
+ *
+ *    connecting -> connected             [label="Successful connection"]
+ *    connecting -> read_only             [label="Connection to read-only peer"]
+ *    connecting -> authentication_failed [label="Authentication failure"]
+ *    connecting -> expired_session       [label="Session lost"]
+ *    connecting -> closed                [label="close()"]
+ *    connected -> connecting             [label="Connection lost" color="red"]
+ *    connected -> closed                 [label="close()"]
+ *    read_only -> connecting             [label="Connection lost" color="red"]
+ *    read_only -> closed                 [label="close()"]
+ *    authentication_failed -> closed     [label="close()"]
+ *    expired_session -> closed           [label="close()"]
+ *  }
+ *  \enddot
  *
  *  \note
  *  If you are familiar with the C API, notably missing from this list is a \c ZOO_NOTCONNECTED_STATE equivalent. This
@@ -345,7 +382,6 @@ enum class state : int
 {
     closed                =    0, //!< The client is not connected to any server in the ensemble.
     connecting            =    1, //!< The client is connecting.
-    associating           =    2, //!< Client is attempting to associate a session.
     connected             =    3, //!< The client is in the connected state -- it is connected to a server in the
                                   //!< ensemble (one of the servers specified in the host connection parameter during
                                   //!< ZooKeeper client creation).
@@ -355,7 +391,7 @@ enum class state : int
                                   //!< since read/write clients aren't allowed to connect to read-only servers.
     expired_session       = -112, //!< The serving cluster has expired this session. The ZooKeeper client connection
                                   //!< (the session) is no longer valid. You must create a new client \c connection if
-                                  //!< you with to access the ensemble.
+                                  //!< you wish to access the ensemble.
     authentication_failed = -113, //!< Authentication has failed -- connection requires a new \c connection instance
                                   //!< with different credentials.
 };
