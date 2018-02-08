@@ -150,7 +150,6 @@ std::ostream& operator<<(std::ostream& os, const state& self)
     {
     case state::closed:                return os << "closed";
     case state::connecting:            return os << "connecting";
-    case state::associating:           return os << "associating";
     case state::connected:             return os << "connected";
     case state::read_only:             return os << "read_only";
     case state::expired_session:       return os << "expired_session";

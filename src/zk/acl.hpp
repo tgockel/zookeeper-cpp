@@ -49,6 +49,8 @@ constexpr permission operator~(permission a)
 /** Check that \a self allows it \a perform all operations. For example,
  *  `allows(permission::read | permission::write, permission::read)` will be \c true, as `read|write` is allowed to
  *  \c read.
+ *
+ *  \relates permission
 **/
 constexpr bool allows(permission self, permission perform)
 {
@@ -62,7 +64,8 @@ std::string to_string(const permission&);
 /** An individual rule in an \c acl. It consists of a \c scheme and \c id pair to identify the \e who and a
  *  \c permission set to determine what they are allowed to do.
  *
- *  \see https://zookeeper.apache.org/doc/r3.1.2/zookeeperProgrammers.html#sc_ACLPermissions
+ *  See <a href="https://zookeeper.apache.org/doc/r3.4.10/zookeeperProgrammers.html#sc_ACLPermissions">"Builtin ACL
+ *  Schemes"</a> in the ZooKeeper Programmer's Guide for more information.
 **/
 class acl_rule final
 {
@@ -74,6 +77,19 @@ public:
 
     /** The authentication scheme this list is used for. The most common scheme is `"auth"`, which allows any
      *  authenticated user to perform actions (see \c acls::creator_all).
+     *
+     *  ZooKeeper's authentication system is extensible, but the majority of use cases are covered by the built-in
+     *  schemes:
+     *
+     *  - \c "world" -- This has a single ID \c "anyone" that represents any user of the system. The ACLs
+     *    \ref acls::open_unsafe and \ref acls::read_unsafe use the \c "world" scheme.
+     *  - \c "auth" -- This represents any authenticated user. The \c id field is unused. The ACL \ref acls::creator_all
+     *    uses the \c "auth" scheme.
+     *  - \c "digest" -- This uses a \c "${username}:${password}" string to generate MD5 hash which is then used as an
+     *    identity. Authentication is done by sending the string in clear text. When used in the ACL, the expression
+     *    will be the \c "${username}:${digest}", where \c digest is the base 64 encoded SHA1 digest of \c password.
+     *  - \c "ip" -- This uses the client host IP as an identity. The \c id expression is an IP address or CIDR netmask,
+     *    which will be matched against the client identity.
     **/
     const std::string& scheme() const
     {

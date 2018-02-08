@@ -69,7 +69,7 @@ GTEST_TEST_F(client_tests, create_seq_and_erase)
     auto name = f_create.get().name();
     auto orig_stat = c.get(name).get().stat();
     c.erase(name, orig_stat.data_version).get();
-    CHECK_THROWS(no_node)
+    CHECK_THROWS(no_entry)
     {
         c.get(name).get();
     };

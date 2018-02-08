@@ -2,10 +2,9 @@
 
 #include <zk/config.hpp>
 
-#include <array>
 #include <iosfwd>
-#include <stdexcept>
 #include <string>
+#include <system_error>
 
 namespace zk
 {
@@ -14,77 +13,108 @@ namespace zk
  *  \{
 **/
 
-#define ZKPP_ERROR_CODE_LIST(item)                                          \
-    item(ok,                               0,   ZOK)                        \
-    item(system_error,                    -1,   ZSYSTEMERROR)               \
-    item(runtime_inconsistency,           -2,   ZRUNTIMEINCONSISTENCY)      \
-    item(data_inconsistency,              -3,   ZDATAINCONSISTENCY)         \
-    item(connection_loss,                 -4,   ZCONNECTIONLOSS)            \
-    item(marshalling_error,               -5,   ZMARSHALLINGERROR)          \
-    item(unimplemented,                   -6,   ZUNIMPLEMENTED)             \
-    item(operation_timeout,               -7,   ZOPERATIONTIMEOUT)          \
-    item(invalid_arguments,               -8,   ZBADARGUMENTS)              \
-    item(invalid_handle_state,            -9,   ZINVALIDSTATE)              \
-    item(unknown_session,                -12,   ZUNKNOWNSESSION)            \
-    item(new_configuration_no_quorum,    -13,   ZNEWCONFIGNOQUORUM)         \
-    item(reconfiguration_in_progress,    -14,   ZRECONFIGINPROGRESS)        \
-    item(api_error,                     -100,   ZAPIERROR)                  \
-    item(no_node,                       -101,   ZNONODE)                    \
-    item(not_authenticated,             -102,   ZNOAUTH)                    \
-    item(bad_version,                   -103,   ZBADVERSION)                \
-    item(no_children_for_ephemerals,    -108,   ZNOCHILDRENFOREPHEMERALS)   \
-    item(node_exists,                   -110,   ZNODEEXISTS)                \
-    item(not_empty,                     -111,   ZNOTEMPTY)                  \
-    item(session_expired,               -112,   ZSESSIONEXPIRED)            \
-    item(invalid_callback,              -113,   ZINVALIDCALLBACK)           \
-    item(invalid_acl,                   -114,   ZINVALIDACL)                \
-    item(authentication_failed,         -115,   ZAUTHFAILED)                \
-    item(closing,                       -116,   ZCLOSING)                   \
-    item(no_response,                   -117,   ZNOTHING)                   \
-    item(session_moved,                 -118,   ZSESSIONMOVED)              \
-    item(server_read_only,              -119,   ZNOTREADONLY)               \
-    item(ephemeral_on_local_session,    -120,   ZEPHEMERALONLOCALSESSION)   \
-    item(no_watcher,                    -121,   ZNOWATCHER)                 \
-    item(reconfiguration_disabled,      -123,   ZRECONFIGDISABLED)          \
-    item(transaction_failed,            -199,   ZTRANSACTIONFAILED)         \
-
+/** Code for all \ref error types thrown by the client library.
+ *
+ *  \see error
+**/
 enum class error_code : int
 {
-    #define ZKPP_ERROR_CODE_ENUM_DEF_IMPL(cxx_name, number, c_name) \
-        cxx_name = number,
-
-    ZKPP_ERROR_CODE_LIST(ZKPP_ERROR_CODE_ENUM_DEF_IMPL)
+    ok                          =    0, //!< Never thrown.
+    connection_loss             =   -4, //!< Code for \ref connection_loss.
+    marshalling_error           =   -5, //!< Code for \ref marshalling_error.
+    not_implemented             =   -6, //!< Code for \ref not_implemented.
+    invalid_arguments           =   -8, //!< Code for \ref invalid_arguments.
+    new_configuration_no_quorum =  -13, //!< Code for \ref new_configuration_no_quorum.
+    reconfiguration_in_progress =  -14, //!< Code for \ref reconfiguration_in_progress.
+    no_entry                    = -101, //!< Code for \ref no_entry.
+    not_authorized              = -102, //!< Code for \ref not_authorized.
+    version_mismatch            = -103, //!< Code for \ref version_mismatch.
+    no_children_for_ephemerals  = -108, //!< Code for \ref no_children_for_ephemerals.
+    entry_exists                = -110, //!< Code for \ref entry_exists.
+    not_empty                   = -111, //!< Code for \ref not_empty.
+    session_expired             = -112, //!< Code for \ref session_expired.
+    authentication_failed       = -115, //!< Code for \ref authentication_failed.
+    closed                      = -116, //!< Code for \ref closed.
+    read_only_connection        = -119, //!< Code for \ref read_only_connection.
+    ephemeral_on_local_session  = -120, //!< Code for \ref ephemeral_on_local_session.
+    reconfiguration_disabled    = -123, //!< Code for \ref reconfiguration_disabled.
+    transaction_failed          = -199, //!< Code for \ref transaction_failed.
 };
+
+/** Check if the provided \a code is an exception code for a \ref transport_error type of excpetion. **/
+inline constexpr bool is_transport_error(error_code code)
+{
+    return code == error_code::connection_loss
+        || code == error_code::marshalling_error;
+}
+
+/** Check if the provided \a code is an exception code for a \ref invalid_arguments type of excpetion. **/
+inline constexpr bool is_invalid_arguments(error_code code)
+{
+    return code == error_code::invalid_arguments
+        || code == error_code::authentication_failed;
+}
+
+/** Check if the provided \a code is an exception code for a \ref invalid_ensemble_state type of excpetion. **/
+inline constexpr bool is_invalid_ensemble_state(error_code code)
+{
+    return code == error_code::new_configuration_no_quorum
+        || code == error_code::reconfiguration_disabled
+        || code == error_code::reconfiguration_in_progress;
+}
+
+/** Check if the provided \a code is an exception code for a \ref invalid_connection_state type of excpetion. **/
+inline constexpr bool is_invalid_connection_state(error_code code)
+{
+    return code == error_code::closed
+        || code == error_code::ephemeral_on_local_session
+        || code == error_code::not_authorized
+        || code == error_code::read_only_connection
+        || code == error_code::session_expired;
+}
+
+/** Check if the provided \a code is an exception code for a \ref check_failed type of excpetion. **/
+inline constexpr bool is_check_failed(error_code code)
+{
+    return code == error_code::no_children_for_ephemerals
+        || code == error_code::no_entry
+        || code == error_code::entry_exists
+        || code == error_code::not_empty
+        || code == error_code::transaction_failed
+        || code == error_code::version_mismatch;
+}
 
 std::ostream& operator<<(std::ostream&, const error_code&);
 
 std::string to_string(const error_code&);
 
-#define ZKPP_ERROR_CODE_SIZE_IMPL(cxx_name, number, c_name) +1
-
-const std::array<error_code, ZKPP_ERROR_CODE_LIST(ZKPP_ERROR_CODE_SIZE_IMPL)>& all_error_codes();
-
-constexpr bool is_system_error(error_code code)
-{
-    return static_cast<int>(code) <= static_cast<int>(error_code::system_error)
-        && static_cast<int>(code) >  static_cast<int>(error_code::api_error);
-}
-
-constexpr bool is_api_error(error_code code)
-{
-    return static_cast<int>(code) <= static_cast<int>(error_code::api_error);
-}
-
+/** Throw an exception for the given \a code. This will use the proper refined exception type (such as \c no_entry) if
+ *  one exists.
+**/
 [[noreturn]]
 void throw_error(error_code code);
 
+/** Get an \c std::exception_ptr containing an exception with the proper type for the given \a code.
+ *
+ *  \see throw_error
+**/
 std::exception_ptr get_exception_ptr_of(error_code code);
 
+/** Get the \c std::error_category capable of describing ZooKeeper-provided error codes.
+ *
+ *  \see error
+**/
+const std::error_category& error_category();
+
+/** Base error type for all errors raised by this library.
+ *
+ *  \see error_code
+**/
 class error :
-        public std::runtime_error
+        public std::system_error
 {
 public:
-    explicit error(error_code code, std::string description);
+    explicit error(error_code code, const std::string& description);
 
     virtual ~error() noexcept;
 
@@ -94,35 +124,25 @@ private:
     error_code _code;
 };
 
-class system_error :
+/** Base types for errors that occurred while transporting data across a network. **/
+class transport_error :
         public error
 {
 public:
-    explicit system_error(error_code code, std::string description);
+    explicit transport_error(error_code code, const std::string& description);
 
-    virtual ~system_error() noexcept;
+    virtual ~transport_error() noexcept;
 };
 
-class runtime_inconsistency final :
-        public system_error
-{
-public:
-    explicit runtime_inconsistency();
-
-    virtual ~runtime_inconsistency() noexcept;
-};
-
-class data_inconsistency final :
-        public system_error
-{
-public:
-    explicit data_inconsistency();
-
-    virtual ~data_inconsistency() noexcept;
-};
-
+/** Connection to the server has been lost before the attempted operation was verified as completed. When thrown on an
+ *  attempt to perform a modification, it is important to remember that it is possible to see this error and have the
+ *  operation be a success. For example, a \c set operation can complete on the server, but the client can experience a
+ *  \c connection_loss before the server replies with OK.
+ *
+ *  \see session_expired
+**/
 class connection_loss final :
-        public system_error
+        public transport_error
 {
 public:
     explicit connection_loss();
@@ -130,8 +150,15 @@ public:
     virtual ~connection_loss() noexcept;
 };
 
+/** An error occurred while marshalling data. The most common cause of this is exceeding the Jute buffer size -- meaning
+ *  the transaction was too large (check the server logs for messages containing `"Unreasonable length"`). If that is
+ *  the case, the solution is to change `jute.maxbuffer` on all servers (see the
+ *  <a href="https://zookeeper.apache.org/doc/r3.4.10/zookeeperAdmin.html">ZooKeeper Administrator's Guide</a> for more
+ *  information and a stern warning). Another possible cause is the system running out of memory, but due to overcommit,
+ *  OOM issues rarely manifest so cleanly.
+**/
 class marshalling_error final :
-        public system_error
+        public transport_error
 {
 public:
     explicit marshalling_error();
@@ -139,161 +166,39 @@ public:
     virtual ~marshalling_error() noexcept;
 };
 
-class unimplemented final :
-        public system_error
+/** Operation was attempted that was not implemented. If you happen to be writing a \ref connection implementation, you
+ *  are encouraged to raise this error in cases where you have not implemented an operation.
+**/
+class not_implemented final :
+        public error
 {
 public:
-    explicit unimplemented();
+    explicit not_implemented(ptr<const char> op_name);
 
-    virtual ~unimplemented() noexcept;
+    virtual ~not_implemented() noexcept;
 };
 
-class operation_timeout final :
-        public system_error
+/** Arguments to an operation were invalid. **/
+class invalid_arguments :
+        public error
 {
 public:
-    explicit operation_timeout();
+    explicit invalid_arguments(error_code code, const std::string& description);
 
-    virtual ~operation_timeout() noexcept;
-};
-
-class invalid_arguments final :
-        public system_error
-{
-public:
     explicit invalid_arguments();
 
     virtual ~invalid_arguments() noexcept;
 };
 
-class invalid_handle_state final :
-        public system_error
-{
-public:
-    explicit invalid_handle_state();
-
-    virtual ~invalid_handle_state() noexcept;
-};
-
-class unknown_session final :
-        public system_error
-{
-public:
-    explicit unknown_session();
-
-    virtual ~unknown_session() noexcept;
-};
-
-class new_configuration_no_quorum final :
-        public system_error
-{
-public:
-    explicit new_configuration_no_quorum();
-
-    virtual ~new_configuration_no_quorum() noexcept;
-};
-
-class reconfiguration_in_progress final :
-        public system_error
-{
-public:
-    explicit reconfiguration_in_progress();
-
-    virtual ~reconfiguration_in_progress() noexcept;
-};
-
-class api_error :
-        public error
-{
-public:
-    explicit api_error(error_code code, std::string description);
-
-    virtual ~api_error() noexcept;
-};
-
-class no_node final :
-        public api_error
-{
-public:
-    explicit no_node();
-
-    virtual ~no_node() noexcept;
-};
-
-class not_authenticated final :
-        public api_error
-{
-public:
-    explicit not_authenticated();
-
-    virtual ~not_authenticated() noexcept;
-};
-
-class bad_version final :
-        public api_error
-{
-public:
-    explicit bad_version();
-
-    virtual ~bad_version() noexcept;
-};
-
-class no_children_for_ephemerals final :
-        public api_error
-{
-public:
-    explicit no_children_for_ephemerals();
-
-    virtual ~no_children_for_ephemerals() noexcept;
-};
-
-class node_exists final :
-        public api_error
-{
-public:
-    explicit node_exists();
-
-    virtual ~node_exists() noexcept;
-};
-
-class not_empty final :
-        public api_error
-{
-public:
-    explicit not_empty();
-
-    virtual ~not_empty() noexcept;
-};
-
-class session_expired final :
-        public api_error
-{
-public:
-    explicit session_expired();
-
-    virtual ~session_expired() noexcept;
-};
-
-class invalid_callback final :
-        public api_error
-{
-public:
-    explicit invalid_callback();
-
-    virtual ~invalid_callback() noexcept;
-};
-
-class invalid_acl final :
-        public api_error
-{
-public:
-    explicit invalid_acl();
-
-    virtual ~invalid_acl() noexcept;
-};
-
+/** The server rejected the connection due to invalid authentication information. Depending on the authentication
+ *  schemes enabled on the server, the authentication information sent might be explicit (in the case of the \c "digest"
+ *  scheme) or implicit (in the case of the \c "ip" scheme). The connection must be recreated with the proper
+ *  credentials to function.
+ *
+ *  \see acl_rule
+**/
 class authentication_failed final :
-        public api_error
+        public invalid_arguments
 {
 public:
     explicit authentication_failed();
@@ -301,62 +206,47 @@ public:
     virtual ~authentication_failed() noexcept;
 };
 
-class closing final :
-        public api_error
+/** Base exception for cases where the ensemble is in an invalid state to perform a given action. While errors such as
+ *  \ref connection_loss might also imply a bad ensemble (no quorum means no connection is possible), these errors are
+ *  explicit rejections from the server.
+**/
+class invalid_ensemble_state :
+        public error
 {
 public:
-    explicit closing();
+    explicit invalid_ensemble_state(error_code code, const std::string& description);
 
-    virtual ~closing() noexcept;
+    virtual ~invalid_ensemble_state() noexcept;
 };
 
-class no_response final :
-        public api_error
+/** Raised when attempting an ensemble reconfiguration, but the proposed new ensemble would not be able to form quorum.
+ *  This happens when not enough time has passed for potential new servers to sync with the leader. If the proposed new
+ *  ensemble is up and running, the solution is usually to simply wait longer and attempt reconfiguration later.
+**/
+class new_configuration_no_quorum final :
+        public invalid_ensemble_state
 {
 public:
-    explicit no_response();
+    explicit new_configuration_no_quorum();
 
-    virtual ~no_response() noexcept;
+    virtual ~new_configuration_no_quorum() noexcept;
 };
 
-class session_moved final :
-        public api_error
+/** An attempt was made to reconfigure the ensemble, but there is already a reconfiguration in progress. Concurrent
+ *  reconfiguration is not supported.
+**/
+class reconfiguration_in_progress final :
+        public invalid_ensemble_state
 {
 public:
-    explicit session_moved();
+    explicit reconfiguration_in_progress();
 
-    virtual ~session_moved() noexcept;
+    virtual ~reconfiguration_in_progress() noexcept;
 };
 
-class server_read_only final :
-        public api_error
-{
-public:
-    explicit server_read_only();
-
-    virtual ~server_read_only() noexcept;
-};
-
-class ephemeral_on_local_session final :
-        public api_error
-{
-public:
-    explicit ephemeral_on_local_session();
-
-    virtual ~ephemeral_on_local_session() noexcept;
-};
-
-class no_watcher final :
-        public api_error
-{
-public:
-    explicit no_watcher();
-
-    virtual ~no_watcher() noexcept;
-};
-
+/** The ensemble does not support reconfiguration. **/
 class reconfiguration_disabled final :
-        public api_error
+        public invalid_ensemble_state
 {
 public:
     explicit reconfiguration_disabled();
@@ -364,11 +254,154 @@ public:
     virtual ~reconfiguration_disabled() noexcept;
 };
 
+/** Base type for errors generated because the connection is misconfigured. **/
+class invalid_connection_state :
+        public error
+{
+public:
+    explicit invalid_connection_state(error_code code, const std::string& description);
+
+    virtual ~invalid_connection_state() noexcept;
+};
+
+/** The client session has been ended by the server. When this occurs, all ephemerals associated with the session are
+ *  deleted and standing watches are cancelled.
+ *
+ *  This error is somewhat easy to confuse with \ref connection_loss, as they commonly happen around the same time. The
+ *  key difference is a \c session_expired is an explicit error delivered from the server, whereas \c connection_loss is
+ *  a client-related notification. A \c connection_loss is \e usually followed by \c session_expired, but this is not
+ *  guaranteed. If the client reconnects to a different server before the quorum removes the session, the connection can
+ *  move back to \ref state::connected without losing the session. The mechanism of resuming a session can happen even
+ *  in cases of quorum loss, as session expiration requires a leader in order to proceed, so a client reconnecting soon
+ *  enough after the ensemble forms quorum and elects a leader will resume the session, even if the quorum has been lost
+ *  for days.
+**/
+class session_expired final :
+        public invalid_connection_state
+{
+public:
+    explicit session_expired();
+
+    virtual ~session_expired() noexcept;
+};
+
+/** An attempt was made to read or write to a ZNode when the connection does not have permission to do. **/
+class not_authorized final :
+        public invalid_connection_state
+{
+public:
+    explicit not_authorized();
+
+    virtual ~not_authorized() noexcept;
+};
+
+/** The connection is closed. This exception is delivered for all unfilled operations and watches when the connection is
+ *  closing.
+**/
+class closed final :
+        public invalid_connection_state
+{
+public:
+    explicit closed();
+
+    virtual ~closed() noexcept;
+};
+
+/** An attempt was made to create an ephemeral entry, but the connection has a local session.
+ *
+ *  \see connection_params::local
+**/
+class ephemeral_on_local_session final :
+        public invalid_connection_state
+{
+public:
+    explicit ephemeral_on_local_session();
+
+    virtual ~ephemeral_on_local_session() noexcept;
+};
+
+/** A write operation was attempted on a read-only connection.
+ *
+ *  \see connection_params::read_only
+**/
+class read_only_connection final :
+        public invalid_connection_state
+{
+public:
+    explicit read_only_connection();
+
+    virtual ~read_only_connection() noexcept;
+};
+
+/** Base exception for cases where a write operation was rolled back due to a failed check. There are more details in
+ *  derived types such as \ref no_entry or \ref bad_version.
+**/
+class check_failed :
+        public error
+{
+public:
+    explicit check_failed(error_code code, const std::string& description);
+
+    virtual ~check_failed() noexcept;
+};
+
+/** Thrown from read operations when attempting to read a ZNode that does not exist. **/
+class no_entry final :
+        public check_failed
+{
+public:
+    explicit no_entry();
+
+    virtual ~no_entry() noexcept;
+};
+
+/** Thrown when attempting to create a ZNode, but one already exists at the specified path. **/
+class entry_exists final :
+        public check_failed
+{
+public:
+    explicit entry_exists();
+
+    virtual ~entry_exists() noexcept;
+};
+
+/** Thrown when attempting to erase a ZNode that has children. **/
+class not_empty final :
+        public check_failed
+{
+public:
+    explicit not_empty();
+
+    virtual ~not_empty() noexcept;
+};
+
+/** Thrown from modification operations when a version check is specified and the value in the database does not match
+ *  the expected.
+**/
+class version_mismatch final :
+        public check_failed
+{
+public:
+    explicit version_mismatch();
+
+    virtual ~version_mismatch() noexcept;
+};
+
+/** Ephemeral ZNodes cannot have children. **/
+class no_children_for_ephemerals final :
+        public check_failed
+{
+public:
+    explicit no_children_for_ephemerals();
+
+    virtual ~no_children_for_ephemerals() noexcept;
+};
+
 /** Thrown from \c client::commit when a transaction cannot be committed to the system. Check the \c underlying_cause to
  *  see the specific error and \c failed_op_index to see what operation failed.
 **/
 class transaction_failed final :
-        public api_error
+        public check_failed
 {
 public:
     explicit transaction_failed(error_code code, std::size_t op_index);
@@ -376,7 +409,7 @@ public:
     virtual ~transaction_failed() noexcept;
 
     /** The underlying cause that caused this transaction to be aborted. For example, if a \c set operation is attempted
-     *  on a node that does not exist, this will be \c error_code::no_node.
+     *  on a node that does not exist, this will be \c error_code::no_entry.
     **/
     error_code underlying_cause() const { return _underlying_cause; }
 
@@ -390,15 +423,17 @@ private:
     std::size_t _op_index;
 };
 
-class unknown_error final :
-        public error
-{
-public:
-    explicit unknown_error(error_code code);
-
-    virtual ~unknown_error() noexcept;
-};
-
 /** \} **/
+
+}
+
+namespace std
+{
+
+template <>
+struct is_error_code_enum<zk::error_code> :
+        true_type
+{
+};
 
 }

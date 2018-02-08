@@ -29,7 +29,6 @@ GTEST_TEST(state_tests, stringification)
 {
     CHECK_EQ("closed",                to_string(state::closed));
     CHECK_EQ("connecting",            to_string(state::connecting));
-    CHECK_EQ("associating",           to_string(state::associating));
     CHECK_EQ("connected",             to_string(state::connected));
     CHECK_EQ("read_only",             to_string(state::read_only));
     CHECK_EQ("expired_session",       to_string(state::expired_session));
