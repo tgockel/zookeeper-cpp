@@ -246,6 +246,29 @@ In Java, the method of choice is to use the
 [Watcher](https://zookeeper.apache.org/doc/r3.4.10/api/org/apache/zookeeper/Watcher.html) interface, but this feels
 extremely out of place in C++ code.
 
+### Where are all the `KeeperException`s?
+
+This library uses an exception hierarchy with fewer exception codes than what are available in
+[`KeeperException`](https://zookeeper.apache.org/doc/r3.4.10/api/org/apache/zookeeper/KeeperException.html).
+
+![Exception hierarchy](https://tgockel.github.io/zookeeper-cpp/classzk_1_1error.png)
+
+Some exceptions are not present in this library because they are no longer used in the server implementation and will
+not be used again; an example of this is `DataInconsistencyException`, which has not been used in ZooKeeper for a while.
+In other cases, the error code would never be thrown by this library; examples of this are `NoWatcherException` (watch
+removal happens implicitly in destructors) and `RuntimeInconsistencyException` (failed multi-ops throw a
+`transaction_failed` containing only the index of the failed operation instead).
+In other cases, the error codes have been merged into a single exception type, as there was much logical overlap.
+
+Another distinction that was dropped is the difference between "system errors" (`Code.SYSTEMERROR`/`ZSYSTEMERROR`) and
+"API errors" (`Code.APIERROR`/`ZAPIERROR`).
+The general distinction is the origin of the error -- system errors are client-side (`invalid_arguments` -- other APIs:
+`Code.BADARGUMENTS`/`ZBADARGUMENTS`), while API errors are server-size (`no_entry` -- other APIs:
+`Code.NoNode`/`ZNONODE`).
+This was dropped because this is not entirely meaningful from user's point of view.
+As an example, `authentication_failed` is a subclass of `invalid_arguments`, even though the contents of the arguments
+happen to be validated by the server instead of by the client.
+
 ### How can I contribute?
 
 Pick an [open issue](https://github.com/tgockel/zookeeper-cpp/issues) and start working on it!

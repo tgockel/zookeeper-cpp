@@ -32,7 +32,6 @@ GTEST_TEST(state_tests, stringification)
     CHECK_EQ("associating",           to_string(state::associating));
     CHECK_EQ("connected",             to_string(state::connected));
     CHECK_EQ("read_only",             to_string(state::read_only));
-    CHECK_EQ("not_connected",         to_string(state::not_connected));
     CHECK_EQ("expired_session",       to_string(state::expired_session));
     CHECK_EQ("authentication_failed", to_string(state::authentication_failed));
     CHECK_EQ("state(605983)",         to_string(static_cast<state>(605983)));

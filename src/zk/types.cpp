@@ -153,7 +153,6 @@ std::ostream& operator<<(std::ostream& os, const state& self)
     case state::associating:           return os << "associating";
     case state::connected:             return os << "connected";
     case state::read_only:             return os << "read_only";
-    case state::not_connected:         return os << "not_connected";
     case state::expired_session:       return os << "expired_session";
     case state::authentication_failed: return os << "authentication_failed";
     default:                           return os << "state(" << static_cast<int>(self) << ')';
