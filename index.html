@@ -273,6 +273,13 @@ int main()
 <li>It is not obvious what the behavior should be if the original call returns in error. With a <code>future</code>, the behavior is obvious, since you never receive the mechanisms to perform the watch.</li>
 </ul>
 <p>In Java, the method of choice is to use the <a href="https://zookeeper.apache.org/doc/r3.4.10/api/org/apache/zookeeper/Watcher.html">Watcher</a> interface, but this feels extremely out of place in C++ code.</p>
+<h3>Where are all the <code>KeeperException</code>s?</h3>
+<p>This library uses an exception hierarchy with fewer exception codes than what are available in <a href="https://zookeeper.apache.org/doc/r3.4.10/api/org/apache/zookeeper/KeeperException.html">`KeeperException`</a>.</p>
+<div class="image">
+<img src="https://tgockel.github.io/zookeeper-cpp/classzk_1_1error.png"  alt="Exception hierarchy"/>
+</div>
+<p>Some exceptions are not present in this library because they are no longer used in the server implementation and will not be used again; an example of this is <code>DataInconsistencyException</code>, which has not been used in ZooKeeper for a while. In other cases, the error code would never be thrown by this library; examples of this are <code>NoWatcherException</code> (watch removal happens implicitly in destructors) and <code>RuntimeInconsistencyException</code> (failed multi-ops throw a <code>transaction_failed</code> containing only the index of the failed operation instead). In other cases, the error codes have been merged into a single exception type, as there was much logical overlap.</p>
+<p>Another distinction that was dropped is the difference between "system errors" (<code>Code.SYSTEMERROR</code>/<code>ZSYSTEMERROR</code>) and "API errors" (<code>Code.APIERROR</code>/<code>ZAPIERROR</code>). The general distinction is the origin of the error &ndash; system errors are client-side (<code>invalid_arguments</code> &ndash; other APIs: <code>Code.BADARGUMENTS</code>/<code>ZBADARGUMENTS</code>), while API errors are server-size (<code>no_entry</code> &ndash; other APIs: <code>Code.NoNode</code>/<code>ZNONODE</code>). This was dropped because this is not entirely meaningful from user's point of view. As an example, <code>authentication_failed</code> is a subclass of <code>invalid_arguments</code>, even though the contents of the arguments happen to be validated by the server instead of by the client.</p>
 <h3>How can I contribute?</h3>
 <p>Pick an <a href="https://github.com/tgockel/zookeeper-cpp/issues">open issue</a> and start working on it! For more details, read the <a href="https://github.com/tgockel/zookeeper-cpp/blob/master/CONTRIBUTING.rst">CONTRIBUTING</a> guide. </p>
 </div></div><!-- contents -->

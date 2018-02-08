@@ -10,6 +10,5 @@ var searchData=
   ['invalid_5fcallback',['invalid_callback',['../classzk_1_1invalid__callback.html',1,'zk']]],
   ['invalid_5fhandle_5fstate',['invalid_handle_state',['../classzk_1_1invalid__handle__state.html',1,'zk']]],
   ['is_5fephemeral',['is_ephemeral',['../structzk_1_1stat.html#a5e8518d9de88c33067b9ee30d3e5735c',1,'zk::stat']]],
-  ['is_5fminimal',['is_minimal',['../classzk_1_1server_1_1configuration.html#ac2248cec031540ca3a7993d69259bed9',1,'zk::server::configuration']]],
-  ['is_5fset',['is_set',['../group__Client.html#gadf4975c092411a75981c0c7008b34ebd',1,'zk']]]
+  ['is_5fminimal',['is_minimal',['../classzk_1_1server_1_1configuration.html#ac2248cec031540ca3a7993d69259bed9',1,'zk::server::configuration']]]
 ];

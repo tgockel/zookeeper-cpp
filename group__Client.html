@@ -250,6 +250,7 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a version of the children of a ZNode.  <a href="structzk_1_1child__version.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structzk_1_1transaction__id.html">zk::transaction_id</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents the ZooKeeper transaction ID in which an event happened to a ZNode.  <a href="structzk_1_1transaction__id.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structzk_1_1stat.html">zk::stat</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Statistics about a znode, similar to the UNIX <code>stat</code> structure.  <a href="structzk_1_1stat.html#details">More...</a><br /></td></tr>
@@ -385,7 +386,6 @@ Enumerations</h2></td></tr>
 <a class="el" href="group__Client.html#gga8954c7138ce0280422d42d02b3d951eaa06aa6fa8bdc2078e7e1bd903e70c8f6a">zk::state::connected</a> = 3, 
 <br />
 &#160;&#160;<a class="el" href="group__Client.html#gga8954c7138ce0280422d42d02b3d951eaabefe72871b2de8f4f0e20108517e31fe">zk::state::read_only</a> = 5, 
-<b>not_connected</b> = 999, 
 <a class="el" href="group__Client.html#gga8954c7138ce0280422d42d02b3d951eaa152004b0741ddce882b17055737bc6b5">zk::state::expired_session</a> = -112, 
 <a class="el" href="group__Client.html#gga8954c7138ce0280422d42d02b3d951eaa047ef5b1ba6d5dcc4dbee37c075a2088">zk::state::authentication_failed</a> = -113
 <br />
@@ -651,9 +651,6 @@ constexpr create_mode&#160;</td><td class="memItemRight" valign="bottom"><b>zk::
 <tr class="memitem:ga5b4e2580469994ac92093724b5d3adbd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga5b4e2580469994ac92093724b5d3adbd"></a>
 constexpr create_mode&#160;</td><td class="memItemRight" valign="bottom"><b>zk::operator~</b> (create_mode a)</td></tr>
 <tr class="separator:ga5b4e2580469994ac92093724b5d3adbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gadf4975c092411a75981c0c7008b34ebd"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Client.html#gadf4975c092411a75981c0c7008b34ebd">zk::is_set</a> (create_mode self, create_mode flags)</td></tr>
-<tr class="memdesc:gadf4975c092411a75981c0c7008b34ebd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check that <em>self</em> has <em>flags</em> set.  <a href="#gadf4975c092411a75981c0c7008b34ebd">More...</a><br /></td></tr>
-<tr class="separator:gadf4975c092411a75981c0c7008b34ebd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga598e7b12f8603c11ac92882ddd54c9ca"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga598e7b12f8603c11ac92882ddd54c9ca"></a>
 std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>zk::operator&lt;&lt;</b> (std::ostream &amp;os, const create_mode &amp;mode)</td></tr>
 <tr class="separator:ga598e7b12f8603c11ac92882ddd54c9ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -920,7 +917,7 @@ template&lt;typename T &gt; </div>
 </td></tr>
 </table>
 
-<p>Definition at line <a class="el" href="types_8hpp_source.html#l00252">252</a> of file <a class="el" href="types_8hpp_source.html">types.hpp</a>.</p>
+<p>Definition at line <a class="el" href="types_8hpp_source.html#l00265">265</a> of file <a class="el" href="types_8hpp_source.html">types.hpp</a>.</p>
 
 </div>
 </div>
@@ -970,7 +967,7 @@ template&lt;typename T &gt; </div>
 </td></tr>
 </table>
 
-<p>Definition at line <a class="el" href="types_8hpp_source.html#l00298">298</a> of file <a class="el" href="types_8hpp_source.html">types.hpp</a>.</p>
+<p>Definition at line <a class="el" href="types_8hpp_source.html#l00314">314</a> of file <a class="el" href="types_8hpp_source.html">types.hpp</a>.</p>
 
 </div>
 </div>
@@ -1041,7 +1038,8 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>Enumeration of states the client may be at when a watch triggers. </p>
-<p>It represents the state of the connection at the time the event was generated. </p>
+<p>It represents the state of the connection at the time the event was generated.</p>
+<dl class="section note"><dt>Note</dt><dd>If you are familiar with the C API, notably missing from this list is a <code>ZOO_NOTCONNECTED_STATE</code> equivalent. This state happens in cases where the client disconnects on purpose (either on initial connection or just after ensemble reconfiguration). However, the ability to see this state is limited to times when you call <code>zk_state</code> at just the right moment. This state leads to a bit of confusion with <code>closed</code> and <code>expired_session</code>, so it is not in the list. Instead, these cases are presented as just <code>connecting</code>, as the client is attempting to reconnect to the cluster. </dd></dl>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a class="anchor" id="gga8954c7138ce0280422d42d02b3d951eaa349e686330723975502e9ef4f939a5ac"></a>closed&#160;</td><td class="fielddoc">
 <p>The client is not connected to any server in the ensemble. </p>
@@ -1068,7 +1066,7 @@ template&lt;typename T &gt; </div>
 </td></tr>
 </table>
 
-<p>Definition at line <a class="el" href="types_8hpp_source.html#l00320">320</a> of file <a class="el" href="types_8hpp_source.html">types.hpp</a>.</p>
+<p>Definition at line <a class="el" href="types_8hpp_source.html#l00344">344</a> of file <a class="el" href="types_8hpp_source.html">types.hpp</a>.</p>
 
 </div>
 </div>
@@ -1101,36 +1099,6 @@ template&lt;typename T &gt; </div>
 <p>For example, <code>allows(<a class="el" href="group__Client.html#gga75dfaeeb3b2f4e1588380b3bf68ecc08aecae13117d6f0584c25a9da6c8f8415e" title="You can access the data of a node and can list its children. ">permission::read</a> | <a class="el" href="group__Client.html#gga75dfaeeb3b2f4e1588380b3bf68ecc08aefb2a684e4afb7d55e6147fbe5a332ee" title="You can set the data of a node. ">permission::write</a>, <a class="el" href="group__Client.html#gga75dfaeeb3b2f4e1588380b3bf68ecc08aecae13117d6f0584c25a9da6c8f8415e" title="You can access the data of a node and can list its children. ">permission::read</a>)</code> will be <code>true</code>, as <code>read|write</code> is allowed to <code>read</code>. </p>
 
 <p>Definition at line <a class="el" href="acl_8hpp_source.html#l00053">53</a> of file <a class="el" href="acl_8hpp_source.html">acl.hpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="gadf4975c092411a75981c0c7008b34ebd"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr bool zk::is_set </td>
-          <td>(</td>
-          <td class="paramtype">create_mode&#160;</td>
-          <td class="paramname"><em>self</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">create_mode&#160;</td>
-          <td class="paramname"><em>flags</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Check that <em>self</em> has <em>flags</em> set. </p>
-
-<p>Definition at line <a class="el" href="types_8hpp_source.html#l00288">288</a> of file <a class="el" href="types_8hpp_source.html">types.hpp</a>.</p>
 
 </div>
 </div>

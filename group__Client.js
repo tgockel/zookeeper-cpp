@@ -520,6 +520,5 @@ var group__Client =
       [ "authentication_failed", "group__Client.html#gga8954c7138ce0280422d42d02b3d951eaa047ef5b1ba6d5dcc4dbee37c075a2088", null ]
     ] ],
     [ "allows", "group__Client.html#ga805d7e2c38e80ec6abdc6043087bfae8", null ],
-    [ "is_set", "group__Client.html#gadf4975c092411a75981c0c7008b34ebd", null ],
     [ "map", "group__Client.html#gad895648faa9ce5a5ef73bb4403b982e1", null ]
 ];
