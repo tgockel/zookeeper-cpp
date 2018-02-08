@@ -110,6 +110,11 @@ $(document).ready(function(){initNavTree('classzk_1_1new__configuration__no__quo
 <div class="title">zk::new_configuration_no_quorum Class Reference<span class="mlabels"><span class="mlabel">final</span></span><div class="ingroups"><a class="el" href="group__Client.html">Client</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Raised when attempting an ensemble reconfiguration, but the proposed new ensemble would not be able to form quorum.  
+ <a href="classzk_1_1new__configuration__no__quorum.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="error_8hpp_source.html">zk/error.hpp</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for zk::new_configuration_no_quorum:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
@@ -118,28 +123,30 @@ $(document).ready(function(){initNavTree('classzk_1_1new__configuration__no__quo
  <div class="center">
   <img src="classzk_1_1new__configuration__no__quorum.png" usemap="#zk::new_configuration_no_quorum_map" alt=""/>
   <map id="zk::new_configuration_no_quorum_map" name="zk::new_configuration_no_quorum_map">
-<area href="classzk_1_1system__error.html" alt="zk::system_error" shape="rect" coords="0,168,203,192"/>
-<area href="classzk_1_1error.html" alt="zk::error" shape="rect" coords="0,112,203,136"/>
+<area href="classzk_1_1invalid__ensemble__state.html" title="Base exception for cases where the ensemble is in an invalid state to perform a given action..." alt="zk::invalid_ensemble_state" shape="rect" coords="0,112,203,136"/>
+<area href="classzk_1_1error.html" title="Base error type for all errors raised by this library. " alt="zk::error" shape="rect" coords="0,56,203,80"/>
 </map>
  </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
-<tr class="inherit_header pub_methods_classzk_1_1system__error"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classzk_1_1system__error')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classzk_1_1system__error.html">zk::system_error</a></td></tr>
-<tr class="memitem:aa97127430046c477451190bed0510735 inherit pub_methods_classzk_1_1system__error"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa97127430046c477451190bed0510735"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>system_error</b> (error_code code, std::string description)</td></tr>
-<tr class="separator:aa97127430046c477451190bed0510735 inherit pub_methods_classzk_1_1system__error"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classzk_1_1invalid__ensemble__state"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classzk_1_1invalid__ensemble__state')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classzk_1_1invalid__ensemble__state.html">zk::invalid_ensemble_state</a></td></tr>
+<tr class="memitem:afe54036b35ccf5a546888c279f6f6ce3 inherit pub_methods_classzk_1_1invalid__ensemble__state"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afe54036b35ccf5a546888c279f6f6ce3"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>invalid_ensemble_state</b> (<a class="el" href="group__Client.html#ga59dbc6c98abba145d356557222aa9f7f">error_code</a> code, const std::string &amp;description)</td></tr>
+<tr class="separator:afe54036b35ccf5a546888c279f6f6ce3 inherit pub_methods_classzk_1_1invalid__ensemble__state"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classzk_1_1error"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classzk_1_1error')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classzk_1_1error.html">zk::error</a></td></tr>
-<tr class="memitem:ab005dc6891f5c64d9d8a59563629b2da inherit pub_methods_classzk_1_1error"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab005dc6891f5c64d9d8a59563629b2da"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>error</b> (error_code code, std::string description)</td></tr>
-<tr class="separator:ab005dc6891f5c64d9d8a59563629b2da inherit pub_methods_classzk_1_1error"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1163870950b3af77be48b3b2aa7f0aed inherit pub_methods_classzk_1_1error"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1163870950b3af77be48b3b2aa7f0aed"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>error</b> (<a class="el" href="group__Client.html#ga59dbc6c98abba145d356557222aa9f7f">error_code</a> code, const std::string &amp;description)</td></tr>
+<tr class="separator:a1163870950b3af77be48b3b2aa7f0aed inherit pub_methods_classzk_1_1error"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9193811b2cefbe51f47bf5ea639524fd inherit pub_methods_classzk_1_1error"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9193811b2cefbe51f47bf5ea639524fd"></a>
-error_code&#160;</td><td class="memItemRight" valign="bottom"><b>code</b> () const </td></tr>
+<a class="el" href="group__Client.html#ga59dbc6c98abba145d356557222aa9f7f">error_code</a>&#160;</td><td class="memItemRight" valign="bottom"><b>code</b> () const </td></tr>
 <tr class="separator:a9193811b2cefbe51f47bf5ea639524fd inherit pub_methods_classzk_1_1error"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p>Definition at line <a class="el" href="error_8hpp_source.html#l00187">187</a> of file <a class="el" href="error_8hpp_source.html">error.hpp</a>.</p>
+<div class="textblock"><p>Raised when attempting an ensemble reconfiguration, but the proposed new ensemble would not be able to form quorum. </p>
+<p>This happens when not enough time has passed for potential new servers to sync with the leader. If the proposed new ensemble is up and running, the solution is usually to simply wait longer and attempt reconfiguration later. </p>
+
+<p>Definition at line <a class="el" href="error_8hpp_source.html#l00226">226</a> of file <a class="el" href="error_8hpp_source.html">error.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>zk/<a class="el" href="error_8hpp_source.html">error.hpp</a></li>
 <li>zk/<a class="el" href="error_8cpp_source.html">error.cpp</a></li>

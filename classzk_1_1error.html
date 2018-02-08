@@ -111,6 +111,11 @@ $(document).ready(function(){initNavTree('classzk_1_1error.html','');});
 <div class="title">zk::error Class Reference<div class="ingroups"><a class="el" href="group__Client.html">Client</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Base error type for all errors raised by this library.  
+ <a href="classzk_1_1error.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="error_8hpp_source.html">zk/error.hpp</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for zk::error:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
@@ -119,53 +124,46 @@ $(document).ready(function(){initNavTree('classzk_1_1error.html','');});
  <div class="center">
   <img src="classzk_1_1error.png" usemap="#zk::error_map" alt=""/>
   <map id="zk::error_map" name="zk::error_map">
-<area href="classzk_1_1api__error.html" alt="zk::api_error" shape="rect" coords="0,168,203,192"/>
-<area href="classzk_1_1system__error.html" alt="zk::system_error" shape="rect" coords="426,168,629,192"/>
-<area href="classzk_1_1unknown__error.html" alt="zk::unknown_error" shape="rect" coords="639,168,842,192"/>
-<area href="classzk_1_1authentication__failed.html" alt="zk::authentication_failed" shape="rect" coords="213,224,416,248"/>
-<area href="classzk_1_1bad__version.html" alt="zk::bad_version" shape="rect" coords="213,280,416,304"/>
-<area href="classzk_1_1closing.html" alt="zk::closing" shape="rect" coords="213,336,416,360"/>
-<area href="classzk_1_1ephemeral__on__local__session.html" alt="zk::ephemeral_on_local_session" shape="rect" coords="213,392,416,416"/>
-<area href="classzk_1_1invalid__acl.html" alt="zk::invalid_acl" shape="rect" coords="213,448,416,472"/>
-<area href="classzk_1_1invalid__callback.html" alt="zk::invalid_callback" shape="rect" coords="213,504,416,528"/>
-<area href="classzk_1_1no__children__for__ephemerals.html" alt="zk::no_children_for_ephemerals" shape="rect" coords="213,560,416,584"/>
-<area href="classzk_1_1no__node.html" alt="zk::no_node" shape="rect" coords="213,616,416,640"/>
-<area href="classzk_1_1no__response.html" alt="zk::no_response" shape="rect" coords="213,672,416,696"/>
-<area href="classzk_1_1no__watcher.html" alt="zk::no_watcher" shape="rect" coords="213,728,416,752"/>
-<area href="classzk_1_1node__exists.html" alt="zk::node_exists" shape="rect" coords="213,784,416,808"/>
-<area href="classzk_1_1not__authenticated.html" alt="zk::not_authenticated" shape="rect" coords="213,840,416,864"/>
-<area href="classzk_1_1not__empty.html" alt="zk::not_empty" shape="rect" coords="213,896,416,920"/>
-<area href="classzk_1_1reconfiguration__disabled.html" alt="zk::reconfiguration_disabled" shape="rect" coords="213,952,416,976"/>
-<area href="classzk_1_1server__read__only.html" alt="zk::server_read_only" shape="rect" coords="213,1008,416,1032"/>
-<area href="classzk_1_1session__expired.html" alt="zk::session_expired" shape="rect" coords="213,1064,416,1088"/>
-<area href="classzk_1_1session__moved.html" alt="zk::session_moved" shape="rect" coords="213,1120,416,1144"/>
-<area href="classzk_1_1transaction__failed.html" title="Thrown from client::commit when a transaction cannot be committed to the system. " alt="zk::transaction_failed" shape="rect" coords="213,1176,416,1200"/>
-<area href="classzk_1_1connection__loss.html" alt="zk::connection_loss" shape="rect" coords="639,224,842,248"/>
-<area href="classzk_1_1data__inconsistency.html" alt="zk::data_inconsistency" shape="rect" coords="639,280,842,304"/>
-<area href="classzk_1_1invalid__arguments.html" alt="zk::invalid_arguments" shape="rect" coords="639,336,842,360"/>
-<area href="classzk_1_1invalid__handle__state.html" alt="zk::invalid_handle_state" shape="rect" coords="639,392,842,416"/>
-<area href="classzk_1_1marshalling__error.html" alt="zk::marshalling_error" shape="rect" coords="639,448,842,472"/>
-<area href="classzk_1_1new__configuration__no__quorum.html" alt="zk::new_configuration_no_quorum" shape="rect" coords="639,504,842,528"/>
-<area href="classzk_1_1operation__timeout.html" alt="zk::operation_timeout" shape="rect" coords="639,560,842,584"/>
-<area href="classzk_1_1reconfiguration__in__progress.html" alt="zk::reconfiguration_in_progress" shape="rect" coords="639,616,842,640"/>
-<area href="classzk_1_1runtime__inconsistency.html" alt="zk::runtime_inconsistency" shape="rect" coords="639,672,842,696"/>
-<area href="classzk_1_1unimplemented.html" alt="zk::unimplemented" shape="rect" coords="639,728,842,752"/>
-<area href="classzk_1_1unknown__session.html" alt="zk::unknown_session" shape="rect" coords="639,784,842,808"/>
+<area href="classzk_1_1check__failed.html" title="Base exception for cases where a write operation was rolled back due to a failed check. " alt="zk::check_failed" shape="rect" coords="0,112,203,136"/>
+<area href="classzk_1_1invalid__arguments.html" title="Arguments to an operation were invalid. " alt="zk::invalid_arguments" shape="rect" coords="426,112,629,136"/>
+<area href="classzk_1_1invalid__connection__state.html" title="Base type for errors generated because the connection is misconfigured. " alt="zk::invalid_connection_state" shape="rect" coords="639,112,842,136"/>
+<area href="classzk_1_1invalid__ensemble__state.html" title="Base exception for cases where the ensemble is in an invalid state to perform a given action..." alt="zk::invalid_ensemble_state" shape="rect" coords="1065,112,1268,136"/>
+<area href="classzk_1_1not__implemented.html" title="Operation was attempted that was not implemented. " alt="zk::not_implemented" shape="rect" coords="1278,112,1481,136"/>
+<area href="classzk_1_1transport__error.html" title="Base types for errors that occurred while transporting data across a network. " alt="zk::transport_error" shape="rect" coords="1491,112,1694,136"/>
+<area href="classzk_1_1entry__exists.html" title="Thrown when attempting to create a ZNode, but one already exists at the specified path..." alt="zk::entry_exists" shape="rect" coords="213,168,416,192"/>
+<area href="classzk_1_1no__children__for__ephemerals.html" title="Ephemeral ZNodes cannot have children. " alt="zk::no_children_for_ephemerals" shape="rect" coords="213,224,416,248"/>
+<area href="classzk_1_1no__entry.html" title="Thrown from read operations when attempting to read a ZNode that does not exist. " alt="zk::no_entry" shape="rect" coords="213,280,416,304"/>
+<area href="classzk_1_1not__empty.html" title="Thrown when attempting to erase a ZNode that has children. " alt="zk::not_empty" shape="rect" coords="213,336,416,360"/>
+<area href="classzk_1_1transaction__failed.html" title="Thrown from client::commit when a transaction cannot be committed to the system. " alt="zk::transaction_failed" shape="rect" coords="213,392,416,416"/>
+<area href="classzk_1_1version__mismatch.html" title="Thrown from modification operations when a version check is specified and the value in the database d..." alt="zk::version_mismatch" shape="rect" coords="213,448,416,472"/>
+<area href="classzk_1_1authentication__failed.html" title="The server rejected the connection due to invalid authentication information. " alt="zk::authentication_failed" shape="rect" coords="426,168,629,192"/>
+<area href="classzk_1_1closed.html" title="The connection is closed. " alt="zk::closed" shape="rect" coords="852,168,1055,192"/>
+<area href="classzk_1_1ephemeral__on__local__session.html" title="An attempt was made to create an ephemeral entry, but the connection has a local session. " alt="zk::ephemeral_on_local_session" shape="rect" coords="852,224,1055,248"/>
+<area href="classzk_1_1not__authorized.html" title="An attempt was made to read or write to a ZNode when the connection does not have permission to do..." alt="zk::not_authorized" shape="rect" coords="852,280,1055,304"/>
+<area href="classzk_1_1read__only__connection.html" title="A write operation was attempted on a read-only connection. " alt="zk::read_only_connection" shape="rect" coords="852,336,1055,360"/>
+<area href="classzk_1_1session__expired.html" title="The client session has been ended by the server. " alt="zk::session_expired" shape="rect" coords="852,392,1055,416"/>
+<area href="classzk_1_1new__configuration__no__quorum.html" title="Raised when attempting an ensemble reconfiguration, but the proposed new ensemble would not be able t..." alt="zk::new_configuration_no_quorum" shape="rect" coords="1278,168,1481,192"/>
+<area href="classzk_1_1reconfiguration__disabled.html" title="The ensemble does not support reconfiguration. " alt="zk::reconfiguration_disabled" shape="rect" coords="1278,224,1481,248"/>
+<area href="classzk_1_1reconfiguration__in__progress.html" title="An attempt was made to reconfigure the ensemble, but there is already a reconfiguration in progress..." alt="zk::reconfiguration_in_progress" shape="rect" coords="1278,280,1481,304"/>
+<area href="classzk_1_1connection__loss.html" title="Connection to the server has been lost before the attempted operation was verified as completed..." alt="zk::connection_loss" shape="rect" coords="1704,168,1907,192"/>
+<area href="classzk_1_1marshalling__error.html" title="An error occurred while marshalling data. " alt="zk::marshalling_error" shape="rect" coords="1704,224,1907,248"/>
 </map>
  </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ab005dc6891f5c64d9d8a59563629b2da"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab005dc6891f5c64d9d8a59563629b2da"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>error</b> (error_code code, std::string description)</td></tr>
-<tr class="separator:ab005dc6891f5c64d9d8a59563629b2da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1163870950b3af77be48b3b2aa7f0aed"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1163870950b3af77be48b3b2aa7f0aed"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>error</b> (<a class="el" href="group__Client.html#ga59dbc6c98abba145d356557222aa9f7f">error_code</a> code, const std::string &amp;description)</td></tr>
+<tr class="separator:a1163870950b3af77be48b3b2aa7f0aed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9193811b2cefbe51f47bf5ea639524fd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9193811b2cefbe51f47bf5ea639524fd"></a>
-error_code&#160;</td><td class="memItemRight" valign="bottom"><b>code</b> () const </td></tr>
+<a class="el" href="group__Client.html#ga59dbc6c98abba145d356557222aa9f7f">error_code</a>&#160;</td><td class="memItemRight" valign="bottom"><b>code</b> () const </td></tr>
 <tr class="separator:a9193811b2cefbe51f47bf5ea639524fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p>Definition at line <a class="el" href="error_8hpp_source.html#l00083">83</a> of file <a class="el" href="error_8hpp_source.html">error.hpp</a>.</p>
+<div class="textblock"><p>Base error type for all errors raised by this library. </p>
+<dl class="section see"><dt>See also</dt><dd>error_code </dd></dl>
+
+<p>Definition at line <a class="el" href="error_8hpp_source.html#l00113">113</a> of file <a class="el" href="error_8hpp_source.html">error.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>zk/<a class="el" href="error_8hpp_source.html">error.hpp</a></li>
 <li>zk/<a class="el" href="error_8cpp_source.html">error.cpp</a></li>

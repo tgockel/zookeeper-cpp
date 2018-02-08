@@ -124,39 +124,39 @@ $(document).ready(function(){initNavTree('classzk_1_1transaction__failed.html','
  <div class="center">
   <img src="classzk_1_1transaction__failed.png" usemap="#zk::transaction_failed_map" alt=""/>
   <map id="zk::transaction_failed_map" name="zk::transaction_failed_map">
-<area href="classzk_1_1api__error.html" alt="zk::api_error" shape="rect" coords="0,168,130,192"/>
-<area href="classzk_1_1error.html" alt="zk::error" shape="rect" coords="0,112,130,136"/>
+<area href="classzk_1_1check__failed.html" title="Base exception for cases where a write operation was rolled back due to a failed check. " alt="zk::check_failed" shape="rect" coords="0,112,130,136"/>
+<area href="classzk_1_1error.html" title="Base error type for all errors raised by this library. " alt="zk::error" shape="rect" coords="0,56,130,80"/>
 </map>
  </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a992c5a760d9b1a6efa2ab50ff7cbb0ca"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a992c5a760d9b1a6efa2ab50ff7cbb0ca"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>transaction_failed</b> (error_code code, std::size_t op_index)</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><b>transaction_failed</b> (<a class="el" href="group__Client.html#ga59dbc6c98abba145d356557222aa9f7f">error_code</a> code, std::size_t op_index)</td></tr>
 <tr class="separator:a992c5a760d9b1a6efa2ab50ff7cbb0ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac0fafad294d24efa4e2837dd4886f581"><td class="memItemLeft" align="right" valign="top">error_code&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1transaction__failed.html#ac0fafad294d24efa4e2837dd4886f581">underlying_cause</a> () const </td></tr>
+<tr class="memitem:ac0fafad294d24efa4e2837dd4886f581"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__Client.html#ga59dbc6c98abba145d356557222aa9f7f">error_code</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1transaction__failed.html#ac0fafad294d24efa4e2837dd4886f581">underlying_cause</a> () const </td></tr>
 <tr class="memdesc:ac0fafad294d24efa4e2837dd4886f581"><td class="mdescLeft">&#160;</td><td class="mdescRight">The underlying cause that caused this transaction to be aborted.  <a href="#ac0fafad294d24efa4e2837dd4886f581">More...</a><br /></td></tr>
 <tr class="separator:ac0fafad294d24efa4e2837dd4886f581"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aee7593cc6ab83bfe4017e62a4a9c94ad"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1transaction__failed.html#aee7593cc6ab83bfe4017e62a4a9c94ad">failed_op_index</a> () const </td></tr>
 <tr class="memdesc:aee7593cc6ab83bfe4017e62a4a9c94ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">The transaction index which caused the error (0 indexed).  <a href="#aee7593cc6ab83bfe4017e62a4a9c94ad">More...</a><br /></td></tr>
 <tr class="separator:aee7593cc6ab83bfe4017e62a4a9c94ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_classzk_1_1api__error"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classzk_1_1api__error')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classzk_1_1api__error.html">zk::api_error</a></td></tr>
-<tr class="memitem:ad50fee562fe92e8d3434240c88a7d178 inherit pub_methods_classzk_1_1api__error"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad50fee562fe92e8d3434240c88a7d178"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>api_error</b> (error_code code, std::string description)</td></tr>
-<tr class="separator:ad50fee562fe92e8d3434240c88a7d178 inherit pub_methods_classzk_1_1api__error"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classzk_1_1check__failed"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classzk_1_1check__failed')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classzk_1_1check__failed.html">zk::check_failed</a></td></tr>
+<tr class="memitem:aec6993b0a3f5b31ecf11d6de9f234a08 inherit pub_methods_classzk_1_1check__failed"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aec6993b0a3f5b31ecf11d6de9f234a08"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>check_failed</b> (<a class="el" href="group__Client.html#ga59dbc6c98abba145d356557222aa9f7f">error_code</a> code, const std::string &amp;description)</td></tr>
+<tr class="separator:aec6993b0a3f5b31ecf11d6de9f234a08 inherit pub_methods_classzk_1_1check__failed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classzk_1_1error"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classzk_1_1error')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classzk_1_1error.html">zk::error</a></td></tr>
-<tr class="memitem:ab005dc6891f5c64d9d8a59563629b2da inherit pub_methods_classzk_1_1error"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab005dc6891f5c64d9d8a59563629b2da"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>error</b> (error_code code, std::string description)</td></tr>
-<tr class="separator:ab005dc6891f5c64d9d8a59563629b2da inherit pub_methods_classzk_1_1error"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1163870950b3af77be48b3b2aa7f0aed inherit pub_methods_classzk_1_1error"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1163870950b3af77be48b3b2aa7f0aed"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>error</b> (<a class="el" href="group__Client.html#ga59dbc6c98abba145d356557222aa9f7f">error_code</a> code, const std::string &amp;description)</td></tr>
+<tr class="separator:a1163870950b3af77be48b3b2aa7f0aed inherit pub_methods_classzk_1_1error"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9193811b2cefbe51f47bf5ea639524fd inherit pub_methods_classzk_1_1error"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9193811b2cefbe51f47bf5ea639524fd"></a>
-error_code&#160;</td><td class="memItemRight" valign="bottom"><b>code</b> () const </td></tr>
+<a class="el" href="group__Client.html#ga59dbc6c98abba145d356557222aa9f7f">error_code</a>&#160;</td><td class="memItemRight" valign="bottom"><b>code</b> () const </td></tr>
 <tr class="separator:a9193811b2cefbe51f47bf5ea639524fd inherit pub_methods_classzk_1_1error"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Thrown from <code><a class="el" href="classzk_1_1client.html#ae34b4c97f7c9fd09e5d9569e6c47e7ca" title="Commit the transaction specified by txn. ">client::commit</a></code> when a transaction cannot be committed to the system. </p>
 <p>Check the <code>underlying_cause</code> to see the specific error and <code>failed_op_index</code> to see what operation failed. </p>
 
-<p>Definition at line <a class="el" href="error_8hpp_source.html#l00370">370</a> of file <a class="el" href="error_8hpp_source.html">error.hpp</a>.</p>
+<p>Definition at line <a class="el" href="error_8hpp_source.html#l00403">403</a> of file <a class="el" href="error_8hpp_source.html">error.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="aee7593cc6ab83bfe4017e62a4a9c94ad"></a>
 <div class="memitem">
@@ -182,7 +182,7 @@ error_code&#160;</td><td class="memItemRight" valign="bottom"><b>code</b> () con
 <p>The transaction index which caused the error (0 indexed). </p>
 <p>If the 3rd operation in the <code><a class="el" href="classzk_1_1multi__op.html">multi_op</a></code> could not be committed, this will be <code>2</code>. </p>
 
-<p>Definition at line <a class="el" href="error_8hpp_source.html#l00386">386</a> of file <a class="el" href="error_8hpp_source.html">error.hpp</a>.</p>
+<p>Definition at line <a class="el" href="error_8hpp_source.html#l00419">419</a> of file <a class="el" href="error_8hpp_source.html">error.hpp</a>.</p>
 
 </div>
 </div>
@@ -194,7 +194,7 @@ error_code&#160;</td><td class="memItemRight" valign="bottom"><b>code</b> () con
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">error_code zk::transaction_failed::underlying_cause </td>
+          <td class="memname"><a class="el" href="group__Client.html#ga59dbc6c98abba145d356557222aa9f7f">error_code</a> zk::transaction_failed::underlying_cause </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -208,9 +208,9 @@ error_code&#160;</td><td class="memItemRight" valign="bottom"><b>code</b> () con
 </div><div class="memdoc">
 
 <p>The underlying cause that caused this transaction to be aborted. </p>
-<p>For example, if a <code>set</code> operation is attempted on a node that does not exist, this will be <code>error_code::no_node</code>. </p>
+<p>For example, if a <code>set</code> operation is attempted on a node that does not exist, this will be <code><a class="el" href="group__Client.html#gga59dbc6c98abba145d356557222aa9f7fae86ebb3d13cc1b95ade80a71c41bdbad" title="Code for no_entry. ">error_code::no_entry</a></code>. </p>
 
-<p>Definition at line <a class="el" href="error_8hpp_source.html#l00381">381</a> of file <a class="el" href="error_8hpp_source.html">error.hpp</a>.</p>
+<p>Definition at line <a class="el" href="error_8hpp_source.html#l00414">414</a> of file <a class="el" href="error_8hpp_source.html">error.hpp</a>.</p>
 
 </div>
 </div>

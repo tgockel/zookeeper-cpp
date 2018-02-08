@@ -126,21 +126,13 @@ var group__Client =
       [ "watch_exists", "classzk_1_1connection__zk.html#acaa8977c1ee7dfec7d5046305847bb97", null ]
     ] ],
     [ "error", "classzk_1_1error.html", [
-      [ "error", "classzk_1_1error.html#ab005dc6891f5c64d9d8a59563629b2da", null ],
+      [ "error", "classzk_1_1error.html#a1163870950b3af77be48b3b2aa7f0aed", null ],
       [ "~error", "classzk_1_1error.html#ad48651c791eab2297f2c787daa609e28", null ],
       [ "code", "classzk_1_1error.html#a9193811b2cefbe51f47bf5ea639524fd", null ]
     ] ],
-    [ "system_error", "classzk_1_1system__error.html", [
-      [ "system_error", "classzk_1_1system__error.html#aa97127430046c477451190bed0510735", null ],
-      [ "~system_error", "classzk_1_1system__error.html#afa8e5146d4ba7300b4e86f4be47fae18", null ]
-    ] ],
-    [ "runtime_inconsistency", "classzk_1_1runtime__inconsistency.html", [
-      [ "runtime_inconsistency", "classzk_1_1runtime__inconsistency.html#a31588570a7c2b18abe48e301c9b7423b", null ],
-      [ "~runtime_inconsistency", "classzk_1_1runtime__inconsistency.html#a0363da0c925ab8a07e6ec56d525b9422", null ]
-    ] ],
-    [ "data_inconsistency", "classzk_1_1data__inconsistency.html", [
-      [ "data_inconsistency", "classzk_1_1data__inconsistency.html#a28e99b703845342c46b2f28bd618749f", null ],
-      [ "~data_inconsistency", "classzk_1_1data__inconsistency.html#ae61c8d4a3a582d191387002cb8809e05", null ]
+    [ "transport_error", "classzk_1_1transport__error.html", [
+      [ "transport_error", "classzk_1_1transport__error.html#a9e83befb61b63525cdb0a9c9158670a4", null ],
+      [ "~transport_error", "classzk_1_1transport__error.html#a9a1d11556a1feca03be3ab11baf6e58a", null ]
     ] ],
     [ "connection_loss", "classzk_1_1connection__loss.html", [
       [ "connection_loss", "classzk_1_1connection__loss.html#a015ef36066d9d4ef71f2b75bc4d3a502", null ],
@@ -150,25 +142,22 @@ var group__Client =
       [ "marshalling_error", "classzk_1_1marshalling__error.html#ac8831e96dfc1229b788032f6f29909db", null ],
       [ "~marshalling_error", "classzk_1_1marshalling__error.html#ab6f2e02dc315b260bf104faf7a335c7d", null ]
     ] ],
-    [ "unimplemented", "classzk_1_1unimplemented.html", [
-      [ "unimplemented", "classzk_1_1unimplemented.html#ad4407719741f23bb32188ec2704a3d27", null ],
-      [ "~unimplemented", "classzk_1_1unimplemented.html#a4a81151c05f32abec6b23880a82fe2aa", null ]
-    ] ],
-    [ "operation_timeout", "classzk_1_1operation__timeout.html", [
-      [ "operation_timeout", "classzk_1_1operation__timeout.html#a723ddb66b2d66f97d165e93cd7949c32", null ],
-      [ "~operation_timeout", "classzk_1_1operation__timeout.html#a78df6152d09212d1d9e98433939ab6e0", null ]
+    [ "not_implemented", "classzk_1_1not__implemented.html", [
+      [ "not_implemented", "classzk_1_1not__implemented.html#a5c70745202cd8f96e7171d65f16ab3f7", null ],
+      [ "~not_implemented", "classzk_1_1not__implemented.html#ae2f8ebc08a3dcebd920819d9ca8ebf9c", null ]
     ] ],
     [ "invalid_arguments", "classzk_1_1invalid__arguments.html", [
+      [ "invalid_arguments", "classzk_1_1invalid__arguments.html#a1735100ef57d786fb36d7039b470ab84", null ],
       [ "invalid_arguments", "classzk_1_1invalid__arguments.html#a6a55bcc7ab4ca4db9349b86a1a36204e", null ],
       [ "~invalid_arguments", "classzk_1_1invalid__arguments.html#a1eb72e173938f577f56def2929d7ec80", null ]
     ] ],
-    [ "invalid_handle_state", "classzk_1_1invalid__handle__state.html", [
-      [ "invalid_handle_state", "classzk_1_1invalid__handle__state.html#a677f59fe1c8f6fe60544e6f549854071", null ],
-      [ "~invalid_handle_state", "classzk_1_1invalid__handle__state.html#a53ac6e715d5b729177b51ada316770bb", null ]
+    [ "authentication_failed", "classzk_1_1authentication__failed.html", [
+      [ "authentication_failed", "classzk_1_1authentication__failed.html#afb08c1960aa3a4c230865952d71fa8c4", null ],
+      [ "~authentication_failed", "classzk_1_1authentication__failed.html#aaa4690a63d628f25f67b6f620d7dd063", null ]
     ] ],
-    [ "unknown_session", "classzk_1_1unknown__session.html", [
-      [ "unknown_session", "classzk_1_1unknown__session.html#ae7b039cd8f75165c1db4665214d8b19b", null ],
-      [ "~unknown_session", "classzk_1_1unknown__session.html#a284467a1dc828db342331378ab7266eb", null ]
+    [ "invalid_ensemble_state", "classzk_1_1invalid__ensemble__state.html", [
+      [ "invalid_ensemble_state", "classzk_1_1invalid__ensemble__state.html#afe54036b35ccf5a546888c279f6f6ce3", null ],
+      [ "~invalid_ensemble_state", "classzk_1_1invalid__ensemble__state.html#a0ec60f62e64af20e24af2509a8a87cde", null ]
     ] ],
     [ "new_configuration_no_quorum", "classzk_1_1new__configuration__no__quorum.html", [
       [ "new_configuration_no_quorum", "classzk_1_1new__configuration__no__quorum.html#ab52604b9869694f5d17d7c6a0c9c2b03", null ],
@@ -178,87 +167,63 @@ var group__Client =
       [ "reconfiguration_in_progress", "classzk_1_1reconfiguration__in__progress.html#a59a9ad876ca073af8ac55c83231c57f4", null ],
       [ "~reconfiguration_in_progress", "classzk_1_1reconfiguration__in__progress.html#ae9a78319c15c1babd98e4bcb1746de6c", null ]
     ] ],
-    [ "api_error", "classzk_1_1api__error.html", [
-      [ "api_error", "classzk_1_1api__error.html#ad50fee562fe92e8d3434240c88a7d178", null ],
-      [ "~api_error", "classzk_1_1api__error.html#af044c82eac674704696ab5524e72b8d7", null ]
+    [ "reconfiguration_disabled", "classzk_1_1reconfiguration__disabled.html", [
+      [ "reconfiguration_disabled", "classzk_1_1reconfiguration__disabled.html#af9e94d0a53357916cf53b6f8ede4b216", null ],
+      [ "~reconfiguration_disabled", "classzk_1_1reconfiguration__disabled.html#ab70bc2ae76ff65940f670ee10bc62431", null ]
     ] ],
-    [ "no_node", "classzk_1_1no__node.html", [
-      [ "no_node", "classzk_1_1no__node.html#a60ba1faa9a09ff5c4d67b5bc73543be6", null ],
-      [ "~no_node", "classzk_1_1no__node.html#a1da7a1f960e781129a4f4967ad984db3", null ]
-    ] ],
-    [ "not_authenticated", "classzk_1_1not__authenticated.html", [
-      [ "not_authenticated", "classzk_1_1not__authenticated.html#ada65e01138930130fea490dc4ef3991c", null ],
-      [ "~not_authenticated", "classzk_1_1not__authenticated.html#a3dcde522866ab6e394c971794677fd3b", null ]
-    ] ],
-    [ "bad_version", "classzk_1_1bad__version.html", [
-      [ "bad_version", "classzk_1_1bad__version.html#a3373422b82d6073a937ff5e99185c0e8", null ],
-      [ "~bad_version", "classzk_1_1bad__version.html#a7d63f671461f5126a6266962ccae5288", null ]
-    ] ],
-    [ "no_children_for_ephemerals", "classzk_1_1no__children__for__ephemerals.html", [
-      [ "no_children_for_ephemerals", "classzk_1_1no__children__for__ephemerals.html#a5036b8f23fc6f4eefb5c9b7bc839902d", null ],
-      [ "~no_children_for_ephemerals", "classzk_1_1no__children__for__ephemerals.html#a47d65f1320d8309f7b340ea6cda274ea", null ]
-    ] ],
-    [ "node_exists", "classzk_1_1node__exists.html", [
-      [ "node_exists", "classzk_1_1node__exists.html#a736e82051da05614fc613744749e2bf9", null ],
-      [ "~node_exists", "classzk_1_1node__exists.html#a5eeda23f371abd86afec61cf73ba5c12", null ]
-    ] ],
-    [ "not_empty", "classzk_1_1not__empty.html", [
-      [ "not_empty", "classzk_1_1not__empty.html#a00faad8eff886a807c04b3e90cfb0872", null ],
-      [ "~not_empty", "classzk_1_1not__empty.html#a6b29193ac0b779da1b6d66e2aa428c9f", null ]
+    [ "invalid_connection_state", "classzk_1_1invalid__connection__state.html", [
+      [ "invalid_connection_state", "classzk_1_1invalid__connection__state.html#a3e1f80f8754a5b1e3e99963b07df6664", null ],
+      [ "~invalid_connection_state", "classzk_1_1invalid__connection__state.html#a0dd072bc6d2279e71ed50dadceac3c12", null ]
     ] ],
     [ "session_expired", "classzk_1_1session__expired.html", [
       [ "session_expired", "classzk_1_1session__expired.html#aa74cad6db1de40125cfebbf6a73464d6", null ],
       [ "~session_expired", "classzk_1_1session__expired.html#a157369ba28662f016a5e4760f24495a4", null ]
     ] ],
-    [ "invalid_callback", "classzk_1_1invalid__callback.html", [
-      [ "invalid_callback", "classzk_1_1invalid__callback.html#a3158518951715efe371fd75befe19eeb", null ],
-      [ "~invalid_callback", "classzk_1_1invalid__callback.html#ac684d93ddea65f0697175eba245ddfe9", null ]
+    [ "not_authorized", "classzk_1_1not__authorized.html", [
+      [ "not_authorized", "classzk_1_1not__authorized.html#a3147b1842e4c26390a0d8609b7c14ecb", null ],
+      [ "~not_authorized", "classzk_1_1not__authorized.html#a1443661c369ebf700edfc351d51fcb17", null ]
     ] ],
-    [ "invalid_acl", "classzk_1_1invalid__acl.html", [
-      [ "invalid_acl", "classzk_1_1invalid__acl.html#a8b1888b03048eafcc3e3ce185bdd3b07", null ],
-      [ "~invalid_acl", "classzk_1_1invalid__acl.html#a584d58d8b85708d0c1ed1365e2ecf7cf", null ]
-    ] ],
-    [ "authentication_failed", "classzk_1_1authentication__failed.html", [
-      [ "authentication_failed", "classzk_1_1authentication__failed.html#afb08c1960aa3a4c230865952d71fa8c4", null ],
-      [ "~authentication_failed", "classzk_1_1authentication__failed.html#aaa4690a63d628f25f67b6f620d7dd063", null ]
-    ] ],
-    [ "closing", "classzk_1_1closing.html", [
-      [ "closing", "classzk_1_1closing.html#ad3217874110dd4d4c38a08a65efb7aed", null ],
-      [ "~closing", "classzk_1_1closing.html#af291e0cc2232c9bfcf09f533ed8f6187", null ]
-    ] ],
-    [ "no_response", "classzk_1_1no__response.html", [
-      [ "no_response", "classzk_1_1no__response.html#a1c9d0fcac0e618bfd9ef1471fe419476", null ],
-      [ "~no_response", "classzk_1_1no__response.html#a4e620093c0dc7b50c48e8c281517e478", null ]
-    ] ],
-    [ "session_moved", "classzk_1_1session__moved.html", [
-      [ "session_moved", "classzk_1_1session__moved.html#a156f5948dc005f7873097d60eabd53ca", null ],
-      [ "~session_moved", "classzk_1_1session__moved.html#ac2318c13d033fd783482a2ffb7eca3ac", null ]
-    ] ],
-    [ "server_read_only", "classzk_1_1server__read__only.html", [
-      [ "server_read_only", "classzk_1_1server__read__only.html#ae8d1ea48ba05d2a096e677b264f41be1", null ],
-      [ "~server_read_only", "classzk_1_1server__read__only.html#a2b55c2a2929e2b59060c6ad2508f854d", null ]
+    [ "closed", "classzk_1_1closed.html", [
+      [ "closed", "classzk_1_1closed.html#ab8f801a680dbc111b1e070c7b528d2d2", null ],
+      [ "~closed", "classzk_1_1closed.html#a1986eaa51b97eb538c43327ff4bd4cbc", null ]
     ] ],
     [ "ephemeral_on_local_session", "classzk_1_1ephemeral__on__local__session.html", [
       [ "ephemeral_on_local_session", "classzk_1_1ephemeral__on__local__session.html#aa1ae6d8cc45160878438a02e35cfaa10", null ],
       [ "~ephemeral_on_local_session", "classzk_1_1ephemeral__on__local__session.html#a4d8bfb8a771e40c49c84fc2b410e8e84", null ]
     ] ],
-    [ "no_watcher", "classzk_1_1no__watcher.html", [
-      [ "no_watcher", "classzk_1_1no__watcher.html#a35bf40eed384f135222d1e0dc9fcd40c", null ],
-      [ "~no_watcher", "classzk_1_1no__watcher.html#a07f5f232df35abde61298ed061ed2292", null ]
+    [ "read_only_connection", "classzk_1_1read__only__connection.html", [
+      [ "read_only_connection", "classzk_1_1read__only__connection.html#ab4af2ad6b783292cb211a89858abea8b", null ],
+      [ "~read_only_connection", "classzk_1_1read__only__connection.html#aaa455a6d2b56e404e973123d08e2f75f", null ]
     ] ],
-    [ "reconfiguration_disabled", "classzk_1_1reconfiguration__disabled.html", [
-      [ "reconfiguration_disabled", "classzk_1_1reconfiguration__disabled.html#af9e94d0a53357916cf53b6f8ede4b216", null ],
-      [ "~reconfiguration_disabled", "classzk_1_1reconfiguration__disabled.html#ab70bc2ae76ff65940f670ee10bc62431", null ]
+    [ "check_failed", "classzk_1_1check__failed.html", [
+      [ "check_failed", "classzk_1_1check__failed.html#aec6993b0a3f5b31ecf11d6de9f234a08", null ],
+      [ "~check_failed", "classzk_1_1check__failed.html#a7fd23109c45ab0a47aacfec5f5e61b41", null ]
+    ] ],
+    [ "no_entry", "classzk_1_1no__entry.html", [
+      [ "no_entry", "classzk_1_1no__entry.html#ad3a847b8da12f177679428c80520e31e", null ],
+      [ "~no_entry", "classzk_1_1no__entry.html#a677cd959739b79ed211b1110c1694909", null ]
+    ] ],
+    [ "entry_exists", "classzk_1_1entry__exists.html", [
+      [ "entry_exists", "classzk_1_1entry__exists.html#a34c43487c8233d563149877dab2811cc", null ],
+      [ "~entry_exists", "classzk_1_1entry__exists.html#ae73c672931539f7af1411128a9d4554c", null ]
+    ] ],
+    [ "not_empty", "classzk_1_1not__empty.html", [
+      [ "not_empty", "classzk_1_1not__empty.html#a00faad8eff886a807c04b3e90cfb0872", null ],
+      [ "~not_empty", "classzk_1_1not__empty.html#a6b29193ac0b779da1b6d66e2aa428c9f", null ]
+    ] ],
+    [ "version_mismatch", "classzk_1_1version__mismatch.html", [
+      [ "version_mismatch", "classzk_1_1version__mismatch.html#a8bb4cc19dfedcce40626ec3509d2ee66", null ],
+      [ "~version_mismatch", "classzk_1_1version__mismatch.html#aaa628113a655d924c24e73f32cecbfbf", null ]
+    ] ],
+    [ "no_children_for_ephemerals", "classzk_1_1no__children__for__ephemerals.html", [
+      [ "no_children_for_ephemerals", "classzk_1_1no__children__for__ephemerals.html#a5036b8f23fc6f4eefb5c9b7bc839902d", null ],
+      [ "~no_children_for_ephemerals", "classzk_1_1no__children__for__ephemerals.html#a47d65f1320d8309f7b340ea6cda274ea", null ]
     ] ],
     [ "transaction_failed", "classzk_1_1transaction__failed.html", [
       [ "transaction_failed", "classzk_1_1transaction__failed.html#a992c5a760d9b1a6efa2ab50ff7cbb0ca", null ],
       [ "~transaction_failed", "classzk_1_1transaction__failed.html#ad0b9bc8546d294b25f1b6581b6205511", null ],
       [ "failed_op_index", "classzk_1_1transaction__failed.html#aee7593cc6ab83bfe4017e62a4a9c94ad", null ],
       [ "underlying_cause", "classzk_1_1transaction__failed.html#ac0fafad294d24efa4e2837dd4886f581", null ]
-    ] ],
-    [ "unknown_error", "classzk_1_1unknown__error.html", [
-      [ "unknown_error", "classzk_1_1unknown__error.html#a8a53c2fb70dc68953f31e24d18ac335a", null ],
-      [ "~unknown_error", "classzk_1_1unknown__error.html#a5b1e6992cd432062e62224a311880f19", null ]
     ] ],
     [ "op", "classzk_1_1op.html", [
       [ "check_data", "structzk_1_1op_1_1check__data.html", [
@@ -492,6 +457,28 @@ var group__Client =
       [ "sequential", "group__Client.html#gga9f10c37f69a7d1084b08cac07ebb7918a6ec7489017b25b5fff20d353b6d2162e", null ],
       [ "container", "group__Client.html#gga9f10c37f69a7d1084b08cac07ebb7918a5f0b6ebc4bea10285ba2b8a6ce78b863", null ]
     ] ],
+    [ "error_code", "group__Client.html#ga59dbc6c98abba145d356557222aa9f7f", [
+      [ "ok", "group__Client.html#gga59dbc6c98abba145d356557222aa9f7fa444bcb3a3fcf8389296c49467f27e1d6", null ],
+      [ "connection_loss", "group__Client.html#gga59dbc6c98abba145d356557222aa9f7fa1c98da8d5fcc03ac4b574eaa358e9445", null ],
+      [ "marshalling_error", "group__Client.html#gga59dbc6c98abba145d356557222aa9f7facb55c77d7c56c44c2597135b3608c136", null ],
+      [ "not_implemented", "group__Client.html#gga59dbc6c98abba145d356557222aa9f7fa63877363c706f5095d05a54f8b57b0ae", null ],
+      [ "invalid_arguments", "group__Client.html#gga59dbc6c98abba145d356557222aa9f7fa242ac674d98ee2191f0bbf6de851d2d0", null ],
+      [ "new_configuration_no_quorum", "group__Client.html#gga59dbc6c98abba145d356557222aa9f7fa3703bd1d007cb145ba491ab64746e464", null ],
+      [ "reconfiguration_in_progress", "group__Client.html#gga59dbc6c98abba145d356557222aa9f7fa1452a7c28d6e58f1c3b1939af21ca589", null ],
+      [ "no_entry", "group__Client.html#gga59dbc6c98abba145d356557222aa9f7fae86ebb3d13cc1b95ade80a71c41bdbad", null ],
+      [ "not_authorized", "group__Client.html#gga59dbc6c98abba145d356557222aa9f7fa89a15d5a10ea1b37e1719c52c3507c0a", null ],
+      [ "version_mismatch", "group__Client.html#gga59dbc6c98abba145d356557222aa9f7fad38e11e056acf4b000c0551047b7171a", null ],
+      [ "no_children_for_ephemerals", "group__Client.html#gga59dbc6c98abba145d356557222aa9f7fa30addcb3f8fe57b08f6b7eca34980cd1", null ],
+      [ "entry_exists", "group__Client.html#gga59dbc6c98abba145d356557222aa9f7fa28a224da3ab2611c61969aa099558da8", null ],
+      [ "not_empty", "group__Client.html#gga59dbc6c98abba145d356557222aa9f7fac958110cdc493ed57989dde572ba9c33", null ],
+      [ "session_expired", "group__Client.html#gga59dbc6c98abba145d356557222aa9f7fa015e212cb2c720d7f0ce701deb246c57", null ],
+      [ "authentication_failed", "group__Client.html#gga59dbc6c98abba145d356557222aa9f7fa047ef5b1ba6d5dcc4dbee37c075a2088", null ],
+      [ "closed", "group__Client.html#gga59dbc6c98abba145d356557222aa9f7fa349e686330723975502e9ef4f939a5ac", null ],
+      [ "read_only_connection", "group__Client.html#gga59dbc6c98abba145d356557222aa9f7fa4ba23f70f2e62c5c27d1b06a303c36b3", null ],
+      [ "ephemeral_on_local_session", "group__Client.html#gga59dbc6c98abba145d356557222aa9f7fad5b868943af9ed85e9116f8117ab9582", null ],
+      [ "reconfiguration_disabled", "group__Client.html#gga59dbc6c98abba145d356557222aa9f7fa9206ca2ca01fed0c5a6adc2382b79b5a", null ],
+      [ "transaction_failed", "group__Client.html#gga59dbc6c98abba145d356557222aa9f7fa311d4d7fe26a56fa5bb8216d56e91a2f", null ]
+    ] ],
     [ "event_type", "group__Client.html#ga6521a380e3d01a123e5145fafe9d8d3c", [
       [ "error", "group__Client.html#gga6521a380e3d01a123e5145fafe9d8d3cacb5e100e5a9a3e7f6d1fd97512215282", null ],
       [ "created", "group__Client.html#gga6521a380e3d01a123e5145fafe9d8d3cae2fa538867c3830a859a5b17ab24644b", null ],
@@ -513,12 +500,18 @@ var group__Client =
     [ "state", "group__Client.html#ga8954c7138ce0280422d42d02b3d951ea", [
       [ "closed", "group__Client.html#gga8954c7138ce0280422d42d02b3d951eaa349e686330723975502e9ef4f939a5ac", null ],
       [ "connecting", "group__Client.html#gga8954c7138ce0280422d42d02b3d951eaa9a27316fbc5ef38b2a19c202dbdc29b7", null ],
-      [ "associating", "group__Client.html#gga8954c7138ce0280422d42d02b3d951eaaa75877c88ebd7684108dff19b4c9e175", null ],
       [ "connected", "group__Client.html#gga8954c7138ce0280422d42d02b3d951eaa06aa6fa8bdc2078e7e1bd903e70c8f6a", null ],
       [ "read_only", "group__Client.html#gga8954c7138ce0280422d42d02b3d951eaabefe72871b2de8f4f0e20108517e31fe", null ],
       [ "expired_session", "group__Client.html#gga8954c7138ce0280422d42d02b3d951eaa152004b0741ddce882b17055737bc6b5", null ],
       [ "authentication_failed", "group__Client.html#gga8954c7138ce0280422d42d02b3d951eaa047ef5b1ba6d5dcc4dbee37c075a2088", null ]
     ] ],
-    [ "allows", "group__Client.html#ga805d7e2c38e80ec6abdc6043087bfae8", null ],
-    [ "map", "group__Client.html#gad895648faa9ce5a5ef73bb4403b982e1", null ]
+    [ "error_category", "group__Client.html#ga23fb36b19fb15328a1f0b5fab82d8ea4", null ],
+    [ "get_exception_ptr_of", "group__Client.html#gafee64f7e22ce19b3c3a11ec6518b0630", null ],
+    [ "is_check_failed", "group__Client.html#ga98e1c5a97a613229e62decc2a05ebb7e", null ],
+    [ "is_invalid_arguments", "group__Client.html#ga0e9c1e0aa2a769dd0c82914840f7f044", null ],
+    [ "is_invalid_connection_state", "group__Client.html#ga9b25ed686ca476e96387b6bac280ae0d", null ],
+    [ "is_invalid_ensemble_state", "group__Client.html#gaa6f94cc9cd3a72b54107f88569039efd", null ],
+    [ "is_transport_error", "group__Client.html#ga6c9f0394768d7747503a4bb3202a59bb", null ],
+    [ "map", "group__Client.html#gad895648faa9ce5a5ef73bb4403b982e1", null ],
+    [ "throw_error", "group__Client.html#ga36c5d24d21662666fa16b632339a521a", null ]
 ];

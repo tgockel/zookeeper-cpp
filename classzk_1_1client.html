@@ -142,40 +142,40 @@ Public Member Functions</h2></td></tr>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>close</b> ()</td></tr>
 <tr class="separator:aa9ba8303c608fbfe15b480a6dfd4e6d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a923b5ab5fbd8e36ffb9f835e1c69e9e8"><td class="memItemLeft" align="right" valign="top">future&lt; <a class="el" href="classzk_1_1get__result.html">get_result</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1client.html#a923b5ab5fbd8e36ffb9f835e1c69e9e8">get</a> (string_view path) const </td></tr>
-<tr class="memdesc:a923b5ab5fbd8e36ffb9f835e1c69e9e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the data and the <code>stat</code> of the node of the given <em>path</em>.  <a href="#a923b5ab5fbd8e36ffb9f835e1c69e9e8">More...</a><br /></td></tr>
+<tr class="memdesc:a923b5ab5fbd8e36ffb9f835e1c69e9e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the data and the <code>stat</code> of the entry of the given <em>path</em>.  <a href="#a923b5ab5fbd8e36ffb9f835e1c69e9e8">More...</a><br /></td></tr>
 <tr class="separator:a923b5ab5fbd8e36ffb9f835e1c69e9e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abe391293e4e194b41c9a4c647ec71502"><td class="memItemLeft" align="right" valign="top">future&lt; <a class="el" href="classzk_1_1watch__result.html">watch_result</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1client.html#abe391293e4e194b41c9a4c647ec71502">watch</a> (string_view path) const </td></tr>
-<tr class="memdesc:abe391293e4e194b41c9a4c647ec71502"><td class="mdescLeft">&#160;</td><td class="mdescRight">Similar to <code>get</code>, but if the call is successful (no error is returned), a watch will be left on the node with the given <em>path</em>.  <a href="#abe391293e4e194b41c9a4c647ec71502">More...</a><br /></td></tr>
+<tr class="memdesc:abe391293e4e194b41c9a4c647ec71502"><td class="mdescLeft">&#160;</td><td class="mdescRight">Similar to <code>get</code>, but if the call is successful (no error is returned), a watch will be left on the entry with the given <em>path</em>.  <a href="#abe391293e4e194b41c9a4c647ec71502">More...</a><br /></td></tr>
 <tr class="separator:abe391293e4e194b41c9a4c647ec71502"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad02c6c09fcd3ec0c596be9968cf407d9"><td class="memItemLeft" align="right" valign="top">future&lt; <a class="el" href="classzk_1_1get__children__result.html">get_children_result</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1client.html#ad02c6c09fcd3ec0c596be9968cf407d9">get_children</a> (string_view path) const </td></tr>
-<tr class="memdesc:ad02c6c09fcd3ec0c596be9968cf407d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the list of the children of the node of the given <em>path</em>.  <a href="#ad02c6c09fcd3ec0c596be9968cf407d9">More...</a><br /></td></tr>
+<tr class="memdesc:ad02c6c09fcd3ec0c596be9968cf407d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the list of the children of the entry of the given <em>path</em>.  <a href="#ad02c6c09fcd3ec0c596be9968cf407d9">More...</a><br /></td></tr>
 <tr class="separator:ad02c6c09fcd3ec0c596be9968cf407d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9f240a40a9594a633987f706b2870d7f"><td class="memItemLeft" align="right" valign="top">future&lt; <a class="el" href="classzk_1_1watch__children__result.html">watch_children_result</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1client.html#a9f240a40a9594a633987f706b2870d7f">watch_children</a> (string_view path) const </td></tr>
-<tr class="memdesc:a9f240a40a9594a633987f706b2870d7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Similar to <code>get_children</code>, but if the call is successful (no error is returned), a watch will be left on the node with the given <em>path</em>.  <a href="#a9f240a40a9594a633987f706b2870d7f">More...</a><br /></td></tr>
+<tr class="memdesc:a9f240a40a9594a633987f706b2870d7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Similar to <code>get_children</code>, but if the call is successful (no error is returned), a watch will be left on the entry with the given <em>path</em>.  <a href="#a9f240a40a9594a633987f706b2870d7f">More...</a><br /></td></tr>
 <tr class="separator:a9f240a40a9594a633987f706b2870d7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3117e705416a436959885ac04385c236"><td class="memItemLeft" align="right" valign="top">future&lt; <a class="el" href="classzk_1_1exists__result.html">exists_result</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1client.html#a3117e705416a436959885ac04385c236">exists</a> (string_view path) const </td></tr>
-<tr class="memdesc:a3117e705416a436959885ac04385c236"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the <code>stat</code> of the node of the given <em>path</em> or <code>nullopt</code> if no such node exists.  <a href="#a3117e705416a436959885ac04385c236">More...</a><br /></td></tr>
+<tr class="memdesc:a3117e705416a436959885ac04385c236"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the <code>stat</code> of the entry of the given <em>path</em> or <code>nullopt</code> if it does not exist.  <a href="#a3117e705416a436959885ac04385c236">More...</a><br /></td></tr>
 <tr class="separator:a3117e705416a436959885ac04385c236"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaf8a36230170382b13c835d1bc20e303"><td class="memItemLeft" align="right" valign="top">future&lt; <a class="el" href="classzk_1_1watch__exists__result.html">watch_exists_result</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1client.html#aaf8a36230170382b13c835d1bc20e303">watch_exists</a> (string_view path) const </td></tr>
-<tr class="memdesc:aaf8a36230170382b13c835d1bc20e303"><td class="mdescLeft">&#160;</td><td class="mdescRight">Similar to <code>watch</code>, but if the call is successful (no error is returned), a watch will be left on the node with the given <em>path</em>.  <a href="#aaf8a36230170382b13c835d1bc20e303">More...</a><br /></td></tr>
+<tr class="memdesc:aaf8a36230170382b13c835d1bc20e303"><td class="mdescLeft">&#160;</td><td class="mdescRight">Similar to <code>watch</code>, but if the call is successful (no error is returned), a watch will be left on the entry with the given <em>path</em>.  <a href="#aaf8a36230170382b13c835d1bc20e303">More...</a><br /></td></tr>
 <tr class="separator:aaf8a36230170382b13c835d1bc20e303"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a45f67fc3c1bcba32dfd2f848d050d376"><td class="memItemLeft" align="right" valign="top">future&lt; <a class="el" href="classzk_1_1create__result.html">create_result</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1client.html#a45f67fc3c1bcba32dfd2f848d050d376">create</a> (string_view path, const <a class="el" href="group__Client.html#ga8175fa6edfc7371c269524730d3c0a9d">buffer</a> &amp;data, const <a class="el" href="classzk_1_1acl.html">acl</a> &amp;rules, <a class="el" href="group__Client.html#ga9f10c37f69a7d1084b08cac07ebb7918">create_mode</a> mode=<a class="el" href="group__Client.html#gga9f10c37f69a7d1084b08cac07ebb7918afea087517c26fadd409bd4b9dc642555">create_mode::normal</a>)</td></tr>
-<tr class="memdesc:a45f67fc3c1bcba32dfd2f848d050d376"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a node with the given <em>path</em>.  <a href="#a45f67fc3c1bcba32dfd2f848d050d376">More...</a><br /></td></tr>
+<tr class="memdesc:a45f67fc3c1bcba32dfd2f848d050d376"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create an entry at the given <em>path</em>.  <a href="#a45f67fc3c1bcba32dfd2f848d050d376">More...</a><br /></td></tr>
 <tr class="separator:a45f67fc3c1bcba32dfd2f848d050d376"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aea40347f04e379f86fc7138b7b72cd6a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aea40347f04e379f86fc7138b7b72cd6a"></a>
 future&lt; <a class="el" href="classzk_1_1create__result.html">create_result</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>create</b> (string_view path, const <a class="el" href="group__Client.html#ga8175fa6edfc7371c269524730d3c0a9d">buffer</a> &amp;data, <a class="el" href="group__Client.html#ga9f10c37f69a7d1084b08cac07ebb7918">create_mode</a> mode=<a class="el" href="group__Client.html#gga9f10c37f69a7d1084b08cac07ebb7918afea087517c26fadd409bd4b9dc642555">create_mode::normal</a>)</td></tr>
 <tr class="separator:aea40347f04e379f86fc7138b7b72cd6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a45b579013b53fb89c1a690f0520c4edf"><td class="memItemLeft" align="right" valign="top">future&lt; <a class="el" href="classzk_1_1set__result.html">set_result</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1client.html#a45b579013b53fb89c1a690f0520c4edf">set</a> (string_view path, const <a class="el" href="group__Client.html#ga8175fa6edfc7371c269524730d3c0a9d">buffer</a> &amp;data, <a class="el" href="structzk_1_1version.html">version</a> check=<a class="el" href="structzk_1_1basic__version.html#ad2886aa35fd1834251655e52261f035e">version::any</a>())</td></tr>
-<tr class="memdesc:a45b579013b53fb89c1a690f0520c4edf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the data for the node of the given <em>path</em> if such a node exists and the given version matches the version of the node (if the given version is <code><a class="el" href="structzk_1_1basic__version.html#ad2886aa35fd1834251655e52261f035e" title="When specified in an operation, this version specifier will always pass. ">version::any</a></code>, there is no version check).  <a href="#a45b579013b53fb89c1a690f0520c4edf">More...</a><br /></td></tr>
+<tr class="memdesc:a45b579013b53fb89c1a690f0520c4edf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the data for the entry of the given <em>path</em> if such an entry exists and the given version matches the version of the entry (if the given version is <code><a class="el" href="structzk_1_1basic__version.html#ad2886aa35fd1834251655e52261f035e" title="When specified in an operation, this version specifier will always pass. ">version::any</a></code>, there is no version check).  <a href="#a45b579013b53fb89c1a690f0520c4edf">More...</a><br /></td></tr>
 <tr class="separator:a45b579013b53fb89c1a690f0520c4edf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a26fb59acdde99cbe1c34a239dc6d2d5d"><td class="memItemLeft" align="right" valign="top">future&lt; <a class="el" href="classzk_1_1get__acl__result.html">get_acl_result</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1client.html#a26fb59acdde99cbe1c34a239dc6d2d5d">get_acl</a> (string_view path) const </td></tr>
-<tr class="memdesc:a26fb59acdde99cbe1c34a239dc6d2d5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the ACL and <code>stat</code> of the node of the given path.  <a href="#a26fb59acdde99cbe1c34a239dc6d2d5d">More...</a><br /></td></tr>
+<tr class="memdesc:a26fb59acdde99cbe1c34a239dc6d2d5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the ACL and <code>stat</code> of the entry of the given path.  <a href="#a26fb59acdde99cbe1c34a239dc6d2d5d">More...</a><br /></td></tr>
 <tr class="separator:a26fb59acdde99cbe1c34a239dc6d2d5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a448da87bda74a24a3fe1df90021558af"><td class="memItemLeft" align="right" valign="top">future&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1client.html#a448da87bda74a24a3fe1df90021558af">set_acl</a> (string_view path, const <a class="el" href="classzk_1_1acl.html">acl</a> &amp;rules, <a class="el" href="structzk_1_1acl__version.html">acl_version</a> check=<a class="el" href="structzk_1_1basic__version.html#ad2886aa35fd1834251655e52261f035e">acl_version::any</a>())</td></tr>
-<tr class="memdesc:a448da87bda74a24a3fe1df90021558af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the ACL for the node of the given <em>path</em> if such a node exists and the given version <em>check</em> matches the version of the node.  <a href="#a448da87bda74a24a3fe1df90021558af">More...</a><br /></td></tr>
+<tr class="memdesc:a448da87bda74a24a3fe1df90021558af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the ACL for the entry of the given <em>path</em> if such an entry exists and the given version <em>check</em> matches the version of the entry.  <a href="#a448da87bda74a24a3fe1df90021558af">More...</a><br /></td></tr>
 <tr class="separator:a448da87bda74a24a3fe1df90021558af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7ea06ca1328a6d1e09b53ef3eb506802"><td class="memItemLeft" align="right" valign="top">future&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1client.html#a7ea06ca1328a6d1e09b53ef3eb506802">erase</a> (string_view path, <a class="el" href="structzk_1_1version.html">version</a> check=<a class="el" href="structzk_1_1basic__version.html#ad2886aa35fd1834251655e52261f035e">version::any</a>())</td></tr>
-<tr class="memdesc:a7ea06ca1328a6d1e09b53ef3eb506802"><td class="mdescLeft">&#160;</td><td class="mdescRight">Erase the node with the given <em>path</em>.  <a href="#a7ea06ca1328a6d1e09b53ef3eb506802">More...</a><br /></td></tr>
+<tr class="memdesc:a7ea06ca1328a6d1e09b53ef3eb506802"><td class="mdescLeft">&#160;</td><td class="mdescRight">Erase the entry at the given <em>path</em>.  <a href="#a7ea06ca1328a6d1e09b53ef3eb506802">More...</a><br /></td></tr>
 <tr class="separator:a7ea06ca1328a6d1e09b53ef3eb506802"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a931607b8758e9961d8f11aec569878fe"><td class="memItemLeft" align="right" valign="top">future&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1client.html#a931607b8758e9961d8f11aec569878fe">load_fence</a> () const </td></tr>
 <tr class="memdesc:a931607b8758e9961d8f11aec569878fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ensure that all subsequent reads observe the data at the transaction on the server at or past real-time <em>now</em>.  <a href="#a931607b8758e9961d8f11aec569878fe">More...</a><br /></td></tr>
@@ -278,7 +278,7 @@ Static Public Member Functions</h2></td></tr>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
     <tr><td class="paramname"><a class="el" href="classzk_1_1transaction__failed.html" title="Thrown from client::commit when a transaction cannot be committed to the system. ">transaction_failed</a></td><td>If the transaction does not complete with an error in the transaction itself (any <code>error_code</code> that fits <code>is_api_error</code>), the future will be delivered with <code><a class="el" href="classzk_1_1transaction__failed.html" title="Thrown from client::commit when a transaction cannot be committed to the system. ">transaction_failed</a></code>. Check the thrown <code><a class="el" href="classzk_1_1transaction__failed.html#ac0fafad294d24efa4e2837dd4886f581" title="The underlying cause that caused this transaction to be aborted. ">transaction_failed::underlying_cause</a></code> for more information. </td></tr>
-    <tr><td class="paramname"><a class="el" href="classzk_1_1system__error.html">system_error</a></td><td>For the same reasons any other operation might fail, the future will be delivered with a specific <code><a class="el" href="classzk_1_1system__error.html">system_error</a></code>. </td></tr>
+    <tr><td class="paramname">system_error</td><td>For the same reasons any other operation might fail, the future will be delivered with a specific <code>system_error</code>. </td></tr>
   </table>
   </dd>
 </dl>
@@ -358,25 +358,25 @@ Static Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Create a node with the given <em>path</em>. </p>
-<p>This operation, if successful, will trigger all the watches left on the node of the given path by <code>watch</code> API calls, and the watches left on the parent node by <code>watch_children</code> API calls.</p>
+<p>Create an entry at the given <em>path</em>. </p>
+<p>This operation, if successful, will trigger all the watches left on the entry of the given path by <code>watch</code> API calls, and the watches left on the parent entry by <code>watch_children</code> API calls.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">path</td><td>The path or path pattern (if using <code><a class="el" href="group__Client.html#gga9f10c37f69a7d1084b08cac07ebb7918a6ec7489017b25b5fff20d353b6d2162e" title="The name of the znode will be appended with a monotonically increasing number. ">create_mode::sequential</a></code>) to create. </td></tr>
-    <tr><td class="paramname">data</td><td>The data to create inside the node. </td></tr>
-    <tr><td class="paramname">mode</td><td>Specifies the behavior of the created node (see <code>create_mode</code> for more information). </td></tr>
-    <tr><td class="paramname">rules</td><td>The ACL for the created znode. If unspecified, it is equivalent to providing <code><a class="el" href="classzk_1_1acls.html#ad3f828c2a71a2ad7c213a51da7663414" title="This is a completely open ACL. ">acls::open_unsafe</a></code>. </td></tr>
+    <tr><td class="paramname">path</td><td>The path or path pattern (if using <code><a class="el" href="group__Client.html#gga9f10c37f69a7d1084b08cac07ebb7918a6ec7489017b25b5fff20d353b6d2162e" title="The name of the entry will be appended with a monotonically increasing number. ">create_mode::sequential</a></code>) to create. </td></tr>
+    <tr><td class="paramname">data</td><td>The data to create for the entry. </td></tr>
+    <tr><td class="paramname">mode</td><td>Specifies the behavior of the created entry (see <code>create_mode</code> for more information). </td></tr>
+    <tr><td class="paramname">rules</td><td>The ACL for the created entry. If unspecified, it is equivalent to providing <a class="el" href="classzk_1_1acls.html#ad3f828c2a71a2ad7c213a51da7663414">acls::open_unsafe</a>. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>A future which will be filled with the name of the created znode and its <code>stat</code>.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>A future which will be filled with the name of the created entry and its <a class="el" href="structzk_1_1stat.html">stat</a>.</dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname"><a class="el" href="classzk_1_1node__exists.html">node_exists</a></td><td>If a node with the same actual path already exists in the ZooKeeper, the future will be delivered with <code><a class="el" href="classzk_1_1node__exists.html">node_exists</a></code>. Note that since a different actual path is used for each invocation of creating sequential node with the same path argument, the call should never error in this manner. </td></tr>
-    <tr><td class="paramname"><a class="el" href="classzk_1_1no__node.html">no_node</a></td><td>If the parent node does not exist in the ZooKeeper, the future will be delivered with <code><a class="el" href="classzk_1_1no__node.html">no_node</a></code>. </td></tr>
-    <tr><td class="paramname"><a class="el" href="classzk_1_1no__children__for__ephemerals.html">no_children_for_ephemerals</a></td><td>An ephemeral node cannot have children. If the parent node of the given path is ephemeral, the future will be delivered with <code><a class="el" href="classzk_1_1no__children__for__ephemerals.html">no_children_for_ephemerals</a></code>. </td></tr>
-    <tr><td class="paramname"><a class="el" href="classzk_1_1invalid__acl.html">invalid_acl</a></td><td>If the <em>acl</em> is invalid or empty, the future will be delivered with <code><a class="el" href="classzk_1_1invalid__acl.html">invalid_acl</a></code>. </td></tr>
-    <tr><td class="paramname"><a class="el" href="classzk_1_1invalid__arguments.html">invalid_arguments</a></td><td>The maximum allowable size of the data array is 1 MiB (1,048,576 bytes). If <em>data</em> is larger than this the future will be delivered with <code><a class="el" href="classzk_1_1invalid__arguments.html">invalid_arguments</a></code>. </td></tr>
+    <tr><td class="paramname"><a class="el" href="classzk_1_1entry__exists.html" title="Thrown when attempting to create a ZNode, but one already exists at the specified path...">entry_exists</a></td><td>If an entry with the same actual <em>path</em> already exists in the ZooKeeper, the future will be delivered with <code><a class="el" href="classzk_1_1entry__exists.html" title="Thrown when attempting to create a ZNode, but one already exists at the specified path...">entry_exists</a></code>. Note that since a different actual path is used for each invocation of creating sequential entry with the same <em>path</em> argument, the call should never error in this manner. </td></tr>
+    <tr><td class="paramname"><a class="el" href="classzk_1_1no__entry.html" title="Thrown from read operations when attempting to read a ZNode that does not exist. ">no_entry</a></td><td>If the parent of the given <em>path</em> does not exist, the future will be delievered with <code><a class="el" href="classzk_1_1no__entry.html" title="Thrown from read operations when attempting to read a ZNode that does not exist. ">no_entry</a></code>. </td></tr>
+    <tr><td class="paramname"><a class="el" href="classzk_1_1no__children__for__ephemerals.html" title="Ephemeral ZNodes cannot have children. ">no_children_for_ephemerals</a></td><td>An ephemeral entry cannot have children. If the parent entry of the given path is ephemeral, the future will be delivered with <code><a class="el" href="classzk_1_1no__children__for__ephemerals.html" title="Ephemeral ZNodes cannot have children. ">no_children_for_ephemerals</a></code>. </td></tr>
+    <tr><td class="paramname">invalid_acl</td><td>If the <em>acl</em> is invalid or empty, the future will be delivered with <code>invalid_acl</code>. </td></tr>
+    <tr><td class="paramname"><a class="el" href="classzk_1_1invalid__arguments.html" title="Arguments to an operation were invalid. ">invalid_arguments</a></td><td>The maximum allowable size of the data array is 1 MiB (1,048,576 bytes). If <em>data</em> is larger than this the future will be delivered with <code><a class="el" href="classzk_1_1invalid__arguments.html" title="Arguments to an operation were invalid. ">invalid_arguments</a></code>. </td></tr>
   </table>
   </dd>
 </dl>
@@ -409,13 +409,13 @@ Static Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Erase the node with the given <em>path</em>. </p>
-<p>The call will succeed if such a node exists, and the given version <em>check</em> matches the node's version (if the given version is <code><a class="el" href="structzk_1_1basic__version.html#ad2886aa35fd1834251655e52261f035e" title="When specified in an operation, this version specifier will always pass. ">version::any</a></code>, it matches any node's versions). This operation, if successful, will trigger all the watches on the node of the given path left by <code>watch</code> API calls, watches left by <code>watch_exists</code> API calls, and the watches on the parent node left by <code>watch_children</code> API calls.</p>
+<p>Erase the entry at the given <em>path</em>. </p>
+<p>The call will succeed if such an entry exists, and the given version <em>check</em> matches the entry's version (if the given version is <code><a class="el" href="structzk_1_1basic__version.html#ad2886aa35fd1834251655e52261f035e" title="When specified in an operation, this version specifier will always pass. ">version::any</a></code>, it matches any entry's versions). This operation, if successful, will trigger all the watches on the entry of the given <em>path</em> left by <code>watch</code> API calls, watches left by <code>watch_exists</code> API calls, and the watches on the parent entry left by <code>watch_children</code> API calls.</p>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname"><a class="el" href="classzk_1_1no__node.html">no_node</a></td><td>If no node with the given <em>path</em> exists, the future will be delivered with <code><a class="el" href="classzk_1_1no__node.html">no_node</a></code>. </td></tr>
-    <tr><td class="paramname"><a class="el" href="classzk_1_1bad__version.html">bad_version</a></td><td>If the given version <em>check</em> does not match the node's version, the future will be delivered with <code><a class="el" href="classzk_1_1bad__version.html">bad_version</a></code>. </td></tr>
-    <tr><td class="paramname"><a class="el" href="classzk_1_1not__empty.html">not_empty</a></td><td>You are only allowed to erase nodes with no children. If the node has children, the future will be delievered with <code><a class="el" href="classzk_1_1not__empty.html">not_empty</a></code>. </td></tr>
+    <tr><td class="paramname"><a class="el" href="classzk_1_1no__entry.html" title="Thrown from read operations when attempting to read a ZNode that does not exist. ">no_entry</a></td><td>If no entry exists at the given <em>path</em>, the future will be delievered with <code><a class="el" href="classzk_1_1no__entry.html" title="Thrown from read operations when attempting to read a ZNode that does not exist. ">no_entry</a></code>. </td></tr>
+    <tr><td class="paramname"><a class="el" href="classzk_1_1version__mismatch.html" title="Thrown from modification operations when a version check is specified and the value in the database d...">version_mismatch</a></td><td>If the given version <em>check</em> does not match the entry's version, the future will be delivered with <code><a class="el" href="classzk_1_1version__mismatch.html" title="Thrown from modification operations when a version check is specified and the value in the database d...">version_mismatch</a></code>. </td></tr>
+    <tr><td class="paramname"><a class="el" href="classzk_1_1not__empty.html" title="Thrown when attempting to erase a ZNode that has children. ">not_empty</a></td><td>You are only allowed to erase entries with no children. If the entry has children, the future will be delievered with <code><a class="el" href="classzk_1_1not__empty.html" title="Thrown when attempting to erase a ZNode that has children. ">not_empty</a></code>. </td></tr>
   </table>
   </dd>
 </dl>
@@ -438,7 +438,7 @@ Static Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Return the <code>stat</code> of the node of the given <em>path</em> or <code>nullopt</code> if no such node exists. </p>
+<p>Return the <code>stat</code> of the entry of the given <em>path</em> or <code>nullopt</code> if it does not exist. </p>
 
 <p>Definition at line <a class="el" href="client_8cpp_source.html#l00088">88</a> of file <a class="el" href="client_8cpp_source.html">client.cpp</a>.</p>
 
@@ -458,10 +458,10 @@ Static Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Return the data and the <code>stat</code> of the node of the given <em>path</em>. </p>
+<p>Return the data and the <code>stat</code> of the entry of the given <em>path</em>. </p>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname"><a class="el" href="classzk_1_1no__node.html">no_node</a></td><td>If no node with the given path exists, the future will be deliever with <code><a class="el" href="classzk_1_1no__node.html">no_node</a></code>. </td></tr>
+    <tr><td class="paramname"><a class="el" href="classzk_1_1no__entry.html" title="Thrown from read operations when attempting to read a ZNode that does not exist. ">no_entry</a></td><td>If no entry exists at the given <em>path</em>, the future will be delievered with <code><a class="el" href="classzk_1_1no__entry.html" title="Thrown from read operations when attempting to read a ZNode that does not exist. ">no_entry</a></code>. </td></tr>
   </table>
   </dd>
 </dl>
@@ -484,10 +484,10 @@ Static Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Return the ACL and <code>stat</code> of the node of the given path. </p>
+<p>Return the ACL and <code>stat</code> of the entry of the given path. </p>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname"><a class="el" href="classzk_1_1no__node.html">no_node</a></td><td>If no node with the given path exists, the future will be deliever with <code><a class="el" href="classzk_1_1no__node.html">no_node</a></code>. </td></tr>
+    <tr><td class="paramname"><a class="el" href="classzk_1_1no__entry.html" title="Thrown from read operations when attempting to read a ZNode that does not exist. ">no_entry</a></td><td>If no entry exists at the given <em>path</em>, the future will be delievered with <code><a class="el" href="classzk_1_1no__entry.html" title="Thrown from read operations when attempting to read a ZNode that does not exist. ">no_entry</a></code>. </td></tr>
   </table>
   </dd>
 </dl>
@@ -510,11 +510,11 @@ Static Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Return the list of the children of the node of the given <em>path</em>. </p>
+<p>Return the list of the children of the entry of the given <em>path</em>. </p>
 <p>The returned values are not prefixed with the provided <em>path</em>; i.e. if the database contains <code>"/path/a"</code> and <code>"/path/b"</code>, the result of <code>get_children</code> for <code>"/path"</code> will be <code>["a", "b"]</code>. The list of children returned is not sorted and no guarantee is provided as to its natural or lexical order.</p>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname"><a class="el" href="classzk_1_1no__node.html">no_node</a></td><td>If no node with the given path exists, the future will be delivered with <code><a class="el" href="classzk_1_1no__node.html">no_node</a></code>. </td></tr>
+    <tr><td class="paramname"><a class="el" href="classzk_1_1no__entry.html" title="Thrown from read operations when attempting to read a ZNode that does not exist. ">no_entry</a></td><td>If no entry exists at the given <em>path</em>, the future will be delievered with <code><a class="el" href="classzk_1_1no__entry.html" title="Thrown from read operations when attempting to read a ZNode that does not exist. ">no_entry</a></code>. </td></tr>
   </table>
   </dd>
 </dl>
@@ -582,13 +582,13 @@ Static Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Set the data for the node of the given <em>path</em> if such a node exists and the given version matches the version of the node (if the given version is <code><a class="el" href="structzk_1_1basic__version.html#ad2886aa35fd1834251655e52261f035e" title="When specified in an operation, this version specifier will always pass. ">version::any</a></code>, there is no version check). </p>
-<p>This operation, if successful, will trigger all the watches on the node of the given <code>path</code> left by <code>watch</code> calls.</p>
+<p>Set the data for the entry of the given <em>path</em> if such an entry exists and the given version matches the version of the entry (if the given version is <code><a class="el" href="structzk_1_1basic__version.html#ad2886aa35fd1834251655e52261f035e" title="When specified in an operation, this version specifier will always pass. ">version::any</a></code>, there is no version check). </p>
+<p>This operation, if successful, will trigger all the watches on the entry of the given <code>path</code> left by <code>watch</code> calls.</p>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname"><a class="el" href="classzk_1_1no__node.html">no_node</a></td><td>If no node with the given <em>path</em> exists, the future will be delivered with <code><a class="el" href="classzk_1_1no__node.html">no_node</a></code>. </td></tr>
-    <tr><td class="paramname"><a class="el" href="classzk_1_1bad__version.html">bad_version</a></td><td>If the given version <em>check</em> does not match the node's version, the future will be delivered with <code><a class="el" href="classzk_1_1bad__version.html">bad_version</a></code>. </td></tr>
-    <tr><td class="paramname"><a class="el" href="classzk_1_1invalid__arguments.html">invalid_arguments</a></td><td>The maximum allowable size of the data array is 1 MiB (1,048,576 bytes). If <em>data</em> is larger than this the future will be delivered with <code><a class="el" href="classzk_1_1invalid__arguments.html">invalid_arguments</a></code>. </td></tr>
+    <tr><td class="paramname"><a class="el" href="classzk_1_1no__entry.html" title="Thrown from read operations when attempting to read a ZNode that does not exist. ">no_entry</a></td><td>If no entry exists at the given <em>path</em>, the future will be delievered with <code><a class="el" href="classzk_1_1no__entry.html" title="Thrown from read operations when attempting to read a ZNode that does not exist. ">no_entry</a></code>. </td></tr>
+    <tr><td class="paramname"><a class="el" href="classzk_1_1version__mismatch.html" title="Thrown from modification operations when a version check is specified and the value in the database d...">version_mismatch</a></td><td>If the given version <em>check</em> does not match the entry's version, the future will be delivered with <code><a class="el" href="classzk_1_1version__mismatch.html" title="Thrown from modification operations when a version check is specified and the value in the database d...">version_mismatch</a></code>. </td></tr>
+    <tr><td class="paramname"><a class="el" href="classzk_1_1invalid__arguments.html" title="Arguments to an operation were invalid. ">invalid_arguments</a></td><td>The maximum allowable size of the data array is 1 MiB (1,048,576 bytes). If <em>data</em> is larger than this the future will be delivered with <code><a class="el" href="classzk_1_1invalid__arguments.html" title="Arguments to an operation were invalid. ">invalid_arguments</a></code>. </td></tr>
   </table>
   </dd>
 </dl>
@@ -627,17 +627,17 @@ Static Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Set the ACL for the node of the given <em>path</em> if such a node exists and the given version <em>check</em> matches the version of the node. </p>
+<p>Set the ACL for the entry of the given <em>path</em> if such an entry exists and the given version <em>check</em> matches the version of the entry. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">check</td><td>If specified, check that the ACL matches. Keep in mind this is the <code><a class="el" href="structzk_1_1acl__version.html" title="Represents a version of the ACL of a ZNode. ">acl_version</a></code>, not the data <code>version</code> &ndash; there is no way to have this operation fail on changes to <code><a class="el" href="structzk_1_1stat.html#ab75a935fcb94b962b2d2c21a56de9b3e" title="The number of changes to the data of the znode. ">stat::data_version</a></code>.</td></tr>
+    <tr><td class="paramname">check</td><td>If specified, check that the ACL matches. Keep in mind this is the <code><a class="el" href="structzk_1_1acl__version.html" title="Represents a version of the ACL of an entry. ">acl_version</a></code>, not the data <code>version</code> &ndash; there is no way to have this operation fail on changes to <code><a class="el" href="structzk_1_1stat.html#ab75a935fcb94b962b2d2c21a56de9b3e" title="The number of changes to the data of the entry. ">stat::data_version</a></code>.</td></tr>
   </table>
   </dd>
 </dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname"><a class="el" href="classzk_1_1no__node.html">no_node</a></td><td>If no node with the given <em>path</em> exists, the future will be delivered with <code><a class="el" href="classzk_1_1no__node.html">no_node</a></code>. </td></tr>
-    <tr><td class="paramname"><a class="el" href="classzk_1_1bad__version.html">bad_version</a></td><td>If the given version <em>check</em> does not match the node's version, the future will be delivered with <code><a class="el" href="classzk_1_1bad__version.html">bad_version</a></code>. </td></tr>
+    <tr><td class="paramname"><a class="el" href="classzk_1_1no__entry.html" title="Thrown from read operations when attempting to read a ZNode that does not exist. ">no_entry</a></td><td>If no entry exists at the given <em>path</em>, the future will be delievered with <code><a class="el" href="classzk_1_1no__entry.html" title="Thrown from read operations when attempting to read a ZNode that does not exist. ">no_entry</a></code>. </td></tr>
+    <tr><td class="paramname"><a class="el" href="classzk_1_1version__mismatch.html" title="Thrown from modification operations when a version check is specified and the value in the database d...">version_mismatch</a></td><td>If the given version <em>check</em> does not match the entry's version, the future will be delivered with <code><a class="el" href="classzk_1_1version__mismatch.html" title="Thrown from modification operations when a version check is specified and the value in the database d...">version_mismatch</a></code>. </td></tr>
   </table>
   </dd>
 </dl>
@@ -660,11 +660,11 @@ Static Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Similar to <code>get</code>, but if the call is successful (no error is returned), a watch will be left on the node with the given <em>path</em>. </p>
-<p>The watch will be triggered by a successful operation that sets data on the node or erases the node.</p>
+<p>Similar to <code>get</code>, but if the call is successful (no error is returned), a watch will be left on the entry with the given <em>path</em>. </p>
+<p>The watch will be triggered by a successful operation that sets data or erases the entry.</p>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname"><a class="el" href="classzk_1_1no__node.html">no_node</a></td><td>If no node with the given path exists, the future will be deliever with <code><a class="el" href="classzk_1_1no__node.html">no_node</a></code>. To watch for the creation of a node, use <code>watch_exists</code>. </td></tr>
+    <tr><td class="paramname"><a class="el" href="classzk_1_1no__entry.html" title="Thrown from read operations when attempting to read a ZNode that does not exist. ">no_entry</a></td><td>If no entry exists at the given <em>path</em>, the future will be delievered with <code><a class="el" href="classzk_1_1no__entry.html" title="Thrown from read operations when attempting to read a ZNode that does not exist. ">no_entry</a></code>. To watch for the creation of an entry, use <code>watch_exists</code>. </td></tr>
   </table>
   </dd>
 </dl>
@@ -687,8 +687,8 @@ Static Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Similar to <code>get_children</code>, but if the call is successful (no error is returned), a watch will be left on the node with the given <em>path</em>. </p>
-<p>The watch will be triggered by a successful operation that erases the node of the given <em>path</em> or creates or erases a child under the node. </p>
+<p>Similar to <code>get_children</code>, but if the call is successful (no error is returned), a watch will be left on the entry with the given <em>path</em>. </p>
+<p>The watch will be triggered by a successful operation that erases the entry at the given <em>path</em> or creates or erases a child immediately under the path (it is not recursive). </p>
 
 <p>Definition at line <a class="el" href="client_8cpp_source.html#l00083">83</a> of file <a class="el" href="client_8cpp_source.html">client.cpp</a>.</p>
 
@@ -708,8 +708,8 @@ Static Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Similar to <code>watch</code>, but if the call is successful (no error is returned), a watch will be left on the node with the given <em>path</em>. </p>
-<p>The watch will be triggered by a successful operation that creates the node, erases the node, or sets the data on the node. </p>
+<p>Similar to <code>watch</code>, but if the call is successful (no error is returned), a watch will be left on the entry with the given <em>path</em>. </p>
+<p>The watch will be triggered by a successful operation that creates the entry, erases the entry, or sets the data on the entry. </p>
 
 <p>Definition at line <a class="el" href="client_8cpp_source.html#l00093">93</a> of file <a class="el" href="client_8cpp_source.html">client.cpp</a>.</p>
 

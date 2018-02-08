@@ -135,9 +135,10 @@ Public Member Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>An individual rule in an <code>acl</code>. </p>
 <p>It consists of a <code>scheme</code> and <code>id</code> pair to identify the <em>who</em> and a <code>permission</code> set to determine what they are allowed to do.</p>
-<dl class="section see"><dt>See also</dt><dd><a href="https://zookeeper.apache.org/doc/r3.1.2/zookeeperProgrammers.html#sc_ACLPermissions">https://zookeeper.apache.org/doc/r3.1.2/zookeeperProgrammers.html#sc_ACLPermissions</a> </dd></dl>
+<p>See <a href="https://zookeeper.apache.org/doc/r3.4.10/zookeeperProgrammers.html#sc_ACLPermissions">"Builtin ACL
+Schemes"</a> in the ZooKeeper Programmer's Guide for more information. </p>
 
-<p>Definition at line <a class="el" href="acl_8hpp_source.html#l00067">67</a> of file <a class="el" href="acl_8hpp_source.html">acl.hpp</a>.</p>
+<p>Definition at line <a class="el" href="acl_8hpp_source.html#l00070">70</a> of file <a class="el" href="acl_8hpp_source.html">acl.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a13918f819b8745a8d2a3a8c764291094"></a>
 <div class="memitem">
@@ -200,7 +201,7 @@ Public Member Functions</h2></td></tr>
 <p>The ID of the user under the <code>scheme</code>. </p>
 <p>For example, with the <code>"ip"</code> <code>scheme</code>, this is an IP address or CIDR netmask. </p>
 
-<p>Definition at line <a class="el" href="acl_8hpp_source.html#l00086">86</a> of file <a class="el" href="acl_8hpp_source.html">acl.hpp</a>.</p>
+<p>Definition at line <a class="el" href="acl_8hpp_source.html#l00102">102</a> of file <a class="el" href="acl_8hpp_source.html">acl.hpp</a>.</p>
 
 </div>
 </div>
@@ -227,7 +228,7 @@ Public Member Functions</h2></td></tr>
 
 <p>The permissions associated with this ACL. </p>
 
-<p>Definition at line <a class="el" href="acl_8hpp_source.html#l00092">92</a> of file <a class="el" href="acl_8hpp_source.html">acl.hpp</a>.</p>
+<p>Definition at line <a class="el" href="acl_8hpp_source.html#l00108">108</a> of file <a class="el" href="acl_8hpp_source.html">acl.hpp</a>.</p>
 
 </div>
 </div>
@@ -253,9 +254,16 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>The authentication scheme this list is used for. </p>
-<p>The most common scheme is <code>"auth"</code>, which allows any authenticated user to perform actions (see <code><a class="el" href="classzk_1_1acls.html#a57c471388490881ee507e292c0463770" title="This ACL gives the creators authentication id&#39;s all permissions. ">acls::creator_all</a></code>). </p>
+<p>The most common scheme is <code>"auth"</code>, which allows any authenticated user to perform actions (see <code><a class="el" href="classzk_1_1acls.html#a57c471388490881ee507e292c0463770" title="This ACL gives the creators authentication id&#39;s all permissions. ">acls::creator_all</a></code>).</p>
+<p>ZooKeeper's authentication system is extensible, but the majority of use cases are covered by the built-in schemes:</p>
+<ul>
+<li><code>"world"</code> &ndash; This has a single ID <code>"anyone"</code> that represents any user of the system. The ACLs <a class="el" href="classzk_1_1acls.html#ad3f828c2a71a2ad7c213a51da7663414">acls::open_unsafe</a> and <a class="el" href="classzk_1_1acls.html#aecbb4d41a7ea06477f3e6d92e254a1aa">acls::read_unsafe</a> use the <code>"world"</code> scheme.</li>
+<li><code>"auth"</code> &ndash; This represents any authenticated user. The <code>id</code> field is unused. The ACL <a class="el" href="classzk_1_1acls.html#a57c471388490881ee507e292c0463770">acls::creator_all</a> uses the <code>"auth"</code> scheme.</li>
+<li><code>"digest"</code> &ndash; This uses a <code>"${username}:${password}"</code> string to generate MD5 hash which is then used as an identity. Authentication is done by sending the string in clear text. When used in the ACL, the expression will be the <code>"${username}:${digest}"</code>, where <code>digest</code> is the base 64 encoded SHA1 digest of <code>password</code>.</li>
+<li><code>"ip"</code> &ndash; This uses the client host IP as an identity. The <code>id</code> expression is an IP address or CIDR netmask, which will be matched against the client identity. </li>
+</ul>
 
-<p>Definition at line <a class="el" href="acl_8hpp_source.html#l00078">78</a> of file <a class="el" href="acl_8hpp_source.html">acl.hpp</a>.</p>
+<p>Definition at line <a class="el" href="acl_8hpp_source.html#l00094">94</a> of file <a class="el" href="acl_8hpp_source.html">acl.hpp</a>.</p>
 
 </div>
 </div>

@@ -114,7 +114,7 @@ $(document).ready(function(){initNavTree('structzk_1_1stat.html','');});
 </div><!--header-->
 <div class="contents">
 
-<p>Statistics about a znode, similar to the UNIX <code>stat</code> structure.  
+<p>Statistics about a ZooKeeper entry, similar to the UNIX <code>stat</code> structure.  
  <a href="structzk_1_1stat.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="types_8hpp_source.html">zk/types.hpp</a>&gt;</code></p>
@@ -128,51 +128,51 @@ using&#160;</td><td class="memItemRight" valign="bottom"><b>time_point</b> = std
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a5e8518d9de88c33067b9ee30d3e5735c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structzk_1_1stat.html#a5e8518d9de88c33067b9ee30d3e5735c">is_ephemeral</a> () const </td></tr>
-<tr class="memdesc:a5e8518d9de88c33067b9ee30d3e5735c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Is the znode an ephemeral entry?  <a href="#a5e8518d9de88c33067b9ee30d3e5735c">More...</a><br /></td></tr>
+<tr class="memdesc:a5e8518d9de88c33067b9ee30d3e5735c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Is the entry an ephemeral entry?  <a href="#a5e8518d9de88c33067b9ee30d3e5735c">More...</a><br /></td></tr>
 <tr class="separator:a5e8518d9de88c33067b9ee30d3e5735c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:ab3e491b1e72b5fe3400a2d8256a1939d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structzk_1_1transaction__id.html">transaction_id</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structzk_1_1stat.html#ab3e491b1e72b5fe3400a2d8256a1939d">create_transaction</a></td></tr>
-<tr class="memdesc:ab3e491b1e72b5fe3400a2d8256a1939d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The transaction ID that created the znode.  <a href="#ab3e491b1e72b5fe3400a2d8256a1939d">More...</a><br /></td></tr>
+<tr class="memdesc:ab3e491b1e72b5fe3400a2d8256a1939d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The transaction ID that created the entry.  <a href="#ab3e491b1e72b5fe3400a2d8256a1939d">More...</a><br /></td></tr>
 <tr class="separator:ab3e491b1e72b5fe3400a2d8256a1939d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab0adc55d8307b80b8f8b09bc0ff1ff55"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structzk_1_1transaction__id.html">transaction_id</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structzk_1_1stat.html#ab0adc55d8307b80b8f8b09bc0ff1ff55">modified_transaction</a></td></tr>
-<tr class="memdesc:ab0adc55d8307b80b8f8b09bc0ff1ff55"><td class="mdescLeft">&#160;</td><td class="mdescRight">The last transaction that modified the znode.  <a href="#ab0adc55d8307b80b8f8b09bc0ff1ff55">More...</a><br /></td></tr>
+<tr class="memdesc:ab0adc55d8307b80b8f8b09bc0ff1ff55"><td class="mdescLeft">&#160;</td><td class="mdescRight">The last transaction that modified the entry.  <a href="#ab0adc55d8307b80b8f8b09bc0ff1ff55">More...</a><br /></td></tr>
 <tr class="separator:ab0adc55d8307b80b8f8b09bc0ff1ff55"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1a4fb23e4ad72a6a890d05bd207a32ee"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structzk_1_1transaction__id.html">transaction_id</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structzk_1_1stat.html#a1a4fb23e4ad72a6a890d05bd207a32ee">child_modified_transaction</a></td></tr>
-<tr class="memdesc:a1a4fb23e4ad72a6a890d05bd207a32ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">The transaction ID that last modified the children of the znode.  <a href="#a1a4fb23e4ad72a6a890d05bd207a32ee">More...</a><br /></td></tr>
+<tr class="memdesc:a1a4fb23e4ad72a6a890d05bd207a32ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">The transaction ID that last modified the children of the entry.  <a href="#a1a4fb23e4ad72a6a890d05bd207a32ee">More...</a><br /></td></tr>
 <tr class="separator:a1a4fb23e4ad72a6a890d05bd207a32ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9bf31b996e4436c7f48e47f773f2c247"><td class="memItemLeft" align="right" valign="top">time_point&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structzk_1_1stat.html#a9bf31b996e4436c7f48e47f773f2c247">create_time</a></td></tr>
-<tr class="memdesc:a9bf31b996e4436c7f48e47f773f2c247"><td class="mdescLeft">&#160;</td><td class="mdescRight">Time the znode was created.  <a href="#a9bf31b996e4436c7f48e47f773f2c247">More...</a><br /></td></tr>
+<tr class="memdesc:a9bf31b996e4436c7f48e47f773f2c247"><td class="mdescLeft">&#160;</td><td class="mdescRight">Time the entry was created.  <a href="#a9bf31b996e4436c7f48e47f773f2c247">More...</a><br /></td></tr>
 <tr class="separator:a9bf31b996e4436c7f48e47f773f2c247"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad2aa8280ea89947cd45bf0c800c391c5"><td class="memItemLeft" align="right" valign="top">time_point&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structzk_1_1stat.html#ad2aa8280ea89947cd45bf0c800c391c5">modified_time</a></td></tr>
-<tr class="memdesc:ad2aa8280ea89947cd45bf0c800c391c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Last time the znode was last modified.  <a href="#ad2aa8280ea89947cd45bf0c800c391c5">More...</a><br /></td></tr>
+<tr class="memdesc:ad2aa8280ea89947cd45bf0c800c391c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Last time the entry was last modified.  <a href="#ad2aa8280ea89947cd45bf0c800c391c5">More...</a><br /></td></tr>
 <tr class="separator:ad2aa8280ea89947cd45bf0c800c391c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab75a935fcb94b962b2d2c21a56de9b3e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structzk_1_1version.html">zk::version</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structzk_1_1stat.html#ab75a935fcb94b962b2d2c21a56de9b3e">data_version</a></td></tr>
-<tr class="memdesc:ab75a935fcb94b962b2d2c21a56de9b3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of changes to the data of the znode.  <a href="#ab75a935fcb94b962b2d2c21a56de9b3e">More...</a><br /></td></tr>
+<tr class="memdesc:ab75a935fcb94b962b2d2c21a56de9b3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of changes to the data of the entry.  <a href="#ab75a935fcb94b962b2d2c21a56de9b3e">More...</a><br /></td></tr>
 <tr class="separator:ab75a935fcb94b962b2d2c21a56de9b3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adc07f9f9b524b7dbea97cb4199aaea0d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structzk_1_1child__version.html">zk::child_version</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structzk_1_1stat.html#adc07f9f9b524b7dbea97cb4199aaea0d">child_version</a></td></tr>
-<tr class="memdesc:adc07f9f9b524b7dbea97cb4199aaea0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of changes to the children of the znode.  <a href="#adc07f9f9b524b7dbea97cb4199aaea0d">More...</a><br /></td></tr>
+<tr class="memdesc:adc07f9f9b524b7dbea97cb4199aaea0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of changes to the children of the entry.  <a href="#adc07f9f9b524b7dbea97cb4199aaea0d">More...</a><br /></td></tr>
 <tr class="separator:adc07f9f9b524b7dbea97cb4199aaea0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abdb501bd744bdc2cfe6c89f60a0258cc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structzk_1_1acl__version.html">zk::acl_version</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structzk_1_1stat.html#abdb501bd744bdc2cfe6c89f60a0258cc">acl_version</a></td></tr>
-<tr class="memdesc:abdb501bd744bdc2cfe6c89f60a0258cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of changes to the ACL of the znode.  <a href="#abdb501bd744bdc2cfe6c89f60a0258cc">More...</a><br /></td></tr>
+<tr class="memdesc:abdb501bd744bdc2cfe6c89f60a0258cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of changes to the ACL of the entry.  <a href="#abdb501bd744bdc2cfe6c89f60a0258cc">More...</a><br /></td></tr>
 <tr class="separator:abdb501bd744bdc2cfe6c89f60a0258cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1cbb14ebe07e3cafe2359585604a3941"><td class="memItemLeft" align="right" valign="top">std::uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structzk_1_1stat.html#a1cbb14ebe07e3cafe2359585604a3941">ephemeral_owner</a></td></tr>
-<tr class="memdesc:a1cbb14ebe07e3cafe2359585604a3941"><td class="mdescLeft">&#160;</td><td class="mdescRight">The session ID of the owner of this znode, if it is an ephemeral entry.  <a href="#a1cbb14ebe07e3cafe2359585604a3941">More...</a><br /></td></tr>
+<tr class="memdesc:a1cbb14ebe07e3cafe2359585604a3941"><td class="mdescLeft">&#160;</td><td class="mdescRight">The session ID of the owner of this entry, if it is an ephemeral entry.  <a href="#a1cbb14ebe07e3cafe2359585604a3941">More...</a><br /></td></tr>
 <tr class="separator:a1cbb14ebe07e3cafe2359585604a3941"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a39e39e95576b941fd1140694df43a104"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structzk_1_1stat.html#a39e39e95576b941fd1140694df43a104">data_size</a></td></tr>
-<tr class="memdesc:a39e39e95576b941fd1140694df43a104"><td class="mdescLeft">&#160;</td><td class="mdescRight">The size of the data field of the znode.  <a href="#a39e39e95576b941fd1140694df43a104">More...</a><br /></td></tr>
+<tr class="memdesc:a39e39e95576b941fd1140694df43a104"><td class="mdescLeft">&#160;</td><td class="mdescRight">The size of the data field of the entry.  <a href="#a39e39e95576b941fd1140694df43a104">More...</a><br /></td></tr>
 <tr class="separator:a39e39e95576b941fd1140694df43a104"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a144db8e6d29e2abfe22e48c410131453"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structzk_1_1stat.html#a144db8e6d29e2abfe22e48c410131453">children_count</a></td></tr>
-<tr class="memdesc:a144db8e6d29e2abfe22e48c410131453"><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of children this znode has.  <a href="#a144db8e6d29e2abfe22e48c410131453">More...</a><br /></td></tr>
+<tr class="memdesc:a144db8e6d29e2abfe22e48c410131453"><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of children this entry has.  <a href="#a144db8e6d29e2abfe22e48c410131453">More...</a><br /></td></tr>
 <tr class="separator:a144db8e6d29e2abfe22e48c410131453"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Statistics about a znode, similar to the UNIX <code>stat</code> structure. </p>
+<div class="textblock"><p>Statistics about a ZooKeeper entry, similar to the UNIX <code>stat</code> structure. </p>
 <dl class="section note"><dt>Note</dt><dd>{Time in ZooKeeper} The concept of time is tricky in distributed systems. ZooKeeper keeps track of time in a number of ways.</dd></dl>
 <ul>
 <li><b>zxid</b>: Every change to a ZooKeeper cluster receives a stamp in the form of a <em>zxid</em> (ZooKeeper Transaction ID). This exposes the total ordering of all changes to ZooKeeper. Each change will have a unique <em>zxid</em> &ndash; if <em>zxid:a</em> is smaller than <em>zxid:b</em>, then the associated change to <em>zxid:a</em> happened before <em>zxid:b</em>.</li>
-<li><b>Version Numbers</b>: Every change to a znode will cause an increase to one of the version numbers of that node.</li>
+<li><b>Version Numbers</b>: Every change to an entry will cause an increase to one of the version numbers of that entry.</li>
 <li><b>Clock Time</b>: ZooKeeper does not use clock time to make decisions, but it uses it to put timestamps into the <code>stat</code> structure. </li>
 </ul>
 
@@ -199,9 +199,9 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Is the znode an ephemeral entry? </p>
+<p>Is the entry an ephemeral entry? </p>
 
-<p>Definition at line <a class="el" href="types_8hpp_source.html#l00252">252</a> of file <a class="el" href="types_8hpp_source.html">types.hpp</a>.</p>
+<p>Definition at line <a class="el" href="types_8hpp_source.html#l00256">256</a> of file <a class="el" href="types_8hpp_source.html">types.hpp</a>.</p>
 
 </div>
 </div>
@@ -216,7 +216,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>The number of changes to the ACL of the znode. </p>
+<p>The number of changes to the ACL of the entry. </p>
 
 <p>Definition at line <a class="el" href="types_8hpp_source.html#l00240">240</a> of file <a class="el" href="types_8hpp_source.html">types.hpp</a>.</p>
 
@@ -232,7 +232,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>The transaction ID that last modified the children of the znode. </p>
+<p>The transaction ID that last modified the children of the entry. </p>
 
 <p>Definition at line <a class="el" href="types_8hpp_source.html#l00217">217</a> of file <a class="el" href="types_8hpp_source.html">types.hpp</a>.</p>
 
@@ -248,7 +248,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>The number of changes to the children of the znode. </p>
+<p>The number of changes to the children of the entry. </p>
 
 <p>Definition at line <a class="el" href="types_8hpp_source.html#l00237">237</a> of file <a class="el" href="types_8hpp_source.html">types.hpp</a>.</p>
 
@@ -264,9 +264,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>The number of children this znode has. </p>
+<p>The number of children this entry has. </p>
 
-<p>Definition at line <a class="el" href="types_8hpp_source.html#l00249">249</a> of file <a class="el" href="types_8hpp_source.html">types.hpp</a>.</p>
+<p>Definition at line <a class="el" href="types_8hpp_source.html#l00253">253</a> of file <a class="el" href="types_8hpp_source.html">types.hpp</a>.</p>
 
 </div>
 </div>
@@ -280,8 +280,8 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Time the znode was created. </p>
-<dl class="section warning"><dt>Warning</dt><dd>This should <em>not</em> be relied on for any logic. ZooKeeper sets this time based on the system clock of the master server at the time the znode is created and performs no validity checking or synchronization with other servers in the cluster. As such, there is no guarantee that this value is accurrate. There are many situations where a znode with a higher <code>create_transaction</code> (created after) will have a lower <code>create_time</code> (appear to have been created before). </dd></dl>
+<p>Time the entry was created. </p>
+<dl class="section warning"><dt>Warning</dt><dd>This should <em>not</em> be relied on for any logic. ZooKeeper sets this time based on the system clock of the master server at the time the entry is created and performs no validity checking or synchronization with other servers in the cluster. As such, there is no guarantee that this value is accurrate. There are many situations where a entry with a higher <code>create_transaction</code> (created after) will have a lower <code>create_time</code> (appear to have been created before). </dd></dl>
 
 <p>Definition at line <a class="el" href="types_8hpp_source.html#l00228">228</a> of file <a class="el" href="types_8hpp_source.html">types.hpp</a>.</p>
 
@@ -297,7 +297,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>The transaction ID that created the znode. </p>
+<p>The transaction ID that created the entry. </p>
 
 <p>Definition at line <a class="el" href="types_8hpp_source.html#l00211">211</a> of file <a class="el" href="types_8hpp_source.html">types.hpp</a>.</p>
 
@@ -313,9 +313,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>The size of the data field of the znode. </p>
+<p>The size of the data field of the entry. </p>
 
-<p>Definition at line <a class="el" href="types_8hpp_source.html#l00246">246</a> of file <a class="el" href="types_8hpp_source.html">types.hpp</a>.</p>
+<p>Definition at line <a class="el" href="types_8hpp_source.html#l00250">250</a> of file <a class="el" href="types_8hpp_source.html">types.hpp</a>.</p>
 
 </div>
 </div>
@@ -329,7 +329,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>The number of changes to the data of the znode. </p>
+<p>The number of changes to the data of the entry. </p>
 
 <p>Definition at line <a class="el" href="types_8hpp_source.html#l00234">234</a> of file <a class="el" href="types_8hpp_source.html">types.hpp</a>.</p>
 
@@ -345,9 +345,11 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>The session ID of the owner of this znode, if it is an ephemeral entry. </p>
+<p>The session ID of the owner of this entry, if it is an ephemeral entry. </p>
+<p>In general, this is not useful beyond a check for being <code>0</code>.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="structzk_1_1stat.html#a5e8518d9de88c33067b9ee30d3e5735c" title="Is the entry an ephemeral entry? ">is_ephemeral</a> </dd></dl>
 
-<p>Definition at line <a class="el" href="types_8hpp_source.html#l00243">243</a> of file <a class="el" href="types_8hpp_source.html">types.hpp</a>.</p>
+<p>Definition at line <a class="el" href="types_8hpp_source.html#l00247">247</a> of file <a class="el" href="types_8hpp_source.html">types.hpp</a>.</p>
 
 </div>
 </div>
@@ -361,7 +363,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Last time the znode was last modified. </p>
+<p>Last time the entry was last modified. </p>
 <p>Like <code>create_time</code>, this is not a reliable source. </p>
 
 <p>Definition at line <a class="el" href="types_8hpp_source.html#l00231">231</a> of file <a class="el" href="types_8hpp_source.html">types.hpp</a>.</p>
@@ -378,7 +380,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>The last transaction that modified the znode. </p>
+<p>The last transaction that modified the entry. </p>
 
 <p>Definition at line <a class="el" href="types_8hpp_source.html#l00214">214</a> of file <a class="el" href="types_8hpp_source.html">types.hpp</a>.</p>
 

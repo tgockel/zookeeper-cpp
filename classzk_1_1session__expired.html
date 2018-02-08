@@ -110,6 +110,11 @@ $(document).ready(function(){initNavTree('classzk_1_1session__expired.html','');
 <div class="title">zk::session_expired Class Reference<span class="mlabels"><span class="mlabel">final</span></span><div class="ingroups"><a class="el" href="group__Client.html">Client</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>The client session has been ended by the server.  
+ <a href="classzk_1_1session__expired.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="error_8hpp_source.html">zk/error.hpp</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for zk::session_expired:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
@@ -118,28 +123,31 @@ $(document).ready(function(){initNavTree('classzk_1_1session__expired.html','');
  <div class="center">
   <img src="classzk_1_1session__expired.png" usemap="#zk::session_expired_map" alt=""/>
   <map id="zk::session_expired_map" name="zk::session_expired_map">
-<area href="classzk_1_1api__error.html" alt="zk::api_error" shape="rect" coords="0,168,121,192"/>
-<area href="classzk_1_1error.html" alt="zk::error" shape="rect" coords="0,112,121,136"/>
+<area href="classzk_1_1invalid__connection__state.html" title="Base type for errors generated because the connection is misconfigured. " alt="zk::invalid_connection_state" shape="rect" coords="0,112,169,136"/>
+<area href="classzk_1_1error.html" title="Base error type for all errors raised by this library. " alt="zk::error" shape="rect" coords="0,56,169,80"/>
 </map>
  </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
-<tr class="inherit_header pub_methods_classzk_1_1api__error"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classzk_1_1api__error')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classzk_1_1api__error.html">zk::api_error</a></td></tr>
-<tr class="memitem:ad50fee562fe92e8d3434240c88a7d178 inherit pub_methods_classzk_1_1api__error"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad50fee562fe92e8d3434240c88a7d178"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>api_error</b> (error_code code, std::string description)</td></tr>
-<tr class="separator:ad50fee562fe92e8d3434240c88a7d178 inherit pub_methods_classzk_1_1api__error"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classzk_1_1invalid__connection__state"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classzk_1_1invalid__connection__state')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classzk_1_1invalid__connection__state.html">zk::invalid_connection_state</a></td></tr>
+<tr class="memitem:a3e1f80f8754a5b1e3e99963b07df6664 inherit pub_methods_classzk_1_1invalid__connection__state"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3e1f80f8754a5b1e3e99963b07df6664"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>invalid_connection_state</b> (<a class="el" href="group__Client.html#ga59dbc6c98abba145d356557222aa9f7f">error_code</a> code, const std::string &amp;description)</td></tr>
+<tr class="separator:a3e1f80f8754a5b1e3e99963b07df6664 inherit pub_methods_classzk_1_1invalid__connection__state"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classzk_1_1error"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classzk_1_1error')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classzk_1_1error.html">zk::error</a></td></tr>
-<tr class="memitem:ab005dc6891f5c64d9d8a59563629b2da inherit pub_methods_classzk_1_1error"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab005dc6891f5c64d9d8a59563629b2da"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>error</b> (error_code code, std::string description)</td></tr>
-<tr class="separator:ab005dc6891f5c64d9d8a59563629b2da inherit pub_methods_classzk_1_1error"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1163870950b3af77be48b3b2aa7f0aed inherit pub_methods_classzk_1_1error"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1163870950b3af77be48b3b2aa7f0aed"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>error</b> (<a class="el" href="group__Client.html#ga59dbc6c98abba145d356557222aa9f7f">error_code</a> code, const std::string &amp;description)</td></tr>
+<tr class="separator:a1163870950b3af77be48b3b2aa7f0aed inherit pub_methods_classzk_1_1error"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9193811b2cefbe51f47bf5ea639524fd inherit pub_methods_classzk_1_1error"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9193811b2cefbe51f47bf5ea639524fd"></a>
-error_code&#160;</td><td class="memItemRight" valign="bottom"><b>code</b> () const </td></tr>
+<a class="el" href="group__Client.html#ga59dbc6c98abba145d356557222aa9f7f">error_code</a>&#160;</td><td class="memItemRight" valign="bottom"><b>code</b> () const </td></tr>
 <tr class="separator:a9193811b2cefbe51f47bf5ea639524fd inherit pub_methods_classzk_1_1error"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p>Definition at line <a class="el" href="error_8hpp_source.html#l00268">268</a> of file <a class="el" href="error_8hpp_source.html">error.hpp</a>.</p>
+<div class="textblock"><p>The client session has been ended by the server. </p>
+<p>When this occurs, all ephemerals associated with the session are deleted and standing watches are cancelled.</p>
+<p>This error is somewhat easy to confuse with <a class="el" href="classzk_1_1connection__loss.html">connection_loss</a>, as they commonly happen around the same time. The key difference is a <code><a class="el" href="classzk_1_1session__expired.html" title="The client session has been ended by the server. ">session_expired</a></code> is an explicit error delivered from the server, whereas <code><a class="el" href="classzk_1_1connection__loss.html" title="Connection to the server has been lost before the attempted operation was verified as completed...">connection_loss</a></code> is a client-related notification. A <code><a class="el" href="classzk_1_1connection__loss.html" title="Connection to the server has been lost before the attempted operation was verified as completed...">connection_loss</a></code> is <em>usually</em> followed by <code><a class="el" href="classzk_1_1session__expired.html" title="The client session has been ended by the server. ">session_expired</a></code>, but this is not guaranteed. If the client reconnects to a different server before the quorum removes the session, the connection can move back to <a class="el" href="group__Client.html#gga8954c7138ce0280422d42d02b3d951eaa06aa6fa8bdc2078e7e1bd903e70c8f6a">state::connected</a> without losing the session. The mechanism of resuming a session can happen even in cases of quorum loss, as session expiration requires a leader in order to proceed, so a client reconnecting soon enough after the ensemble forms quorum and elects a leader will resume the session, even if the quorum has been lost for days. </p>
+
+<p>Definition at line <a class="el" href="error_8hpp_source.html#l00279">279</a> of file <a class="el" href="error_8hpp_source.html">error.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>zk/<a class="el" href="error_8hpp_source.html">error.hpp</a></li>
 <li>zk/<a class="el" href="error_8cpp_source.html">error.cpp</a></li>

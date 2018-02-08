@@ -110,6 +110,11 @@ $(document).ready(function(){initNavTree('classzk_1_1authentication__failed.html
 <div class="title">zk::authentication_failed Class Reference<span class="mlabels"><span class="mlabel">final</span></span><div class="ingroups"><a class="el" href="group__Client.html">Client</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>The server rejected the connection due to invalid authentication information.  
+ <a href="classzk_1_1authentication__failed.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="error_8hpp_source.html">zk/error.hpp</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for zk::authentication_failed:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
@@ -118,28 +123,31 @@ $(document).ready(function(){initNavTree('classzk_1_1authentication__failed.html
  <div class="center">
   <img src="classzk_1_1authentication__failed.png" usemap="#zk::authentication_failed_map" alt=""/>
   <map id="zk::authentication_failed_map" name="zk::authentication_failed_map">
-<area href="classzk_1_1api__error.html" alt="zk::api_error" shape="rect" coords="0,168,146,192"/>
-<area href="classzk_1_1error.html" alt="zk::error" shape="rect" coords="0,112,146,136"/>
+<area href="classzk_1_1invalid__arguments.html" title="Arguments to an operation were invalid. " alt="zk::invalid_arguments" shape="rect" coords="0,112,146,136"/>
+<area href="classzk_1_1error.html" title="Base error type for all errors raised by this library. " alt="zk::error" shape="rect" coords="0,56,146,80"/>
 </map>
  </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
-<tr class="inherit_header pub_methods_classzk_1_1api__error"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classzk_1_1api__error')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classzk_1_1api__error.html">zk::api_error</a></td></tr>
-<tr class="memitem:ad50fee562fe92e8d3434240c88a7d178 inherit pub_methods_classzk_1_1api__error"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad50fee562fe92e8d3434240c88a7d178"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>api_error</b> (error_code code, std::string description)</td></tr>
-<tr class="separator:ad50fee562fe92e8d3434240c88a7d178 inherit pub_methods_classzk_1_1api__error"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classzk_1_1invalid__arguments"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classzk_1_1invalid__arguments')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classzk_1_1invalid__arguments.html">zk::invalid_arguments</a></td></tr>
+<tr class="memitem:a1735100ef57d786fb36d7039b470ab84 inherit pub_methods_classzk_1_1invalid__arguments"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1735100ef57d786fb36d7039b470ab84"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>invalid_arguments</b> (<a class="el" href="group__Client.html#ga59dbc6c98abba145d356557222aa9f7f">error_code</a> code, const std::string &amp;description)</td></tr>
+<tr class="separator:a1735100ef57d786fb36d7039b470ab84 inherit pub_methods_classzk_1_1invalid__arguments"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classzk_1_1error"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classzk_1_1error')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classzk_1_1error.html">zk::error</a></td></tr>
-<tr class="memitem:ab005dc6891f5c64d9d8a59563629b2da inherit pub_methods_classzk_1_1error"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab005dc6891f5c64d9d8a59563629b2da"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>error</b> (error_code code, std::string description)</td></tr>
-<tr class="separator:ab005dc6891f5c64d9d8a59563629b2da inherit pub_methods_classzk_1_1error"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1163870950b3af77be48b3b2aa7f0aed inherit pub_methods_classzk_1_1error"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1163870950b3af77be48b3b2aa7f0aed"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>error</b> (<a class="el" href="group__Client.html#ga59dbc6c98abba145d356557222aa9f7f">error_code</a> code, const std::string &amp;description)</td></tr>
+<tr class="separator:a1163870950b3af77be48b3b2aa7f0aed inherit pub_methods_classzk_1_1error"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9193811b2cefbe51f47bf5ea639524fd inherit pub_methods_classzk_1_1error"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9193811b2cefbe51f47bf5ea639524fd"></a>
-error_code&#160;</td><td class="memItemRight" valign="bottom"><b>code</b> () const </td></tr>
+<a class="el" href="group__Client.html#ga59dbc6c98abba145d356557222aa9f7f">error_code</a>&#160;</td><td class="memItemRight" valign="bottom"><b>code</b> () const </td></tr>
 <tr class="separator:a9193811b2cefbe51f47bf5ea639524fd inherit pub_methods_classzk_1_1error"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p>Definition at line <a class="el" href="error_8hpp_source.html#l00295">295</a> of file <a class="el" href="error_8hpp_source.html">error.hpp</a>.</p>
+<div class="textblock"><p>The server rejected the connection due to invalid authentication information. </p>
+<p>Depending on the authentication schemes enabled on the server, the authentication information sent might be explicit (in the case of the <code>"digest"</code> scheme) or implicit (in the case of the <code>"ip"</code> scheme). The connection must be recreated with the proper credentials to function.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classzk_1_1acl__rule.html" title="An individual rule in an acl. ">acl_rule</a> </dd></dl>
+
+<p>Definition at line <a class="el" href="error_8hpp_source.html#l00200">200</a> of file <a class="el" href="error_8hpp_source.html">error.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>zk/<a class="el" href="error_8hpp_source.html">error.hpp</a></li>
 <li>zk/<a class="el" href="error_8cpp_source.html">error.cpp</a></li>
