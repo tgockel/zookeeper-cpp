@@ -36,6 +36,8 @@ Ultimately, the usage looks like this (assuming you have a ZooKeeper server runn
 
     #include <zk/client.hpp>
     #include <zk/multi.hpp>
+    #include <zk/server/configuration.hpp>
+    #include <zk/server/server.hpp>
 
     #include <exception>
     #include <iostream>
@@ -59,8 +61,12 @@ Ultimately, the usage looks like this (assuming you have a ZooKeeper server runn
 
     int main()
     {
-        // zk::client::create returns a future<zk::client>, which is delivered when the connection is established.
-        auto client = zk::client::create("zk://127.0.0.1:2181")
+        // Start a ZK server running on localhost (not needed if you just want a client, but great for testing and
+        // demonstration purposes).
+        zk::server::server server(zk::server::configuration::make_minimal("zk-data", 2181));
+
+        // zk::client::connect returns a future<zk::client>, which is delivered when the connection is established.
+        auto client = zk::client::connect("zk://127.0.0.1:2181")
                                  .get();
 
         // get_result has a zk::buffer and zk::stat.
