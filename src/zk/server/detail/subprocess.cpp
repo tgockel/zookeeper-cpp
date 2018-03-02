@@ -2,6 +2,7 @@
 
 #include <algorithm>
 #include <iterator>
+#include <numeric>
 #include <ostream>
 #include <system_error>
 
@@ -90,27 +91,44 @@ subprocess::subprocess(std::string program_name, argument_list args) :
 
 subprocess::~subprocess() noexcept
 {
-    auto old_sig_handler = ::signal(SIGALRM, [](int) {});
-    for (unsigned attempt = 1U; _proc_id != -1; ++attempt)
-    {
-        signal(attempt == 1U ? SIGTERM : SIGABRT, true /* terminate the whole process group */);
-
-        int rc;
-        ::alarm(1);
-        if (::waitpid(_proc_id, &rc, 0) > 0)
-            _proc_id = -1;
-    }
-
-    ::alarm(0);
-    ::signal(SIGALRM, old_sig_handler);
+    terminate();
 }
 
-bool subprocess::signal(int sig_val, bool whole_group)
+void subprocess::terminate(duration_type time_to_abort) noexcept
+{
+    auto alarm_time = [&] () -> unsigned int
+                      {
+                          if (time_to_abort.count() <= 0)
+                              return 1U;
+                          else if (time_to_abort.count() > 300)
+                              return 300U;
+                          else
+                              return static_cast<unsigned int>(time_to_abort.count());
+                      }();
+
+    for (unsigned attempt = 1U; _proc_id != -1; ++attempt)
+    {
+        auto old_sig_handler = ::signal(SIGALRM, [](int) { });
+        signal(attempt == 1U ? SIGTERM : SIGABRT);
+
+        int rc;
+        ::alarm(alarm_time);
+        if (::waitpid(_proc_id, &rc, 0) > 0)
+        {
+            _proc_id = -1;
+        }
+
+        ::alarm(0);
+        ::signal(SIGALRM, old_sig_handler);
+    }
+}
+
+bool subprocess::signal(int sig_val)
 {
     if (_proc_id == -1)
         return false;
 
-    pid_t pid = whole_group ? -_proc_id : _proc_id;
+    pid_t pid = _proc_id;
 
     int rc = ::kill(pid, sig_val);
     if (rc == -1 && errno == ESRCH)

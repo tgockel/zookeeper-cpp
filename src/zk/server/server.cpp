@@ -2,13 +2,17 @@
 
 #include <zk/future.hpp>
 
+#include <cerrno>
 #include <exception>
 #include <iostream>
+#include <system_error>
 
 #include <signal.h>
+#include <sys/select.h>
 
 #include "classpath.hpp"
 #include "configuration.hpp"
+#include "detail/event_handle.hpp"
 #include "detail/subprocess.hpp"
 
 namespace zk::server
@@ -27,7 +31,8 @@ static void validate_settings(const configuration& settings)
 }
 
 server::server(classpath packages, configuration settings) :
-        _running(true)
+        _running(true),
+        _shutdown_event(std::make_unique<detail::event_handle>())
 {
     validate_settings(settings);
     _worker = std::thread([this, packages = std::move(packages), settings = std::move(settings)] ()
@@ -48,9 +53,31 @@ server::~server() noexcept
 
 void server::shutdown(bool wait_for_stop)
 {
-    _running = false;
+    _running.store(false, std::memory_order_release);
+    _shutdown_event->notify_one();
+
     if (wait_for_stop && _worker.joinable())
         _worker.join();
+}
+
+static void wait_for_event(int fd1, int fd2, int fd3)
+{
+    // This could be implemented with epoll instead of select, but since N=3, it doesn't really matter
+    ::fd_set read_fds;
+    FD_ZERO(&read_fds);
+    FD_SET(fd1, &read_fds);
+    FD_SET(fd2, &read_fds);
+    FD_SET(fd3, &read_fds);
+
+    int nfds = std::max(std::max(fd1, fd2), fd3) + 1;
+    int rc   = ::select(nfds, &read_fds, nullptr, nullptr, nullptr);
+    if (rc < 0)
+    {
+        if (errno == EINTR)
+            return;
+        else
+            throw std::system_error(errno, std::system_category(), "select");
+    }
 }
 
 void server::run_process(const classpath& packages, const configuration& settings)
@@ -70,12 +97,40 @@ void server::run_process(const classpath& packages, const configuration& setting
 
     detail::subprocess proc("java", std::move(args));
 
-    while (_running.load(std::memory_order_relaxed))
+    auto drain_pipes = [&] ()
+                       {
+                           bool read_anything = true;
+                           while (read_anything)
+                           {
+                               read_anything = false;
+
+                               auto out = proc.stdout().read();
+                               if (!out.empty())
+                               {
+                                   read_anything = true;
+                                   std::cout << out;
+                               }
+
+                               auto err = proc.stderr().read();
+                               if (!err.empty())
+                               {
+                                   read_anything = true;
+                                   std::cerr << out;
+                               }
+                           }
+                       };
+
+    while (_running.load(std::memory_order_acquire))
     {
-        std::cout << proc.stdout().read();
-        std::cerr << proc.stderr().read();
+        wait_for_event(proc.stdout().native_read_handle(),
+                       proc.stderr().native_read_handle(),
+                       _shutdown_event->native_handle()
+                      );
+
+        drain_pipes();
     }
-    proc.signal(SIGTERM);
+    proc.terminate();
+    drain_pipes();
 }
 
 }
