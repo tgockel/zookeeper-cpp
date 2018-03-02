@@ -1,13 +1,14 @@
 FROM ubuntu:18.04
 MAINTAINER Travis Gockel <travis@gockelhut.com>
 
-RUN apt-get update
-RUN apt-get install --yes   \
+RUN apt-get update          \
+ && apt-get install --yes   \
     cmake                   \
     grep                    \
     g++-7                   \
     ninja-build             \
     ivy                     \
+    lcov                    \
     libgtest-dev            \
     libzookeeper-mt-dev
 

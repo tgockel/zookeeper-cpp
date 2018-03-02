@@ -6,11 +6,13 @@ RUN apt-get install --yes software-properties-common
 RUN add-apt-repository --yes ppa:ubuntu-toolchain-r/test
 RUN apt-get update
 
-RUN apt-get install --yes   \
+RUN apt-get update          \
+ && apt-get install --yes   \
     cmake                   \
     grep                    \
     g++-7                   \
     ivy                     \
+    lcov                    \
     libgtest-dev            \
     libzookeeper-mt-dev     \
     ninja-build
