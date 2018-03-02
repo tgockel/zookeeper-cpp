@@ -15,9 +15,8 @@ typedef struct _zhandle zhandle_t;
 namespace zk
 {
 
-/** \addtogroup Client
- *  \{
-**/
+/// \addtogroup Client
+/// \{
 
 class connection_zk final :
         public connection
@@ -96,6 +95,6 @@ private:
     mutable std::mutex                                            _watches_protect;
 };
 
-/** \} **/
+/// \}
 
 }

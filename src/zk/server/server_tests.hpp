@@ -31,9 +31,8 @@ private:
     std::string             _conn_string;
 };
 
-/** Similar to \c server_fixture, but do not start up and tear down the server with each test. Instead, setup is run
- *  once at the start of a suite and torn down at the end of it.
-**/
+/// Similar to \ref server_fixture, but do not start up and tear down the server with each test. Instead, setup is run
+/// once at the start of a suite and torn down at the end of it.
 class single_server_fixture :
         public test::test_fixture
 {

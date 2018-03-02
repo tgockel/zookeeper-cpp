@@ -13,6 +13,10 @@ namespace zk
 // client                                                                                                             //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+client::client(const connection_params& params) :
+        client(connection::connect(params))
+{ }
+
 client::client(string_view conn_string) :
         client(connection::connect(conn_string))
 { }
@@ -23,9 +27,14 @@ client::client(std::shared_ptr<connection> conn) noexcept :
 
 future<client> client::connect(string_view conn_string)
 {
+    return connect(connection_params::parse(conn_string));
+}
+
+future<client> client::connect(connection_params conn_params)
+{
     try
     {
-        auto conn = connection::connect(conn_string);
+        auto conn = connection::connect(conn_params);
         auto state_change_fut = conn->watch_state();
         if (conn->state() == state::connected)
         {

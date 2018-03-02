@@ -19,12 +19,12 @@ namespace zk::server
 
 struct server_group::info
 {
-    configuration           settings;
-    std::string             name;
-    std::string             path;
-    std::uint16_t           peer_port;
-    std::uint16_t           leader_port;
-    std::shared_ptr<server> instance;
+    configuration           settings;     //!< Settings for this server.
+    std::string             name;         //!< Name of this server (string version of its ID)
+    std::string             path;         //!< settings.data_directory
+    std::uint16_t           peer_port;    //!< settings.peer_port
+    std::uint16_t           leader_port;  //!< settings.leader_port
+    std::shared_ptr<server> instance;     //!< Instance(if this is running)
 
     info(const configuration& base) :
             settings(base)
