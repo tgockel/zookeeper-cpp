@@ -114,7 +114,7 @@ $(document).ready(function(){initNavTree('classzk_1_1server_1_1server__group.htm
 </div><!--header-->
 <div class="contents">
 
-<p>Create and manage a group of <code>server</code> instances on this local machine (most likely in a single ensemble).  
+<p>Create and manage a group of <a class="el" href="classzk_1_1server_1_1server.html">server</a> instances on this local machine (most likely in a single ensemble).  
  <a href="classzk_1_1server_1_1server__group.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="server__group_8hpp_source.html">zk/server/server_group.hpp</a>&gt;</code></p>
@@ -126,11 +126,14 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a6d83fd75e1cf7cfbc1880cdbcde3aa4d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6d83fd75e1cf7cfbc1880cdbcde3aa4d"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>server_group</b> (<a class="el" href="classzk_1_1server_1_1server__group.html">server_group</a> &amp;&amp;) noexcept</td></tr>
+<tr class="memitem:a45e545c6dbdded2871b8c279d6ad1d68"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1server_1_1server__group.html#a45e545c6dbdded2871b8c279d6ad1d68">server_group</a> () noexcept</td></tr>
+<tr class="memdesc:a45e545c6dbdded2871b8c279d6ad1d68"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create an empty server group.  <a href="#a45e545c6dbdded2871b8c279d6ad1d68">More...</a><br /></td></tr>
+<tr class="separator:a45e545c6dbdded2871b8c279d6ad1d68"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d83fd75e1cf7cfbc1880cdbcde3aa4d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1server_1_1server__group.html#a6d83fd75e1cf7cfbc1880cdbcde3aa4d">server_group</a> (<a class="el" href="classzk_1_1server_1_1server__group.html">server_group</a> &amp;&amp;) noexcept</td></tr>
+<tr class="memdesc:a6d83fd75e1cf7cfbc1880cdbcde3aa4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move-construct a server group.  <a href="#a6d83fd75e1cf7cfbc1880cdbcde3aa4d">More...</a><br /></td></tr>
 <tr class="separator:a6d83fd75e1cf7cfbc1880cdbcde3aa4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0a88aed1931ebcb5642ba45eee2d0ffd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0a88aed1931ebcb5642ba45eee2d0ffd"></a>
-<a class="el" href="classzk_1_1server_1_1server__group.html">server_group</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (<a class="el" href="classzk_1_1server_1_1server__group.html">server_group</a> &amp;&amp;) noexcept</td></tr>
+<tr class="memitem:a0a88aed1931ebcb5642ba45eee2d0ffd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classzk_1_1server_1_1server__group.html">server_group</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1server_1_1server__group.html#a0a88aed1931ebcb5642ba45eee2d0ffd">operator=</a> (<a class="el" href="classzk_1_1server_1_1server__group.html">server_group</a> &amp;&amp;) noexcept</td></tr>
+<tr class="memdesc:a0a88aed1931ebcb5642ba45eee2d0ffd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move-assign a server group.  <a href="#a0a88aed1931ebcb5642ba45eee2d0ffd">More...</a><br /></td></tr>
 <tr class="separator:a0a88aed1931ebcb5642ba45eee2d0ffd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a668e88e8855897d840a6536c766544b8"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1server_1_1server__group.html#a668e88e8855897d840a6536c766544b8">get_connection_string</a> ()</td></tr>
 <tr class="memdesc:a668e88e8855897d840a6536c766544b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a connection string which can connect to any the servers in the group.  <a href="#a668e88e8855897d840a6536c766544b8">More...</a><br /></td></tr>
@@ -138,22 +141,82 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aa8e15b4a0c1af2f3336a67c325186f7f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1server_1_1server__group.html#aa8e15b4a0c1af2f3336a67c325186f7f">start_all_servers</a> (const <a class="el" href="classzk_1_1server_1_1classpath.html">classpath</a> &amp;packages)</td></tr>
 <tr class="memdesc:aa8e15b4a0c1af2f3336a67c325186f7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start all servers in the group.  <a href="#aa8e15b4a0c1af2f3336a67c325186f7f">More...</a><br /></td></tr>
 <tr class="separator:aa8e15b4a0c1af2f3336a67c325186f7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a361ed32eddd5c85494a0a5ebe54ac1c7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a361ed32eddd5c85494a0a5ebe54ac1c7"></a>
-std::size_t&#160;</td><td class="memItemRight" valign="bottom"><b>size</b> () const </td></tr>
+<tr class="memitem:a361ed32eddd5c85494a0a5ebe54ac1c7"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1server_1_1server__group.html#a361ed32eddd5c85494a0a5ebe54ac1c7">size</a> () const </td></tr>
+<tr class="memdesc:a361ed32eddd5c85494a0a5ebe54ac1c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">How many servers are in this group?  <a href="#a361ed32eddd5c85494a0a5ebe54ac1c7">More...</a><br /></td></tr>
 <tr class="separator:a361ed32eddd5c85494a0a5ebe54ac1c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:afe1fc9e26912d8834cb812978d10710b"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classzk_1_1server_1_1server__group.html">server_group</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1server_1_1server__group.html#afe1fc9e26912d8834cb812978d10710b">make_ensemble</a> (std::size_t size, const <a class="el" href="classzk_1_1server_1_1configuration.html">configuration</a> &amp;base_settings)</td></tr>
+<tr class="memitem:afe1fc9e26912d8834cb812978d10710b"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classzk_1_1server_1_1server__group.html">server_group</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1server_1_1server__group.html#afe1fc9e26912d8834cb812978d10710b">make_ensemble</a> (std::size_t <a class="el" href="classzk_1_1server_1_1server__group.html#a361ed32eddd5c85494a0a5ebe54ac1c7">size</a>, const <a class="el" href="classzk_1_1server_1_1configuration.html">configuration</a> &amp;base_settings)</td></tr>
 <tr class="memdesc:afe1fc9e26912d8834cb812978d10710b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create an ensemble of the given <em>size</em>.  <a href="#afe1fc9e26912d8834cb812978d10710b">More...</a><br /></td></tr>
 <tr class="separator:afe1fc9e26912d8834cb812978d10710b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Create and manage a group of <code>server</code> instances on this local machine (most likely in a single ensemble). </p>
-<p>This is exclusively for testing, as running multiple peers on a single machine is a very bad idea in production. </p>
+<div class="textblock"><p>Create and manage a group of <a class="el" href="classzk_1_1server_1_1server.html">server</a> instances on this local machine (most likely in a single ensemble). </p>
+<p>This is exclusively for testing, as running multiple peers on a single machine is a very bad idea in production.</p>
+<div class="fragment"><div class="line"><span class="keyword">auto</span> servers = <a class="code" href="classzk_1_1server_1_1server__group.html#afe1fc9e26912d8834cb812978d10710b">zk::server::server_group::make_ensemble</a>(3U,</div>
+<div class="line">                                                       <a class="code" href="classzk_1_1server_1_1configuration.html#a49c3bd6d6109ab64c64b6aec5c4a7965">zk::server::configuration::make_minimal</a>(<span class="stringliteral">&quot;test-data&quot;</span>)</div>
+<div class="line">                                                      );</div>
+<div class="line">servers.start_all_servers();</div>
+<div class="line"><span class="keyword">auto</span> client = <a class="code" href="classzk_1_1client.html#aaf900305a3a57f9707078e2f61db3770">zk::client::connect</a>(servers.get_connection_string()).<span class="keyword">get</span>();</div>
+<div class="line"><span class="comment">// do things with client...</span></div>
+</div><!-- fragment --> 
+<p>Definition at line <a class="el" href="server__group_8hpp_source.html#l00034">34</a> of file <a class="el" href="server__group_8hpp_source.html">server_group.hpp</a>.</p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a45e545c6dbdded2871b8c279d6ad1d68"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">zk::server::server_group::server_group </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="server__group_8hpp_source.html#l00026">26</a> of file <a class="el" href="server__group_8hpp_source.html">server_group.hpp</a>.</p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+<p>Create an empty server group. </p>
+
+<p>Definition at line <a class="el" href="server__group_8cpp_source.html#l00034">34</a> of file <a class="el" href="server__group_8cpp_source.html">server_group.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a6d83fd75e1cf7cfbc1880cdbcde3aa4d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">zk::server::server_group::server_group </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classzk_1_1server_1_1server__group.html">server_group</a> &amp;&amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">default</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Move-construct a server group. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="a668e88e8855897d840a6536c766544b8"></a>
 <div class="memitem">
 <div class="memproto">
@@ -219,6 +282,61 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a0a88aed1931ebcb5642ba45eee2d0ffd"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classzk_1_1server_1_1server__group.html">server_group</a> &amp; zk::server::server_group::operator= </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classzk_1_1server_1_1server__group.html">server_group</a> &amp;&amp;&#160;</td>
+          <td class="paramname"><em>src</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Move-assign a server group. </p>
+
+<p>Definition at line <a class="el" href="server__group_8cpp_source.html#l00039">39</a> of file <a class="el" href="server__group_8cpp_source.html">server_group.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a361ed32eddd5c85494a0a5ebe54ac1c7"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::size_t zk::server::server_group::size </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>How many servers are in this group? </p>
+
+<p>Definition at line <a class="el" href="server__group_8hpp_source.html#l00060">60</a> of file <a class="el" href="server__group_8hpp_source.html">server_group.hpp</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="aa8e15b4a0c1af2f3336a67c325186f7f"></a>
 <div class="memitem">
 <div class="memproto">
@@ -234,6 +352,7 @@ Static Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Start all servers in the group. </p>
+<p>Note that this does not wait for the servers to be up-and-running. Use a <a class="el" href="classzk_1_1client.html">client</a> instance to check for connectability. </p>
 
 <p>Definition at line <a class="el" href="server__group_8cpp_source.html#l00124">124</a> of file <a class="el" href="server__group_8cpp_source.html">server_group.cpp</a>.</p>
 

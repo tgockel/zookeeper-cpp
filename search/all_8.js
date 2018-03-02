@@ -4,6 +4,7 @@ var searchData=
   ['info',['info',['../structzk_1_1server_1_1server__group_1_1info.html',1,'zk::server::server_group']]],
   ['init_5flimit',['init_limit',['../classzk_1_1server_1_1configuration.html#afa3ec3a3d68a82a1755d9e7f5aae922e',1,'zk::server::configuration']]],
   ['initial',['initial',['../classzk_1_1watch__result.html#af672072765c6c70ab1450aac48b4a1d0',1,'zk::watch_result::initial()'],['../classzk_1_1watch__children__result.html#aef7959452451a431b47ee26b70d65537',1,'zk::watch_children_result::initial()'],['../classzk_1_1watch__exists__result.html#ab06b6488b13707c623dc6be83ccc5b68',1,'zk::watch_exists_result::initial()']]],
+  ['instance',['instance',['../structzk_1_1server_1_1server__group_1_1info.html#a12665bf0fa216f719df74dc437ffc941',1,'zk::server::server_group::info']]],
   ['invalid',['invalid',['../structzk_1_1basic__version.html#a07b78a780d47afb105df82367d637e82',1,'zk::basic_version']]],
   ['invalid_5farguments',['invalid_arguments',['../classzk_1_1invalid__arguments.html',1,'zk']]],
   ['invalid_5farguments',['invalid_arguments',['../group__Client.html#gga59dbc6c98abba145d356557222aa9f7fa242ac674d98ee2191f0bbf6de851d2d0',1,'zk']]],
@@ -16,5 +17,6 @@ var searchData=
   ['is_5finvalid_5fconnection_5fstate',['is_invalid_connection_state',['../group__Client.html#ga9b25ed686ca476e96387b6bac280ae0d',1,'zk']]],
   ['is_5finvalid_5fensemble_5fstate',['is_invalid_ensemble_state',['../group__Client.html#gaa6f94cc9cd3a72b54107f88569039efd',1,'zk']]],
   ['is_5fminimal',['is_minimal',['../classzk_1_1server_1_1configuration.html#ac2248cec031540ca3a7993d69259bed9',1,'zk::server::configuration']]],
+  ['is_5fset',['is_set',['../group__Client.html#gadf4975c092411a75981c0c7008b34ebd',1,'zk']]],
   ['is_5ftransport_5ferror',['is_transport_error',['../group__Client.html#ga6c9f0394768d7747503a4bb3202a59bb',1,'zk']]]
 ];

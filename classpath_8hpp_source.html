@@ -117,24 +117,27 @@ $(document).ready(function(){initNavTree('classpath_8hpp_source.html','');});
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">namespace </span>zk::server</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;{</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
-<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="classzk_1_1server_1_1classpath.html">   20</a></span>&#160;<span class="keyword">class </span><a class="code" href="classzk_1_1server_1_1classpath.html">classpath</a> final</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;{</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classzk_1_1server_1_1classpath.html">classpath</a>(std::vector&lt;std::string&gt; components) noexcept;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keyword">static</span> <a class="code" href="classzk_1_1server_1_1classpath.html">classpath</a> <a class="code" href="classzk_1_1server_1_1classpath.html#ae2b173799b0662f46c97775f6b4dae99">system_default</a>();</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    std::string <a class="code" href="classzk_1_1server_1_1classpath.html#a90cc62f322943a33c01271beb4e7d1ec">command_line</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="classzk_1_1server_1_1classpath.html">   18</a></span>&#160;<span class="keyword">class </span><a class="code" href="classzk_1_1server_1_1classpath.html">classpath</a> final</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;{</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classzk_1_1server_1_1classpath.html#a4c08b7da435dde82ab5d6ef14676dc04">classpath</a>(std::vector&lt;std::string&gt; components) noexcept;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keyword">static</span> <a class="code" href="classzk_1_1server_1_1classpath.html">classpath</a> <a class="code" href="classzk_1_1server_1_1classpath.html#ae2b173799b0662f46c97775f6b4dae99">system_default</a>();</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    std::string <a class="code" href="classzk_1_1server_1_1classpath.html#a90cc62f322943a33c01271beb4e7d1ec">command_line</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keyword">friend</span> std::ostream&amp; operator&lt;&lt;(std::ostream&amp;, <span class="keyword">const</span> <a class="code" href="classzk_1_1server_1_1classpath.html">classpath</a>&amp;);</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keyword">friend</span> std::ostream&amp; operator&lt;&lt;(std::ostream&amp;, <span class="keyword">const</span> <a class="code" href="classzk_1_1server_1_1classpath.html">classpath</a>&amp;);</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    std::vector&lt;std::string&gt; _components;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;};</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    std::vector&lt;std::string&gt; _components;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;};</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;}</div>
-<div class="ttc" id="classzk_1_1server_1_1classpath_html"><div class="ttname"><a href="classzk_1_1server_1_1classpath.html">zk::server::classpath</a></div><div class="ttdoc">Represents a collection of JARs or other Java entities that should be provided as the --classpath to ...</div><div class="ttdef"><b>Definition:</b> <a href="classpath_8hpp_source.html#l00020">classpath.hpp:20</a></div></div>
-<div class="ttc" id="classzk_1_1server_1_1classpath_html_a90cc62f322943a33c01271beb4e7d1ec"><div class="ttname"><a href="classzk_1_1server_1_1classpath.html#a90cc62f322943a33c01271beb4e7d1ec">zk::server::classpath::command_line</a></div><div class="ttdeci">std::string command_line() const </div><div class="ttdoc">Get the command-line representation of this classpath. </div><div class="ttdef"><b>Definition:</b> <a href="classpath_8cpp_source.html#l00111">classpath.cpp:111</a></div></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;}</div>
+<div class="ttc" id="classzk_1_1server_1_1classpath_html"><div class="ttname"><a href="classzk_1_1server_1_1classpath.html">zk::server::classpath</a></div><div class="ttdoc">Represents a collection of JARs or other Java entities that should be provided as the --classpath to ...</div><div class="ttdef"><b>Definition:</b> <a href="classpath_8hpp_source.html#l00018">classpath.hpp:18</a></div></div>
+<div class="ttc" id="classzk_1_1server_1_1classpath_html_a4c08b7da435dde82ab5d6ef14676dc04"><div class="ttname"><a href="classzk_1_1server_1_1classpath.html#a4c08b7da435dde82ab5d6ef14676dc04">zk::server::classpath::classpath</a></div><div class="ttdeci">classpath(std::vector&lt; std::string &gt; components) noexcept</div><div class="ttdoc">Create a classpath specification from the provided components. </div><div class="ttdef"><b>Definition:</b> <a href="classpath_8cpp_source.html#l00107">classpath.cpp:107</a></div></div>
+<div class="ttc" id="classzk_1_1server_1_1classpath_html_a90cc62f322943a33c01271beb4e7d1ec"><div class="ttname"><a href="classzk_1_1server_1_1classpath.html#a90cc62f322943a33c01271beb4e7d1ec">zk::server::classpath::command_line</a></div><div class="ttdeci">std::string command_line() const </div><div class="ttdoc">Get the command-line representation of this classpath. This puts &#39;:&#39; characters between the component...</div><div class="ttdef"><b>Definition:</b> <a href="classpath_8cpp_source.html#l00111">classpath.cpp:111</a></div></div>
 <div class="ttc" id="classzk_1_1server_1_1classpath_html_ae2b173799b0662f46c97775f6b4dae99"><div class="ttname"><a href="classzk_1_1server_1_1classpath.html#ae2b173799b0662f46c97775f6b4dae99">zk::server::classpath::system_default</a></div><div class="ttdeci">static classpath system_default()</div><div class="ttdoc">Load the system-default classpath for ZooKeeper. </div><div class="ttdef"><b>Definition:</b> <a href="classpath_8cpp_source.html#l00101">classpath.cpp:101</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

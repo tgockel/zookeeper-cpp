@@ -113,11 +113,16 @@ $(document).ready(function(){initNavTree('classzk_1_1multi__result.html','');});
 <div class="title">zk::multi_result Class Reference<span class="mlabels"><span class="mlabel">final</span></span><div class="ingroups"><a class="el" href="group__Client.html">Client</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>The result of a successful <a class="el" href="classzk_1_1client.html#ae34b4c97f7c9fd09e5d9569e6c47e7ca">client::commit</a> operation.  
+ <a href="classzk_1_1multi__result.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="multi_8hpp_source.html">zk/multi.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1multi__result_1_1part.html">part</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A part of a result.  <a href="classzk_1_1multi__result_1_1part.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A part of a result. The behavior depends on the type of <a class="el" href="classzk_1_1op.html">op</a> provided to the original transaction.  <a href="classzk_1_1multi__result_1_1part.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
@@ -137,17 +142,30 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ab49b94fea0ed190e6a547abd61d6769c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab49b94fea0ed190e6a547abd61d6769c"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>multi_result</b> (std::vector&lt; <a class="el" href="classzk_1_1multi__result_1_1part.html">part</a> &gt; parts) noexcept</td></tr>
 <tr class="separator:ab49b94fea0ed190e6a547abd61d6769c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ade86651e849155a7ca7294f5be99a432"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ade86651e849155a7ca7294f5be99a432"></a>
-size_type&#160;</td><td class="memItemRight" valign="bottom"><b>size</b> () const </td></tr>
+<tr class="memitem:ade86651e849155a7ca7294f5be99a432"><td class="memItemLeft" align="right" valign="top">size_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1multi__result.html#ade86651e849155a7ca7294f5be99a432">size</a> () const </td></tr>
+<tr class="memdesc:ade86651e849155a7ca7294f5be99a432"><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of results in this transaction bundle.  <a href="#ade86651e849155a7ca7294f5be99a432">More...</a><br /></td></tr>
 <tr class="separator:ade86651e849155a7ca7294f5be99a432"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a12b0d2c06ce6f655e40d4dc098b7ba51"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a12b0d2c06ce6f655e40d4dc098b7ba51"></a>
-<a class="el" href="classzk_1_1multi__result_1_1part.html">part</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator[]</b> (size_type idx)</td></tr>
+<tr class="memitem:af32eea83726b58594bb38285e083455e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1multi__result.html#af32eea83726b58594bb38285e083455e">reserve</a> (size_type capacity)</td></tr>
+<tr class="memdesc:af32eea83726b58594bb38285e083455e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Increase the reserved memory block so it can store at least <em>capacity</em> results without reallocating.  <a href="#af32eea83726b58594bb38285e083455e">More...</a><br /></td></tr>
+<tr class="separator:af32eea83726b58594bb38285e083455e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7ad61b8590ecec74550a244b5567c83"><td class="memTemplParams" colspan="2">template&lt;typename... TArgs&gt; </td></tr>
+<tr class="memitem:ae7ad61b8590ecec74550a244b5567c83"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classzk_1_1multi__result.html#ae7ad61b8590ecec74550a244b5567c83">emplace_back</a> (TArgs &amp;&amp;...args)</td></tr>
+<tr class="memdesc:ae7ad61b8590ecec74550a244b5567c83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a result emplace on the end of the list using <em>args</em>.  <a href="#ae7ad61b8590ecec74550a244b5567c83">More...</a><br /></td></tr>
+<tr class="separator:ae7ad61b8590ecec74550a244b5567c83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader"></div></td></tr>
+<tr class="memitem:a12b0d2c06ce6f655e40d4dc098b7ba51"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classzk_1_1multi__result_1_1part.html">part</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1multi__result.html#a12b0d2c06ce6f655e40d4dc098b7ba51">operator[]</a> (size_type idx)</td></tr>
 <tr class="separator:a12b0d2c06ce6f655e40d4dc098b7ba51"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2cc0e42c1f616fb081fee608a49f2a2f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2cc0e42c1f616fb081fee608a49f2a2f"></a>
 const <a class="el" href="classzk_1_1multi__result_1_1part.html">part</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator[]</b> (size_type idx) const </td></tr>
 <tr class="separator:a2cc0e42c1f616fb081fee608a49f2a2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a31d0b16ad74b67c9e50bd249760f321c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a31d0b16ad74b67c9e50bd249760f321c"></a>
-iterator&#160;</td><td class="memItemRight" valign="bottom"><b>begin</b> ()</td></tr>
+<tr><td colspan="2"><div class="groupHeader"></div></td></tr>
+<tr class="memitem:a3c5c7164f110b3ea0979b5b9ea4c3cb5"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classzk_1_1multi__result_1_1part.html">part</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1multi__result.html#a3c5c7164f110b3ea0979b5b9ea4c3cb5">at</a> (size_type idx) const </td></tr>
+<tr class="separator:a3c5c7164f110b3ea0979b5b9ea4c3cb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45edec958bba76c6305c185deeee7958"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a45edec958bba76c6305c185deeee7958"></a>
+<a class="el" href="classzk_1_1multi__result_1_1part.html">part</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>at</b> (size_type idx)</td></tr>
+<tr class="separator:a45edec958bba76c6305c185deeee7958"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader"></div></td></tr>
+<tr class="memitem:a31d0b16ad74b67c9e50bd249760f321c"><td class="memItemLeft" align="right" valign="top">iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1multi__result.html#a31d0b16ad74b67c9e50bd249760f321c">begin</a> ()</td></tr>
 <tr class="separator:a31d0b16ad74b67c9e50bd249760f321c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaf915ca1e741b8809e9ea4bbaefe85d5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaf915ca1e741b8809e9ea4bbaefe85d5"></a>
 const_iterator&#160;</td><td class="memItemRight" valign="bottom"><b>begin</b> () const </td></tr>
@@ -155,8 +173,8 @@ const_iterator&#160;</td><td class="memItemRight" valign="bottom"><b>begin</b> (
 <tr class="memitem:aa6365e1d8021c640d1c9f12cd84d7614"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa6365e1d8021c640d1c9f12cd84d7614"></a>
 const_iterator&#160;</td><td class="memItemRight" valign="bottom"><b>cbegin</b> () const </td></tr>
 <tr class="separator:aa6365e1d8021c640d1c9f12cd84d7614"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0893b2314febd0a792b147394d75e1a3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0893b2314febd0a792b147394d75e1a3"></a>
-iterator&#160;</td><td class="memItemRight" valign="bottom"><b>end</b> ()</td></tr>
+<tr><td colspan="2"><div class="groupHeader"></div></td></tr>
+<tr class="memitem:a0893b2314febd0a792b147394d75e1a3"><td class="memItemLeft" align="right" valign="top">iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1multi__result.html#a0893b2314febd0a792b147394d75e1a3">end</a> ()</td></tr>
 <tr class="separator:a0893b2314febd0a792b147394d75e1a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adb96b8ff7fb0d8ec7064c2ec1415a771"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adb96b8ff7fb0d8ec7064c2ec1415a771"></a>
 const_iterator&#160;</td><td class="memItemRight" valign="bottom"><b>end</b> () const </td></tr>
@@ -164,24 +182,250 @@ const_iterator&#160;</td><td class="memItemRight" valign="bottom"><b>end</b> () 
 <tr class="memitem:a33c732919a0620397c496c76e8bb3473"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a33c732919a0620397c496c76e8bb3473"></a>
 const_iterator&#160;</td><td class="memItemRight" valign="bottom"><b>cend</b> () const </td></tr>
 <tr class="separator:a33c732919a0620397c496c76e8bb3473"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af32eea83726b58594bb38285e083455e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af32eea83726b58594bb38285e083455e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>reserve</b> (size_type capacity)</td></tr>
-<tr class="separator:af32eea83726b58594bb38285e083455e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae7ad61b8590ecec74550a244b5567c83"><td class="memTemplParams" colspan="2"><a class="anchor" id="ae7ad61b8590ecec74550a244b5567c83"></a>
-template&lt;typename... TArgs&gt; </td></tr>
-<tr class="memitem:ae7ad61b8590ecec74550a244b5567c83"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><b>emplace_back</b> (TArgs &amp;&amp;...args)</td></tr>
-<tr class="separator:ae7ad61b8590ecec74550a244b5567c83"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4ce26ef93fa00838b2bcba17887d09b7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4ce26ef93fa00838b2bcba17887d09b7"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>push_back</b> (<a class="el" href="classzk_1_1multi__result_1_1part.html">part</a> &amp;&amp;x)</td></tr>
+<tr><td colspan="2"><div class="groupHeader"></div></td></tr>
+<tr class="memitem:a4ce26ef93fa00838b2bcba17887d09b7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1multi__result.html#a4ce26ef93fa00838b2bcba17887d09b7">push_back</a> (<a class="el" href="classzk_1_1multi__result_1_1part.html">part</a> &amp;&amp;x)</td></tr>
 <tr class="separator:a4ce26ef93fa00838b2bcba17887d09b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a20a6a0a7c180b853eb25acaa1d794fe6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a20a6a0a7c180b853eb25acaa1d794fe6"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>push_back</b> (const <a class="el" href="classzk_1_1multi__result_1_1part.html">part</a> &amp;x)</td></tr>
 <tr class="separator:a20a6a0a7c180b853eb25acaa1d794fe6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p>Definition at line <a class="el" href="multi_8hpp_source.html#l00190">190</a> of file <a class="el" href="multi_8hpp_source.html">multi.hpp</a>.</p>
-</div><hr/>The documentation for this class was generated from the following files:<ul>
+<div class="textblock"><p>The result of a successful <a class="el" href="classzk_1_1client.html#ae34b4c97f7c9fd09e5d9569e6c47e7ca">client::commit</a> operation. </p>
+
+<p>Definition at line <a class="el" href="multi_8hpp_source.html#l00242">242</a> of file <a class="el" href="multi_8hpp_source.html">multi.hpp</a>.</p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a3c5c7164f110b3ea0979b5b9ea4c3cb5"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classzk_1_1multi__result_1_1part.html">part</a>&amp; zk::multi_result::at </td>
+          <td>(</td>
+          <td class="paramtype">size_type&#160;</td>
+          <td class="paramname"><em>idx</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Get the result at the given <em>idx</em>.</p>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::out_of_range</td><td>if <em>idx</em> is larger than <a class="el" href="classzk_1_1multi__result.html#ade86651e849155a7ca7294f5be99a432">size</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="multi_8hpp_source.html#l00312">312</a> of file <a class="el" href="multi_8hpp_source.html">multi.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a31d0b16ad74b67c9e50bd249760f321c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">iterator zk::multi_result::begin </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Get an iterator to the beginning of the result list. </p>
+
+<p>Definition at line <a class="el" href="multi_8hpp_source.html#l00318">318</a> of file <a class="el" href="multi_8hpp_source.html">multi.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae7ad61b8590ecec74550a244b5567c83"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename... TArgs&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void zk::multi_result::emplace_back </td>
+          <td>(</td>
+          <td class="paramtype">TArgs &amp;&amp;...&#160;</td>
+          <td class="paramname"><em>args</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Construct a result emplace on the end of the list using <em>args</em>. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classzk_1_1multi__result.html#a4ce26ef93fa00838b2bcba17887d09b7">push_back</a> </dd></dl>
+
+<p>Definition at line <a class="el" href="multi_8hpp_source.html#l00337">337</a> of file <a class="el" href="multi_8hpp_source.html">multi.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a0893b2314febd0a792b147394d75e1a3"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">iterator zk::multi_result::end </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Get an iterator to the end of the result list. </p>
+
+<p>Definition at line <a class="el" href="multi_8hpp_source.html#l00325">325</a> of file <a class="el" href="multi_8hpp_source.html">multi.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a12b0d2c06ce6f655e40d4dc098b7ba51"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classzk_1_1multi__result_1_1part.html">part</a>&amp; zk::multi_result::operator[] </td>
+          <td>(</td>
+          <td class="paramtype">size_type&#160;</td>
+          <td class="paramname"><em>idx</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Get the result at the given <em>idx</em>.</p>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::out_of_range</td><td>if <em>idx</em> is larger than <em>size</em>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="multi_8hpp_source.html#l00304">304</a> of file <a class="el" href="multi_8hpp_source.html">multi.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a4ce26ef93fa00838b2bcba17887d09b7"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void zk::multi_result::push_back </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classzk_1_1multi__result_1_1part.html">part</a> &amp;&amp;&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Add the operation <em>x</em> to the end of this list. </p>
+
+<p>Definition at line <a class="el" href="multi_8hpp_source.html#l00344">344</a> of file <a class="el" href="multi_8hpp_source.html">multi.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af32eea83726b58594bb38285e083455e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void zk::multi_result::reserve </td>
+          <td>(</td>
+          <td class="paramtype">size_type&#160;</td>
+          <td class="paramname"><em>capacity</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Increase the reserved memory block so it can store at least <em>capacity</em> results without reallocating. </p>
+
+<p>Definition at line <a class="el" href="multi_8hpp_source.html#l00331">331</a> of file <a class="el" href="multi_8hpp_source.html">multi.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ade86651e849155a7ca7294f5be99a432"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_type zk::multi_result::size </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The number of results in this transaction bundle. </p>
+
+<p>Definition at line <a class="el" href="multi_8hpp_source.html#l00298">298</a> of file <a class="el" href="multi_8hpp_source.html">multi.hpp</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>zk/<a class="el" href="multi_8hpp_source.html">multi.hpp</a></li>
 <li>zk/<a class="el" href="multi_8cpp_source.html">multi.cpp</a></li>
 </ul>

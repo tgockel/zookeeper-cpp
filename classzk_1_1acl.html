@@ -113,7 +113,7 @@ $(document).ready(function(){initNavTree('classzk_1_1acl.html','');});
 </div><!--header-->
 <div class="contents">
 
-<p>An access control list is a wrapper around <code><a class="el" href="classzk_1_1acl__rule.html" title="An individual rule in an acl. ">acl_rule</a></code> instances.  
+<p>An access control list is a wrapper around <a class="el" href="classzk_1_1acl__rule.html">acl_rule</a> instances.  
  <a href="classzk_1_1acl.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="acl_8hpp_source.html">zk/acl.hpp</a>&gt;</code></p>
@@ -132,20 +132,39 @@ using&#160;</td><td class="memItemRight" valign="bottom"><b>size_type</b> = std:
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a9c250878af9c2de4f7154d07459a3673"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9c250878af9c2de4f7154d07459a3673"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>acl</b> (std::vector&lt; <a class="el" href="classzk_1_1acl__rule.html">acl_rule</a> &gt; rules) noexcept</td></tr>
+<tr class="memitem:af326bd4c79c32fd841d6e0f8dd21c69f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1acl.html#af326bd4c79c32fd841d6e0f8dd21c69f">acl</a> ()=default</td></tr>
+<tr class="memdesc:af326bd4c79c32fd841d6e0f8dd21c69f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create an empty ACL. Keep in mind that an empty ACL is an illegal ACL.  <a href="#af326bd4c79c32fd841d6e0f8dd21c69f">More...</a><br /></td></tr>
+<tr class="separator:af326bd4c79c32fd841d6e0f8dd21c69f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c250878af9c2de4f7154d07459a3673"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1acl.html#a9c250878af9c2de4f7154d07459a3673">acl</a> (std::vector&lt; <a class="el" href="classzk_1_1acl__rule.html">acl_rule</a> &gt; rules) noexcept</td></tr>
+<tr class="memdesc:a9c250878af9c2de4f7154d07459a3673"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create an instance with the provided <em>rules</em>.  <a href="#a9c250878af9c2de4f7154d07459a3673">More...</a><br /></td></tr>
 <tr class="separator:a9c250878af9c2de4f7154d07459a3673"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab49e45a4f2c0fc02c686e92bc109e911"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab49e45a4f2c0fc02c686e92bc109e911"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>acl</b> (std::initializer_list&lt; <a class="el" href="classzk_1_1acl__rule.html">acl_rule</a> &gt; rules)</td></tr>
+<tr class="memitem:ab49e45a4f2c0fc02c686e92bc109e911"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1acl.html#ab49e45a4f2c0fc02c686e92bc109e911">acl</a> (std::initializer_list&lt; <a class="el" href="classzk_1_1acl__rule.html">acl_rule</a> &gt; rules)</td></tr>
+<tr class="memdesc:ab49e45a4f2c0fc02c686e92bc109e911"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create an instance with the provided <em>rules</em>.  <a href="#ab49e45a4f2c0fc02c686e92bc109e911">More...</a><br /></td></tr>
 <tr class="separator:ab49e45a4f2c0fc02c686e92bc109e911"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1adc0b1dbd0b5a5f9eda954245b846d2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1adc0b1dbd0b5a5f9eda954245b846d2"></a>
-size_type&#160;</td><td class="memItemRight" valign="bottom"><b>size</b> () const </td></tr>
+<tr class="memitem:a1adc0b1dbd0b5a5f9eda954245b846d2"><td class="memItemLeft" align="right" valign="top">size_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1acl.html#a1adc0b1dbd0b5a5f9eda954245b846d2">size</a> () const </td></tr>
+<tr class="memdesc:a1adc0b1dbd0b5a5f9eda954245b846d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of rules in this ACL.  <a href="#a1adc0b1dbd0b5a5f9eda954245b846d2">More...</a><br /></td></tr>
 <tr class="separator:a1adc0b1dbd0b5a5f9eda954245b846d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afb874e9e12d23cec513fa44b5ea584d0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afb874e9e12d23cec513fa44b5ea584d0"></a>
-const <a class="el" href="classzk_1_1acl__rule.html">acl_rule</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator[]</b> (size_type idx) const </td></tr>
+<tr class="memitem:ad2ea812efd5ca63fe766d2dac9ba3e83"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1acl.html#ad2ea812efd5ca63fe766d2dac9ba3e83">reserve</a> (size_type capacity)</td></tr>
+<tr class="memdesc:ad2ea812efd5ca63fe766d2dac9ba3e83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Increase the reserved memory block so it can store at least <em>capacity</em> rules without reallocating.  <a href="#ad2ea812efd5ca63fe766d2dac9ba3e83">More...</a><br /></td></tr>
+<tr class="separator:ad2ea812efd5ca63fe766d2dac9ba3e83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd5369fd1045322e3f9737d201186ed5"><td class="memTemplParams" colspan="2">template&lt;typename... TArgs&gt; </td></tr>
+<tr class="memitem:afd5369fd1045322e3f9737d201186ed5"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classzk_1_1acl.html#afd5369fd1045322e3f9737d201186ed5">emplace_back</a> (TArgs &amp;&amp;...args)</td></tr>
+<tr class="memdesc:afd5369fd1045322e3f9737d201186ed5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a rule emplace on the end of the list using <em>args</em>.  <a href="#afd5369fd1045322e3f9737d201186ed5">More...</a><br /></td></tr>
+<tr class="separator:afd5369fd1045322e3f9737d201186ed5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader"></div></td></tr>
+<tr class="memitem:afb874e9e12d23cec513fa44b5ea584d0"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classzk_1_1acl__rule.html">acl_rule</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1acl.html#afb874e9e12d23cec513fa44b5ea584d0">operator[]</a> (size_type idx) const </td></tr>
 <tr class="separator:afb874e9e12d23cec513fa44b5ea584d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a74d0cee9b4f150c4b7f1524edb787853"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a74d0cee9b4f150c4b7f1524edb787853"></a>
-iterator&#160;</td><td class="memItemRight" valign="bottom"><b>begin</b> ()</td></tr>
+<tr class="memitem:adb96e69071c73a7631f31b79de4b2864"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adb96e69071c73a7631f31b79de4b2864"></a>
+<a class="el" href="classzk_1_1acl__rule.html">acl_rule</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator[]</b> (size_type idx)</td></tr>
+<tr class="separator:adb96e69071c73a7631f31b79de4b2864"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader"></div></td></tr>
+<tr class="memitem:abd29242193d2357f75c839012f27a915"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classzk_1_1acl__rule.html">acl_rule</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1acl.html#abd29242193d2357f75c839012f27a915">at</a> (size_type idx) const </td></tr>
+<tr class="separator:abd29242193d2357f75c839012f27a915"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a341bd09ad63eea09bce005452c405232"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a341bd09ad63eea09bce005452c405232"></a>
+<a class="el" href="classzk_1_1acl__rule.html">acl_rule</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>at</b> (size_type idx)</td></tr>
+<tr class="separator:a341bd09ad63eea09bce005452c405232"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader"></div></td></tr>
+<tr class="memitem:a74d0cee9b4f150c4b7f1524edb787853"><td class="memItemLeft" align="right" valign="top">iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1acl.html#a74d0cee9b4f150c4b7f1524edb787853">begin</a> ()</td></tr>
 <tr class="separator:a74d0cee9b4f150c4b7f1524edb787853"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a74b2b1c95da9ae0abe5894591195e3c4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a74b2b1c95da9ae0abe5894591195e3c4"></a>
 const_iterator&#160;</td><td class="memItemRight" valign="bottom"><b>begin</b> () const </td></tr>
@@ -153,8 +172,8 @@ const_iterator&#160;</td><td class="memItemRight" valign="bottom"><b>begin</b> (
 <tr class="memitem:a47cdb72498840b5f3748ec7c93465df7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a47cdb72498840b5f3748ec7c93465df7"></a>
 const_iterator&#160;</td><td class="memItemRight" valign="bottom"><b>cbegin</b> () const </td></tr>
 <tr class="separator:a47cdb72498840b5f3748ec7c93465df7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad166171dfb8bf05384c4f563c5f8f3a8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad166171dfb8bf05384c4f563c5f8f3a8"></a>
-iterator&#160;</td><td class="memItemRight" valign="bottom"><b>end</b> ()</td></tr>
+<tr><td colspan="2"><div class="groupHeader"></div></td></tr>
+<tr class="memitem:ad166171dfb8bf05384c4f563c5f8f3a8"><td class="memItemLeft" align="right" valign="top">iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1acl.html#ad166171dfb8bf05384c4f563c5f8f3a8">end</a> ()</td></tr>
 <tr class="separator:ad166171dfb8bf05384c4f563c5f8f3a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aadd929c667860f6b39428821e4e991b1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aadd929c667860f6b39428821e4e991b1"></a>
 const_iterator&#160;</td><td class="memItemRight" valign="bottom"><b>end</b> () const </td></tr>
@@ -162,21 +181,329 @@ const_iterator&#160;</td><td class="memItemRight" valign="bottom"><b>end</b> () 
 <tr class="memitem:a3a9afdf8ac9a70e0a10f7abc94229de7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3a9afdf8ac9a70e0a10f7abc94229de7"></a>
 const_iterator&#160;</td><td class="memItemRight" valign="bottom"><b>cend</b> () const </td></tr>
 <tr class="separator:a3a9afdf8ac9a70e0a10f7abc94229de7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a51d440a9a9a3f3f9821b6efeeb3c6241"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a51d440a9a9a3f3f9821b6efeeb3c6241"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>reserve</b> (size_type sz)</td></tr>
-<tr class="separator:a51d440a9a9a3f3f9821b6efeeb3c6241"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afd5369fd1045322e3f9737d201186ed5"><td class="memTemplParams" colspan="2"><a class="anchor" id="afd5369fd1045322e3f9737d201186ed5"></a>
-template&lt;typename... TArgs&gt; </td></tr>
-<tr class="memitem:afd5369fd1045322e3f9737d201186ed5"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><b>emplace_back</b> (TArgs &amp;&amp;...args)</td></tr>
-<tr class="separator:afd5369fd1045322e3f9737d201186ed5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader"></div></td></tr>
+<tr class="memitem:a482d1fb9c88c6b91de071cef179f9030"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1acl.html#a482d1fb9c88c6b91de071cef179f9030">push_back</a> (<a class="el" href="classzk_1_1acl__rule.html">acl_rule</a> &amp;&amp;x)</td></tr>
+<tr class="separator:a482d1fb9c88c6b91de071cef179f9030"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3def7a23604f9211c08673cdc0116efd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3def7a23604f9211c08673cdc0116efd"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>push_back</b> (const <a class="el" href="classzk_1_1acl__rule.html">acl_rule</a> &amp;x)</td></tr>
+<tr class="separator:a3def7a23604f9211c08673cdc0116efd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>An access control list is a wrapper around <code><a class="el" href="classzk_1_1acl__rule.html" title="An individual rule in an acl. ">acl_rule</a></code> instances. </p>
+<div class="textblock"><p>An access control list is a wrapper around <a class="el" href="classzk_1_1acl__rule.html">acl_rule</a> instances. </p>
 <p>In general, the ACL system is similar to UNIX file access permissions, where znodes act as files. Unlike UNIX, each znode can have any number of ACLs to correspond with the potentially limitless (and pluggable) authentication schemes. A more surprising difference is that ACLs are not recursive: If <code>/path</code> is only readable by a single user, but <code>/path/sub</code> is world-readable, then anyone will be able to read <code>/path/sub</code>.</p>
-<dl class="section see"><dt>See also</dt><dd><a href="https://zookeeper.apache.org/doc/trunk/zookeeperProgrammers.html#sc_ZooKeeperAccessControl">https://zookeeper.apache.org/doc/trunk/zookeeperProgrammers.html#sc_ZooKeeperAccessControl</a> </dd></dl>
+<p>See <a href="https://zookeeper.apache.org/doc/trunk/zookeeperProgrammers.html#sc_ZooKeeperAccessControl">ZooKeeper Programmer's Guide</a> for more information.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classzk_1_1acls.html" title="Commonly-used ACLs. ">acls</a> </dd></dl>
 
-<p>Definition at line <a class="el" href="acl_8hpp_source.html#l00140">140</a> of file <a class="el" href="acl_8hpp_source.html">acl.hpp</a>.</p>
-</div><hr/>The documentation for this class was generated from the following files:<ul>
+<p>Definition at line <a class="el" href="acl_8hpp_source.html#l00139">139</a> of file <a class="el" href="acl_8hpp_source.html">acl.hpp</a>.</p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="af326bd4c79c32fd841d6e0f8dd21c69f"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">zk::acl::acl </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Create an empty ACL. Keep in mind that an empty ACL is an illegal ACL. </p>
+
+</div>
+</div>
+<a class="anchor" id="a9c250878af9c2de4f7154d07459a3673"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">zk::acl::acl </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="classzk_1_1acl__rule.html">acl_rule</a> &gt;&#160;</td>
+          <td class="paramname"><em>rules</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Create an instance with the provided <em>rules</em>. </p>
+
+<p>Definition at line <a class="el" href="acl_8cpp_source.html#l00112">112</a> of file <a class="el" href="acl_8cpp_source.html">acl.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab49e45a4f2c0fc02c686e92bc109e911"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">zk::acl::acl </td>
+          <td>(</td>
+          <td class="paramtype">std::initializer_list&lt; <a class="el" href="classzk_1_1acl__rule.html">acl_rule</a> &gt;&#160;</td>
+          <td class="paramname"><em>rules</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Create an instance with the provided <em>rules</em>. </p>
+
+<p>Definition at line <a class="el" href="acl_8hpp_source.html#l00154">154</a> of file <a class="el" href="acl_8hpp_source.html">acl.hpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="abd29242193d2357f75c839012f27a915"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classzk_1_1acl__rule.html">acl_rule</a>&amp; zk::acl::at </td>
+          <td>(</td>
+          <td class="paramtype">size_type&#160;</td>
+          <td class="paramname"><em>idx</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Get the rule at the given <em>idx</em>.</p>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::out_of_range</td><td>if the <em>idx</em> is larger than <a class="el" href="classzk_1_1acl.html#a1adc0b1dbd0b5a5f9eda954245b846d2">size</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="acl_8hpp_source.html#l00173">173</a> of file <a class="el" href="acl_8hpp_source.html">acl.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a74d0cee9b4f150c4b7f1524edb787853"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">iterator zk::acl::begin </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Get an iterator to the beginning of the rule list. </p>
+
+<p>Definition at line <a class="el" href="acl_8hpp_source.html#l00179">179</a> of file <a class="el" href="acl_8hpp_source.html">acl.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="afd5369fd1045322e3f9737d201186ed5"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename... TArgs&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void zk::acl::emplace_back </td>
+          <td>(</td>
+          <td class="paramtype">TArgs &amp;&amp;...&#160;</td>
+          <td class="paramname"><em>args</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Construct a rule emplace on the end of the list using <em>args</em>. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classzk_1_1acl.html#a482d1fb9c88c6b91de071cef179f9030">push_back</a> </dd></dl>
+
+<p>Definition at line <a class="el" href="acl_8hpp_source.html#l00198">198</a> of file <a class="el" href="acl_8hpp_source.html">acl.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ad166171dfb8bf05384c4f563c5f8f3a8"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">iterator zk::acl::end </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Get an iterator to the end of the rule list. </p>
+
+<p>Definition at line <a class="el" href="acl_8hpp_source.html#l00186">186</a> of file <a class="el" href="acl_8hpp_source.html">acl.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="afb874e9e12d23cec513fa44b5ea584d0"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classzk_1_1acl__rule.html">acl_rule</a>&amp; zk::acl::operator[] </td>
+          <td>(</td>
+          <td class="paramtype">size_type&#160;</td>
+          <td class="paramname"><em>idx</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Get the rule at the given <em>idx</em>. </p>
+
+<p>Definition at line <a class="el" href="acl_8hpp_source.html#l00165">165</a> of file <a class="el" href="acl_8hpp_source.html">acl.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a482d1fb9c88c6b91de071cef179f9030"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void zk::acl::push_back </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classzk_1_1acl__rule.html">acl_rule</a> &amp;&amp;&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Add the rule <em>x</em> to the end of this list. </p>
+
+<p>Definition at line <a class="el" href="acl_8hpp_source.html#l00205">205</a> of file <a class="el" href="acl_8hpp_source.html">acl.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ad2ea812efd5ca63fe766d2dac9ba3e83"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void zk::acl::reserve </td>
+          <td>(</td>
+          <td class="paramtype">size_type&#160;</td>
+          <td class="paramname"><em>capacity</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Increase the reserved memory block so it can store at least <em>capacity</em> rules without reallocating. </p>
+
+<p>Definition at line <a class="el" href="acl_8hpp_source.html#l00192">192</a> of file <a class="el" href="acl_8hpp_source.html">acl.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a1adc0b1dbd0b5a5f9eda954245b846d2"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_type zk::acl::size </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The number of rules in this ACL. </p>
+
+<p>Definition at line <a class="el" href="acl_8hpp_source.html#l00161">161</a> of file <a class="el" href="acl_8hpp_source.html">acl.hpp</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>zk/<a class="el" href="acl_8hpp_source.html">acl.hpp</a></li>
 <li>zk/<a class="el" href="acl_8cpp_source.html">acl.cpp</a></li>
 </ul>

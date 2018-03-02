@@ -195,7 +195,7 @@ $(document).ready(function(){initNavTree('README_8md.html','');});
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        client.get(<span class="stringliteral">&quot;/foo/bar&quot;</span>)</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            .then([client] (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; get_res)</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            {</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                <a class="code" href="structzk_1_1version.html">zk::version</a> foo_bar_version = get_res.get().stat().data_version;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                <a class="code" href="structzk_1_1version.html">zk::version</a> foo_bar_version = get_res.<a class="code" href="structzk_1_1strong__id.html#aa26a8b5572f61725b008fb1cdd8602bb">get</a>().stat().data_version;</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                <a class="code" href="classzk_1_1multi__op.html">zk::multi_op</a> txn =</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                {</div>
@@ -260,9 +260,9 @@ $(document).ready(function(){initNavTree('README_8md.html','');});
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;</div>
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;This library also provides a fake version of ZooKeeper which operates in-memory.</div>
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;It is meant to be used in your unit testing, when fine-grained control of behavior of ZooKeeper is needed.</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;This allows <span class="keywordflow">for</span> the injection of arbitrary behavior into ZK, allowing you to simulate some of the hard-to-reproduce</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;This <a class="code" href="group__Client.html#ga805d7e2c38e80ec6abdc6043087bfae8">allows</a> <span class="keywordflow">for</span> the injection of arbitrary behavior into ZK, allowing you to simulate some of the hard-to-reproduce</div>
 <div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;issues like `<a class="code" href="group__Client.html#gga6521a380e3d01a123e5145fafe9d8d3ca7027d8d5de8fd7cfb33c7d4624378160">zk::event_type::not_watching</a>`, `<a class="code" href="classzk_1_1marshalling__error.html">zk::marshalling_error</a>`, or timing bugs.</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;It also allows <span class="keywordflow">for</span> fast creation and teardown of entire databases, which is commonly done in unit testing.</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;It also <a class="code" href="group__Client.html#ga805d7e2c38e80ec6abdc6043087bfae8">allows</a> <span class="keywordflow">for</span> fast creation and teardown of entire databases, which is commonly done in unit testing.</div>
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;</div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;It is <a class="code" href="group__Client.html#gga8954c7138ce0280422d42d02b3d951eaa06aa6fa8bdc2078e7e1bd903e70c8f6a">connected</a> to through <span class="keyword">using</span> a connection <span class="keywordtype">string</span> of the form:</div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;</div>
@@ -294,115 +294,116 @@ $(document).ready(function(){initNavTree('README_8md.html','');});
 <div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;### Global Watches</div>
 <div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;</div>
 <div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;There are two main ways to receive watch notifications: the global watch or through use a watcher objects.</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;In the Java API, the `ZooKeeper` client allows <span class="keywordflow">for</span> a global</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;In the Java API, the `ZooKeeper` client <a class="code" href="group__Client.html#ga805d7e2c38e80ec6abdc6043087bfae8">allows</a> <span class="keywordflow">for</span> a global</div>
 <div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;[Watcher](https:<span class="comment">//zookeeper.apache.org/doc/r3.4.10/api/org/apache/zookeeper/Watcher.html).</span></div>
 <div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;In the C API, `zookeeper_init` can be provided with a global <span class="keyword">function</span> with the signature</div>
 <div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;`void (*)(zhandle_t* zh, <span class="keywordtype">int</span> type, <span class="keywordtype">int</span> <a class="code" href="group__Client.html#ga8954c7138ce0280422d42d02b3d951ea">state</a>, <span class="keyword">const</span> <span class="keywordtype">char</span>* path, <span class="keywordtype">void</span>* watcherCtx)` to achieve <span class="keyword">this</span> same result.</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;The ZooKeeper community considers global watches as <span class="stringliteral">&quot;legacy&quot;</span> and prefers the use of watcher objects set on a per-path</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;basis.</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;As such, global watches are *not* supported by <span class="keyword">this</span> library.</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;### Synchronous API</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;The C library offers both a synchronous and an asynchronous API.</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;This library offers only an asynchronous version.</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;If you prefer a synchronous API, call `<span class="keyword">get</span>()` on the returned `future` to block until you receive the response.</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;### Non-Linux</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;Can you <span class="keyword">get</span> <span class="keyword">this</span> library working on platforms that are not Linux?</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;Maybe.</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;But Linux is the primary development, testing, and deployment platform of people writing distributed applications, so</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;<span class="keyword">this</span> library is targetted at Linux.</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;## License</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;Licensed under the Apache License, Version 2.0 (the <span class="stringliteral">&quot;License&quot;</span>); you may not use <span class="keyword">this</span> file except in compliance with</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;the License. You may obtain a copy of the License at</div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;[http:<span class="comment">//www.apache.org/licenses/LICENSE-2.0](http://www.apache.org/licenses/LICENSE-2.0).</span></div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;an <span class="stringliteral">&quot;AS IS&quot;</span> BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License <span class="keywordflow">for</span> the</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;specific language governing permissions and limitations under the License.</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;## F.A.Q.</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;### Why `<a class="code" href="group__Client.html#gga75dfaeeb3b2f4e1588380b3bf68ecc08a26eb25b14d930f9d5f59b2c50798a9a4">erase</a>` instead of `<span class="keyword">delete</span>`?</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;In the Java and C APIs, the act of removing a ZNode is called `<span class="keyword">delete</span>` and `zoo_delete`, respectively.</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;However, `<span class="keyword">delete</span>` is a C++ keyword and cannot be used as a member <span class="keyword">function</span>.</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;So, <span class="keyword">this</span> library uses `<a class="code" href="group__Client.html#gga75dfaeeb3b2f4e1588380b3bf68ecc08a26eb25b14d930f9d5f59b2c50798a9a4">erase</a>`, which falls in line with standard C++ containers.</div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;Alternatives such as calling the operation `delete_` look a bit worse (in the author<span class="stringliteral">&#39;s opinion).</span></div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;<span class="stringliteral"></span></div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;<span class="stringliteral">### Why are watch calls separate?</span></div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;<span class="stringliteral"></span></div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;<span class="stringliteral">In the Java and C APIs, adding a watch to a ZNode is an additional parameter to the `get`, `get_children`, or `exists`</span></div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;<span class="stringliteral">calls while this library uses separate `watch`, `watch_children`, and `watch_exists` calls.</span></div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;<span class="stringliteral">This is done because the return types are different between a simple fetch and setting a watch.</span></div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;<span class="stringliteral">While `get` returns a `future&lt;get_result&gt;`, `watch` returns the slightly more complicated `future&lt;watch_result&gt;`.</span></div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;<span class="stringliteral">The `future` in `watch_result::next()` would be disabled in cases where a flag is not set, and it would be ignored with</span></div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;<span class="stringliteral">the majority of use cases.</span></div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;<span class="stringliteral">This leads to an awkward API for simple calls.</span></div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;<span class="stringliteral"></span></div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;<span class="stringliteral">An alternative used by other libraries is to provide a `std::function`, implying to not watch when the function is not</span></div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;<span class="stringliteral">passed in.</span></div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;<span class="stringliteral">This has a number of disadvantages:</span></div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;<span class="stringliteral"></span></div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;<span class="stringliteral">- There is no good way to cancel a watch without giving an extra parameter.</span></div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;<span class="stringliteral">  With a `future`, you simply let it fall out of scope.</span></div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;<span class="stringliteral">- Watches are delivered only once, which is obvious from a `future`-like API, but not obvious from a `function`-like</span></div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;<span class="stringliteral">  API.</span></div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;<span class="stringliteral">- It is not obvious what the behavior should be if the original call returns in error.</span></div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;<span class="stringliteral">  With a `future`, the behavior is obvious, since you never receive the mechanisms to perform the watch.</span></div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;<span class="stringliteral"></span></div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;<span class="stringliteral">In Java, the method of choice is to use the</span></div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;<span class="stringliteral">[Watcher](https://zookeeper.apache.org/doc/r3.4.10/api/org/apache/zookeeper/Watcher.html) interface, but this feels</span></div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;<span class="stringliteral">extremely out of place in C++ code.</span></div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;<span class="stringliteral"></span></div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;<span class="stringliteral">### Where are all the `KeeperException`s?</span></div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;<span class="stringliteral"></span></div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;<span class="stringliteral">This library uses an exception hierarchy with fewer exception codes than what are available in</span></div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;<span class="stringliteral">[`KeeperException`](https://zookeeper.apache.org/doc/r3.4.10/api/org/apache/zookeeper/KeeperException.html).</span></div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;<span class="stringliteral"></span></div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;<span class="stringliteral">![Exception hierarchy](https://tgockel.github.io/zookeeper-cpp/classzk_1_1error.png)</span></div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;<span class="stringliteral"></span></div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;<span class="stringliteral">Some exceptions are not present in this library because they are no longer used in the server implementation and will</span></div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;<span class="stringliteral">not be used again; an example of this is `DataInconsistencyException`, which has not been used in ZooKeeper for a while.</span></div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;<span class="stringliteral">In other cases, the error code would never be thrown by this library; examples of this are `NoWatcherException` (watch</span></div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;<span class="stringliteral">removal happens implicitly in destructors) and `RuntimeInconsistencyException` (failed multi-ops throw a</span></div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;<span class="stringliteral">`transaction_failed` containing only the index of the failed operation instead).</span></div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;<span class="stringliteral">In other cases, the error codes have been merged into a single exception type, as there was much logical overlap.</span></div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;<span class="stringliteral"></span></div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;<span class="stringliteral">Another distinction that was dropped is the difference between &quot;system errors&quot; (`Code.SYSTEMERROR`/`ZSYSTEMERROR`) and</span></div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;<span class="stringliteral">&quot;API errors&quot; (`Code.APIERROR`/`ZAPIERROR`).</span></div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;<span class="stringliteral">The general distinction is the origin of the error -- system errors are client-side (`invalid_arguments` -- other APIs:</span></div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;<span class="stringliteral">`Code.BADARGUMENTS`/`ZBADARGUMENTS`), while API errors are server-size (`no_entry` -- other APIs:</span></div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;<span class="stringliteral">`Code.NoNode`/`ZNONODE`).</span></div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;<span class="stringliteral">This was dropped because this is not entirely meaningful from user&#39;</span>s point of view.</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;As an example, `authentication_failed` is a subclass of `invalid_arguments`, even though the contents of the arguments</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;happen to be validated by the server instead of by the client.</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;### How can I contribute?</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;Pick an [open issue](https:<span class="comment">//github.com/tgockel/zookeeper-cpp/issues) and start working on it!</span></div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;For more details, read the [CONTRIBUTING](https:<span class="comment">//github.com/tgockel/zookeeper-cpp/blob/master/CONTRIBUTING.rst) guide.</span></div>
-<div class="ttc" id="group__Client_html_ga8954c7138ce0280422d42d02b3d951ea"><div class="ttname"><a href="group__Client.html#ga8954c7138ce0280422d42d02b3d951ea">zk::state</a></div><div class="ttdeci">state</div><div class="ttdoc">Enumeration of states the client may be at when a watch triggers. </div><div class="ttdef"><b>Definition:</b> <a href="types_8hpp_source.html#l00381">types.hpp:381</a></div></div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;Global watches are somewhat of a <span class="stringliteral">&quot;legacy&quot;</span> feature -- the dual interface of global and callbacks is somewhat confusing.</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;As such, global watches are *not* supported by <span class="keyword">this</span> library.</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;### Synchronous API</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;The C library offers both a synchronous and an asynchronous API.</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;This library offers only an asynchronous version.</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;If you prefer a synchronous API, call `<span class="keyword">get</span>()` on the returned `future` to block until you receive the response.</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;### Non-Linux</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;Can you <span class="keyword">get</span> <span class="keyword">this</span> library working on platforms that are not Linux?</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;Maybe.</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;But Linux is the primary development, testing, and deployment platform of people writing distributed applications, so</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;<span class="keyword">this</span> library is targetted at Linux.</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;## License</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;Licensed under the Apache License, Version 2.0 (the <span class="stringliteral">&quot;License&quot;</span>); you may not use <span class="keyword">this</span> file except in compliance with</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;the License. You may obtain a copy of the License at</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;[http:<span class="comment">//www.apache.org/licenses/LICENSE-2.0](http://www.apache.org/licenses/LICENSE-2.0).</span></div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;an <span class="stringliteral">&quot;AS IS&quot;</span> BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License <span class="keywordflow">for</span> the</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;specific language governing permissions and limitations under the License.</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;## F.A.Q.</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;### Why `<a class="code" href="group__Client.html#gga75dfaeeb3b2f4e1588380b3bf68ecc08a26eb25b14d930f9d5f59b2c50798a9a4">erase</a>` instead of `<span class="keyword">delete</span>`?</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;In the Java and C APIs, the act of removing a ZNode is called `<span class="keyword">delete</span>` and `zoo_delete`, respectively.</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;However, `<span class="keyword">delete</span>` is a C++ keyword and cannot be used as a member <span class="keyword">function</span>.</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;So, <span class="keyword">this</span> library uses `<a class="code" href="group__Client.html#gga75dfaeeb3b2f4e1588380b3bf68ecc08a26eb25b14d930f9d5f59b2c50798a9a4">erase</a>`, which falls in line with standard C++ containers.</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;Alternatives such as calling the operation `delete_` look a bit worse (in the author<span class="stringliteral">&#39;s opinion).</span></div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;<span class="stringliteral">### Why are watch calls separate?</span></div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;<span class="stringliteral">In the Java and C APIs, adding a watch to a ZNode is an additional parameter to the `get`, `get_children`, or `exists`</span></div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;<span class="stringliteral">calls while this library uses separate `watch`, `watch_children`, and `watch_exists` calls.</span></div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;<span class="stringliteral">This is done because the return types are different between a simple fetch and setting a watch.</span></div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;<span class="stringliteral">While `get` returns a `future&lt;get_result&gt;`, `watch` returns the slightly more complicated `future&lt;watch_result&gt;`.</span></div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;<span class="stringliteral">The `future` in `watch_result::next()` would be disabled in cases where a flag is not set, and it would be ignored with</span></div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;<span class="stringliteral">the majority of use cases.</span></div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;<span class="stringliteral">This leads to an awkward API for simple calls.</span></div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;<span class="stringliteral">An alternative used by other libraries is to provide a `std::function`, implying to not watch when the function is not</span></div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;<span class="stringliteral">passed in.</span></div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;<span class="stringliteral">This has a number of disadvantages:</span></div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;<span class="stringliteral">- There is no good way to cancel a watch without giving an extra parameter.</span></div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;<span class="stringliteral">  With a `future`, you simply let it fall out of scope.</span></div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;<span class="stringliteral">- Watches are delivered only once, which is obvious from a `future`-like API, but not obvious from a `function`-like</span></div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;<span class="stringliteral">  API.</span></div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;<span class="stringliteral">- It is not obvious what the behavior should be if the original call returns in error.</span></div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;<span class="stringliteral">  With a `future`, the behavior is obvious, since you never receive the mechanisms to perform the watch.</span></div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;<span class="stringliteral">In Java, the method of choice is to use the</span></div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;<span class="stringliteral">[Watcher](https://zookeeper.apache.org/doc/r3.4.10/api/org/apache/zookeeper/Watcher.html) interface, but this feels</span></div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;<span class="stringliteral">extremely out of place in C++ code.</span></div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;<span class="stringliteral">### Where are all the `KeeperException`s?</span></div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;<span class="stringliteral">This library uses an exception hierarchy with fewer exception codes than what are available in</span></div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;<span class="stringliteral">[`KeeperException`](https://zookeeper.apache.org/doc/r3.4.10/api/org/apache/zookeeper/KeeperException.html).</span></div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;<span class="stringliteral">![Exception hierarchy](https://tgockel.github.io/zookeeper-cpp/classzk_1_1error.png)</span></div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;<span class="stringliteral">Some exceptions are not present in this library because they are no longer used in the server implementation and will</span></div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;<span class="stringliteral">not be used again; an example of this is `DataInconsistencyException`, which has not been used in ZooKeeper for a while.</span></div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;<span class="stringliteral">In other cases, the error code would never be thrown by this library; examples of this are `NoWatcherException` (watch</span></div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;<span class="stringliteral">removal happens implicitly in destructors) and `RuntimeInconsistencyException` (failed multi-ops throw a</span></div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;<span class="stringliteral">`transaction_failed` containing only the index of the failed operation instead).</span></div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;<span class="stringliteral">In other cases, the error codes have been merged into a single exception type, as there was much logical overlap.</span></div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;<span class="stringliteral">Another distinction that was dropped is the difference between &quot;system errors&quot; (`Code.SYSTEMERROR`/`ZSYSTEMERROR`) and</span></div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;<span class="stringliteral">&quot;API errors&quot; (`Code.APIERROR`/`ZAPIERROR`).</span></div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;<span class="stringliteral">The general distinction is the origin of the error -- system errors are client-side (`invalid_arguments` -- other APIs:</span></div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;<span class="stringliteral">`Code.BADARGUMENTS`/`ZBADARGUMENTS`), while API errors are server-size (`no_entry` -- other APIs:</span></div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;<span class="stringliteral">`Code.NoNode`/`ZNONODE`).</span></div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;<span class="stringliteral">This was dropped because this is not entirely meaningful from user&#39;</span>s point of view.</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;As an example, `authentication_failed` is a subclass of `invalid_arguments`, even though the contents of the arguments</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;happen to be validated by the server instead of by the client.</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;### How can I contribute?</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;Pick an [open issue](https:<span class="comment">//github.com/tgockel/zookeeper-cpp/issues) and start working on it!</span></div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;For more details, read the [CONTRIBUTING](https:<span class="comment">//github.com/tgockel/zookeeper-cpp/blob/master/CONTRIBUTING.rst) guide.</span></div>
+<div class="ttc" id="group__Client_html_ga8954c7138ce0280422d42d02b3d951ea"><div class="ttname"><a href="group__Client.html#ga8954c7138ce0280422d42d02b3d951ea">zk::state</a></div><div class="ttdeci">state</div><div class="ttdoc">Enumeration of states the client may be at when a watch triggers. </div><div class="ttdef"><b>Definition:</b> <a href="types_8hpp_source.html#l00385">types.hpp:385</a></div></div>
 <div class="ttc" id="group__Client_html_gga8954c7138ce0280422d42d02b3d951eaa9a27316fbc5ef38b2a19c202dbdc29b7"><div class="ttname"><a href="group__Client.html#gga8954c7138ce0280422d42d02b3d951eaa9a27316fbc5ef38b2a19c202dbdc29b7">zk::state::connecting</a></div><div class="ttdoc">The client is connecting. </div></div>
 <div class="ttc" id="classzk_1_1server_1_1configuration_html_a49c3bd6d6109ab64c64b6aec5c4a7965"><div class="ttname"><a href="classzk_1_1server_1_1configuration.html#a49c3bd6d6109ab64c64b6aec5c4a7965">zk::server::configuration::make_minimal</a></div><div class="ttdeci">static configuration make_minimal(std::string data_directory, std::uint16_t client_port=default_client_port)</div><div class="ttdoc">Creates a minimal configuration, setting the four needed values. </div><div class="ttdef"><b>Definition:</b> <a href="configuration_8cpp_source.html#l00073">configuration.cpp:73</a></div></div>
-<div class="ttc" id="classzk_1_1server_1_1server_html"><div class="ttname"><a href="classzk_1_1server_1_1server.html">zk::server::server</a></div><div class="ttdoc">Controls a ZooKeeper server process on this local machine. </div><div class="ttdef"><b>Definition:</b> <a href="server_8hpp_source.html#l00023">server.hpp:23</a></div></div>
-<div class="ttc" id="classzk_1_1client_html_aaf900305a3a57f9707078e2f61db3770"><div class="ttname"><a href="classzk_1_1client.html#aaf900305a3a57f9707078e2f61db3770">zk::client::connect</a></div><div class="ttdeci">static future&lt; client &gt; connect(string_view conn_string)</div><div class="ttdoc">Create a client connected to the cluster specified by conn_string. </div><div class="ttdef"><b>Definition:</b> <a href="client_8cpp_source.html#l00024">client.cpp:24</a></div></div>
-<div class="ttc" id="classzk_1_1marshalling__error_html"><div class="ttname"><a href="classzk_1_1marshalling__error.html">zk::marshalling_error</a></div><div class="ttdoc">An error occurred while marshalling data. </div><div class="ttdef"><b>Definition:</b> <a href="error_8hpp_source.html#l00160">error.hpp:160</a></div></div>
+<div class="ttc" id="classzk_1_1server_1_1server_html"><div class="ttname"><a href="classzk_1_1server_1_1server.html">zk::server::server</a></div><div class="ttdoc">Controls a ZooKeeper server process on this local machine. </div><div class="ttdef"><b>Definition:</b> <a href="server_8hpp_source.html#l00022">server.hpp:22</a></div></div>
+<div class="ttc" id="structzk_1_1strong__id_html_aa26a8b5572f61725b008fb1cdd8602bb"><div class="ttname"><a href="structzk_1_1strong__id.html#aa26a8b5572f61725b008fb1cdd8602bb">zk::strong_id::get</a></div><div class="ttdeci">constexpr value_type get() const noexcept</div><div class="ttdoc">Get the value of this ID. </div><div class="ttdef"><b>Definition:</b> <a href="types_8hpp_source.html#l00046">types.hpp:46</a></div></div>
+<div class="ttc" id="group__Client_html_ga805d7e2c38e80ec6abdc6043087bfae8"><div class="ttname"><a href="group__Client.html#ga805d7e2c38e80ec6abdc6043087bfae8">zk::allows</a></div><div class="ttdeci">constexpr bool allows(permission self, permission perform)</div><div class="ttdoc">Check that self allows it perform all operations. </div><div class="ttdef"><b>Definition:</b> <a href="acl_8hpp_source.html#l00054">acl.hpp:54</a></div></div>
+<div class="ttc" id="classzk_1_1client_html_aaf900305a3a57f9707078e2f61db3770"><div class="ttname"><a href="classzk_1_1client.html#aaf900305a3a57f9707078e2f61db3770">zk::client::connect</a></div><div class="ttdeci">static future&lt; client &gt; connect(string_view conn_string)</div><div class="ttdef"><b>Definition:</b> <a href="client_8cpp_source.html#l00028">client.cpp:28</a></div></div>
+<div class="ttc" id="classzk_1_1marshalling__error_html"><div class="ttname"><a href="classzk_1_1marshalling__error.html">zk::marshalling_error</a></div><div class="ttdoc">An error occurred while marshalling data. </div><div class="ttdef"><b>Definition:</b> <a href="error_8hpp_source.html#l00156">error.hpp:156</a></div></div>
 <div class="ttc" id="group__Client_html_gga8954c7138ce0280422d42d02b3d951eaa06aa6fa8bdc2078e7e1bd903e70c8f6a"><div class="ttname"><a href="group__Client.html#gga8954c7138ce0280422d42d02b3d951eaa06aa6fa8bdc2078e7e1bd903e70c8f6a">zk::state::connected</a></div><div class="ttdoc">The client is in the connected state – it is connected to a server in the ensemble (one of the serve...</div></div>
-<div class="ttc" id="classzk_1_1multi__op_html"><div class="ttname"><a href="classzk_1_1multi__op.html">zk::multi_op</a></div><div class="ttdef"><b>Definition:</b> <a href="multi_8hpp_source.html#l00132">multi.hpp:132</a></div></div>
+<div class="ttc" id="classzk_1_1multi__op_html"><div class="ttname"><a href="classzk_1_1multi__op.html">zk::multi_op</a></div><div class="ttdoc">A collection of operations that will be performed atomically. </div><div class="ttdef"><b>Definition:</b> <a href="multi_8hpp_source.html#l00162">multi.hpp:162</a></div></div>
 <div class="ttc" id="group__Client_html_gga6521a380e3d01a123e5145fafe9d8d3ca7027d8d5de8fd7cfb33c7d4624378160"><div class="ttname"><a href="group__Client.html#gga6521a380e3d01a123e5145fafe9d8d3ca7027d8d5de8fd7cfb33c7d4624378160">zk::event_type::not_watching</a></div><div class="ttdoc">Watch has been forcefully removed. </div></div>
 <div class="ttc" id="group__Client_html_gga9f10c37f69a7d1084b08cac07ebb7918a6ec7489017b25b5fff20d353b6d2162e"><div class="ttname"><a href="group__Client.html#gga9f10c37f69a7d1084b08cac07ebb7918a6ec7489017b25b5fff20d353b6d2162e">zk::create_mode::sequential</a></div><div class="ttdoc">The name of the entry will be appended with a monotonically increasing number. </div></div>
 <div class="ttc" id="group__Client_html_gga75dfaeeb3b2f4e1588380b3bf68ecc08a26eb25b14d930f9d5f59b2c50798a9a4"><div class="ttname"><a href="group__Client.html#gga75dfaeeb3b2f4e1588380b3bf68ecc08a26eb25b14d930f9d5f59b2c50798a9a4">zk::permission::erase</a></div><div class="ttdoc">You can erase a child node (but not necessarily this one). </div></div>
 <div class="ttc" id="classzk_1_1op_html_adc1d499ad7ea3731fb2d686b774acf14"><div class="ttname"><a href="classzk_1_1op.html#adc1d499ad7ea3731fb2d686b774acf14">zk::op::check</a></div><div class="ttdeci">static op check(std::string path, version check=version::any())</div><div class="ttdoc">Check that the given path exists with the provided version check (which can be version::any). </div><div class="ttdef"><b>Definition:</b> <a href="multi_8cpp_source.html#l00092">multi.cpp:92</a></div></div>
-<div class="ttc" id="structzk_1_1basic__version_html_ad2886aa35fd1834251655e52261f035e"><div class="ttname"><a href="structzk_1_1basic__version.html#ad2886aa35fd1834251655e52261f035e">zk::basic_version&lt; version &gt;::any</a></div><div class="ttdeci">static constexpr version any()</div><div class="ttdoc">When specified in an operation, this version specifier will always pass. </div><div class="ttdef"><b>Definition:</b> <a href="types_8hpp_source.html#l00129">types.hpp:129</a></div></div>
+<div class="ttc" id="structzk_1_1basic__version_html_ad2886aa35fd1834251655e52261f035e"><div class="ttname"><a href="structzk_1_1basic__version.html#ad2886aa35fd1834251655e52261f035e">zk::basic_version&lt; version &gt;::any</a></div><div class="ttdeci">static constexpr version any()</div><div class="ttdoc">When specified in an operation, this version specifier will always pass. </div><div class="ttdef"><b>Definition:</b> <a href="types_8hpp_source.html#l00150">types.hpp:150</a></div></div>
 <div class="ttc" id="classzk_1_1op_html_a6641e7dd6e0153a0d7fcbdbad4cfc2db"><div class="ttname"><a href="classzk_1_1op.html#a6641e7dd6e0153a0d7fcbdbad4cfc2db">zk::op::create</a></div><div class="ttdeci">static op create(std::string path, buffer data, acl rules, create_mode mode=create_mode::normal)</div><div class="ttdef"><b>Definition:</b> <a href="multi_8cpp_source.html#l00119">multi.cpp:119</a></div></div>
-<div class="ttc" id="structzk_1_1version_html"><div class="ttname"><a href="structzk_1_1version.html">zk::version</a></div><div class="ttdoc">Represents a version of the data. </div><div class="ttdef"><b>Definition:</b> <a href="types_8hpp_source.html#l00138">types.hpp:138</a></div></div>
-<div class="ttc" id="classzk_1_1client_html"><div class="ttname"><a href="classzk_1_1client.html">zk::client</a></div><div class="ttdoc">A ZooKeeper client connection. </div><div class="ttdef"><b>Definition:</b> <a href="client_8hpp_source.html#l00027">client.hpp:27</a></div></div>
-<div class="ttc" id="classzk_1_1op_html_ac14ac1d293df4c1139d099ab00e8b115"><div class="ttname"><a href="classzk_1_1op.html#ac14ac1d293df4c1139d099ab00e8b115">zk::op::erase</a></div><div class="ttdeci">static op erase(std::string path, version check=version::any())</div><div class="ttdef"><b>Definition:</b> <a href="multi_8cpp_source.html#l00148">multi.cpp:148</a></div></div>
+<div class="ttc" id="structzk_1_1version_html"><div class="ttname"><a href="structzk_1_1version.html">zk::version</a></div><div class="ttdoc">Represents a version of the data. </div><div class="ttdef"><b>Definition:</b> <a href="types_8hpp_source.html#l00158">types.hpp:158</a></div></div>
+<div class="ttc" id="classzk_1_1client_html"><div class="ttname"><a href="classzk_1_1client.html">zk::client</a></div><div class="ttdoc">A ZooKeeper client connection. </div><div class="ttdef"><b>Definition:</b> <a href="client_8hpp_source.html#l00025">client.hpp:25</a></div></div>
+<div class="ttc" id="classzk_1_1op_html_ac14ac1d293df4c1139d099ab00e8b115"><div class="ttname"><a href="classzk_1_1op.html#ac14ac1d293df4c1139d099ab00e8b115">zk::op::erase</a></div><div class="ttdeci">static op erase(std::string path, version check=version::any())</div><div class="ttdoc">Delete the entry at the given path if it matches the version check. </div><div class="ttdef"><b>Definition:</b> <a href="multi_8cpp_source.html#l00148">multi.cpp:148</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

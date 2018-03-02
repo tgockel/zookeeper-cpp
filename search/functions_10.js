@@ -1,7 +1,8 @@
 var searchData=
 [
-  ['watch',['watch',['../classzk_1_1client.html#abe391293e4e194b41c9a4c647ec71502',1,'zk::client']]],
-  ['watch_5fchildren',['watch_children',['../classzk_1_1client.html#a9f240a40a9594a633987f706b2870d7f',1,'zk::client']]],
-  ['watch_5fexists',['watch_exists',['../classzk_1_1client.html#aaf8a36230170382b13c835d1bc20e303',1,'zk::client']]],
-  ['watch_5fstate',['watch_state',['../classzk_1_1connection.html#af74f4dacf3a350c3d5b782d08a0d4366',1,'zk::connection']]]
+  ['throw_5ferror',['throw_error',['../group__Client.html#ga36c5d24d21662666fa16b632339a521a',1,'zk']]],
+  ['tick_5ftime',['tick_time',['../classzk_1_1server_1_1configuration.html#a60ab73f5184f21107eea3db20a1ed366',1,'zk::server::configuration']]],
+  ['timeout',['timeout',['../classzk_1_1connection__params.html#acad9dbded7ce103c4621a45092ca16a3',1,'zk::connection_params']]],
+  ['to_5fstring',['to_string',['../group__Client.html#ga1d3d116fc5343dfc827b20e7639e33df',1,'zk']]],
+  ['type',['type',['../classzk_1_1op.html#a3e24ce580dea015ef409fe8593b014f4',1,'zk::op::type()'],['../classzk_1_1multi__result_1_1part.html#a94358de184c955fa490c2563c9cf38ff',1,'zk::multi_result::part::type()'],['../classzk_1_1event.html#a3d4d8519e6c2511842072a3f5031dc77',1,'zk::event::type()']]]
 ];

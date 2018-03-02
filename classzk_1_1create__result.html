@@ -112,7 +112,7 @@ $(document).ready(function(){initNavTree('classzk_1_1create__result.html','');})
 </div><!--header-->
 <div class="contents">
 
-<p>The result type of <code><a class="el" href="classzk_1_1client.html#a45f67fc3c1bcba32dfd2f848d050d376" title="Create an entry at the given path. ">client::create</a></code>.  
+<p>The result type of <a class="el" href="classzk_1_1client.html#a45f67fc3c1bcba32dfd2f848d050d376">client::create</a>.  
  <a href="classzk_1_1create__result.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="results_8hpp_source.html">zk/results.hpp</a>&gt;</code></p>
@@ -120,10 +120,10 @@ $(document).ready(function(){initNavTree('classzk_1_1create__result.html','');})
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ac415b4cbb8a2bb7f034e01be47b031a2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac415b4cbb8a2bb7f034e01be47b031a2"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>create_result</b> (std::string name) noexcept</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><b>create_result</b> (std::string <a class="el" href="classzk_1_1create__result.html#aef0f54ede4c90c809b46df252fd346e8">name</a>) noexcept</td></tr>
 <tr class="separator:ac415b4cbb8a2bb7f034e01be47b031a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aef0f54ede4c90c809b46df252fd346e8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aef0f54ede4c90c809b46df252fd346e8"></a>
-const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>name</b> () const &amp;</td></tr>
+<tr><td colspan="2"><div class="groupHeader"></div></td></tr>
+<tr class="memitem:aef0f54ede4c90c809b46df252fd346e8"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1create__result.html#aef0f54ede4c90c809b46df252fd346e8">name</a> () const &amp;</td></tr>
 <tr class="separator:aef0f54ede4c90c809b46df252fd346e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a21fe1816ca5f7f4c3dd9e0c9f86b7dfa"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a21fe1816ca5f7f4c3dd9e0c9f86b7dfa"></a>
 std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>name</b> ()&amp;</td></tr>
@@ -133,10 +133,37 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>name</b> ()&am
 <tr class="separator:a4da7798afc94ee48b30bb4d1de1a3470"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>The result type of <code><a class="el" href="classzk_1_1client.html#a45f67fc3c1bcba32dfd2f848d050d376" title="Create an entry at the given path. ">client::create</a></code>. </p>
+<div class="textblock"><p>The result type of <a class="el" href="classzk_1_1client.html#a45f67fc3c1bcba32dfd2f848d050d376">client::create</a>. </p>
 
-<p>Definition at line <a class="el" href="results_8hpp_source.html#l00099">99</a> of file <a class="el" href="results_8hpp_source.html">results.hpp</a>.</p>
-</div><hr/>The documentation for this class was generated from the following files:<ul>
+<p>Definition at line <a class="el" href="results_8hpp_source.html#l00116">116</a> of file <a class="el" href="results_8hpp_source.html">results.hpp</a>.</p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="aef0f54ede4c90c809b46df252fd346e8"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::string&amp; zk::create_result::name </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>The name of the created entry. How useful this is depends on the value of create_mode passed to the create operation. If <a class="el" href="group__Client.html#gga9f10c37f69a7d1084b08cac07ebb7918a6ec7489017b25b5fff20d353b6d2162e">create_mode::sequential</a> was set, this value must be used to see what was created. In all other cases, the name is the same as the path which was passed in. </p>
+
+<p>Definition at line <a class="el" href="results_8hpp_source.html#l00127">127</a> of file <a class="el" href="results_8hpp_source.html">results.hpp</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>zk/<a class="el" href="results_8hpp_source.html">results.hpp</a></li>
 <li>zk/<a class="el" href="results_8cpp_source.html">results.cpp</a></li>
 </ul>

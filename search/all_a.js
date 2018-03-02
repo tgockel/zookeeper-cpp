@@ -8,5 +8,6 @@ var searchData=
   ['modified_5ftime',['modified_time',['../structzk_1_1stat.html#ad2aa8280ea89947cd45bf0c800c391c5',1,'zk::stat']]],
   ['modified_5ftransaction',['modified_transaction',['../structzk_1_1stat.html#ab0adc55d8307b80b8f8b09bc0ff1ff55',1,'zk::stat']]],
   ['multi_5fop',['multi_op',['../classzk_1_1multi__op.html',1,'zk']]],
+  ['multi_5fop',['multi_op',['../classzk_1_1multi__op.html#ad709c9ed1ce73bdd6354a302bb7385d2',1,'zk::multi_op::multi_op() noexcept'],['../classzk_1_1multi__op.html#afcea7e73ef5f3a1f2fb51f3c0acec637',1,'zk::multi_op::multi_op(std::vector&lt; op &gt; ops) noexcept'],['../classzk_1_1multi__op.html#aa61322beb32e1b68bde5ad630bb79c2c',1,'zk::multi_op::multi_op(std::initializer_list&lt; op &gt; ops)']]],
   ['multi_5fresult',['multi_result',['../classzk_1_1multi__result.html',1,'zk']]]
 ];

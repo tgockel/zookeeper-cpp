@@ -119,39 +119,41 @@ $(document).ready(function(){initNavTree('server_8hpp_source.html','');});
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">namespace </span>zk::server</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;{</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">class </span>classpath;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">class </span>configuration;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
-<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="classzk_1_1server_1_1server.html">   23</a></span>&#160;<span class="keyword">class </span><a class="code" href="classzk_1_1server_1_1server.html">server</a> final</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;{</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classzk_1_1server_1_1server.html#ace6d095f60bc798abd2634df89a0e328">server</a>(<a class="code" href="classzk_1_1server_1_1classpath.html">classpath</a> packages, <a class="code" href="classzk_1_1server_1_1configuration.html">configuration</a> settings);</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classzk_1_1server_1_1server.html#ace6d095f60bc798abd2634df89a0e328">server</a>(<a class="code" href="classzk_1_1server_1_1configuration.html">configuration</a> settings);</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <a class="code" href="classzk_1_1server_1_1server.html#ace6d095f60bc798abd2634df89a0e328">server</a>(<span class="keyword">const</span> <a class="code" href="classzk_1_1server_1_1server.html">server</a>&amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    ~<a class="code" href="classzk_1_1server_1_1server.html">server</a>() noexcept;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classzk_1_1server_1_1server.html#a74901bc03a4e84c8a9b7e43d289ffd37">shutdown</a>(<span class="keywordtype">bool</span> wait_for_stop = <span class="keyword">false</span>);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordtype">void</span> run_process(<span class="keyword">const</span> <a class="code" href="classzk_1_1server_1_1classpath.html">classpath</a>&amp;, <span class="keyword">const</span> <a class="code" href="classzk_1_1server_1_1configuration.html">configuration</a>&amp;);</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">class </span>classpath;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">class </span>configuration;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="classzk_1_1server_1_1server.html">   22</a></span>&#160;<span class="keyword">class </span><a class="code" href="classzk_1_1server_1_1server.html">server</a> final</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;{</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classzk_1_1server_1_1server.html#ace6d095f60bc798abd2634df89a0e328">server</a>(<a class="code" href="classzk_1_1server_1_1classpath.html">classpath</a> packages, <a class="code" href="classzk_1_1server_1_1configuration.html">configuration</a> settings);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classzk_1_1server_1_1server.html#ace6d095f60bc798abd2634df89a0e328">server</a>(<a class="code" href="classzk_1_1server_1_1configuration.html">configuration</a> settings);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <a class="code" href="classzk_1_1server_1_1server.html#ace6d095f60bc798abd2634df89a0e328">server</a>(<span class="keyword">const</span> <a class="code" href="classzk_1_1server_1_1server.html">server</a>&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    ~<a class="code" href="classzk_1_1server_1_1server.html">server</a>() noexcept;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classzk_1_1server_1_1server.html#a74901bc03a4e84c8a9b7e43d289ffd37">shutdown</a>(<span class="keywordtype">bool</span> wait_for_stop = <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordtype">void</span> run_process(<span class="keyword">const</span> <a class="code" href="classzk_1_1server_1_1classpath.html">classpath</a>&amp;, <span class="keyword">const</span> <a class="code" href="classzk_1_1server_1_1configuration.html">configuration</a>&amp;);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    std::atomic&lt;bool&gt; _running;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    std::thread       _worker;</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    std::atomic&lt;bool&gt; _running;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    std::thread       _worker;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="comment">// NOTE: The configuration is NOT stored in the server object. This is because configuration can be changed by the</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="comment">// ZK process in cases like ensemble reconfiguration. It is the job of run_process to deal with this.</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;};</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="comment">// NOTE: The configuration is NOT stored in the server object. This is because configuration can be changed by the</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="comment">// ZK process in cases like ensemble reconfiguration. It is the job of run_process to deal with this.</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;};</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;}</div>
-<div class="ttc" id="classzk_1_1server_1_1classpath_html"><div class="ttname"><a href="classzk_1_1server_1_1classpath.html">zk::server::classpath</a></div><div class="ttdoc">Represents a collection of JARs or other Java entities that should be provided as the --classpath to ...</div><div class="ttdef"><b>Definition:</b> <a href="classpath_8hpp_source.html#l00020">classpath.hpp:20</a></div></div>
-<div class="ttc" id="classzk_1_1server_1_1server_html"><div class="ttname"><a href="classzk_1_1server_1_1server.html">zk::server::server</a></div><div class="ttdoc">Controls a ZooKeeper server process on this local machine. </div><div class="ttdef"><b>Definition:</b> <a href="server_8hpp_source.html#l00023">server.hpp:23</a></div></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;}</div>
+<div class="ttc" id="classzk_1_1server_1_1classpath_html"><div class="ttname"><a href="classzk_1_1server_1_1classpath.html">zk::server::classpath</a></div><div class="ttdoc">Represents a collection of JARs or other Java entities that should be provided as the --classpath to ...</div><div class="ttdef"><b>Definition:</b> <a href="classpath_8hpp_source.html#l00018">classpath.hpp:18</a></div></div>
+<div class="ttc" id="classzk_1_1server_1_1server_html"><div class="ttname"><a href="classzk_1_1server_1_1server.html">zk::server::server</a></div><div class="ttdoc">Controls a ZooKeeper server process on this local machine. </div><div class="ttdef"><b>Definition:</b> <a href="server_8hpp_source.html#l00022">server.hpp:22</a></div></div>
 <div class="ttc" id="classzk_1_1server_1_1server_html_ace6d095f60bc798abd2634df89a0e328"><div class="ttname"><a href="classzk_1_1server_1_1server.html#ace6d095f60bc798abd2634df89a0e328">zk::server::server::server</a></div><div class="ttdeci">server(classpath packages, configuration settings)</div><div class="ttdoc">Create a running server process with the specified packages and settings. </div><div class="ttdef"><b>Definition:</b> <a href="server_8cpp_source.html#l00029">server.cpp:29</a></div></div>
 <div class="ttc" id="classzk_1_1server_1_1server_html_a74901bc03a4e84c8a9b7e43d289ffd37"><div class="ttname"><a href="classzk_1_1server_1_1server.html#a74901bc03a4e84c8a9b7e43d289ffd37">zk::server::server::shutdown</a></div><div class="ttdeci">void shutdown(bool wait_for_stop=false)</div><div class="ttdoc">Initiate shutting down the server process. </div><div class="ttdef"><b>Definition:</b> <a href="server_8cpp_source.html#l00049">server.cpp:49</a></div></div>
-<div class="ttc" id="classzk_1_1server_1_1configuration_html"><div class="ttname"><a href="classzk_1_1server_1_1configuration.html">zk::server::configuration</a></div><div class="ttdef"><b>Definition:</b> <a href="configuration_8hpp_source.html#l00046">configuration.hpp:46</a></div></div>
+<div class="ttc" id="classzk_1_1server_1_1configuration_html"><div class="ttname"><a href="classzk_1_1server_1_1configuration.html">zk::server::configuration</a></div><div class="ttdoc">Represents a configuration which should be run by server instance. </div><div class="ttdef"><b>Definition:</b> <a href="configuration_8hpp_source.html#l00070">configuration.hpp:70</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

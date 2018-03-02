@@ -120,7 +120,7 @@ $(document).ready(function(){initNavTree('classzk_1_1connection__zk.html','');})
  <div class="center">
   <img src="classzk_1_1connection__zk.png" usemap="#zk::connection_zk_map" alt=""/>
   <map id="zk::connection_zk_map" name="zk::connection_zk_map">
-<area href="classzk_1_1connection.html" alt="zk::connection" shape="rect" coords="0,0,111,24"/>
+<area href="classzk_1_1connection.html" title="An actual connection to the server. " alt="zk::connection" shape="rect" coords="0,0,111,24"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -173,16 +173,16 @@ virtual future<br class="typebreak" />
 virtual future&lt; <a class="el" href="classzk_1_1create__result.html">create_result</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>create</b> (string_view path, const <a class="el" href="group__Client.html#ga8175fa6edfc7371c269524730d3c0a9d">buffer</a> &amp;data, const <a class="el" href="classzk_1_1acl.html">acl</a> &amp;rules, <a class="el" href="group__Client.html#ga9f10c37f69a7d1084b08cac07ebb7918">create_mode</a> mode) override</td></tr>
 <tr class="separator:a56f2786ee9c632363719ccdb1cd76de7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac22af18bdb399c00908b6fdf5320d18e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac22af18bdb399c00908b6fdf5320d18e"></a>
-virtual future&lt; <a class="el" href="classzk_1_1set__result.html">set_result</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>set</b> (string_view path, const <a class="el" href="group__Client.html#ga8175fa6edfc7371c269524730d3c0a9d">buffer</a> &amp;data, <a class="el" href="structzk_1_1version.html">version</a> check) override</td></tr>
+virtual future&lt; <a class="el" href="classzk_1_1set__result.html">set_result</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>set</b> (string_view path, const <a class="el" href="group__Client.html#ga8175fa6edfc7371c269524730d3c0a9d">buffer</a> &amp;data, <a class="el" href="structzk_1_1version.html">version</a> <a class="el" href="group__Client.html#ggaec8382e2b14fe4fd770d6ad3511fcb93a0ba4439ee9a46d9d9f14c60f88f45f87">check</a>) override</td></tr>
 <tr class="separator:ac22af18bdb399c00908b6fdf5320d18e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a66e8d98af94489363ca1f6304f9503cc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a66e8d98af94489363ca1f6304f9503cc"></a>
-virtual future&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>erase</b> (string_view path, <a class="el" href="structzk_1_1version.html">version</a> check) override</td></tr>
+virtual future&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>erase</b> (string_view path, <a class="el" href="structzk_1_1version.html">version</a> <a class="el" href="group__Client.html#ggaec8382e2b14fe4fd770d6ad3511fcb93a0ba4439ee9a46d9d9f14c60f88f45f87">check</a>) override</td></tr>
 <tr class="separator:a66e8d98af94489363ca1f6304f9503cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3a3afc6514f484bc5faea71258302552"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3a3afc6514f484bc5faea71258302552"></a>
 virtual future&lt; <a class="el" href="classzk_1_1get__acl__result.html">get_acl_result</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>get_acl</b> (string_view path) const override</td></tr>
 <tr class="separator:a3a3afc6514f484bc5faea71258302552"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8ed419532d57ef18f3ec75a339318606"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8ed419532d57ef18f3ec75a339318606"></a>
-virtual future&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>set_acl</b> (string_view path, const <a class="el" href="classzk_1_1acl.html">acl</a> &amp;rules, <a class="el" href="structzk_1_1acl__version.html">acl_version</a> check) override</td></tr>
+virtual future&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>set_acl</b> (string_view path, const <a class="el" href="classzk_1_1acl.html">acl</a> &amp;rules, <a class="el" href="structzk_1_1acl__version.html">acl_version</a> <a class="el" href="group__Client.html#ggaec8382e2b14fe4fd770d6ad3511fcb93a0ba4439ee9a46d9d9f14c60f88f45f87">check</a>) override</td></tr>
 <tr class="separator:a8ed419532d57ef18f3ec75a339318606"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a971ba34808a85a71a8d22cc985869da7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a971ba34808a85a71a8d22cc985869da7"></a>
 virtual future&lt; <a class="el" href="classzk_1_1multi__result.html">multi_result</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>commit</b> (<a class="el" href="classzk_1_1multi__op.html">multi_op</a> &amp;&amp;txn) override</td></tr>
@@ -213,7 +213,7 @@ static std::shared_ptr<br class="typebreak" />
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p>Definition at line <a class="el" href="connection__zk_8hpp_source.html#l00022">22</a> of file <a class="el" href="connection__zk_8hpp_source.html">connection_zk.hpp</a>.</p>
+<p>Definition at line <a class="el" href="connection__zk_8hpp_source.html#l00021">21</a> of file <a class="el" href="connection__zk_8hpp_source.html">connection_zk.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>zk/<a class="el" href="connection__zk_8hpp_source.html">connection_zk.hpp</a></li>
 <li>zk/<a class="el" href="connection__zk_8cpp_source.html">connection_zk.cpp</a></li>

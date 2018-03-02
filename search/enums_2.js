@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['permission',['permission',['../group__Client.html#ga75dfaeeb3b2f4e1588380b3bf68ecc08',1,'zk']]]
+  ['op_5ftype',['op_type',['../group__Client.html#gaec8382e2b14fe4fd770d6ad3511fcb93',1,'zk']]]
 ];

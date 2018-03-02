@@ -113,6 +113,11 @@ $(document).ready(function(){initNavTree('classzk_1_1connection.html','');});
 <div class="title">zk::connection Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span><div class="ingroups"><a class="el" href="group__Client.html">Client</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>An actual connection to the server.  
+ <a href="classzk_1_1connection.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="connection_8hpp_source.html">zk/connection.hpp</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for zk::connection:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
@@ -155,16 +160,16 @@ virtual future<br class="typebreak" />
 virtual future&lt; <a class="el" href="classzk_1_1create__result.html">create_result</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>create</b> (string_view path, const <a class="el" href="group__Client.html#ga8175fa6edfc7371c269524730d3c0a9d">buffer</a> &amp;data, const <a class="el" href="classzk_1_1acl.html">acl</a> &amp;rules, <a class="el" href="group__Client.html#ga9f10c37f69a7d1084b08cac07ebb7918">create_mode</a> mode)=0</td></tr>
 <tr class="separator:a3947f52f49a1b3901b718e59d44b12d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a414d4a9ca9d8ad14e7089064606a9945"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a414d4a9ca9d8ad14e7089064606a9945"></a>
-virtual future&lt; <a class="el" href="classzk_1_1set__result.html">set_result</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>set</b> (string_view path, const <a class="el" href="group__Client.html#ga8175fa6edfc7371c269524730d3c0a9d">buffer</a> &amp;data, <a class="el" href="structzk_1_1version.html">version</a> check)=0</td></tr>
+virtual future&lt; <a class="el" href="classzk_1_1set__result.html">set_result</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>set</b> (string_view path, const <a class="el" href="group__Client.html#ga8175fa6edfc7371c269524730d3c0a9d">buffer</a> &amp;data, <a class="el" href="structzk_1_1version.html">version</a> <a class="el" href="group__Client.html#ggaec8382e2b14fe4fd770d6ad3511fcb93a0ba4439ee9a46d9d9f14c60f88f45f87">check</a>)=0</td></tr>
 <tr class="separator:a414d4a9ca9d8ad14e7089064606a9945"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5e3f5a65eab490a317e706d2b2863d42"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5e3f5a65eab490a317e706d2b2863d42"></a>
-virtual future&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>erase</b> (string_view path, <a class="el" href="structzk_1_1version.html">version</a> check)=0</td></tr>
+virtual future&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>erase</b> (string_view path, <a class="el" href="structzk_1_1version.html">version</a> <a class="el" href="group__Client.html#ggaec8382e2b14fe4fd770d6ad3511fcb93a0ba4439ee9a46d9d9f14c60f88f45f87">check</a>)=0</td></tr>
 <tr class="separator:a5e3f5a65eab490a317e706d2b2863d42"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a18f834347483bb61d9ada66931213f63"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a18f834347483bb61d9ada66931213f63"></a>
 virtual future&lt; <a class="el" href="classzk_1_1get__acl__result.html">get_acl_result</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>get_acl</b> (string_view path) const =0</td></tr>
 <tr class="separator:a18f834347483bb61d9ada66931213f63"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaabeb707f4897252bbed2c2937497906"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaabeb707f4897252bbed2c2937497906"></a>
-virtual future&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>set_acl</b> (string_view path, const <a class="el" href="classzk_1_1acl.html">acl</a> &amp;rules, <a class="el" href="structzk_1_1acl__version.html">acl_version</a> check)=0</td></tr>
+virtual future&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>set_acl</b> (string_view path, const <a class="el" href="classzk_1_1acl.html">acl</a> &amp;rules, <a class="el" href="structzk_1_1acl__version.html">acl_version</a> <a class="el" href="group__Client.html#ggaec8382e2b14fe4fd770d6ad3511fcb93a0ba4439ee9a46d9d9f14c60f88f45f87">check</a>)=0</td></tr>
 <tr class="separator:aaabeb707f4897252bbed2c2937497906"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad611299d01bf68405c590fbad115b059"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad611299d01bf68405c590fbad115b059"></a>
 virtual future&lt; <a class="el" href="classzk_1_1multi__result.html">multi_result</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>commit</b> (<a class="el" href="classzk_1_1multi__op.html">multi_op</a> &amp;&amp;txn)=0</td></tr>
@@ -197,8 +202,11 @@ Protected Member Functions</h2></td></tr>
 <tr class="separator:a49d56be4e6387a530d79fa5a0f5da422"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p>Definition at line <a class="el" href="connection_8hpp_source.html#l00024">24</a> of file <a class="el" href="connection_8hpp_source.html">connection.hpp</a>.</p>
+<div class="textblock"><p>An actual connection to the server. </p>
+<p>The majority of methods have the same signature and meaning as <a class="el" href="classzk_1_1client.html">client</a>.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classzk_1_1connection__zk.html">connection_zk</a> </dd></dl>
+
+<p>Definition at line <a class="el" href="connection_8hpp_source.html#l00026">26</a> of file <a class="el" href="connection_8hpp_source.html">connection.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="a49d56be4e6387a530d79fa5a0f5da422"></a>
 <div class="memitem">
@@ -223,7 +231,7 @@ Protected Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Call this from derived classes when a session event happens. </p>
-<p>This triggers the delivery of all promises of state changes (issued through <code>watch_state</code>). </p>
+<p>This triggers the delivery of all promises of state changes (issued through <a class="el" href="classzk_1_1connection.html#af74f4dacf3a350c3d5b782d08a0d4366">watch_state</a>). </p>
 
 <p>Definition at line <a class="el" href="connection_8cpp_source.html#l00042">42</a> of file <a class="el" href="connection_8cpp_source.html">connection.cpp</a>.</p>
 

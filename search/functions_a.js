@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['on_5fsession_5fevent',['on_session_event',['../classzk_1_1connection.html#a49d56be4e6387a530d79fa5a0f5da422',1,'zk::connection']]],
-  ['open_5funsafe',['open_unsafe',['../classzk_1_1acls.html#ad3f828c2a71a2ad7c213a51da7663414',1,'zk::acls']]]
+  ['make_5fensemble',['make_ensemble',['../classzk_1_1server_1_1server__group.html#afe1fc9e26912d8834cb812978d10710b',1,'zk::server::server_group']]],
+  ['make_5fminimal',['make_minimal',['../classzk_1_1server_1_1configuration.html#a49c3bd6d6109ab64c64b6aec5c4a7965',1,'zk::server::configuration']]],
+  ['map',['map',['../group__Client.html#gad895648faa9ce5a5ef73bb4403b982e1',1,'zk']]],
+  ['multi_5fop',['multi_op',['../classzk_1_1multi__op.html#ad709c9ed1ce73bdd6354a302bb7385d2',1,'zk::multi_op::multi_op() noexcept'],['../classzk_1_1multi__op.html#afcea7e73ef5f3a1f2fb51f3c0acec637',1,'zk::multi_op::multi_op(std::vector&lt; op &gt; ops) noexcept'],['../classzk_1_1multi__op.html#aa61322beb32e1b68bde5ad630bb79c2c',1,'zk::multi_op::multi_op(std::initializer_list&lt; op &gt; ops)']]]
 ];

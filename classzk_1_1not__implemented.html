@@ -130,23 +130,55 @@ $(document).ready(function(){initNavTree('classzk_1_1not__implemented.html','');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a5c70745202cd8f96e7171d65f16ab3f7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5c70745202cd8f96e7171d65f16ab3f7"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>not_implemented</b> (<a class="el" href="group__Client.html#ga90b49f2e7c5f07873ad93fc5bd2f0e87">ptr</a>&lt; const char &gt; op_name)</td></tr>
+<tr class="memitem:a5c70745202cd8f96e7171d65f16ab3f7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1not__implemented.html#a5c70745202cd8f96e7171d65f16ab3f7">not_implemented</a> (<a class="el" href="group__Client.html#ga90b49f2e7c5f07873ad93fc5bd2f0e87">ptr</a>&lt; const char &gt; op_name)</td></tr>
 <tr class="separator:a5c70745202cd8f96e7171d65f16ab3f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classzk_1_1error"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classzk_1_1error')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classzk_1_1error.html">zk::error</a></td></tr>
 <tr class="memitem:a1163870950b3af77be48b3b2aa7f0aed inherit pub_methods_classzk_1_1error"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1163870950b3af77be48b3b2aa7f0aed"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>error</b> (<a class="el" href="group__Client.html#ga59dbc6c98abba145d356557222aa9f7f">error_code</a> code, const std::string &amp;description)</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><b>error</b> (<a class="el" href="group__Client.html#ga59dbc6c98abba145d356557222aa9f7f">error_code</a> <a class="el" href="classzk_1_1error.html#a9193811b2cefbe51f47bf5ea639524fd">code</a>, const std::string &amp;description)</td></tr>
 <tr class="separator:a1163870950b3af77be48b3b2aa7f0aed inherit pub_methods_classzk_1_1error"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9193811b2cefbe51f47bf5ea639524fd inherit pub_methods_classzk_1_1error"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9193811b2cefbe51f47bf5ea639524fd"></a>
-<a class="el" href="group__Client.html#ga59dbc6c98abba145d356557222aa9f7f">error_code</a>&#160;</td><td class="memItemRight" valign="bottom"><b>code</b> () const </td></tr>
+<tr class="memitem:a9193811b2cefbe51f47bf5ea639524fd inherit pub_methods_classzk_1_1error"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__Client.html#ga59dbc6c98abba145d356557222aa9f7f">error_code</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1error.html#a9193811b2cefbe51f47bf5ea639524fd">code</a> () const </td></tr>
+<tr class="memdesc:a9193811b2cefbe51f47bf5ea639524fd inherit pub_methods_classzk_1_1error"><td class="mdescLeft">&#160;</td><td class="mdescRight">The code representation of this error.  <a href="#a9193811b2cefbe51f47bf5ea639524fd">More...</a><br /></td></tr>
 <tr class="separator:a9193811b2cefbe51f47bf5ea639524fd inherit pub_methods_classzk_1_1error"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Operation was attempted that was not implemented. </p>
 <p>If you happen to be writing a <a class="el" href="classzk_1_1connection.html">connection</a> implementation, you are encouraged to raise this error in cases where you have not implemented an operation. </p>
 
-<p>Definition at line <a class="el" href="error_8hpp_source.html#l00172">172</a> of file <a class="el" href="error_8hpp_source.html">error.hpp</a>.</p>
-</div><hr/>The documentation for this class was generated from the following files:<ul>
+<p>Definition at line <a class="el" href="error_8hpp_source.html#l00167">167</a> of file <a class="el" href="error_8hpp_source.html">error.hpp</a>.</p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a5c70745202cd8f96e7171d65f16ab3f7"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">zk::not_implemented::not_implemented </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__Client.html#ga90b49f2e7c5f07873ad93fc5bd2f0e87">ptr</a>&lt; const char &gt;&#160;</td>
+          <td class="paramname"><em>op_name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">op_name</td><td>the name of the attempted operation. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="error_8cpp_source.html#l00130">130</a> of file <a class="el" href="error_8cpp_source.html">error.cpp</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>zk/<a class="el" href="error_8hpp_source.html">error.hpp</a></li>
 <li>zk/<a class="el" href="error_8cpp_source.html">error.cpp</a></li>
 </ul>

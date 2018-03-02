@@ -121,11 +121,11 @@ $(document).ready(function(){initNavTree('classzk_1_1server_1_1classpath.html','
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a4c08b7da435dde82ab5d6ef14676dc04"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4c08b7da435dde82ab5d6ef14676dc04"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>classpath</b> (std::vector&lt; std::string &gt; components) noexcept</td></tr>
+<tr class="memitem:a4c08b7da435dde82ab5d6ef14676dc04"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1server_1_1classpath.html#a4c08b7da435dde82ab5d6ef14676dc04">classpath</a> (std::vector&lt; std::string &gt; components) noexcept</td></tr>
+<tr class="memdesc:a4c08b7da435dde82ab5d6ef14676dc04"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a classpath specification from the provided <em>components</em>.  <a href="#a4c08b7da435dde82ab5d6ef14676dc04">More...</a><br /></td></tr>
 <tr class="separator:a4c08b7da435dde82ab5d6ef14676dc04"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a90cc62f322943a33c01271beb4e7d1ec"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1server_1_1classpath.html#a90cc62f322943a33c01271beb4e7d1ec">command_line</a> () const </td></tr>
-<tr class="memdesc:a90cc62f322943a33c01271beb4e7d1ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the command-line representation of this classpath.  <a href="#a90cc62f322943a33c01271beb4e7d1ec">More...</a><br /></td></tr>
+<tr class="memdesc:a90cc62f322943a33c01271beb4e7d1ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the command-line representation of this classpath. This puts <code>'</code>:' characters between the components.  <a href="#a90cc62f322943a33c01271beb4e7d1ec">More...</a><br /></td></tr>
 <tr class="separator:a90cc62f322943a33c01271beb4e7d1ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
@@ -144,8 +144,37 @@ std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operato
 <div class="textblock"><p>Represents a collection of JARs or other Java entities that should be provided as the <code>--classpath</code> to the JVM. </p>
 <p>This is used to fetch both the ZooKeeper package (<code>zookeeper.jar</code>), but the required SLF JAR. If you do not know or care about what that second part means, just call <a class="el" href="classzk_1_1server_1_1classpath.html#ae2b173799b0662f46c97775f6b4dae99">system_default</a>. </p>
 
-<p>Definition at line <a class="el" href="classpath_8hpp_source.html#l00020">20</a> of file <a class="el" href="classpath_8hpp_source.html">classpath.hpp</a>.</p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+<p>Definition at line <a class="el" href="classpath_8hpp_source.html#l00018">18</a> of file <a class="el" href="classpath_8hpp_source.html">classpath.hpp</a>.</p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a4c08b7da435dde82ab5d6ef14676dc04"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">zk::server::classpath::classpath </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; std::string &gt;&#160;</td>
+          <td class="paramname"><em>components</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Create a classpath specification from the provided <em>components</em>. </p>
+
+<p>Definition at line <a class="el" href="classpath_8cpp_source.html#l00107">107</a> of file <a class="el" href="classpath_8cpp_source.html">classpath.cpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="a90cc62f322943a33c01271beb4e7d1ec"></a>
 <div class="memitem">
 <div class="memproto">
@@ -159,8 +188,7 @@ std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operato
       </table>
 </div><div class="memdoc">
 
-<p>Get the command-line representation of this classpath. </p>
-<p>This puts <code>'</code>:' characters between the components. </p>
+<p>Get the command-line representation of this classpath. This puts <code>'</code>:' characters between the components. </p>
 
 <p>Definition at line <a class="el" href="classpath_8cpp_source.html#l00111">111</a> of file <a class="el" href="classpath_8cpp_source.html">classpath.cpp</a>.</p>
 

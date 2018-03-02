@@ -126,19 +126,19 @@ $(document).ready(function(){initNavTree('multi_8cpp_source.html','');});
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">// op_type                                                                                                            //</span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;std::ostream&amp; operator&lt;&lt;(std::ostream&amp; os, <span class="keyword">const</span> op_type&amp; <span class="keyword">self</span>)</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;std::ostream&amp; operator&lt;&lt;(std::ostream&amp; os, <span class="keyword">const</span> <a class="code" href="group__Client.html#gaec8382e2b14fe4fd770d6ad3511fcb93">op_type</a>&amp; <span class="keyword">self</span>)</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;{</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordflow">switch</span> (<span class="keyword">self</span>)</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    {</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordflow">case</span> op_type::check:  <span class="keywordflow">return</span> os &lt;&lt; <span class="stringliteral">&quot;check&quot;</span>;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordflow">case</span> op_type::create: <span class="keywordflow">return</span> os &lt;&lt; <span class="stringliteral">&quot;create&quot;</span>;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordflow">case</span> op_type::erase:  <span class="keywordflow">return</span> os &lt;&lt; <span class="stringliteral">&quot;erase&quot;</span>;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordflow">case</span> op_type::set:    <span class="keywordflow">return</span> os &lt;&lt; <span class="stringliteral">&quot;set&quot;</span>;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="group__Client.html#ggaec8382e2b14fe4fd770d6ad3511fcb93a0ba4439ee9a46d9d9f14c60f88f45f87">op_type::check</a>:  <span class="keywordflow">return</span> os &lt;&lt; <span class="stringliteral">&quot;check&quot;</span>;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="group__Client.html#ggaec8382e2b14fe4fd770d6ad3511fcb93a76ea0bebb3c22822b4f0dd9c9fd021c5">op_type::create</a>: <span class="keywordflow">return</span> os &lt;&lt; <span class="stringliteral">&quot;create&quot;</span>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="group__Client.html#ggaec8382e2b14fe4fd770d6ad3511fcb93a26eb25b14d930f9d5f59b2c50798a9a4">op_type::erase</a>:  <span class="keywordflow">return</span> os &lt;&lt; <span class="stringliteral">&quot;erase&quot;</span>;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="group__Client.html#ggaec8382e2b14fe4fd770d6ad3511fcb93acdaeeeba9b4a4c5ebf042c0215a7bb0e">op_type::set</a>:    <span class="keywordflow">return</span> os &lt;&lt; <span class="stringliteral">&quot;set&quot;</span>;</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordflow">default</span>:              <span class="keywordflow">return</span> os &lt;&lt; <span class="stringliteral">&quot;op_type(&quot;</span> &lt;&lt; <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(<span class="keyword">self</span>) &lt;&lt; <span class="charliteral">&#39;)&#39;</span>;</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    }</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;}</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;std::string to_string(<span class="keyword">const</span> op_type&amp; <span class="keyword">self</span>)</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;std::string to_string(<span class="keyword">const</span> <a class="code" href="group__Client.html#gaec8382e2b14fe4fd770d6ad3511fcb93">op_type</a>&amp; <span class="keyword">self</span>)</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;{</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordflow">return</span> to_string_generic(<span class="keyword">self</span>);</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;}</div>
@@ -157,13 +157,13 @@ $(document).ready(function(){initNavTree('multi_8cpp_source.html','');});
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;op::~op() noexcept = default;</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;op_type op::type()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="classzk_1_1op.html#a3e24ce580dea015ef409fe8593b014f4">   56</a></span>&#160;<a class="code" href="group__Client.html#gaec8382e2b14fe4fd770d6ad3511fcb93">op_type</a> <a class="code" href="classzk_1_1op.html">op</a>::type()<span class="keyword"> const</span></div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keyword"></span>{</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordflow">return</span> std::visit([] (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; x) { <span class="keywordflow">return</span> x.type(); }, _storage);</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;}</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="keyword">const</span> T&amp; op::as(ptr&lt;const char&gt; operation)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="keyword">const</span> T&amp; op::as(<a class="code" href="group__Client.html#ga90b49f2e7c5f07873ad93fc5bd2f0e87">ptr&lt;const char&gt;</a> operation)<span class="keyword"> const</span></div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="keyword"></span>{</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordflow">try</span></div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    {</div>
@@ -174,7 +174,7 @@ $(document).ready(function(){initNavTree('multi_8cpp_source.html','');});
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keywordflow">throw</span> std::logic_error( std::string(<span class="stringliteral">&quot;Invalid op type for op::&quot;</span>)</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                              + std::string(operation)</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                              + std::string(<span class="stringliteral">&quot;: &quot;</span>)</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                              + to_string(type())</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                              + to_string(<a class="code" href="classzk_1_1op.html#a3e24ce580dea015ef409fe8593b014f4">type</a>())</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                              );</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    }</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;}</div>
@@ -183,7 +183,7 @@ $(document).ready(function(){initNavTree('multi_8cpp_source.html','');});
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;op::check_data::check_data(std::string path, version check_) :</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        path(std::move(path)),</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        check(check_)</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <a class="code" href="group__Client.html#ggaec8382e2b14fe4fd770d6ad3511fcb93a0ba4439ee9a46d9d9f14c60f88f45f87">check</a>(check_)</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;{ }</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;std::ostream&amp; operator&lt;&lt;(std::ostream&amp; os, <span class="keyword">const</span> op::check_data&amp; <span class="keyword">self</span>)</div>
@@ -193,19 +193,19 @@ $(document).ready(function(){initNavTree('multi_8cpp_source.html','');});
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordflow">return</span> os &lt;&lt; <span class="charliteral">&#39;}&#39;</span>;</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;}</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
-<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="classzk_1_1op.html#adc1d499ad7ea3731fb2d686b774acf14">   92</a></span>&#160;<a class="code" href="classzk_1_1op.html">op</a> op::check(std::string path, <a class="code" href="structzk_1_1version.html">version</a> check_)</div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="classzk_1_1op.html#adc1d499ad7ea3731fb2d686b774acf14">   92</a></span>&#160;<a class="code" href="classzk_1_1op.html">op</a> <a class="code" href="classzk_1_1op.html#adc1d499ad7ea3731fb2d686b774acf14">op::check</a>(std::string path, <a class="code" href="structzk_1_1version.html">version</a> check_)</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;{</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classzk_1_1op.html">op</a>(<a class="code" href="structzk_1_1op_1_1check__data.html">check_data</a>(std::move(path), check_));</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;}</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="keyword">const</span> <a class="code" href="structzk_1_1op_1_1check__data.html">op::check_data</a>&amp; op::as_check()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno"><a class="line" href="classzk_1_1op.html#a5e0e22504bdac8a72212ba2ff05060c3">   97</a></span>&#160;<span class="keyword">const</span> <a class="code" href="structzk_1_1op_1_1check__data.html">op::check_data</a>&amp; <a class="code" href="classzk_1_1op.html#a5e0e22504bdac8a72212ba2ff05060c3">op::as_check</a>()<span class="keyword"> const</span></div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="keyword"></span>{</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keywordflow">return</span> as&lt;check_data&gt;(<span class="stringliteral">&quot;as_check&quot;</span>);</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;}</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="comment">// create</span></div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;op::create_data::create_data(std::string path, <a class="code" href="group__Client.html#ga8175fa6edfc7371c269524730d3c0a9d">buffer</a> data, acl rules, <a class="code" href="group__Client.html#ga9f10c37f69a7d1084b08cac07ebb7918">create_mode</a> mode) :</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;op::create_data::create_data(std::string path, <a class="code" href="group__Client.html#ga8175fa6edfc7371c269524730d3c0a9d">buffer</a> data, <a class="code" href="classzk_1_1acl.html">acl</a> rules, <a class="code" href="group__Client.html#ga9f10c37f69a7d1084b08cac07ebb7918">create_mode</a> mode) :</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        path(std::move(path)),</div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        data(std::move(data)),</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        rules(std::move(rules)),</div>
@@ -230,14 +230,14 @@ $(document).ready(function(){initNavTree('multi_8cpp_source.html','');});
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classzk_1_1op.html#a6641e7dd6e0153a0d7fcbdbad4cfc2db">create</a>(std::move(path), std::move(data), <a class="code" href="classzk_1_1acls.html#ad3f828c2a71a2ad7c213a51da7663414">acls::open_unsafe</a>(), mode);</div>
 <div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;}</div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="keyword">const</span> op::create_data&amp; op::as_create()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00129"></a><span class="lineno"><a class="line" href="classzk_1_1op.html#ae370093b0f7d6caa40f14a22ebb4b9f8">  129</a></span>&#160;<span class="keyword">const</span> <a class="code" href="structzk_1_1op_1_1create__data.html">op::create_data</a>&amp; <a class="code" href="classzk_1_1op.html#ae370093b0f7d6caa40f14a22ebb4b9f8">op::as_create</a>()<span class="keyword"> const</span></div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="keyword"></span>{</div>
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <span class="keywordflow">return</span> as&lt;create_data&gt;(<span class="stringliteral">&quot;as_create&quot;</span>);</div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;}</div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="comment">// erase</span></div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;op::erase_data::erase_data(std::string path, version check) :</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;op::erase_data::erase_data(std::string path, <a class="code" href="structzk_1_1version.html">version</a> <a class="code" href="group__Client.html#ggaec8382e2b14fe4fd770d6ad3511fcb93a0ba4439ee9a46d9d9f14c60f88f45f87">check</a>) :</div>
 <div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        path(std::move(path)),</div>
 <div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        check(check)</div>
 <div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;{ }</div>
@@ -249,19 +249,19 @@ $(document).ready(function(){initNavTree('multi_8cpp_source.html','');});
 <div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    <span class="keywordflow">return</span> os &lt;&lt; <span class="charliteral">&#39;}&#39;</span>;</div>
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;}</div>
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;</div>
-<div class="line"><a name="l00148"></a><span class="lineno"><a class="line" href="classzk_1_1op.html#ac14ac1d293df4c1139d099ab00e8b115">  148</a></span>&#160;<a class="code" href="classzk_1_1op.html">op</a> <a class="code" href="classzk_1_1op.html#ac14ac1d293df4c1139d099ab00e8b115">op::erase</a>(std::string path, <a class="code" href="structzk_1_1version.html">version</a> check)</div>
+<div class="line"><a name="l00148"></a><span class="lineno"><a class="line" href="classzk_1_1op.html#ac14ac1d293df4c1139d099ab00e8b115">  148</a></span>&#160;<a class="code" href="classzk_1_1op.html">op</a> <a class="code" href="classzk_1_1op.html#ac14ac1d293df4c1139d099ab00e8b115">op::erase</a>(std::string path, <a class="code" href="structzk_1_1version.html">version</a> <a class="code" href="group__Client.html#ggaec8382e2b14fe4fd770d6ad3511fcb93a0ba4439ee9a46d9d9f14c60f88f45f87">check</a>)</div>
 <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;{</div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classzk_1_1op.html">op</a>(<a class="code" href="structzk_1_1op_1_1erase__data.html">erase_data</a>(std::move(path), check));</div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;}</div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;<span class="keyword">const</span> <a class="code" href="structzk_1_1op_1_1erase__data.html">op::erase_data</a>&amp; op::as_erase()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00153"></a><span class="lineno"><a class="line" href="classzk_1_1op.html#a1b3280d90b664e6fc981945762a93cf6">  153</a></span>&#160;<span class="keyword">const</span> <a class="code" href="structzk_1_1op_1_1erase__data.html">op::erase_data</a>&amp; <a class="code" href="classzk_1_1op.html#a1b3280d90b664e6fc981945762a93cf6">op::as_erase</a>()<span class="keyword"> const</span></div>
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;<span class="keyword"></span>{</div>
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    <span class="keywordflow">return</span> as&lt;erase_data&gt;(<span class="stringliteral">&quot;as_erase&quot;</span>);</div>
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;}</div>
 <div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;</div>
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="comment">// set</span></div>
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;op::set_data::set_data(std::string path, <a class="code" href="group__Client.html#ga8175fa6edfc7371c269524730d3c0a9d">buffer</a> data, version check) :</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;op::set_data::set_data(std::string path, <a class="code" href="group__Client.html#ga8175fa6edfc7371c269524730d3c0a9d">buffer</a> data, <a class="code" href="structzk_1_1version.html">version</a> <a class="code" href="group__Client.html#ggaec8382e2b14fe4fd770d6ad3511fcb93a0ba4439ee9a46d9d9f14c60f88f45f87">check</a>) :</div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        path(std::move(path)),</div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        data(std::move(data)),</div>
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        check(check)</div>
@@ -274,19 +274,19 @@ $(document).ready(function(){initNavTree('multi_8cpp_source.html','');});
 <div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    <span class="keywordflow">return</span> os &lt;&lt; <span class="charliteral">&#39;}&#39;</span>;</div>
 <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;}</div>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;</div>
-<div class="line"><a name="l00173"></a><span class="lineno"><a class="line" href="classzk_1_1op.html#ab3385876c2f13ef11a8edb746d5f3014">  173</a></span>&#160;<a class="code" href="classzk_1_1op.html">op</a> <a class="code" href="classzk_1_1op.html#ab3385876c2f13ef11a8edb746d5f3014">op::set</a>(std::string path, <a class="code" href="group__Client.html#ga8175fa6edfc7371c269524730d3c0a9d">buffer</a> data, <a class="code" href="structzk_1_1version.html">version</a> check)</div>
+<div class="line"><a name="l00173"></a><span class="lineno"><a class="line" href="classzk_1_1op.html#ab3385876c2f13ef11a8edb746d5f3014">  173</a></span>&#160;<a class="code" href="classzk_1_1op.html">op</a> <a class="code" href="classzk_1_1op.html#ab3385876c2f13ef11a8edb746d5f3014">op::set</a>(std::string path, <a class="code" href="group__Client.html#ga8175fa6edfc7371c269524730d3c0a9d">buffer</a> data, <a class="code" href="structzk_1_1version.html">version</a> <a class="code" href="group__Client.html#ggaec8382e2b14fe4fd770d6ad3511fcb93a0ba4439ee9a46d9d9f14c60f88f45f87">check</a>)</div>
 <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;{</div>
 <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classzk_1_1op.html">op</a>(<a class="code" href="structzk_1_1op_1_1set__data.html">set_data</a>(std::move(path), std::move(data), check));</div>
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;}</div>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;<span class="keyword">const</span> <a class="code" href="structzk_1_1op_1_1set__data.html">op::set_data</a>&amp; op::as_set()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00178"></a><span class="lineno"><a class="line" href="classzk_1_1op.html#ab0c8552792282c9ced79821670d46911">  178</a></span>&#160;<span class="keyword">const</span> <a class="code" href="structzk_1_1op_1_1set__data.html">op::set_data</a>&amp; <a class="code" href="classzk_1_1op.html#ab0c8552792282c9ced79821670d46911">op::as_set</a>()<span class="keyword"> const</span></div>
 <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;<span class="keyword"></span>{</div>
 <div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    <span class="keywordflow">return</span> as&lt;set_data&gt;(<span class="stringliteral">&quot;as_set&quot;</span>);</div>
 <div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;}</div>
 <div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;</div>
 <div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;<span class="comment">// generic</span></div>
 <div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;std::ostream&amp; operator&lt;&lt;(std::ostream&amp; os, <span class="keyword">const</span> op&amp; <span class="keyword">self</span>)</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;std::ostream&amp; operator&lt;&lt;(std::ostream&amp; os, <span class="keyword">const</span> <a class="code" href="classzk_1_1op.html">op</a>&amp; <span class="keyword">self</span>)</div>
 <div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;{</div>
 <div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    os &lt;&lt; <span class="keyword">self</span>.type();</div>
 <div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    std::visit([&amp;] (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; x) { os &lt;&lt; x; }, <span class="keyword">self</span>._storage);</div>
@@ -302,7 +302,7 @@ $(document).ready(function(){initNavTree('multi_8cpp_source.html','');});
 <div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;</div>
 <div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;<span class="comment">// multi_op                                                                                                           //</span></div>
 <div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;multi_op::multi_op(std::vector&lt;op&gt; ops) noexcept :</div>
+<div class="line"><a name="l00203"></a><span class="lineno"><a class="line" href="classzk_1_1multi__op.html#afcea7e73ef5f3a1f2fb51f3c0acec637">  203</a></span>&#160;<a class="code" href="classzk_1_1multi__op.html#ad709c9ed1ce73bdd6354a302bb7385d2">multi_op::multi_op</a>(std::vector&lt;op&gt; ops) noexcept :</div>
 <div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;        _ops(std::move(ops))</div>
 <div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;{ }</div>
 <div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;</div>
@@ -326,18 +326,18 @@ $(document).ready(function(){initNavTree('multi_8cpp_source.html','');});
 <div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;</div>
 <div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;<span class="comment">// multi_result                                                                                                       //</span></div>
 <div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;multi_result::part::part(op_type type, std::nullptr_t) noexcept :</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;multi_result::part::part(<a class="code" href="group__Client.html#gaec8382e2b14fe4fd770d6ad3511fcb93">op_type</a> type, std::nullptr_t) noexcept :</div>
 <div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;        _type(type),</div>
 <div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;        _storage(std::monostate())</div>
 <div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;{ }</div>
 <div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;</div>
 <div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;multi_result::part::part(create_result res) noexcept :</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;        _type(op_type::create),</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;        _type(<a class="code" href="group__Client.html#ggaec8382e2b14fe4fd770d6ad3511fcb93a76ea0bebb3c22822b4f0dd9c9fd021c5">op_type::create</a>),</div>
 <div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;        _storage(std::move(res))</div>
 <div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;{ }</div>
 <div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;</div>
 <div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;multi_result::part::part(set_result res) noexcept :</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;        _type(op_type::set),</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;        _type(<a class="code" href="group__Client.html#ggaec8382e2b14fe4fd770d6ad3511fcb93acdaeeeba9b4a4c5ebf042c0215a7bb0e">op_type::set</a>),</div>
 <div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;        _storage(std::move(res))</div>
 <div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;{ }</div>
 <div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;</div>
@@ -367,12 +367,12 @@ $(document).ready(function(){initNavTree('multi_8cpp_source.html','');});
 <div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;    }</div>
 <div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;}</div>
 <div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;</div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;<span class="keyword">const</span> create_result&amp; multi_result::part::as_create()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00270"></a><span class="lineno"><a class="line" href="classzk_1_1multi__result_1_1part.html#a8da9d9059b509d32de8a3d5d100aa115">  270</a></span>&#160;<span class="keyword">const</span> <a class="code" href="classzk_1_1create__result.html">create_result</a>&amp; <a class="code" href="classzk_1_1multi__result_1_1part.html#a8da9d9059b509d32de8a3d5d100aa115">multi_result::part::as_create</a>()<span class="keyword"> const</span></div>
 <div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;<span class="keyword"></span>{</div>
 <div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;    <span class="keywordflow">return</span> as&lt;create_result&gt;(<span class="stringliteral">&quot;as_create&quot;</span>);</div>
 <div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;}</div>
 <div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;<span class="keyword">const</span> set_result&amp; multi_result::part::as_set()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00275"></a><span class="lineno"><a class="line" href="classzk_1_1multi__result_1_1part.html#aca828b38e054709527cb5c58640da4c6">  275</a></span>&#160;<span class="keyword">const</span> <a class="code" href="classzk_1_1set__result.html">set_result</a>&amp; <a class="code" href="classzk_1_1multi__result_1_1part.html#aca828b38e054709527cb5c58640da4c6">multi_result::part::as_set</a>()<span class="keyword"> const</span></div>
 <div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;<span class="keyword"></span>{</div>
 <div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    <span class="keywordflow">return</span> as&lt;set_result&gt;(<span class="stringliteral">&quot;as_set&quot;</span>);</div>
 <div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;}</div>
@@ -388,8 +388,8 @@ $(document).ready(function(){initNavTree('multi_8cpp_source.html','');});
 <div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;{</div>
 <div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;    <span class="keywordflow">switch</span> (<span class="keyword">self</span>.type())</div>
 <div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;    {</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;        <span class="keywordflow">case</span> op_type::create: <span class="keywordflow">return</span> os &lt;&lt; <span class="keyword">self</span>.as_create();</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;        <span class="keywordflow">case</span> op_type::set:    <span class="keywordflow">return</span> os &lt;&lt; <span class="keyword">self</span>.as_set();</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="group__Client.html#ggaec8382e2b14fe4fd770d6ad3511fcb93a76ea0bebb3c22822b4f0dd9c9fd021c5">op_type::create</a>: <span class="keywordflow">return</span> os &lt;&lt; <span class="keyword">self</span>.as_create();</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="group__Client.html#ggaec8382e2b14fe4fd770d6ad3511fcb93acdaeeeba9b4a4c5ebf042c0215a7bb0e">op_type::set</a>:    <span class="keywordflow">return</span> os &lt;&lt; <span class="keyword">self</span>.as_set();</div>
 <div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;        <span class="keywordflow">default</span>:              <span class="keywordflow">return</span> os &lt;&lt; <span class="keyword">self</span>.type() &lt;&lt; <span class="stringliteral">&quot;_result{}&quot;</span>;</div>
 <div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;    }</div>
 <div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;}</div>
@@ -420,20 +420,36 @@ $(document).ready(function(){initNavTree('multi_8cpp_source.html','');});
 <div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;}</div>
 <div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;</div>
 <div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;}</div>
-<div class="ttc" id="group__Client_html_ga90b49f2e7c5f07873ad93fc5bd2f0e87"><div class="ttname"><a href="group__Client.html#ga90b49f2e7c5f07873ad93fc5bd2f0e87">zk::ptr</a></div><div class="ttdeci">T * ptr</div><div class="ttdoc">A simple, unowned pointer. </div><div class="ttdef"><b>Definition:</b> <a href="config_8hpp_source.html#l00043">config.hpp:43</a></div></div>
-<div class="ttc" id="structzk_1_1op_1_1set__data_html"><div class="ttname"><a href="structzk_1_1op_1_1set__data.html">zk::op::set_data</a></div><div class="ttdef"><b>Definition:</b> <a href="multi_8hpp_source.html#l00081">multi.hpp:81</a></div></div>
-<div class="ttc" id="classzk_1_1op_html"><div class="ttname"><a href="classzk_1_1op.html">zk::op</a></div><div class="ttdef"><b>Definition:</b> <a href="multi_8hpp_source.html#l00036">multi.hpp:36</a></div></div>
-<div class="ttc" id="group__Client_html_ga9f10c37f69a7d1084b08cac07ebb7918"><div class="ttname"><a href="group__Client.html#ga9f10c37f69a7d1084b08cac07ebb7918">zk::create_mode</a></div><div class="ttdeci">create_mode</div><div class="ttdoc">When used in client::set, this value determines how the entry is created on the server. </div><div class="ttdef"><b>Definition:</b> <a href="types_8hpp_source.html#l00269">types.hpp:269</a></div></div>
-<div class="ttc" id="structzk_1_1op_1_1check__data_html"><div class="ttname"><a href="structzk_1_1op_1_1check__data.html">zk::op::check_data</a></div><div class="ttdef"><b>Definition:</b> <a href="multi_8hpp_source.html#l00039">multi.hpp:39</a></div></div>
+<div class="ttc" id="group__Client_html_ga90b49f2e7c5f07873ad93fc5bd2f0e87"><div class="ttname"><a href="group__Client.html#ga90b49f2e7c5f07873ad93fc5bd2f0e87">zk::ptr</a></div><div class="ttdeci">T * ptr</div><div class="ttdoc">A simple, unowned pointer. </div><div class="ttdef"><b>Definition:</b> <a href="config_8hpp_source.html#l00037">config.hpp:37</a></div></div>
+<div class="ttc" id="structzk_1_1op_1_1set__data_html"><div class="ttname"><a href="structzk_1_1op_1_1set__data.html">zk::op::set_data</a></div><div class="ttdoc">Data for a op::set operation. </div><div class="ttdef"><b>Definition:</b> <a href="multi_8hpp_source.html#l00092">multi.hpp:92</a></div></div>
+<div class="ttc" id="classzk_1_1op_html_ab0c8552792282c9ced79821670d46911"><div class="ttname"><a href="classzk_1_1op.html#ab0c8552792282c9ced79821670d46911">zk::op::as_set</a></div><div class="ttdeci">const set_data &amp; as_set() const </div><div class="ttdoc">Get the set-specific data. </div><div class="ttdef"><b>Definition:</b> <a href="multi_8cpp_source.html#l00178">multi.cpp:178</a></div></div>
+<div class="ttc" id="classzk_1_1multi__result_1_1part_html_aca828b38e054709527cb5c58640da4c6"><div class="ttname"><a href="classzk_1_1multi__result_1_1part.html#aca828b38e054709527cb5c58640da4c6">zk::multi_result::part::as_set</a></div><div class="ttdeci">const set_result &amp; as_set() const </div><div class="ttdoc">Get the set-specific result data. </div><div class="ttdef"><b>Definition:</b> <a href="multi_8cpp_source.html#l00275">multi.cpp:275</a></div></div>
+<div class="ttc" id="classzk_1_1multi__result_1_1part_html_a8da9d9059b509d32de8a3d5d100aa115"><div class="ttname"><a href="classzk_1_1multi__result_1_1part.html#a8da9d9059b509d32de8a3d5d100aa115">zk::multi_result::part::as_create</a></div><div class="ttdeci">const create_result &amp; as_create() const </div><div class="ttdoc">Get the create-specific result data. </div><div class="ttdef"><b>Definition:</b> <a href="multi_8cpp_source.html#l00270">multi.cpp:270</a></div></div>
+<div class="ttc" id="classzk_1_1op_html"><div class="ttname"><a href="classzk_1_1op.html">zk::op</a></div><div class="ttdoc">Represents a single operation of a multi_op. </div><div class="ttdef"><b>Definition:</b> <a href="multi_8hpp_source.html#l00037">multi.hpp:37</a></div></div>
+<div class="ttc" id="classzk_1_1create__result_html"><div class="ttname"><a href="classzk_1_1create__result.html">zk::create_result</a></div><div class="ttdoc">The result type of client::create. </div><div class="ttdef"><b>Definition:</b> <a href="results_8hpp_source.html#l00116">results.hpp:116</a></div></div>
+<div class="ttc" id="group__Client_html_ggaec8382e2b14fe4fd770d6ad3511fcb93a76ea0bebb3c22822b4f0dd9c9fd021c5"><div class="ttname"><a href="group__Client.html#ggaec8382e2b14fe4fd770d6ad3511fcb93a76ea0bebb3c22822b4f0dd9c9fd021c5">zk::op_type::create</a></div><div class="ttdoc">op::create </div></div>
+<div class="ttc" id="group__Client_html_gaec8382e2b14fe4fd770d6ad3511fcb93"><div class="ttname"><a href="group__Client.html#gaec8382e2b14fe4fd770d6ad3511fcb93">zk::op_type</a></div><div class="ttdeci">op_type</div><div class="ttdoc">Describes the type of an op. </div><div class="ttdef"><b>Definition:</b> <a href="multi_8hpp_source.html#l00024">multi.hpp:24</a></div></div>
+<div class="ttc" id="group__Client_html_ggaec8382e2b14fe4fd770d6ad3511fcb93a0ba4439ee9a46d9d9f14c60f88f45f87"><div class="ttname"><a href="group__Client.html#ggaec8382e2b14fe4fd770d6ad3511fcb93a0ba4439ee9a46d9d9f14c60f88f45f87">zk::op_type::check</a></div><div class="ttdoc">op::check </div></div>
+<div class="ttc" id="group__Client_html_ggaec8382e2b14fe4fd770d6ad3511fcb93a26eb25b14d930f9d5f59b2c50798a9a4"><div class="ttname"><a href="group__Client.html#ggaec8382e2b14fe4fd770d6ad3511fcb93a26eb25b14d930f9d5f59b2c50798a9a4">zk::op_type::erase</a></div><div class="ttdoc">op::erase </div></div>
+<div class="ttc" id="classzk_1_1op_html_ae370093b0f7d6caa40f14a22ebb4b9f8"><div class="ttname"><a href="classzk_1_1op.html#ae370093b0f7d6caa40f14a22ebb4b9f8">zk::op::as_create</a></div><div class="ttdeci">const create_data &amp; as_create() const </div><div class="ttdoc">Get the create-specific data. </div><div class="ttdef"><b>Definition:</b> <a href="multi_8cpp_source.html#l00129">multi.cpp:129</a></div></div>
+<div class="ttc" id="group__Client_html_ga9f10c37f69a7d1084b08cac07ebb7918"><div class="ttname"><a href="group__Client.html#ga9f10c37f69a7d1084b08cac07ebb7918">zk::create_mode</a></div><div class="ttdeci">create_mode</div><div class="ttdoc">When used in client::set, this value determines how the entry is created on the server. </div><div class="ttdef"><b>Definition:</b> <a href="types_8hpp_source.html#l00283">types.hpp:283</a></div></div>
+<div class="ttc" id="group__Client_html_ggaec8382e2b14fe4fd770d6ad3511fcb93acdaeeeba9b4a4c5ebf042c0215a7bb0e"><div class="ttname"><a href="group__Client.html#ggaec8382e2b14fe4fd770d6ad3511fcb93acdaeeeba9b4a4c5ebf042c0215a7bb0e">zk::op_type::set</a></div><div class="ttdoc">op::set </div></div>
+<div class="ttc" id="structzk_1_1op_1_1check__data_html"><div class="ttname"><a href="structzk_1_1op_1_1check__data.html">zk::op::check_data</a></div><div class="ttdoc">Data for a op::check operation. </div><div class="ttdef"><b>Definition:</b> <a href="multi_8hpp_source.html#l00041">multi.hpp:41</a></div></div>
 <div class="ttc" id="classzk_1_1acls_html_ad3f828c2a71a2ad7c213a51da7663414"><div class="ttname"><a href="classzk_1_1acls.html#ad3f828c2a71a2ad7c213a51da7663414">zk::acls::open_unsafe</a></div><div class="ttdeci">static const acl &amp; open_unsafe()</div><div class="ttdoc">This is a completely open ACL. </div><div class="ttdef"><b>Definition:</b> <a href="acl_8cpp_source.html#l00161">acl.cpp:161</a></div></div>
-<div class="ttc" id="classzk_1_1acl_html"><div class="ttname"><a href="classzk_1_1acl.html">zk::acl</a></div><div class="ttdoc">An access control list is a wrapper around acl_rule instances. </div><div class="ttdef"><b>Definition:</b> <a href="acl_8hpp_source.html#l00140">acl.hpp:140</a></div></div>
+<div class="ttc" id="classzk_1_1op_html_a3e24ce580dea015ef409fe8593b014f4"><div class="ttname"><a href="classzk_1_1op.html#a3e24ce580dea015ef409fe8593b014f4">zk::op::type</a></div><div class="ttdeci">op_type type() const </div><div class="ttdoc">Get the underlying type of this operation. </div><div class="ttdef"><b>Definition:</b> <a href="multi_8cpp_source.html#l00056">multi.cpp:56</a></div></div>
+<div class="ttc" id="classzk_1_1set__result_html"><div class="ttname"><a href="classzk_1_1set__result.html">zk::set_result</a></div><div class="ttdoc">The result type of client::set. </div><div class="ttdef"><b>Definition:</b> <a href="results_8hpp_source.html#l00141">results.hpp:141</a></div></div>
+<div class="ttc" id="classzk_1_1acl_html"><div class="ttname"><a href="classzk_1_1acl.html">zk::acl</a></div><div class="ttdoc">An access control list is a wrapper around acl_rule instances. </div><div class="ttdef"><b>Definition:</b> <a href="acl_8hpp_source.html#l00139">acl.hpp:139</a></div></div>
+<div class="ttc" id="classzk_1_1multi__op_html_ad709c9ed1ce73bdd6354a302bb7385d2"><div class="ttname"><a href="classzk_1_1multi__op.html#ad709c9ed1ce73bdd6354a302bb7385d2">zk::multi_op::multi_op</a></div><div class="ttdeci">multi_op() noexcept</div><div class="ttdoc">Create an empty operation set. </div><div class="ttdef"><b>Definition:</b> <a href="multi_8hpp_source.html#l00171">multi.hpp:171</a></div></div>
+<div class="ttc" id="classzk_1_1op_html_a1b3280d90b664e6fc981945762a93cf6"><div class="ttname"><a href="classzk_1_1op.html#a1b3280d90b664e6fc981945762a93cf6">zk::op::as_erase</a></div><div class="ttdeci">const erase_data &amp; as_erase() const </div><div class="ttdoc">Get the erase-specific data. </div><div class="ttdef"><b>Definition:</b> <a href="multi_8cpp_source.html#l00153">multi.cpp:153</a></div></div>
+<div class="ttc" id="classzk_1_1op_html_adc1d499ad7ea3731fb2d686b774acf14"><div class="ttname"><a href="classzk_1_1op.html#adc1d499ad7ea3731fb2d686b774acf14">zk::op::check</a></div><div class="ttdeci">static op check(std::string path, version check=version::any())</div><div class="ttdoc">Check that the given path exists with the provided version check (which can be version::any). </div><div class="ttdef"><b>Definition:</b> <a href="multi_8cpp_source.html#l00092">multi.cpp:92</a></div></div>
 <div class="ttc" id="classzk_1_1op_html_a6641e7dd6e0153a0d7fcbdbad4cfc2db"><div class="ttname"><a href="classzk_1_1op.html#a6641e7dd6e0153a0d7fcbdbad4cfc2db">zk::op::create</a></div><div class="ttdeci">static op create(std::string path, buffer data, acl rules, create_mode mode=create_mode::normal)</div><div class="ttdef"><b>Definition:</b> <a href="multi_8cpp_source.html#l00119">multi.cpp:119</a></div></div>
-<div class="ttc" id="structzk_1_1version_html"><div class="ttname"><a href="structzk_1_1version.html">zk::version</a></div><div class="ttdoc">Represents a version of the data. </div><div class="ttdef"><b>Definition:</b> <a href="types_8hpp_source.html#l00138">types.hpp:138</a></div></div>
-<div class="ttc" id="group__Client_html_ga8175fa6edfc7371c269524730d3c0a9d"><div class="ttname"><a href="group__Client.html#ga8175fa6edfc7371c269524730d3c0a9d">zk::buffer</a></div><div class="ttdeci">ZKPP_BUFFER_TYPE buffer</div><div class="ttdoc">The buffer type. </div><div class="ttdef"><b>Definition:</b> <a href="buffer_8hpp_source.html#l00067">buffer.hpp:67</a></div></div>
-<div class="ttc" id="structzk_1_1op_1_1erase__data_html"><div class="ttname"><a href="structzk_1_1op_1_1erase__data.html">zk::op::erase_data</a></div><div class="ttdef"><b>Definition:</b> <a href="multi_8hpp_source.html#l00068">multi.hpp:68</a></div></div>
-<div class="ttc" id="structzk_1_1op_1_1create__data_html"><div class="ttname"><a href="structzk_1_1op_1_1create__data.html">zk::op::create_data</a></div><div class="ttdef"><b>Definition:</b> <a href="multi_8hpp_source.html#l00052">multi.hpp:52</a></div></div>
-<div class="ttc" id="classzk_1_1op_html_ac14ac1d293df4c1139d099ab00e8b115"><div class="ttname"><a href="classzk_1_1op.html#ac14ac1d293df4c1139d099ab00e8b115">zk::op::erase</a></div><div class="ttdeci">static op erase(std::string path, version check=version::any())</div><div class="ttdef"><b>Definition:</b> <a href="multi_8cpp_source.html#l00148">multi.cpp:148</a></div></div>
-<div class="ttc" id="classzk_1_1op_html_ab3385876c2f13ef11a8edb746d5f3014"><div class="ttname"><a href="classzk_1_1op.html#ab3385876c2f13ef11a8edb746d5f3014">zk::op::set</a></div><div class="ttdeci">static op set(std::string path, buffer data, version check=version::any())</div><div class="ttdef"><b>Definition:</b> <a href="multi_8cpp_source.html#l00173">multi.cpp:173</a></div></div>
+<div class="ttc" id="structzk_1_1version_html"><div class="ttname"><a href="structzk_1_1version.html">zk::version</a></div><div class="ttdoc">Represents a version of the data. </div><div class="ttdef"><b>Definition:</b> <a href="types_8hpp_source.html#l00158">types.hpp:158</a></div></div>
+<div class="ttc" id="group__Client_html_ga8175fa6edfc7371c269524730d3c0a9d"><div class="ttname"><a href="group__Client.html#ga8175fa6edfc7371c269524730d3c0a9d">zk::buffer</a></div><div class="ttdeci">ZKPP_BUFFER_TYPE buffer</div><div class="ttdoc">The buffer type. </div><div class="ttdef"><b>Definition:</b> <a href="buffer_8hpp_source.html#l00069">buffer.hpp:69</a></div></div>
+<div class="ttc" id="structzk_1_1op_1_1erase__data_html"><div class="ttname"><a href="structzk_1_1op_1_1erase__data.html">zk::op::erase_data</a></div><div class="ttdoc">Data for a op::erase operation. </div><div class="ttdef"><b>Definition:</b> <a href="multi_8hpp_source.html#l00076">multi.hpp:76</a></div></div>
+<div class="ttc" id="classzk_1_1op_html_a5e0e22504bdac8a72212ba2ff05060c3"><div class="ttname"><a href="classzk_1_1op.html#a5e0e22504bdac8a72212ba2ff05060c3">zk::op::as_check</a></div><div class="ttdeci">const check_data &amp; as_check() const </div><div class="ttdoc">Get the check-specific data. </div><div class="ttdef"><b>Definition:</b> <a href="multi_8cpp_source.html#l00097">multi.cpp:97</a></div></div>
+<div class="ttc" id="structzk_1_1op_1_1create__data_html"><div class="ttname"><a href="structzk_1_1op_1_1create__data.html">zk::op::create_data</a></div><div class="ttdoc">Data for a op::create operation. </div><div class="ttdef"><b>Definition:</b> <a href="multi_8hpp_source.html#l00055">multi.hpp:55</a></div></div>
+<div class="ttc" id="classzk_1_1op_html_ac14ac1d293df4c1139d099ab00e8b115"><div class="ttname"><a href="classzk_1_1op.html#ac14ac1d293df4c1139d099ab00e8b115">zk::op::erase</a></div><div class="ttdeci">static op erase(std::string path, version check=version::any())</div><div class="ttdoc">Delete the entry at the given path if it matches the version check. </div><div class="ttdef"><b>Definition:</b> <a href="multi_8cpp_source.html#l00148">multi.cpp:148</a></div></div>
+<div class="ttc" id="classzk_1_1op_html_ab3385876c2f13ef11a8edb746d5f3014"><div class="ttname"><a href="classzk_1_1op.html#ab3385876c2f13ef11a8edb746d5f3014">zk::op::set</a></div><div class="ttdeci">static op set(std::string path, buffer data, version check=version::any())</div><div class="ttdoc">Set the data for the entry at path if it matches the version check. </div><div class="ttdef"><b>Definition:</b> <a href="multi_8cpp_source.html#l00173">multi.cpp:173</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

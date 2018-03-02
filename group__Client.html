@@ -113,18 +113,19 @@ $(document).ready(function(){initNavTree('group__Client.html','');});
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1acl__rule.html">zk::acl_rule</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">An individual rule in an <code>acl</code>.  <a href="classzk_1_1acl__rule.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">An individual rule in an <a class="el" href="classzk_1_1acl.html">acl</a>.  <a href="classzk_1_1acl__rule.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1acl.html">zk::acl</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">An access control list is a wrapper around <code><a class="el" href="classzk_1_1acl__rule.html" title="An individual rule in an acl. ">acl_rule</a></code> instances.  <a href="classzk_1_1acl.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">An access control list is a wrapper around <a class="el" href="classzk_1_1acl__rule.html">acl_rule</a> instances.  <a href="classzk_1_1acl.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1acls.html">zk::acls</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convenience operations around commonly-used ACLs.  <a href="classzk_1_1acls.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Commonly-used ACLs.  <a href="classzk_1_1acls.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1client.html">zk::client</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A ZooKeeper client connection.  <a href="classzk_1_1client.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1connection.html">zk::connection</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">An actual connection to the server.  <a href="classzk_1_1connection.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1connection__params.html">zk::connection_params</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Used to specify parameters for a <code>connection</code>.  <a href="classzk_1_1connection__params.html#details">More...</a><br /></td></tr>
@@ -201,13 +202,16 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ephemeral ZNodes cannot have children.  <a href="classzk_1_1no__children__for__ephemerals.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1transaction__failed.html">zk::transaction_failed</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Thrown from <code><a class="el" href="classzk_1_1client.html#ae34b4c97f7c9fd09e5d9569e6c47e7ca" title="Commit the transaction specified by txn. ">client::commit</a></code> when a transaction cannot be committed to the system.  <a href="classzk_1_1transaction__failed.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Thrown from <a class="el" href="classzk_1_1client.html#ae34b4c97f7c9fd09e5d9569e6c47e7ca">client::commit</a> when a transaction cannot be committed to the system.  <a href="classzk_1_1transaction__failed.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1op.html">zk::op</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a single operation of a <a class="el" href="classzk_1_1multi__op.html">multi_op</a>.  <a href="classzk_1_1op.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1multi__op.html">zk::multi_op</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A collection of operations that will be performed atomically.  <a href="classzk_1_1multi__op.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1multi__result.html">zk::multi_result</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The result of a successful <a class="el" href="classzk_1_1client.html#ae34b4c97f7c9fd09e5d9569e6c47e7ca">client::commit</a> operation.  <a href="classzk_1_1multi__result.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1get__result.html">zk::get_result</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The result type of <code><a class="el" href="classzk_1_1client.html#a923b5ab5fbd8e36ffb9f835e1c69e9e8" title="Return the data and the stat of the entry of the given path. ">client::get</a></code>.  <a href="classzk_1_1get__result.html#details">More...</a><br /></td></tr>
@@ -216,28 +220,28 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The result type of <code><a class="el" href="classzk_1_1client.html#ad02c6c09fcd3ec0c596be9968cf407d9" title="Return the list of the children of the entry of the given path. ">client::get_children</a></code>.  <a href="classzk_1_1get__children__result.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1exists__result.html">zk::exists_result</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The result type of <code><a class="el" href="classzk_1_1client.html#a3117e705416a436959885ac04385c236" title="Return the stat of the entry of the given path or nullopt if it does not exist. ">client::exists</a></code>.  <a href="classzk_1_1exists__result.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The result type of <a class="el" href="classzk_1_1client.html#a3117e705416a436959885ac04385c236">client::exists</a>.  <a href="classzk_1_1exists__result.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1create__result.html">zk::create_result</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The result type of <code><a class="el" href="classzk_1_1client.html#a45f67fc3c1bcba32dfd2f848d050d376" title="Create an entry at the given path. ">client::create</a></code>.  <a href="classzk_1_1create__result.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The result type of <a class="el" href="classzk_1_1client.html#a45f67fc3c1bcba32dfd2f848d050d376">client::create</a>.  <a href="classzk_1_1create__result.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1set__result.html">zk::set_result</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The result type of <code><a class="el" href="classzk_1_1client.html#a45b579013b53fb89c1a690f0520c4edf" title="Set the data for the entry of the given path if such an entry exists and the given version matches th...">client::set</a></code>.  <a href="classzk_1_1set__result.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The result type of <a class="el" href="classzk_1_1client.html#a45b579013b53fb89c1a690f0520c4edf">client::set</a>.  <a href="classzk_1_1set__result.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1get__acl__result.html">zk::get_acl_result</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The result type of <code><a class="el" href="classzk_1_1client.html#a26fb59acdde99cbe1c34a239dc6d2d5d" title="Return the ACL and stat of the entry of the given path. ">client::get_acl</a></code>.  <a href="classzk_1_1get__acl__result.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The result type of <a class="el" href="classzk_1_1client.html#a26fb59acdde99cbe1c34a239dc6d2d5d">client::get_acl</a>.  <a href="classzk_1_1get__acl__result.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1event.html">zk::event</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Data delivered when a watched event triggers.  <a href="classzk_1_1event.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1watch__result.html">zk::watch_result</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The result type of <code><a class="el" href="classzk_1_1client.html#abe391293e4e194b41c9a4c647ec71502" title="Similar to get, but if the call is successful (no error is returned), a watch will be left on the ent...">client::watch</a></code>.  <a href="classzk_1_1watch__result.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The result type of <a class="el" href="classzk_1_1client.html#abe391293e4e194b41c9a4c647ec71502">client::watch</a>.  <a href="classzk_1_1watch__result.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1watch__children__result.html">zk::watch_children_result</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The result type of <code><a class="el" href="classzk_1_1client.html#a9f240a40a9594a633987f706b2870d7f" title="Similar to get_children, but if the call is successful (no error is returned), a watch will be left o...">client::watch_children</a></code>.  <a href="classzk_1_1watch__children__result.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The result type of <a class="el" href="classzk_1_1client.html#a9f240a40a9594a633987f706b2870d7f">client::watch_children</a>.  <a href="classzk_1_1watch__children__result.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1watch__exists__result.html">zk::watch_exists_result</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The result type of <code><a class="el" href="classzk_1_1client.html#aaf8a36230170382b13c835d1bc20e303" title="Similar to watch, but if the call is successful (no error is returned), a watch will be left on the e...">client::watch_exists</a></code>.  <a href="classzk_1_1watch__exists__result.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The result type of <a class="el" href="classzk_1_1client.html#aaf8a36230170382b13c835d1bc20e303">client::watch_exists</a>.  <a href="classzk_1_1watch__exists__result.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structzk_1_1strong__id.html">zk::strong_id&lt; TReal, TId &gt;</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Base type for creating strong ID types.  <a href="structzk_1_1strong__id.html#details">More...</a><br /></td></tr>
@@ -264,17 +268,17 @@ Classes</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:ga39e71b216e23cb584a0026e266883521"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Client.html#ga39e71b216e23cb584a0026e266883521">ZKPP_BUFFER_USE_CUSTOM</a>&#160;&#160;&#160;0</td></tr>
-<tr class="memdesc:ga39e71b216e23cb584a0026e266883521"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set this to 1 to use a custom definitions for <code>zk::buffer</code>.  <a href="#ga39e71b216e23cb584a0026e266883521">More...</a><br /></td></tr>
+<tr class="memdesc:ga39e71b216e23cb584a0026e266883521"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set this to 1 to use a custom definitions for <code>buffer</code>.  <a href="#ga39e71b216e23cb584a0026e266883521">More...</a><br /></td></tr>
 <tr class="separator:ga39e71b216e23cb584a0026e266883521"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab00a9abf8077b95dafdea60961c6a86a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Client.html#gab00a9abf8077b95dafdea60961c6a86a">ZKPP_BUFFER_USE_STD_VECTOR</a>&#160;&#160;&#160;1</td></tr>
-<tr class="memdesc:gab00a9abf8077b95dafdea60961c6a86a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set this to 1 to use <code>std::vector&lt;char&gt;</code> for the implementation of <code>zk::buffer</code>.  <a href="#gab00a9abf8077b95dafdea60961c6a86a">More...</a><br /></td></tr>
-<tr class="separator:gab00a9abf8077b95dafdea60961c6a86a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga4df5a8de13cf6d51cb9f04b0b1f189de"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga4df5a8de13cf6d51cb9f04b0b1f189de"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>ZKPP_BUFFER_INCLUDE</b>&#160;&#160;&#160;&lt;vector&gt;</td></tr>
+<tr class="memitem:ga4df5a8de13cf6d51cb9f04b0b1f189de"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Client.html#ga4df5a8de13cf6d51cb9f04b0b1f189de">ZKPP_BUFFER_INCLUDE</a>&#160;&#160;&#160;&lt;vector&gt;</td></tr>
+<tr class="memdesc:ga4df5a8de13cf6d51cb9f04b0b1f189de"><td class="mdescLeft">&#160;</td><td class="mdescRight">The header file to use to find the <code>buffer</code> type.  <a href="#ga4df5a8de13cf6d51cb9f04b0b1f189de">More...</a><br /></td></tr>
 <tr class="separator:ga4df5a8de13cf6d51cb9f04b0b1f189de"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga6d40ba7af556658d3dde2110aaffc70d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga6d40ba7af556658d3dde2110aaffc70d"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>ZKPP_BUFFER_TYPE</b>&#160;&#160;&#160;std::vector&lt;char&gt;</td></tr>
+<tr class="memitem:ga6d40ba7af556658d3dde2110aaffc70d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Client.html#ga6d40ba7af556658d3dde2110aaffc70d">ZKPP_BUFFER_TYPE</a>&#160;&#160;&#160;std::vector&lt;char&gt;</td></tr>
+<tr class="memdesc:ga6d40ba7af556658d3dde2110aaffc70d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The type name to use for the <code>buffer</code> type.  <a href="#ga6d40ba7af556658d3dde2110aaffc70d">More...</a><br /></td></tr>
 <tr class="separator:ga6d40ba7af556658d3dde2110aaffc70d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab00a9abf8077b95dafdea60961c6a86a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Client.html#gab00a9abf8077b95dafdea60961c6a86a">ZKPP_BUFFER_USE_STD_VECTOR</a>&#160;&#160;&#160;1</td></tr>
+<tr class="memdesc:gab00a9abf8077b95dafdea60961c6a86a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set this to 1 to use <code>std::vector&lt;char&gt;</code> for the implementation of zk::buffer.  <a href="#gab00a9abf8077b95dafdea60961c6a86a">More...</a><br /></td></tr>
+<tr class="separator:gab00a9abf8077b95dafdea60961c6a86a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga16ba20280dac45579be2134d0e5787e9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga16ba20280dac45579be2134d0e5787e9"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>ZKPP_VERSION_MAJOR</b>&#160;&#160;&#160;0</td></tr>
 <tr class="separator:ga16ba20280dac45579be2134d0e5787e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -308,7 +312,7 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:ga8175fa6edfc7371c269524730d3c0a9d"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Client.html#ga8175fa6edfc7371c269524730d3c0a9d">zk::buffer</a> = ZKPP_BUFFER_TYPE</td></tr>
+<tr class="memitem:ga8175fa6edfc7371c269524730d3c0a9d"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Client.html#ga8175fa6edfc7371c269524730d3c0a9d">zk::buffer</a> = <a class="el" href="group__Client.html#ga6d40ba7af556658d3dde2110aaffc70d">ZKPP_BUFFER_TYPE</a></td></tr>
 <tr class="memdesc:ga8175fa6edfc7371c269524730d3c0a9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The <code>buffer</code> type.  <a href="#ga8175fa6edfc7371c269524730d3c0a9d">More...</a><br /></td></tr>
 <tr class="separator:ga8175fa6edfc7371c269524730d3c0a9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga90b49f2e7c5f07873ad93fc5bd2f0e87"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
@@ -378,11 +382,12 @@ Enumerations</h2></td></tr>
  }</td></tr>
 <tr class="memdesc:ga59dbc6c98abba145d356557222aa9f7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Code for all error types thrown by the client library.  <a href="group__Client.html#ga59dbc6c98abba145d356557222aa9f7f">More...</a><br /></td></tr>
 <tr class="separator:ga59dbc6c98abba145d356557222aa9f7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaec8382e2b14fe4fd770d6ad3511fcb93"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaec8382e2b14fe4fd770d6ad3511fcb93"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>op_type</b> : int { <b>check</b>, 
-<b>create</b>, 
-<b>erase</b>, 
-<b>set</b>
+<tr class="memitem:gaec8382e2b14fe4fd770d6ad3511fcb93"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Client.html#gaec8382e2b14fe4fd770d6ad3511fcb93">zk::op_type</a> : int { <a class="el" href="group__Client.html#ggaec8382e2b14fe4fd770d6ad3511fcb93a0ba4439ee9a46d9d9f14c60f88f45f87">zk::op_type::check</a>, 
+<a class="el" href="group__Client.html#ggaec8382e2b14fe4fd770d6ad3511fcb93a76ea0bebb3c22822b4f0dd9c9fd021c5">zk::op_type::create</a>, 
+<a class="el" href="group__Client.html#ggaec8382e2b14fe4fd770d6ad3511fcb93a26eb25b14d930f9d5f59b2c50798a9a4">zk::op_type::erase</a>, 
+<a class="el" href="group__Client.html#ggaec8382e2b14fe4fd770d6ad3511fcb93acdaeeeba9b4a4c5ebf042c0215a7bb0e">zk::op_type::set</a>
  }</td></tr>
+<tr class="memdesc:gaec8382e2b14fe4fd770d6ad3511fcb93"><td class="mdescLeft">&#160;</td><td class="mdescRight">Describes the type of an op.  <a href="group__Client.html#gaec8382e2b14fe4fd770d6ad3511fcb93">More...</a><br /></td></tr>
 <tr class="separator:gaec8382e2b14fe4fd770d6ad3511fcb93"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga9f10c37f69a7d1084b08cac07ebb7918"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Client.html#ga9f10c37f69a7d1084b08cac07ebb7918">zk::create_mode</a> : unsigned int { <a class="el" href="group__Client.html#gga9f10c37f69a7d1084b08cac07ebb7918afea087517c26fadd409bd4b9dc642555">zk::create_mode::normal</a> = 0b0000, 
 <a class="el" href="group__Client.html#gga9f10c37f69a7d1084b08cac07ebb7918a9a2692129ef5a8168ba61901cf6dfa27">zk::create_mode::ephemeral</a> = 0b0001, 
@@ -419,24 +424,27 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga92126049371c53c24883918d17529c11"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga92126049371c53c24883918d17529c11"></a>
-constexpr permission&#160;</td><td class="memItemRight" valign="bottom"><b>zk::operator|</b> (permission a, permission b)</td></tr>
+<tr class="memitem:ga92126049371c53c24883918d17529c11"><td class="memItemLeft" align="right" valign="top">constexpr permission&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Client.html#ga92126049371c53c24883918d17529c11">zk::operator|</a> (permission a, permission b)</td></tr>
+<tr class="memdesc:ga92126049371c53c24883918d17529c11"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set union operation of permission.  <a href="#ga92126049371c53c24883918d17529c11">More...</a><br /></td></tr>
 <tr class="separator:ga92126049371c53c24883918d17529c11"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga66b076c138ba6ca7de460e4e243f9a92"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga66b076c138ba6ca7de460e4e243f9a92"></a>
-constexpr permission&#160;</td><td class="memItemRight" valign="bottom"><b>zk::operator&amp;</b> (permission a, permission b)</td></tr>
+<tr class="memitem:ga66b076c138ba6ca7de460e4e243f9a92"><td class="memItemLeft" align="right" valign="top">constexpr permission&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Client.html#ga66b076c138ba6ca7de460e4e243f9a92">zk::operator&amp;</a> (permission a, permission b)</td></tr>
+<tr class="memdesc:ga66b076c138ba6ca7de460e4e243f9a92"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set intersection operation of permission.  <a href="#ga66b076c138ba6ca7de460e4e243f9a92">More...</a><br /></td></tr>
 <tr class="separator:ga66b076c138ba6ca7de460e4e243f9a92"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga61bf7cb53c7e6c9822865bc08d00b969"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga61bf7cb53c7e6c9822865bc08d00b969"></a>
-constexpr permission&#160;</td><td class="memItemRight" valign="bottom"><b>zk::operator~</b> (permission a)</td></tr>
+<tr class="memitem:ga61bf7cb53c7e6c9822865bc08d00b969"><td class="memItemLeft" align="right" valign="top">constexpr permission&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Client.html#ga61bf7cb53c7e6c9822865bc08d00b969">zk::operator~</a> (permission a)</td></tr>
+<tr class="memdesc:ga61bf7cb53c7e6c9822865bc08d00b969"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set inverse operation of permission.  <a href="#ga61bf7cb53c7e6c9822865bc08d00b969">More...</a><br /></td></tr>
 <tr class="separator:ga61bf7cb53c7e6c9822865bc08d00b969"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga805d7e2c38e80ec6abdc6043087bfae8"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Client.html#ga805d7e2c38e80ec6abdc6043087bfae8">zk::allows</a> (permission self, permission perform)</td></tr>
+<tr class="memdesc:ga805d7e2c38e80ec6abdc6043087bfae8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check that <em>self</em> allows it <em>perform</em> all operations.  <a href="#ga805d7e2c38e80ec6abdc6043087bfae8">More...</a><br /></td></tr>
+<tr class="separator:ga805d7e2c38e80ec6abdc6043087bfae8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga27df33f754ecba22bd1b25f842448582"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga27df33f754ecba22bd1b25f842448582"></a>
 std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>zk::operator&lt;&lt;</b> (std::ostream &amp;os, const permission &amp;self)</td></tr>
 <tr class="separator:ga27df33f754ecba22bd1b25f842448582"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga507e93fd54a40ff9cdbd93515036f0c9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga507e93fd54a40ff9cdbd93515036f0c9"></a>
 std::string&#160;</td><td class="memItemRight" valign="bottom"><b>zk::to_string</b> (const permission &amp;self)</td></tr>
 <tr class="separator:ga507e93fd54a40ff9cdbd93515036f0c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8f64a03dbd2fb59d91eb70a798622d07"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga8f64a03dbd2fb59d91eb70a798622d07"></a>
-std::size_t&#160;</td><td class="memItemRight" valign="bottom"><b>zk::hash</b> (const acl_rule &amp;self)</td></tr>
-<tr class="separator:ga8f64a03dbd2fb59d91eb70a798622d07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3526ab3d5270ba5dec41f6e557a9357b"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Client.html#ga3526ab3d5270ba5dec41f6e557a9357b">zk::hash</a> (const acl_rule &amp;rule)</td></tr>
+<tr class="memdesc:ga3526ab3d5270ba5dec41f6e557a9357b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute a hash for the given <em>rule</em>.  <a href="#ga3526ab3d5270ba5dec41f6e557a9357b">More...</a><br /></td></tr>
+<tr class="separator:ga3526ab3d5270ba5dec41f6e557a9357b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga1bb96559dedb5bc9b1840f26f3180b0e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga1bb96559dedb5bc9b1840f26f3180b0e"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>zk::operator==</b> (const acl_rule &amp;lhs, const acl_rule &amp;rhs)</td></tr>
 <tr class="separator:ga1bb96559dedb5bc9b1840f26f3180b0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -486,19 +494,19 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>zk::to_string<
 std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>zk::operator&lt;&lt;</b> (std::ostream &amp;os, const connection_params &amp;x)</td></tr>
 <tr class="separator:gabd426bcd339b4edf6444e6cb2f3e954d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga6c9f0394768d7747503a4bb3202a59bb"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Client.html#ga6c9f0394768d7747503a4bb3202a59bb">zk::is_transport_error</a> (error_code code)</td></tr>
-<tr class="memdesc:ga6c9f0394768d7747503a4bb3202a59bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the provided <em>code</em> is an exception code for a <a class="el" href="classzk_1_1transport__error.html">transport_error</a> type of excpetion.  <a href="#ga6c9f0394768d7747503a4bb3202a59bb">More...</a><br /></td></tr>
+<tr class="memdesc:ga6c9f0394768d7747503a4bb3202a59bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the provided <em>code</em> is an exception code for a <a class="el" href="classzk_1_1transport__error.html">transport_error</a> type of exception.  <a href="#ga6c9f0394768d7747503a4bb3202a59bb">More...</a><br /></td></tr>
 <tr class="separator:ga6c9f0394768d7747503a4bb3202a59bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga0e9c1e0aa2a769dd0c82914840f7f044"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Client.html#ga0e9c1e0aa2a769dd0c82914840f7f044">zk::is_invalid_arguments</a> (error_code code)</td></tr>
-<tr class="memdesc:ga0e9c1e0aa2a769dd0c82914840f7f044"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the provided <em>code</em> is an exception code for a <a class="el" href="classzk_1_1invalid__arguments.html">invalid_arguments</a> type of excpetion.  <a href="#ga0e9c1e0aa2a769dd0c82914840f7f044">More...</a><br /></td></tr>
+<tr class="memdesc:ga0e9c1e0aa2a769dd0c82914840f7f044"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the provided <em>code</em> is an exception code for a <a class="el" href="classzk_1_1invalid__arguments.html">invalid_arguments</a> type of exception.  <a href="#ga0e9c1e0aa2a769dd0c82914840f7f044">More...</a><br /></td></tr>
 <tr class="separator:ga0e9c1e0aa2a769dd0c82914840f7f044"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaa6f94cc9cd3a72b54107f88569039efd"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Client.html#gaa6f94cc9cd3a72b54107f88569039efd">zk::is_invalid_ensemble_state</a> (error_code code)</td></tr>
-<tr class="memdesc:gaa6f94cc9cd3a72b54107f88569039efd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the provided <em>code</em> is an exception code for a <a class="el" href="classzk_1_1invalid__ensemble__state.html">invalid_ensemble_state</a> type of excpetion.  <a href="#gaa6f94cc9cd3a72b54107f88569039efd">More...</a><br /></td></tr>
+<tr class="memdesc:gaa6f94cc9cd3a72b54107f88569039efd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the provided <em>code</em> is an exception code for a <a class="el" href="classzk_1_1invalid__ensemble__state.html">invalid_ensemble_state</a> type of exception.  <a href="#gaa6f94cc9cd3a72b54107f88569039efd">More...</a><br /></td></tr>
 <tr class="separator:gaa6f94cc9cd3a72b54107f88569039efd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga9b25ed686ca476e96387b6bac280ae0d"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Client.html#ga9b25ed686ca476e96387b6bac280ae0d">zk::is_invalid_connection_state</a> (error_code code)</td></tr>
-<tr class="memdesc:ga9b25ed686ca476e96387b6bac280ae0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the provided <em>code</em> is an exception code for a <a class="el" href="classzk_1_1invalid__connection__state.html">invalid_connection_state</a> type of excpetion.  <a href="#ga9b25ed686ca476e96387b6bac280ae0d">More...</a><br /></td></tr>
+<tr class="memdesc:ga9b25ed686ca476e96387b6bac280ae0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the provided <em>code</em> is an exception code for a <a class="el" href="classzk_1_1invalid__connection__state.html">invalid_connection_state</a> type of exception.  <a href="#ga9b25ed686ca476e96387b6bac280ae0d">More...</a><br /></td></tr>
 <tr class="separator:ga9b25ed686ca476e96387b6bac280ae0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga98e1c5a97a613229e62decc2a05ebb7e"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Client.html#ga98e1c5a97a613229e62decc2a05ebb7e">zk::is_check_failed</a> (error_code code)</td></tr>
-<tr class="memdesc:ga98e1c5a97a613229e62decc2a05ebb7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the provided <em>code</em> is an exception code for a <a class="el" href="classzk_1_1check__failed.html">check_failed</a> type of excpetion.  <a href="#ga98e1c5a97a613229e62decc2a05ebb7e">More...</a><br /></td></tr>
+<tr class="memdesc:ga98e1c5a97a613229e62decc2a05ebb7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the provided <em>code</em> is an exception code for a <a class="el" href="classzk_1_1check__failed.html">check_failed</a> type of exception.  <a href="#ga98e1c5a97a613229e62decc2a05ebb7e">More...</a><br /></td></tr>
 <tr class="separator:ga98e1c5a97a613229e62decc2a05ebb7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga21261607e808913fcce15da1e7f0caf8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga21261607e808913fcce15da1e7f0caf8"></a>
 std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>zk::operator&lt;&lt;</b> (std::ostream &amp;os, const error_code &amp;code)</td></tr>
@@ -547,7 +555,7 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>zk::to_string<
 <tr class="separator:gafc756953347ccc2fabfe8bf442ccf8bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gad895648faa9ce5a5ef73bb4403b982e1"><td class="memTemplParams" colspan="2">template&lt;typename FUnary , typename... T&gt; </td></tr>
 <tr class="memitem:gad895648faa9ce5a5ef73bb4403b982e1"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__Client.html#gad895648faa9ce5a5ef73bb4403b982e1">zk::map</a> (FUnary &amp;&amp;transform, const optional&lt; T &gt; &amp;...x) -&gt; optional&lt; decltype(transform(x.value()...))&gt;</td></tr>
-<tr class="memdesc:gad895648faa9ce5a5ef73bb4403b982e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply <em>transform</em> with the arguments in <em>x</em> iff all of them have a value.  <a href="#gad895648faa9ce5a5ef73bb4403b982e1">More...</a><br /></td></tr>
+<tr class="memdesc:gad895648faa9ce5a5ef73bb4403b982e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply <em>transform</em> with the arguments in <em>x</em> iff all of them have a value. Otherwise, <code>nullopt</code> will be returned.  <a href="#gad895648faa9ce5a5ef73bb4403b982e1">More...</a><br /></td></tr>
 <tr class="separator:gad895648faa9ce5a5ef73bb4403b982e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga50064bc1ecbf252f26f9782bb235f02a"><td class="memTemplParams" colspan="2"><a class="anchor" id="ga50064bc1ecbf252f26f9782bb235f02a"></a>
 template&lt;typename T &gt; </td></tr>
@@ -637,9 +645,9 @@ template&lt;typename TReal , typename TId &gt; </td></tr>
 template&lt;typename TReal , typename TId &gt; </td></tr>
 <tr class="memitem:gad6a3323eb0067bc922a280a14a87b8e8"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><b>zk::operator&gt;=</b> (const strong_id&lt; TReal, TId &gt; &amp;a, const strong_id&lt; TReal, TId &gt; &amp;b)</td></tr>
 <tr class="separator:gad6a3323eb0067bc922a280a14a87b8e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga43a98cdc839851dd0945331689632ce2"><td class="memTemplParams" colspan="2"><a class="anchor" id="ga43a98cdc839851dd0945331689632ce2"></a>
-template&lt;typename TReal , typename TId &gt; </td></tr>
-<tr class="memitem:ga43a98cdc839851dd0945331689632ce2"><td class="memTemplItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memTemplItemRight" valign="bottom"><b>zk::hash</b> (const strong_id&lt; TReal, TId &gt; &amp;x)</td></tr>
+<tr class="memitem:ga43a98cdc839851dd0945331689632ce2"><td class="memTemplParams" colspan="2">template&lt;typename TReal , typename TId &gt; </td></tr>
+<tr class="memitem:ga43a98cdc839851dd0945331689632ce2"><td class="memTemplItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__Client.html#ga43a98cdc839851dd0945331689632ce2">zk::hash</a> (const strong_id&lt; TReal, TId &gt; &amp;x)</td></tr>
+<tr class="memdesc:ga43a98cdc839851dd0945331689632ce2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the <code>std::hash</code> of the given <em>x</em>.  <a href="#ga43a98cdc839851dd0945331689632ce2">More...</a><br /></td></tr>
 <tr class="separator:ga43a98cdc839851dd0945331689632ce2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gadf0de55c40dbccb0ffbac915cd2a8e2f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gadf0de55c40dbccb0ffbac915cd2a8e2f"></a>
 std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>zk::operator&lt;&lt;</b> (std::ostream &amp;os, const version &amp;self)</td></tr>
@@ -671,9 +679,18 @@ std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>zk::ope
 <tr class="memitem:ga3ad005470d86177b3ebde0f227f5e9da"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga3ad005470d86177b3ebde0f227f5e9da"></a>
 std::string&#160;</td><td class="memItemRight" valign="bottom"><b>zk::to_string</b> (const stat &amp;self)</td></tr>
 <tr class="separator:ga3ad005470d86177b3ebde0f227f5e9da"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga5b4e2580469994ac92093724b5d3adbd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga5b4e2580469994ac92093724b5d3adbd"></a>
-constexpr create_mode&#160;</td><td class="memItemRight" valign="bottom"><b>zk::operator~</b> (create_mode a)</td></tr>
+<tr class="memitem:ga5039564f4480333be232eaf64c7e0124"><td class="memItemLeft" align="right" valign="top">constexpr create_mode&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Client.html#ga5039564f4480333be232eaf64c7e0124">zk::operator|</a> (create_mode a, create_mode b)</td></tr>
+<tr class="memdesc:ga5039564f4480333be232eaf64c7e0124"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set union operation of create_mode.  <a href="#ga5039564f4480333be232eaf64c7e0124">More...</a><br /></td></tr>
+<tr class="separator:ga5039564f4480333be232eaf64c7e0124"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7e861210179740eb9eb35ecb752e4fda"><td class="memItemLeft" align="right" valign="top">constexpr create_mode&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Client.html#ga7e861210179740eb9eb35ecb752e4fda">zk::operator&amp;</a> (create_mode a, create_mode b)</td></tr>
+<tr class="memdesc:ga7e861210179740eb9eb35ecb752e4fda"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set intersection operation of create_mode.  <a href="#ga7e861210179740eb9eb35ecb752e4fda">More...</a><br /></td></tr>
+<tr class="separator:ga7e861210179740eb9eb35ecb752e4fda"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5b4e2580469994ac92093724b5d3adbd"><td class="memItemLeft" align="right" valign="top">constexpr create_mode&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Client.html#ga5b4e2580469994ac92093724b5d3adbd">zk::operator~</a> (create_mode a)</td></tr>
+<tr class="memdesc:ga5b4e2580469994ac92093724b5d3adbd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set inverse operation of create_mode.  <a href="#ga5b4e2580469994ac92093724b5d3adbd">More...</a><br /></td></tr>
 <tr class="separator:ga5b4e2580469994ac92093724b5d3adbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadf4975c092411a75981c0c7008b34ebd"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Client.html#gadf4975c092411a75981c0c7008b34ebd">zk::is_set</a> (create_mode self, create_mode flags)</td></tr>
+<tr class="memdesc:gadf4975c092411a75981c0c7008b34ebd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check that <em>self</em> has <em>flags</em> set.  <a href="#gadf4975c092411a75981c0c7008b34ebd">More...</a><br /></td></tr>
+<tr class="separator:gadf4975c092411a75981c0c7008b34ebd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga598e7b12f8603c11ac92882ddd54c9ca"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga598e7b12f8603c11ac92882ddd54c9ca"></a>
 std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>zk::operator&lt;&lt;</b> (std::ostream &amp;os, const create_mode &amp;mode)</td></tr>
 <tr class="separator:ga598e7b12f8603c11ac92882ddd54c9ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -689,13 +706,47 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>zk::to_string<
 <tr class="memitem:gabb8a8f3caa65255f114d9df4aeb87c7e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gabb8a8f3caa65255f114d9df4aeb87c7e"></a>
 std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>zk::operator&lt;&lt;</b> (std::ostream &amp;os, const state &amp;self)</td></tr>
 <tr class="separator:gabb8a8f3caa65255f114d9df4aeb87c7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2a2d977f9325496eb561469809fb441a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga2a2d977f9325496eb561469809fb441a"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>zk::to_string</b> (const state &amp;self)</td></tr>
-<tr class="separator:ga2a2d977f9325496eb561469809fb441a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1d3d116fc5343dfc827b20e7639e33df"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Client.html#ga1d3d116fc5343dfc827b20e7639e33df">zk::to_string</a> (const state &amp;state)</td></tr>
+<tr class="memdesc:ga1d3d116fc5343dfc827b20e7639e33df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the string representation of the provided <em>state</em>.  <a href="#ga1d3d116fc5343dfc827b20e7639e33df">More...</a><br /></td></tr>
+<tr class="separator:ga1d3d116fc5343dfc827b20e7639e33df"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>Interacting with ZooKeeper as a <a class="el" href="classzk_1_1client.html">client</a>. </p>
 <h2 class="groupheader">Macro Definition Documentation</h2>
+<a class="anchor" id="ga4df5a8de13cf6d51cb9f04b0b1f189de"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ZKPP_BUFFER_INCLUDE&#160;&#160;&#160;&lt;vector&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The header file to use to find the <code>buffer</code> type. </p>
+<p>This value is set automatically if using built-in configuration options (such as <a class="el" href="group__Client.html#gab00a9abf8077b95dafdea60961c6a86a">ZKPP_BUFFER_USE_STD_VECTOR</a>) and must be set manually if using <a class="el" href="group__Client.html#ga39e71b216e23cb584a0026e266883521">ZKPP_BUFFER_USE_CUSTOM</a>. </p>
+
+<p>Definition at line <a class="el" href="buffer_8hpp_source.html#l00038">38</a> of file <a class="el" href="buffer_8hpp_source.html">buffer.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga6d40ba7af556658d3dde2110aaffc70d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ZKPP_BUFFER_TYPE&#160;&#160;&#160;std::vector&lt;char&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The type name to use for the <code>buffer</code> type. </p>
+<p>This value is set automatically if using built-in configuration options (such as <a class="el" href="group__Client.html#gab00a9abf8077b95dafdea60961c6a86a">ZKPP_BUFFER_USE_STD_VECTOR</a>) and must be set manually if using <a class="el" href="group__Client.html#ga39e71b216e23cb584a0026e266883521">ZKPP_BUFFER_USE_CUSTOM</a>. </p>
+
+<p>Definition at line <a class="el" href="buffer_8hpp_source.html#l00039">39</a> of file <a class="el" href="buffer_8hpp_source.html">buffer.hpp</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="ga39e71b216e23cb584a0026e266883521"></a>
 <div class="memitem">
 <div class="memproto">
@@ -706,10 +757,10 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>zk::to_string<
       </table>
 </div><div class="memdoc">
 
-<p>Set this to 1 to use a custom definitions for <code>zk::buffer</code>. </p>
-<p>If this is set, you must also set <code>ZKPP_BUFFER_INCLUDE</code> and <code>ZKPP_BUFFER_TYPE</code>. </p>
+<p>Set this to 1 to use a custom definitions for <code>buffer</code>. </p>
+<p>If this is set, you must also set <a class="el" href="group__Client.html#ga4df5a8de13cf6d51cb9f04b0b1f189de">ZKPP_BUFFER_INCLUDE</a> and <a class="el" href="group__Client.html#ga6d40ba7af556658d3dde2110aaffc70d">ZKPP_BUFFER_TYPE</a>. </p>
 
-<p>Definition at line <a class="el" href="buffer_8hpp_source.html#l00019">19</a> of file <a class="el" href="buffer_8hpp_source.html">buffer.hpp</a>.</p>
+<p>Definition at line <a class="el" href="buffer_8hpp_source.html#l00024">24</a> of file <a class="el" href="buffer_8hpp_source.html">buffer.hpp</a>.</p>
 
 </div>
 </div>
@@ -723,10 +774,10 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>zk::to_string<
       </table>
 </div><div class="memdoc">
 
-<p>Set this to 1 to use <code>std::vector&lt;char&gt;</code> for the implementation of <code>zk::buffer</code>. </p>
+<p>Set this to 1 to use <code>std::vector&lt;char&gt;</code> for the implementation of zk::buffer. </p>
 <p>This is the default behavior. </p>
 
-<p>Definition at line <a class="el" href="buffer_8hpp_source.html#l00029">29</a> of file <a class="el" href="buffer_8hpp_source.html">buffer.hpp</a>.</p>
+<p>Definition at line <a class="el" href="buffer_8hpp_source.html#l00033">33</a> of file <a class="el" href="buffer_8hpp_source.html">buffer.hpp</a>.</p>
 
 </div>
 </div>
@@ -744,7 +795,7 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>zk::to_string<
 <p>In general, this is not useful outside of library maintainers.</p>
 <dl class="section warning"><dt>Warning</dt><dd>Keep in mind this value is <em>always</em> defined. Use <code>#if ZKPP_DEBUG</code>, <em>not</em> <code>#ifdef ZKPP_DEBUG</code>. </dd></dl>
 
-<p>Definition at line <a class="el" href="config_8hpp_source.html#l00027">27</a> of file <a class="el" href="config_8hpp_source.html">config.hpp</a>.</p>
+<p>Definition at line <a class="el" href="config_8hpp_source.html#l00023">23</a> of file <a class="el" href="config_8hpp_source.html">config.hpp</a>.</p>
 
 </div>
 </div>
@@ -855,13 +906,13 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>zk::to_string<
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="group__Client.html#ga8175fa6edfc7371c269524730d3c0a9d">zk::buffer</a> = typedef ZKPP_BUFFER_TYPE</td>
+          <td class="memname">using <a class="el" href="group__Client.html#ga8175fa6edfc7371c269524730d3c0a9d">zk::buffer</a> = typedef <a class="el" href="group__Client.html#ga6d40ba7af556658d3dde2110aaffc70d">ZKPP_BUFFER_TYPE</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>The <code>buffer</code> type. </p>
-<p>By default, this is an <code>std::vector&lt;char&gt;</code>, but this can be altered by compile-time flags such as <code>ZKPP_BUFFER_USE_CUSTOM</code>. The requirements for a custom buffer are minimal &ndash; the type must fit this criteria:</p>
+<p>By default, this is an <code>std::vector&lt;char&gt;</code>, but this can be altered by compile-time flags such as <a class="el" href="group__Client.html#ga39e71b216e23cb584a0026e266883521">ZKPP_BUFFER_USE_CUSTOM</a>. The requirements for a custom buffer are minimal &ndash; the type must fit this criteria:</p>
 <table class="doxtable">
 <tr>
 <th align="left">expression </th><th align="left">type </th><th align="left">description  </th></tr>
@@ -879,7 +930,7 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>zk::to_string<
 <td align="left"><code>data()</code> </td><td align="left"><code>const value_type*</code> </td><td align="left">Get a pointer to the beginning of the contents </td></tr>
 </table>
 
-<p>Definition at line <a class="el" href="buffer_8hpp_source.html#l00067">67</a> of file <a class="el" href="buffer_8hpp_source.html">buffer.hpp</a>.</p>
+<p>Definition at line <a class="el" href="buffer_8hpp_source.html#l00069">69</a> of file <a class="el" href="buffer_8hpp_source.html">buffer.hpp</a>.</p>
 
 </div>
 </div>
@@ -898,7 +949,7 @@ template&lt;typename T &gt; </div>
 <p>A simple, unowned pointer. </p>
 <p>It operates exactly like using <code>*</code>, but removes the question of <code>*</code> associativity and is easier to read when <code>const</code> qualifiers are involved. </p>
 
-<p>Definition at line <a class="el" href="config_8hpp_source.html#l00043">43</a> of file <a class="el" href="config_8hpp_source.html">config.hpp</a>.</p>
+<p>Definition at line <a class="el" href="config_8hpp_source.html#l00037">37</a> of file <a class="el" href="config_8hpp_source.html">config.hpp</a>.</p>
 
 </div>
 </div>
@@ -936,11 +987,11 @@ template&lt;typename T &gt; </div>
 </td></tr>
 <tr><td class="fieldname"><a class="anchor" id="gga9f10c37f69a7d1084b08cac07ebb7918a5f0b6ebc4bea10285ba2b8a6ce78b863"></a>container&#160;</td><td class="fielddoc">
 <p>Container entries are special purpose entries useful for recipes such as leader, lock, etc. </p>
-<p>When the last child of a container is deleted, the container becomes a candidate to be deleted by the server at some point in the future. Given this property, you should be prepared to get <code><a class="el" href="classzk_1_1no__entry.html" title="Thrown from read operations when attempting to read a ZNode that does not exist. ">no_entry</a></code> when creating children inside of this container entry. </p>
+<p>When the last child of a container is deleted, the container becomes a candidate to be deleted by the server at some point in the future. Given this property, you should be prepared to get <a class="el" href="classzk_1_1no__entry.html">no_entry</a> when creating children inside of this container entry. </p>
 </td></tr>
 </table>
 
-<p>Definition at line <a class="el" href="types_8hpp_source.html#l00269">269</a> of file <a class="el" href="types_8hpp_source.html">types.hpp</a>.</p>
+<p>Definition at line <a class="el" href="types_8hpp_source.html#l00283">283</a> of file <a class="el" href="types_8hpp_source.html">types.hpp</a>.</p>
 
 </div>
 </div>
@@ -1027,7 +1078,7 @@ template&lt;typename T &gt; </div>
 </td></tr>
 </table>
 
-<p>Definition at line <a class="el" href="error_8hpp_source.html#l00020">20</a> of file <a class="el" href="error_8hpp_source.html">error.hpp</a>.</p>
+<p>Definition at line <a class="el" href="error_8hpp_source.html#l00018">18</a> of file <a class="el" href="error_8hpp_source.html">error.hpp</a>.</p>
 
 </div>
 </div>
@@ -1077,7 +1128,45 @@ template&lt;typename T &gt; </div>
 </td></tr>
 </table>
 
-<p>Definition at line <a class="el" href="types_8hpp_source.html#l00326">326</a> of file <a class="el" href="types_8hpp_source.html">types.hpp</a>.</p>
+<p>Definition at line <a class="el" href="types_8hpp_source.html#l00331">331</a> of file <a class="el" href="types_8hpp_source.html">types.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gaec8382e2b14fe4fd770d6ad3511fcb93"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="group__Client.html#gaec8382e2b14fe4fd770d6ad3511fcb93">zk::op_type</a> : int</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Describes the type of an <a class="el" href="classzk_1_1op.html">op</a>. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a class="anchor" id="ggaec8382e2b14fe4fd770d6ad3511fcb93a0ba4439ee9a46d9d9f14c60f88f45f87"></a>check&#160;</td><td class="fielddoc">
+<p><a class="el" href="classzk_1_1op.html#adc1d499ad7ea3731fb2d686b774acf14">op::check</a> </p>
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="ggaec8382e2b14fe4fd770d6ad3511fcb93a76ea0bebb3c22822b4f0dd9c9fd021c5"></a>create&#160;</td><td class="fielddoc">
+<p><a class="el" href="classzk_1_1op.html#a6641e7dd6e0153a0d7fcbdbad4cfc2db">op::create</a> </p>
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="ggaec8382e2b14fe4fd770d6ad3511fcb93a26eb25b14d930f9d5f59b2c50798a9a4"></a>erase&#160;</td><td class="fielddoc">
+<p><a class="el" href="classzk_1_1op.html#ac14ac1d293df4c1139d099ab00e8b115">op::erase</a> </p>
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="ggaec8382e2b14fe4fd770d6ad3511fcb93acdaeeeba9b4a4c5ebf042c0215a7bb0e"></a>set&#160;</td><td class="fielddoc">
+<p><a class="el" href="classzk_1_1op.html#ab3385876c2f13ef11a8edb746d5f3014">op::set</a> </p>
+</td></tr>
+</table>
+
+<p>Definition at line <a class="el" href="multi_8hpp_source.html#l00024">24</a> of file <a class="el" href="multi_8hpp_source.html">multi.hpp</a>.</p>
 
 </div>
 </div>
@@ -1125,7 +1214,7 @@ template&lt;typename T &gt; </div>
 </td></tr>
 </table>
 
-<p>Definition at line <a class="el" href="acl_8hpp_source.html#l00023">23</a> of file <a class="el" href="acl_8hpp_source.html">acl.hpp</a>.</p>
+<p>Definition at line <a class="el" href="acl_8hpp_source.html#l00021">21</a> of file <a class="el" href="acl_8hpp_source.html">acl.hpp</a>.</p>
 
 </div>
 </div>
@@ -1175,11 +1264,42 @@ template&lt;typename T &gt; </div>
 </td></tr>
 </table>
 
-<p>Definition at line <a class="el" href="types_8hpp_source.html#l00381">381</a> of file <a class="el" href="types_8hpp_source.html">types.hpp</a>.</p>
+<p>Definition at line <a class="el" href="types_8hpp_source.html#l00385">385</a> of file <a class="el" href="types_8hpp_source.html">types.hpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="ga805d7e2c38e80ec6abdc6043087bfae8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr bool zk::allows </td>
+          <td>(</td>
+          <td class="paramtype">permission&#160;</td>
+          <td class="paramname"><em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">permission&#160;</td>
+          <td class="paramname"><em>perform</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Check that <em>self</em> allows it <em>perform</em> all operations. </p>
+<p>For example, <code>allows(<a class="el" href="group__Client.html#gga75dfaeeb3b2f4e1588380b3bf68ecc08aecae13117d6f0584c25a9da6c8f8415e" title="You can access the data of a node and can list its children. ">permission::read</a> | <a class="el" href="group__Client.html#gga75dfaeeb3b2f4e1588380b3bf68ecc08aefb2a684e4afb7d55e6147fbe5a332ee" title="You can set the data of a node. ">permission::write</a>, <a class="el" href="group__Client.html#gga75dfaeeb3b2f4e1588380b3bf68ecc08aecae13117d6f0584c25a9da6c8f8415e" title="You can access the data of a node and can list its children. ">permission::read</a>)</code> will be <code>true</code>, as <code>read|write</code> is allowed to <code>read</code>. </p>
+
+<p>Definition at line <a class="el" href="acl_8hpp_source.html#l00054">54</a> of file <a class="el" href="acl_8hpp_source.html">acl.hpp</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="ga23fb36b19fb15328a1f0b5fab82d8ea4"></a>
 <div class="memitem">
 <div class="memproto">
@@ -1221,6 +1341,56 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
+<a class="anchor" id="ga3526ab3d5270ba5dec41f6e557a9357b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::size_t zk::hash </td>
+          <td>(</td>
+          <td class="paramtype">const acl_rule &amp;&#160;</td>
+          <td class="paramname"><em>self</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Compute a hash for the given <em>rule</em>. </p>
+
+<p>Definition at line <a class="el" href="acl_8cpp_source.html#l00053">53</a> of file <a class="el" href="acl_8cpp_source.html">acl.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga43a98cdc839851dd0945331689632ce2"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename TReal , typename TId &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::size_t zk::hash </td>
+          <td>(</td>
+          <td class="paramtype">const strong_id&lt; TReal, TId &gt; &amp;&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Compute the <code>std::hash</code> of the given <em>x</em>. </p>
+
+<p>Definition at line <a class="el" href="types_8hpp_source.html#l00127">127</a> of file <a class="el" href="types_8hpp_source.html">types.hpp</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="ga98e1c5a97a613229e62decc2a05ebb7e"></a>
 <div class="memitem">
 <div class="memproto">
@@ -1243,9 +1413,9 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Check if the provided <em>code</em> is an exception code for a <a class="el" href="classzk_1_1check__failed.html">check_failed</a> type of excpetion. </p>
+<p>Check if the provided <em>code</em> is an exception code for a <a class="el" href="classzk_1_1check__failed.html">check_failed</a> type of exception. </p>
 
-<p>Definition at line <a class="el" href="error_8hpp_source.html#l00077">77</a> of file <a class="el" href="error_8hpp_source.html">error.hpp</a>.</p>
+<p>Definition at line <a class="el" href="error_8hpp_source.html#l00075">75</a> of file <a class="el" href="error_8hpp_source.html">error.hpp</a>.</p>
 
 </div>
 </div>
@@ -1271,9 +1441,9 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Check if the provided <em>code</em> is an exception code for a <a class="el" href="classzk_1_1invalid__arguments.html">invalid_arguments</a> type of excpetion. </p>
+<p>Check if the provided <em>code</em> is an exception code for a <a class="el" href="classzk_1_1invalid__arguments.html">invalid_arguments</a> type of exception. </p>
 
-<p>Definition at line <a class="el" href="error_8hpp_source.html#l00052">52</a> of file <a class="el" href="error_8hpp_source.html">error.hpp</a>.</p>
+<p>Definition at line <a class="el" href="error_8hpp_source.html#l00050">50</a> of file <a class="el" href="error_8hpp_source.html">error.hpp</a>.</p>
 
 </div>
 </div>
@@ -1299,9 +1469,9 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Check if the provided <em>code</em> is an exception code for a <a class="el" href="classzk_1_1invalid__connection__state.html">invalid_connection_state</a> type of excpetion. </p>
+<p>Check if the provided <em>code</em> is an exception code for a <a class="el" href="classzk_1_1invalid__connection__state.html">invalid_connection_state</a> type of exception. </p>
 
-<p>Definition at line <a class="el" href="error_8hpp_source.html#l00067">67</a> of file <a class="el" href="error_8hpp_source.html">error.hpp</a>.</p>
+<p>Definition at line <a class="el" href="error_8hpp_source.html#l00065">65</a> of file <a class="el" href="error_8hpp_source.html">error.hpp</a>.</p>
 
 </div>
 </div>
@@ -1327,9 +1497,39 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Check if the provided <em>code</em> is an exception code for a <a class="el" href="classzk_1_1invalid__ensemble__state.html">invalid_ensemble_state</a> type of excpetion. </p>
+<p>Check if the provided <em>code</em> is an exception code for a <a class="el" href="classzk_1_1invalid__ensemble__state.html">invalid_ensemble_state</a> type of exception. </p>
 
-<p>Definition at line <a class="el" href="error_8hpp_source.html#l00059">59</a> of file <a class="el" href="error_8hpp_source.html">error.hpp</a>.</p>
+<p>Definition at line <a class="el" href="error_8hpp_source.html#l00057">57</a> of file <a class="el" href="error_8hpp_source.html">error.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gadf4975c092411a75981c0c7008b34ebd"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr bool zk::is_set </td>
+          <td>(</td>
+          <td class="paramtype">create_mode&#160;</td>
+          <td class="paramname"><em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">create_mode&#160;</td>
+          <td class="paramname"><em>flags</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Check that <em>self</em> has <em>flags</em> set. </p>
+
+<p>Definition at line <a class="el" href="types_8hpp_source.html#l00321">321</a> of file <a class="el" href="types_8hpp_source.html">types.hpp</a>.</p>
 
 </div>
 </div>
@@ -1355,9 +1555,9 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Check if the provided <em>code</em> is an exception code for a <a class="el" href="classzk_1_1transport__error.html">transport_error</a> type of excpetion. </p>
+<p>Check if the provided <em>code</em> is an exception code for a <a class="el" href="classzk_1_1transport__error.html">transport_error</a> type of exception. </p>
 
-<p>Definition at line <a class="el" href="error_8hpp_source.html#l00045">45</a> of file <a class="el" href="error_8hpp_source.html">error.hpp</a>.</p>
+<p>Definition at line <a class="el" href="error_8hpp_source.html#l00043">43</a> of file <a class="el" href="error_8hpp_source.html">error.hpp</a>.</p>
 
 </div>
 </div>
@@ -1388,10 +1588,171 @@ template&lt;typename FUnary , typename... T&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Apply <em>transform</em> with the arguments in <em>x</em> iff all of them have a value. </p>
-<p>Otherwise, <code>nullopt</code> will be returned. </p>
+<p>Apply <em>transform</em> with the arguments in <em>x</em> iff all of them have a value. Otherwise, <code>nullopt</code> will be returned. </p>
 
-<p>Definition at line <a class="el" href="optional_8hpp_source.html#l00028">28</a> of file <a class="el" href="optional_8hpp_source.html">optional.hpp</a>.</p>
+<p>Definition at line <a class="el" href="optional_8hpp_source.html#l00025">25</a> of file <a class="el" href="optional_8hpp_source.html">optional.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga66b076c138ba6ca7de460e4e243f9a92"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr permission zk::operator&amp; </td>
+          <td>(</td>
+          <td class="paramtype">permission&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">permission&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set intersection operation of permission. </p>
+
+<p>Definition at line <a class="el" href="acl_8hpp_source.html#l00039">39</a> of file <a class="el" href="acl_8hpp_source.html">acl.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga7e861210179740eb9eb35ecb752e4fda"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr create_mode zk::operator&amp; </td>
+          <td>(</td>
+          <td class="paramtype">create_mode&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">create_mode&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set intersection operation of create_mode. </p>
+
+<p>Definition at line <a class="el" href="types_8hpp_source.html#l00308">308</a> of file <a class="el" href="types_8hpp_source.html">types.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga92126049371c53c24883918d17529c11"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr permission zk::operator| </td>
+          <td>(</td>
+          <td class="paramtype">permission&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">permission&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set union operation of permission. </p>
+
+<p>Definition at line <a class="el" href="acl_8hpp_source.html#l00033">33</a> of file <a class="el" href="acl_8hpp_source.html">acl.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga5039564f4480333be232eaf64c7e0124"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr create_mode zk::operator| </td>
+          <td>(</td>
+          <td class="paramtype">create_mode&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">create_mode&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set union operation of create_mode. </p>
+
+<p>Definition at line <a class="el" href="types_8hpp_source.html#l00302">302</a> of file <a class="el" href="types_8hpp_source.html">types.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga61bf7cb53c7e6c9822865bc08d00b969"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr permission zk::operator~ </td>
+          <td>(</td>
+          <td class="paramtype">permission&#160;</td>
+          <td class="paramname"><em>a</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set inverse operation of permission. </p>
+<p>This is not exactly the bitwise complement of <em>a</em>, as the returned value will only include bits set that are valid in permission discriminants. </p>
+
+<p>Definition at line <a class="el" href="acl_8hpp_source.html#l00046">46</a> of file <a class="el" href="acl_8hpp_source.html">acl.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga5b4e2580469994ac92093724b5d3adbd"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr create_mode zk::operator~ </td>
+          <td>(</td>
+          <td class="paramtype">create_mode&#160;</td>
+          <td class="paramname"><em>a</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set inverse operation of create_mode. </p>
+<p>This is not exactly the bitwise complement of <em>a</em>, as the returned value will only include bits set that are valid in create_mode discriminants. </p>
+
+<p>Definition at line <a class="el" href="types_8hpp_source.html#l00315">315</a> of file <a class="el" href="types_8hpp_source.html">types.hpp</a>.</p>
 
 </div>
 </div>
@@ -1410,9 +1771,29 @@ template&lt;typename FUnary , typename... T&gt; </div>
 </div><div class="memdoc">
 
 <p>Throw an exception for the given <em>code</em>. </p>
-<p>This will use the proper refined exception type (such as <code><a class="el" href="classzk_1_1no__entry.html" title="Thrown from read operations when attempting to read a ZNode that does not exist. ">no_entry</a></code>) if one exists. </p>
+<p>This will use the proper refined exception type (such as <a class="el" href="classzk_1_1no__entry.html">no_entry</a>) if one exists. </p>
 
 <p>Definition at line <a class="el" href="error_8cpp_source.html#l00031">31</a> of file <a class="el" href="error_8cpp_source.html">error.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga1d3d116fc5343dfc827b20e7639e33df"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string zk::to_string </td>
+          <td>(</td>
+          <td class="paramtype">const state &amp;&#160;</td>
+          <td class="paramname"><em>self</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the string representation of the provided <em>state</em>. </p>
+
+<p>Definition at line <a class="el" href="types_8cpp_source.html#l00161">161</a> of file <a class="el" href="types_8cpp_source.html">types.cpp</a>.</p>
 
 </div>
 </div>

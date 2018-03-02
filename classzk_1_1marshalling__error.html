@@ -132,21 +132,21 @@ $(document).ready(function(){initNavTree('classzk_1_1marshalling__error.html',''
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pub_methods_classzk_1_1transport__error"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classzk_1_1transport__error')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classzk_1_1transport__error.html">zk::transport_error</a></td></tr>
 <tr class="memitem:a9e83befb61b63525cdb0a9c9158670a4 inherit pub_methods_classzk_1_1transport__error"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9e83befb61b63525cdb0a9c9158670a4"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>transport_error</b> (<a class="el" href="group__Client.html#ga59dbc6c98abba145d356557222aa9f7f">error_code</a> code, const std::string &amp;description)</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><b>transport_error</b> (<a class="el" href="group__Client.html#ga59dbc6c98abba145d356557222aa9f7f">error_code</a> <a class="el" href="classzk_1_1error.html#a9193811b2cefbe51f47bf5ea639524fd">code</a>, const std::string &amp;description)</td></tr>
 <tr class="separator:a9e83befb61b63525cdb0a9c9158670a4 inherit pub_methods_classzk_1_1transport__error"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classzk_1_1error"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classzk_1_1error')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classzk_1_1error.html">zk::error</a></td></tr>
 <tr class="memitem:a1163870950b3af77be48b3b2aa7f0aed inherit pub_methods_classzk_1_1error"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1163870950b3af77be48b3b2aa7f0aed"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>error</b> (<a class="el" href="group__Client.html#ga59dbc6c98abba145d356557222aa9f7f">error_code</a> code, const std::string &amp;description)</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><b>error</b> (<a class="el" href="group__Client.html#ga59dbc6c98abba145d356557222aa9f7f">error_code</a> <a class="el" href="classzk_1_1error.html#a9193811b2cefbe51f47bf5ea639524fd">code</a>, const std::string &amp;description)</td></tr>
 <tr class="separator:a1163870950b3af77be48b3b2aa7f0aed inherit pub_methods_classzk_1_1error"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9193811b2cefbe51f47bf5ea639524fd inherit pub_methods_classzk_1_1error"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9193811b2cefbe51f47bf5ea639524fd"></a>
-<a class="el" href="group__Client.html#ga59dbc6c98abba145d356557222aa9f7f">error_code</a>&#160;</td><td class="memItemRight" valign="bottom"><b>code</b> () const </td></tr>
+<tr class="memitem:a9193811b2cefbe51f47bf5ea639524fd inherit pub_methods_classzk_1_1error"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__Client.html#ga59dbc6c98abba145d356557222aa9f7f">error_code</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1error.html#a9193811b2cefbe51f47bf5ea639524fd">code</a> () const </td></tr>
+<tr class="memdesc:a9193811b2cefbe51f47bf5ea639524fd inherit pub_methods_classzk_1_1error"><td class="mdescLeft">&#160;</td><td class="mdescRight">The code representation of this error.  <a href="#a9193811b2cefbe51f47bf5ea639524fd">More...</a><br /></td></tr>
 <tr class="separator:a9193811b2cefbe51f47bf5ea639524fd inherit pub_methods_classzk_1_1error"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>An error occurred while marshalling data. </p>
 <p>The most common cause of this is exceeding the Jute buffer size &ndash; meaning the transaction was too large (check the server logs for messages containing <code>"Unreasonable length"</code>). If that is the case, the solution is to change <code>jute.maxbuffer</code> on all servers (see the <a href="https://zookeeper.apache.org/doc/r3.4.10/zookeeperAdmin.html">ZooKeeper Administrator's Guide</a> for more information and a stern warning). Another possible cause is the system running out of memory, but due to overcommit, OOM issues rarely manifest so cleanly. </p>
 
-<p>Definition at line <a class="el" href="error_8hpp_source.html#l00160">160</a> of file <a class="el" href="error_8hpp_source.html">error.hpp</a>.</p>
+<p>Definition at line <a class="el" href="error_8hpp_source.html#l00156">156</a> of file <a class="el" href="error_8hpp_source.html">error.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>zk/<a class="el" href="error_8hpp_source.html">error.hpp</a></li>
 <li>zk/<a class="el" href="error_8cpp_source.html">error.cpp</a></li>
