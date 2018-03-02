@@ -11,6 +11,13 @@
 namespace zk::server
 {
 
+namespace detail
+{
+
+class event_handle;
+
+}
+
 /// \defgroup Server
 /// Control a ZooKeeper \ref server process.
 /// \{
@@ -53,8 +60,9 @@ private:
     void run_process(const classpath&, const configuration&);
 
 private:
-    std::atomic<bool> _running;
-    std::thread       _worker;
+    std::atomic<bool>                     _running;
+    std::unique_ptr<detail::event_handle> _shutdown_event;
+    std::thread                           _worker;
 
     // NOTE: The configuration is NOT stored in the server object. This is because configuration can be changed by the
     // ZK process in cases like ensemble reconfiguration. It is the job of run_process to deal with this.
