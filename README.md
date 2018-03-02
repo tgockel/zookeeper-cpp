@@ -191,8 +191,7 @@ In the Java API, the `ZooKeeper` client allows for a global
 [Watcher](https://zookeeper.apache.org/doc/r3.4.10/api/org/apache/zookeeper/Watcher.html).
 In the C API, `zookeeper_init` can be provided with a global function with the signature
 `void (*)(zhandle_t* zh, int type, int state, const char* path, void* watcherCtx)` to achieve this same result.
-The ZooKeeper community considers global watches as "legacy" and prefers the use of watcher objects set on a per-path
-basis.
+Global watches are somewhat of a "legacy" feature -- the dual interface of global and callbacks is somewhat confusing.
 As such, global watches are *not* supported by this library.
 
 ### Synchronous API

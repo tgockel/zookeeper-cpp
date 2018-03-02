@@ -1,27 +1,31 @@
-/** \file
- *  Controls the \c buffer type.
-**/
+/// \file
+/// Controls the \c buffer type.
 #pragma once
 
 #include <zk/config.hpp>
 
 #include <type_traits>
 
-/** \addtogroup Client
- *  \{
-**/
+/// \addtogroup Client
+/// \{
 
-/** \def ZKPP_BUFFER_USE_CUSTOM
- *  Set this to 1 to use a custom definitions for \c zk::buffer. If this is set, you must also set
- *  \c ZKPP_BUFFER_INCLUDE and \c ZKPP_BUFFER_TYPE.
-**/
+/// \def ZKPP_BUFFER_USE_CUSTOM
+/// Set this to 1 to use a custom definitions for \c buffer. If this is set, you must also set
+/// \ref ZKPP_BUFFER_INCLUDE and \ref ZKPP_BUFFER_TYPE.
+///
+/// \def ZKPP_BUFFER_INCLUDE
+/// The header file to use to find the \c buffer type. This value is set automatically if using built-in configuration
+/// options (such as \ref ZKPP_BUFFER_USE_STD_VECTOR) and must be set manually if using \ref ZKPP_BUFFER_USE_CUSTOM.
+///
+/// \def ZKPP_BUFFER_TYPE
+/// The type name to use for the \c buffer type. This value is set automatically if using built-in configuration
+/// options (such as \ref ZKPP_BUFFER_USE_STD_VECTOR) and must be set manually if using \ref ZKPP_BUFFER_USE_CUSTOM.
 #ifndef ZKPP_BUFFER_USE_CUSTOM
 #   define ZKPP_BUFFER_USE_CUSTOM 0
 #endif
 
-/** \def ZKPP_BUFFER_USE_STD_VECTOR
- *  Set this to 1 to use \c std::vector<char> for the implementation of \c zk::buffer. This is the default behavior.
-**/
+/// \def ZKPP_BUFFER_USE_STD_VECTOR
+/// Set this to 1 to use \c std::vector<char> for the implementation of \ref zk::buffer. This is the default behavior.
 #ifndef ZKPP_BUFFER_USE_STD_VECTOR
 #   if ZKPP_BUFFER_USE_CUSTOM
 #       define ZKPP_BUFFER_USE_STD_VECTOR 0
@@ -41,29 +45,27 @@
 #   error "Unknown type to use for zk::buffer"
 #endif
 
-/** \} **/
+/// \}
 
 #include ZKPP_BUFFER_INCLUDE
 
 namespace zk
 {
 
-/** \addtogroup Client
- *  \{
-**/
+/// \addtogroup Client
+/// \{
 
-/** The \c buffer type. By default, this is an \c std::vector<char>, but this can be altered by compile-time flags such
- *  as \c ZKPP_BUFFER_USE_CUSTOM. The requirements for a custom buffer are minimal -- the type must fit this criteria:
- *
- *  | expression            | type                      | description                                                  |
- *  |:----------------------|:--------------------------|:-------------------------------------------------------------|
- *  | `buffer::value_type`  | `char`                    | Buffers must be made of single-byte elements                 |
- *  | `buffer::size_type`   | `std::size_t`             |                                                              |
- *  | `buffer(ib, ie)`      | `buffer`                  | Constructs a buffer with the range [`ib`, `ie`)              |
- *  | `buffer(buffer&&)`    | `buffer`                  | Move constructible.                                          |
- *  | `size()`              | `size_type`               | Get the length of the buffer                                 |
- *  | `data()`              | `const value_type*`       | Get a pointer to the beginning of the contents               |
-**/
+/// The \c buffer type. By default, this is an \c std::vector<char>, but this can be altered by compile-time flags such
+/// as \ref ZKPP_BUFFER_USE_CUSTOM. The requirements for a custom buffer are minimal -- the type must fit this criteria:
+///
+/// | expression            | type                      | description                                                  |
+/// |:----------------------|:--------------------------|:-------------------------------------------------------------|
+/// | `buffer::value_type`  | `char`                    | Buffers must be made of single-byte elements                 |
+/// | `buffer::size_type`   | `std::size_t`             |                                                              |
+/// | `buffer(ib, ie)`      | `buffer`                  | Constructs a buffer with the range [`ib`, `ie`)              |
+/// | `buffer(buffer&&)`    | `buffer`                  | Move constructible.                                          |
+/// | `size()`              | `size_type`               | Get the length of the buffer                                 |
+/// | `data()`              | `const value_type*`       | Get a pointer to the beginning of the contents               |
 using buffer = ZKPP_BUFFER_TYPE;
 
 // Check through static_assert:
@@ -82,6 +84,6 @@ static_assert(std::is_constructible<ptr<const buffer::value_type>,
               "buffer::data() must return ptr<const buffer::value_type>"
              );
 
-/** \} **/
+/// \}
 
 }
