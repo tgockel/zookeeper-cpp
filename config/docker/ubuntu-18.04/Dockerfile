@@ -5,12 +5,13 @@ RUN apt-get update          \
  && apt-get install --yes   \
     cmake                   \
     grep                    \
+    googletest              \
     g++-7                   \
-    ninja-build             \
     ivy                     \
     lcov                    \
     libgtest-dev            \
-    libzookeeper-mt-dev
+    libzookeeper-mt-dev     \
+    ninja-build
 
 RUN update-alternatives --install /usr/bin/c++ c++ /usr/bin/g++-7 99
 

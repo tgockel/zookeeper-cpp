@@ -98,23 +98,32 @@ include_directories("${PROJECT_SOURCE_DIR}/src")
 find_package(GTest)
 
 if(GTest_FOUND)
-  # Unclear why GTest packaging behaves differently than every other find_package
+  # Make it look like find_library
   set(gtest_LIBRARIES GTest::GTest)
-elseif(EXISTS "/usr/src/gtest/src/")
-  # GTest's packaging on Ubuntu (libgtest-dev) contains all the source files instead of a library and headers. CMake has
-  # a package discovery for GTest, but it does not pick up on this for you, so we'll build it manually here.
+elseif(EXISTS "/usr/src/googletest/googletest/src" OR EXISTS "/usr/src/gtest/src/")
+  # GTest's packaging on Ubuntu (googletest or libgtest-dev, depending on which version) contains all the source files
+  # instead of a library and headers. CMake has a package discovery for GTest, but it does not pick up on this for you,
+  # so we'll build it manually here.
   message(STATUS "GTest is not installed, but the sources were found...adding them to the build")
-  if(EXISTS "/usr/src/gtest/src/gtest-all.cc")
-    set(gtest_lib_cpps "/usr/src/gtest/src/gtest-all.cc")
-    message(STATUS "Building with gtest-all.cc")
+  if(EXISTS "/usr/src/googletest/googletest/src")
+    # Prefer the "googletest" version, as sometimes the "gtest" one is an empty directory (this seems to be the result
+    # of a packaging issue)
+    set(GTEST_SRC_ROOT "/usr/src/googletest/googletest/src")
   else()
-    file(GLOB gtest_lib_cpps "/usr/src/gtest/src/gtest-*.cc")
+    set(GTEST_SRC_ROOT "/usr/src/gtest/src")
+  endif()
+
+  if(EXISTS "${GTEST_SRC_ROOT}/gtest-all.cc")
+    set(gtest_lib_cpps "${GTEST_SRC_ROOT}/gtest-all.cc")
+    message(STATUS "Building with ${GTEST_SRC_ROOT}/gtest-all.cc")
+  else()
+    file(GLOB gtest_lib_cpps "${GTEST_SRC_ROOT}/gtest-*.cc")
     message(STATUS "Building with gtest_lib_cpps=${gtest_lib_cpps}")
   endif()
   add_library(gtest SHARED ${gtest_lib_cpps})
 
   # GTest uses relative imports incorrectly, so make sure to add it to the include path.
-  target_include_directories(gtest PRIVATE "/usr/src/gtest")
+  target_include_directories(gtest PRIVATE "${GTEST_SRC_ROOT}/..")
   # Also disable -Werror
   target_compile_options(gtest PRIVATE "-Wno-error")
 
