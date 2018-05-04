@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-PROJECT_ROOT=$(dirname ~)/$(whoami)/zookeeper-cpp
+PROJECT_ROOT=$(readlink -f $(dirname $0)/..)
 BUILD_DIR=${PROJECT_ROOT}/build-ci
 echo "${DISTRO} ${PROJECT_ROOT}"
 c++ --version
