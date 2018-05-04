@@ -1,23 +1,176 @@
 #!/bin/bash -e
 
-PROJECT_ROOT=$(dirname ~)/$(whoami)/zookeeper-cpp
-BUILD_DIR=${PROJECT_ROOT}/build-ci-release
-echo "${DISTRO} ${PROJECT_ROOT}"
-c++ --version
+PROJECT_ROOT=$(readlink -f $(dirname $0)/..)
+BUILD_DIR="$BUILD_DIR"
+COPY_TO=""
+DISTRO="$DISTRO"
+PACKAGE_PREFIX=""
+
+function show_usage {
+  echo "$0: Create a package for this operating system."
+  echo ""
+  echo "Usage: $0 [OPTION]..."
+  echo ""
+  echo "Options:"
+  echo ""
+  echo " --build-dir BUILD_DIR:"
+  echo "        Set the build output directory. By default, this is build-release or"
+  echo "        build-release-\${DISTRO} if --distro was set."
+  echo " --copy-to COPY_TO:"
+  echo "        Copy the generated packages to the specified folder."
+  echo " --distro DISTRO:"
+  echo "        Set the distro name."
+  echo " --dockerize DISTRO:"
+  echo "        Perform the build inside of a dev-env-created Docker container. If used,"
+  echo "        this must be the first option. The --distro flag is automatically set to"
+  echo "        the same value."
+  echo " --package-prefix PREFIX:"
+  echo "        Generated packages will be renamed with this prefix. By default, this"
+  echo "        will be \"\${DISTRO}-\" if --distro was set."
+  echo ""
+  echo "Examples:"
+  echo ""
+  echo "  Create a package inside an Ubuntu 18.04 container, copying the DEBs to a"
+  echo "  packages folder."
+  echo "    $> $0 --dockerize=ubuntu-18.04 --copy-to=packages"
+}
+
+UNRECOGNIZED=0
+DOCKERIZE=0
+FIRST=1
+while [[ $# -gt 0 ]]; do
+  key="$1"
+
+  case $key in
+    --build-dir)
+      BUILD_DIR="$2"
+      shift 2
+      ;;
+    --build-dir=*)
+      BUILD_DIR="${key/--build-dir=/}"
+      shift
+      ;;
+    --copy-to)
+      COPY_TO="$2"
+      shift 2
+      ;;
+    --copy-to=*)
+      COPY_TO="${key/--copy-to=/}"
+      shift
+      ;;
+    --distro)
+      DISTRO="$2"
+      shift 2
+      ;;
+    --distro=*)
+      DISTRO="${key/--distro=/}"
+      shift
+      ;;
+    --dockerize)
+      DISTRO="$2"
+      DOCKERIZE=1
+      shift 2
+      break
+      ;;
+    --dockerize=*)
+      DISTRO="${key/--dockerize=/}"
+      DOCKERIZE=1
+      shift
+      break
+      ;;
+    --help)
+      show_usage
+      exit 1
+      ;;
+    --package-prefix)
+      PACKAGE_PREFIX="$2"
+      shift 2
+      ;;
+    --package-prefix=*)
+      PACKAGE_PREFIX="${key/--package-prefix=/}"
+      shift
+      ;;
+    *)
+      echo "Unrecognized option: $key"
+      UNRECOGNIZED=1
+      shift
+      ;;
+  esac
+  FIRST=0
+done
+
+if [[ ${UNRECOGNIZED} -ne 0 ]]; then
+  show_usage
+  exit 1
+fi
+
+if [[ ${DOCKERIZE} -eq 1 ]]; then
+  if [[ ${FIRST} -eq 0 ]]; then
+    echo "If using --dockerize, it must be the first argument."
+    exit 1
+  fi
+
+  exec ${PROJECT_ROOT}/config/dev-env "${DISTRO}" -- \
+        ./config/make-package                        \
+            --distro="${DISTRO}"                     \
+            $@
+fi
+
+if [[ -z "${BUILD_DIR}" ]]; then
+  if [[ -z "${DISTRO}" ]]; then
+    BUILD_DIR="build-release"
+  else
+    BUILD_DIR="build-release-${DISTRO}"
+  fi
+fi
+
+if [[ -z "${PACKAGE_PREFIX}" ]]; then
+  if [[ -n "${DISTRO}" ]]; then
+    PACKAGE_PREFIX="${DISTRO}-"
+  fi
+fi
+
+if $(hash rpm 2>/dev/null); then
+  PACKAGE_SYSTEM=RPM
+  PACKAGE_SUFFIX=rpm
+
+  function show_contents {
+    rpm -qlp "$1"
+  }
+elif $(hash dpkg 2>/dev/null); then
+  PACKAGE_SYSTEM=DEB
+  PACKAGE_SUFFIX=deb
+
+  function show_contents {
+    dpkg --contents "${pkg_file}"
+  }
+else
+  echo "Unknown packaging system for this operating system"
+  exit 2
+fi
 
 if [[ -e ${BUILD_DIR} ]]; then
-    echo "Build directory (${BUILD_DIR}) unclean -- deleting it"
-    rm -rf ${BUILD_DIR}
+  echo "Build directory (${BUILD_DIR}) unclean -- deleting it"
+  rm -rf ${BUILD_DIR}
 fi
 mkdir ${BUILD_DIR}
+
 cd ${BUILD_DIR}
+cmake .. -DZKPP_PACKAGE_SYSTEM=${PACKAGE_SYSTEM} -DCMAKE_BUILD_TYPE=Release -GNinja
+ninja package
+cd -
 
-cmake .. -DZKPP_PACKAGE_SYSTEM=DEB -DCMAKE_BUILD_TYPE=Release
-make VERBOSE=1
-make test
-make package
+for pkg_file in $(find "${BUILD_DIR}/install" -maxdepth 1 -name "*.${PACKAGE_SUFFIX}"); do
+  if [[ -n "${PACKAGE_PREFIX}" ]]; then
+    new_pkg_file="$(dirname -- ${pkg_file})/${PACKAGE_PREFIX}$(basename -- ${pkg_file})"
+    mv "${pkg_file}" "${new_pkg_file}"
+    pkg_file="${new_pkg_file}"
+  fi
 
-for debfile in $(ls ${BUILD_DIR}/install/*.deb); do
-  echo "PACKAGE $debfile"
-  dpkg --contents $debfile
+  echo "PACKAGE ${pkg_file}"
+  show_contents "${pkg_file}"
+
+  if [[ -n "${COPY_TO}" ]]; then
+    cp "${pkg_file}" "${COPY_TO}"
+  fi
 done
