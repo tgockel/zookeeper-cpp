@@ -1,0 +1,71 @@
+#!/bin/bash -e
+
+PROJECT_ROOT=$(readlink -f $(dirname $0)/..)
+
+function show_usage {
+  echo "$0: Create multiple packages."
+  echo ""
+  echo "Usage: $0 [OPTION]... [DISTRO]..."
+  echo ""
+  echo "Options:"
+  echo ""
+  echo " --all"
+  echo "        Create packages for all known distributions. If this is specified, you"
+  echo "        are not allowed to specify individual distributions."
+  echo " --copy-to COPY_TO:"
+  echo "        Copy the generated packages to the specified folder."
+  echo " --:"
+  echo "        Stop processing and pass the remaining arguments to make-package."
+}
+
+COPY_TO=
+DISTROS=()
+ALL=0
+while [[ $# -gt 0 ]]; do
+  key="$1"
+
+  case $key in
+    --all)
+      ALL=1
+      shift
+      ;;
+    --copy-to)
+      COPY_TO="$2"
+      shift 2
+      ;;
+    --copy-to=*)
+      COPY_TO="${key/--copy-to=/}"
+      shift
+      ;;
+    --)
+      # No shift: want to use the -- in the call
+      break
+      ;;
+    *)
+      DISTROS+=(${key})
+      shift
+      ;;
+  esac
+done
+
+if [[ ${ALL} -eq 1 ]]; then
+  if [[ ${#DISTROS[@]} -ne 0 ]]; then
+    echo "Specified --all, but also distributions: ${DISTROS[@]}"
+    echo ""
+    show_usage
+    exit 1
+  fi
+
+  # All distros with working package systems.
+  DISTROS=(ubuntu-16.04 ubuntu-17.10 ubuntu-18.04)
+fi
+
+if [[ -n "${COPY_TO}" ]]; then
+  mkdir -p "${COPY_TO}"
+  COPY_TO="--copy-to=${COPY_TO}"
+fi
+
+for distro in ${DISTROS[@]}; do
+  echo "BUILDING PACKAGE FOR $distro"
+  ${PROJECT_ROOT}/config/make-package --dockerize=${distro} ${COPY_TO} $@
+done

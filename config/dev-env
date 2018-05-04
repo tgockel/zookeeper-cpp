@@ -1,32 +1,83 @@
 #!/bin/bash -e
 # Create a build environment.
 
-PROJECT_SRC=$(realpath $(dirname $0)/..)
+PROJECT_ROOT=$(realpath $(dirname $0)/..)
+
+COMMAND=/bin/bash
+DISTRO=
 
 function show_usage {
-  echo "Usage:"
+  echo "$0: Run a program in a Docker environment."
   echo ""
-  echo "$> $0 $(ls $(dirname $0)/docker | sort --random-sort | head -1)"
+  echo "Options:"
   echo ""
+  echo " --distro DISTRO:"
+  echo "        The Linux distro to create the base container."
   echo ""
-  echo "Available options:"
-  printf "    "
-  ls $(dirname $0)/docker
+  echo "        Available options:"
+  printf "         "
+  printf " %s" $(ls $(dirname $0)/docker)
+  echo ""
+  echo " --:"
+  echo "        Stop processing arguments and pass the remaining arguments to the"
+  echo "        container."
   echo ""
   echo "Example:"
   echo ""
-  echo "$> $0 $(ls $(dirname $0)/docker | sort --random-sort | head -1)"
+  echo "  Enter into a bash shell:"
+  echo "    $> $0 $(ls $(dirname $0)/docker | sort --random-sort | head -1)"
+  echo ""
+  echo "  Build the package for a given distro:"
+  echo "    $> $0 --distro=$(ls $(dirname $0)/docker | sort --random-sort | head -1) -- ./config/make-package"
 }
 
-if [[ $# -ne 1 ]]; then
+if [[ $# -lt 1 ]]; then
+  show_usage
+  exit 1
+else
+  UNRECOGNIZED=0
+  while [[ $# -gt 0 ]]; do
+    key="$1"
+
+    case $key in
+      --distro)
+        DISTRO="$2"
+        shift 2
+        ;;
+      --distro=*)
+        DISTRO="${key/--distro=/}"
+        shift
+        ;;
+      --help)
+        show_usage
+        exit 1
+        ;;
+      --)
+        shift
+        COMMAND=$@
+        break
+        ;;
+      *)
+        if [[ -z "${DISTRO}" ]]; then
+          DISTRO="$key"
+        else
+          echo "Unrecognized option: $key"
+          UNRECOGNIZED=1
+        fi
+        shift
+        ;;
+    esac
+  done
+fi
+
+if [[ -z "${DISTRO}" ]]; then
+  echo "Must set distro."
   show_usage
   exit 1
 fi
 
-DISTRO=$1
 IMAGE_NAME=dev/zookeeper-cpp/${DISTRO}
-DOCKER_DIR=${PROJECT_SRC}/config/docker/${DISTRO}
-RUN_SHELL=/bin/bash
+DOCKER_DIR=${PROJECT_ROOT}/config/docker/${DISTRO}
 
 if ! [[ -e ${DOCKER_DIR}/Dockerfile ]]; then
   echo "Specified distro \"${DISTRO}\" does not have a Dockerfile"
@@ -36,4 +87,10 @@ if ! [[ -e ${DOCKER_DIR}/Dockerfile ]]; then
 fi
 
 docker build ${DOCKER_DIR} -t ${IMAGE_NAME}
-exec docker run --rm -v ${PROJECT_SRC}:/root/zookeeper-cpp -w /root/zookeeper-cpp -it ${IMAGE_NAME} ${RUN_SHELL}
+exec docker run                             \
+    --rm                                    \
+    -v ${PROJECT_ROOT}:/root/zookeeper-cpp  \
+    -w /root/zookeeper-cpp                  \
+    --security-opt seccomp=unconfined       \
+    -it ${IMAGE_NAME}                       \
+    ${COMMAND}
