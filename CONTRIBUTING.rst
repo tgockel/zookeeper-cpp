@@ -59,7 +59,7 @@ For more granular tracking, the issue should move across the
 The columns of the project should be somewhat intuitive:
 
 :Backlog:
-    Not being actively worked on, but might be a good idea.
+    Things we are planning on doing soon.
 
 :Design:
     System is being designed.
@@ -68,9 +68,6 @@ The columns of the project should be somewhat intuitive:
 
 :Implementation:
     The component is currently being implemented.
-
-:Testing:
-    Component is implemented, but has not passed unit tests on all platforms.
 
 :Pull Request:
     There is an open pull request.
