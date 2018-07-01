@@ -10,6 +10,7 @@
 #include <iosfwd>
 #include <string>
 #include <map>
+#include <set>
 #include <vector>
 
 namespace zk::server
@@ -91,6 +92,17 @@ public:
     /// The default value for \ref sync_limit.
     static const std::size_t default_sync_limit;
 
+    /// The default value for \ref four_letter_word_whitelist.
+    static const std::set<std::string> default_four_letter_word_whitelist;
+
+    /// A value for \ref four_letter_word_whitelist that enables all commands. Note that this is not a list of all
+    /// allowed words, but simply the string \c "*".
+    static const std::set<std::string> all_four_letter_word_whitelist;
+
+    /// All known values allowed in \ref four_letter_word_whitelist. This set comes from what ZooKeeper server 3.5.3
+    /// supported, so it is possible the version of ZooKeeper you are running supports a different set.
+    static const std::set<std::string> known_four_letter_word_whitelist;
+
 public:
     /// Creates a minimal configuration, setting the four needed values. The resulting \ref configuration can be run
     /// through a file with \c save or it can run directly from the command line.
@@ -153,8 +165,31 @@ public:
     /// Should an elected leader accepts client connections? For higher update throughput at the slight expense of read
     /// latency, the leader can be configured to not accept clients and focus on coordination. The default to this value
     /// is \c true, which means that a leader will accept client connections.
-    optional<bool> leader_serves() const;
+    bool           leader_serves() const;
     configuration& leader_serves(optional<bool> serve);
+    /// \}
+
+    /// \{
+    /// A list of comma separated four letter words commands that user wants to use. A valid four letter words command
+    /// must be put in this list or the ZooKeeper server will not enable the command. If unspecified, the whitelist only
+    /// contains "srvr" command (\ref default_four_letter_word_whitelist).
+    ///
+    /// \note
+    /// It is planned that the ZooKeeper server will deprecate this whitelist in preference of using a JSON REST API for
+    /// health checks. It is unlikely to be deprecated any time in the near future and will likely remain in the product
+    /// for a very long time.
+    ///
+    /// \param words is the list of four letter words to allow or \c nullopt to clear the setting. If specified as an
+    ///  empty set, this explicitly disables all words, which is \e different than setting this value to \c nullopt.
+    ///
+    /// \throws std::invalid_argument if \a words contains the all value (\c "*") but it is not the only value in the
+    ///  set.
+    ///
+    /// \ref default_four_letter_word_whitelist
+    /// \ref all_four_letter_word_whitelist
+    /// \ref known_four_letter_word_whitelist
+    const std::set<std::string>& four_letter_word_whitelist() const;
+    configuration&               four_letter_word_whitelist(optional<std::set<std::string>> words);
     /// \}
 
     /// Get the servers which are part of the ZooKeeper ensemble.
@@ -232,6 +267,7 @@ private:
     setting<std::size_t>                        _init_limit;
     setting<std::size_t>                        _sync_limit;
     setting<bool>                               _leader_serves;
+    setting<std::set<std::string>>              _four_letter_word_whitelist;
     std::map<server_id, setting<std::string>>   _server_paths;
     std::map<std::string, setting<std::string>> _unknown_settings;
 };

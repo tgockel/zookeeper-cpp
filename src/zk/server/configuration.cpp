@@ -1,5 +1,6 @@
 #include "configuration.hpp"
 
+#include <cctype>
 #include <cstdlib>
 #include <fstream>
 #include <istream>
@@ -54,6 +55,9 @@ const configuration::duration_type configuration::default_tick_time = std::chron
 const std::size_t configuration::default_init_limit = 10U;
 const std::size_t configuration::default_sync_limit =  5U;
 
+const std::set<std::string> configuration::default_four_letter_word_whitelist = { "srvr" };
+const std::set<std::string> configuration::all_four_letter_word_whitelist     = { "*" };
+
 template <typename T>
 configuration::setting<T>::setting() noexcept :
         value(nullopt),
@@ -78,6 +82,36 @@ configuration configuration::make_minimal(std::string data_directory, std::uint1
        .init_limit(default_init_limit)
        .sync_limit(default_sync_limit)
        ;
+    return out;
+}
+
+static std::set<std::string> parse_whitelist(string_view source)
+{
+    std::set<std::string> out;
+
+    while (!source.empty())
+    {
+        auto idx = source.find_first_of(',');
+        if (idx == string_view::npos)
+            idx = source.size();
+
+        if (idx == 0)
+        {
+            source.remove_prefix(1);
+            continue;
+        }
+
+        auto sub = source.substr(0, idx);
+        source.remove_prefix(idx);
+        while (!sub.empty() && std::isspace(sub.front()))
+            sub.remove_prefix(1);
+
+        while (!sub.empty() && std::isspace(sub.back()))
+            sub.remove_suffix(1);
+
+        out.insert(std::string(sub));
+    }
+
     return out;
 }
 
@@ -127,6 +161,10 @@ configuration configuration::from_lines(std::vector<std::string> lines)
             else if (name == "leaderServes")
             {
                 out._leader_serves = { (data == "yes"), line_no };
+            }
+            else if (name == "4lw.commands.whitelist")
+            {
+                out._four_letter_word_whitelist = { parse_whitelist(data), line_no };
             }
             else if (name.find("server.") == 0U)
             {
@@ -273,14 +311,48 @@ configuration& configuration::sync_limit(optional<std::size_t> limit)
     return *this;
 }
 
-optional<bool> configuration::leader_serves() const
+bool configuration::leader_serves() const
 {
-    return _leader_serves.value;
+    return _leader_serves.value.value_or(true);
 }
 
 configuration& configuration::leader_serves(optional<bool> serve)
 {
     set(_leader_serves, serve, "leaderServes", [] (bool x) { return x ? "yes" : "no"; });
+    return *this;
+}
+
+const std::set<std::string>& configuration::four_letter_word_whitelist() const
+{
+    if (_four_letter_word_whitelist.value)
+        return *_four_letter_word_whitelist.value;
+    else
+        return default_four_letter_word_whitelist;
+}
+
+configuration& configuration::four_letter_word_whitelist(optional<std::set<std::string>> words)
+{
+    if (words && words->size() > 1U && words->count("*"))
+        throw std::invalid_argument("");
+
+    set(_four_letter_word_whitelist,
+        std::move(words),
+        "4lw.commands.whitelist",
+        [] (const std::set<std::string>& words)
+        {
+            bool               first = true;
+            std::ostringstream os;
+
+            for (const auto& word : words)
+            {
+                if (!std::exchange(first, false))
+                    os << ',';
+                os << word;
+            }
+
+            return os.str();
+        }
+       );
     return *this;
 }
 
@@ -367,22 +439,23 @@ bool operator==(const configuration& lhs, const configuration& rhs)
                               && a.second.value == b.second.value;
                       };
 
-    return lhs.client_port()            == rhs.client_port()
-        && lhs.data_directory()         == rhs.data_directory()
-        && lhs.tick_time()              == rhs.tick_time()
-        && lhs.init_limit()             == rhs.init_limit()
-        && lhs.sync_limit()             == rhs.sync_limit()
-        && lhs.leader_serves()          == rhs.leader_serves()
-        && lhs._server_paths.size()     == rhs._server_paths.size()
-        && lhs._server_paths.end()      == std::mismatch(lhs._server_paths.begin(), lhs._server_paths.end(),
-                                                         rhs._server_paths.begin(), rhs._server_paths.end(),
-                                                         same_items
-                                                        ).first
-        && lhs._unknown_settings.size() == rhs._unknown_settings.size()
-        && lhs._unknown_settings.end()  == std::mismatch(lhs._unknown_settings.begin(), lhs._unknown_settings.end(),
-                                                         rhs._unknown_settings.begin(), rhs._unknown_settings.end(),
-                                                         same_items
-                                                        ).first
+    return lhs.client_port()                == rhs.client_port()
+        && lhs.data_directory()             == rhs.data_directory()
+        && lhs.tick_time()                  == rhs.tick_time()
+        && lhs.init_limit()                 == rhs.init_limit()
+        && lhs.sync_limit()                 == rhs.sync_limit()
+        && lhs.leader_serves()              == rhs.leader_serves()
+        && lhs.four_letter_word_whitelist() == rhs.four_letter_word_whitelist()
+        && lhs._server_paths.size()         == rhs._server_paths.size()
+        && lhs._server_paths.end()          == std::mismatch(lhs._server_paths.begin(), lhs._server_paths.end(),
+                                                             rhs._server_paths.begin(), rhs._server_paths.end(),
+                                                             same_items
+                                                            ).first
+        && lhs._unknown_settings.size()     == rhs._unknown_settings.size()
+        && lhs._unknown_settings.end()      == std::mismatch(lhs._unknown_settings.begin(), lhs._unknown_settings.end(),
+                                                             rhs._unknown_settings.begin(), rhs._unknown_settings.end(),
+                                                             same_items
+                                                            ).first
         ;
 }
 
