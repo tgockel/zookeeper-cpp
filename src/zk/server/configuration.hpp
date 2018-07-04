@@ -74,22 +74,22 @@ public:
 
 public:
     /// The default value for \ref client_port.
-    static std::uint16_t default_client_port;
+    static const std::uint16_t default_client_port;
 
     /// The default value for \ref peer_port.
-    static std::uint16_t default_peer_port;
+    static const std::uint16_t default_peer_port;
 
     /// The default value for \ref leader_port.
-    static std::uint16_t default_leader_port;
+    static const std::uint16_t default_leader_port;
 
     /// The default value for \ref tick_time.
-    static duration_type default_tick_time;
+    static const duration_type default_tick_time;
 
     /// The default value for \ref init_limit.
-    static std::size_t default_init_limit;
+    static const std::size_t default_init_limit;
 
     /// The default value for \ref sync_limit.
-    static std::size_t default_sync_limit;
+    static const std::size_t default_sync_limit;
 
 public:
     /// Creates a minimal configuration, setting the four needed values. The resulting \ref configuration can be run
