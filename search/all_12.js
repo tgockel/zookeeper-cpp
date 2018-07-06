@@ -1,8 +1,6 @@
 var searchData=
 [
-  ['value',['value',['../structzk_1_1strong__id.html#a003a6c9d4c209602757c9fd88806922f',1,'zk::strong_id']]],
-  ['value_5ftype',['value_type',['../structzk_1_1strong__id.html#a4657d3ec68d5a2898250f59b9dfd7d27',1,'zk::strong_id']]],
-  ['version',['version',['../structzk_1_1version.html',1,'zk']]],
-  ['version_5fmismatch',['version_mismatch',['../classzk_1_1version__mismatch.html',1,'zk']]],
-  ['version_5fmismatch',['version_mismatch',['../group__Client.html#gga59dbc6c98abba145d356557222aa9f7fad38e11e056acf4b000c0551047b7171a',1,'zk']]]
+  ['underlying_5fcause',['underlying_cause',['../classzk_1_1transaction__failed.html#ac0fafad294d24efa4e2837dd4886f581',1,'zk::transaction_failed']]],
+  ['unknown_5fsettings',['unknown_settings',['../classzk_1_1server_1_1configuration.html#a588f11f3624feb1e41bd8fbbf5429aca',1,'zk::server::configuration']]],
+  ['unregister_5fserver',['unregister_server',['../classzk_1_1server_1_1package__registry.html#a63b39522b176f754fdd1d4cfbe5c41fe',1,'zk::server::package_registry']]]
 ];

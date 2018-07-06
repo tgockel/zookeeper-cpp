@@ -185,11 +185,17 @@ std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el
 <a class="el" href="classzk_1_1server_1_1configuration.html">configuration</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>sync_limit</b> (optional&lt; std::size_t &gt; limit)</td></tr>
 <tr class="separator:a2b94aed09c8c2890211e5abe525454e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader"></div></td></tr>
-<tr class="memitem:a42aea0016f7d514ea91b114db908c9f1"><td class="memItemLeft" align="right" valign="top">optional&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1server_1_1configuration.html#a42aea0016f7d514ea91b114db908c9f1">leader_serves</a> () const </td></tr>
-<tr class="separator:a42aea0016f7d514ea91b114db908c9f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3145dbf4e3457ddfe66bf047b164f76a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1server_1_1configuration.html#a3145dbf4e3457ddfe66bf047b164f76a">leader_serves</a> () const </td></tr>
+<tr class="separator:a3145dbf4e3457ddfe66bf047b164f76a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a36f08e3d77a394377316ae84e667c3d5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a36f08e3d77a394377316ae84e667c3d5"></a>
 <a class="el" href="classzk_1_1server_1_1configuration.html">configuration</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>leader_serves</b> (optional&lt; bool &gt; serve)</td></tr>
 <tr class="separator:a36f08e3d77a394377316ae84e667c3d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader"></div></td></tr>
+<tr class="memitem:a1e11ae316ea3897382c2112f433266a5"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="group__Client.html#ggaec8382e2b14fe4fd770d6ad3511fcb93acdaeeeba9b4a4c5ebf042c0215a7bb0e">std::set</a>&lt; std::string &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1server_1_1configuration.html#a1e11ae316ea3897382c2112f433266a5">four_letter_word_whitelist</a> () const </td></tr>
+<tr class="separator:a1e11ae316ea3897382c2112f433266a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7fb2b866b69e04e012581647505fc2bb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7fb2b866b69e04e012581647505fc2bb"></a>
+<a class="el" href="classzk_1_1server_1_1configuration.html">configuration</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>four_letter_word_whitelist</b> (optional&lt; <a class="el" href="group__Client.html#ggaec8382e2b14fe4fd770d6ad3511fcb93acdaeeeba9b4a4c5ebf042c0215a7bb0e">std::set</a>&lt; std::string &gt;&gt; words)</td></tr>
+<tr class="separator:a7fb2b866b69e04e012581647505fc2bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -229,6 +235,18 @@ Static Public Attributes</h2></td></tr>
 <tr class="memitem:ac2f51207f12e89b740f679bcf1dc17d9"><td class="memItemLeft" align="right" valign="top">static const std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1server_1_1configuration.html#ac2f51207f12e89b740f679bcf1dc17d9">default_sync_limit</a> = 5U</td></tr>
 <tr class="memdesc:ac2f51207f12e89b740f679bcf1dc17d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">The default value for <a class="el" href="classzk_1_1server_1_1configuration.html#a35e72c359e41b1f8720daeda3a3a4a13">sync_limit</a>.  <a href="#ac2f51207f12e89b740f679bcf1dc17d9">More...</a><br /></td></tr>
 <tr class="separator:ac2f51207f12e89b740f679bcf1dc17d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac67369575d6e937d5305421869721027"><td class="memItemLeft" align="right" valign="top">static const <a class="el" href="group__Client.html#ggaec8382e2b14fe4fd770d6ad3511fcb93acdaeeeba9b4a4c5ebf042c0215a7bb0e">std::set</a><br class="typebreak" />
+&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1server_1_1configuration.html#ac67369575d6e937d5305421869721027">default_four_letter_word_whitelist</a> = { &quot;srvr&quot; }</td></tr>
+<tr class="memdesc:ac67369575d6e937d5305421869721027"><td class="mdescLeft">&#160;</td><td class="mdescRight">The default value for <a class="el" href="classzk_1_1server_1_1configuration.html#a1e11ae316ea3897382c2112f433266a5">four_letter_word_whitelist</a>.  <a href="#ac67369575d6e937d5305421869721027">More...</a><br /></td></tr>
+<tr class="separator:ac67369575d6e937d5305421869721027"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03d0e35b6c68b89a325690fac54160a6"><td class="memItemLeft" align="right" valign="top">static const <a class="el" href="group__Client.html#ggaec8382e2b14fe4fd770d6ad3511fcb93acdaeeeba9b4a4c5ebf042c0215a7bb0e">std::set</a><br class="typebreak" />
+&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1server_1_1configuration.html#a03d0e35b6c68b89a325690fac54160a6">all_four_letter_word_whitelist</a> = { &quot;*&quot; }</td></tr>
+<tr class="memdesc:a03d0e35b6c68b89a325690fac54160a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">A value for <a class="el" href="classzk_1_1server_1_1configuration.html#a1e11ae316ea3897382c2112f433266a5">four_letter_word_whitelist</a> that enables all commands.  <a href="#a03d0e35b6c68b89a325690fac54160a6">More...</a><br /></td></tr>
+<tr class="separator:a03d0e35b6c68b89a325690fac54160a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31699b74cc83685f4f055e514d05231a"><td class="memItemLeft" align="right" valign="top">static const <a class="el" href="group__Client.html#ggaec8382e2b14fe4fd770d6ad3511fcb93acdaeeeba9b4a4c5ebf042c0215a7bb0e">std::set</a><br class="typebreak" />
+&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1server_1_1configuration.html#a31699b74cc83685f4f055e514d05231a">known_four_letter_word_whitelist</a></td></tr>
+<tr class="memdesc:a31699b74cc83685f4f055e514d05231a"><td class="mdescLeft">&#160;</td><td class="mdescRight">All known values allowed in <a class="el" href="classzk_1_1server_1_1configuration.html#a1e11ae316ea3897382c2112f433266a5">four_letter_word_whitelist</a>.  <a href="#a31699b74cc83685f4f055e514d05231a">More...</a><br /></td></tr>
+<tr class="separator:a31699b74cc83685f4f055e514d05231a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Friends</h2></td></tr>
@@ -257,7 +275,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const
 <dd>
 <a class="el" href="classzk_1_1server_1_1server__group.html" title="Create and manage a group of server instances on this local machine (most likely in a single ensemble...">server_group</a> An example of quickly creating multiple ZooKeeper <a class="el" href="classzk_1_1server_1_1configuration.html#a1e30f6df32f367564ed64ac2a941b49c" title="Get the servers which are part of the ZooKeeper ensemble. ">servers</a> on a single machine (for testing). </dd></dl>
 
-<p>Definition at line <a class="el" href="configuration_8hpp_source.html#l00070">70</a> of file <a class="el" href="configuration_8hpp_source.html">configuration.hpp</a>.</p>
+<p>Definition at line <a class="el" href="configuration_8hpp_source.html#l00071">71</a> of file <a class="el" href="configuration_8hpp_source.html">configuration.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="a3b22bf499025f9490349c0876f5ea4fc"></a>
 <div class="memitem">
@@ -313,7 +331,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="configuration_8cpp_source.html#l00296">296</a> of file <a class="el" href="configuration_8cpp_source.html">configuration.cpp</a>.</p>
+<p>Definition at line <a class="el" href="configuration_8cpp_source.html#l00368">368</a> of file <a class="el" href="configuration_8cpp_source.html">configuration.cpp</a>.</p>
 
 </div>
 </div>
@@ -344,7 +362,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const
 <p>Add an arbitrary setting with the <em>key</em> and <em>value</em>. </p>
 <dl class="section note"><dt>Note</dt><dd>You should not use this frequently &ndash; prefer the named settings. </dd></dl>
 
-<p>Definition at line <a class="el" href="configuration_8cpp_source.html#l00326">326</a> of file <a class="el" href="configuration_8cpp_source.html">configuration.cpp</a>.</p>
+<p>Definition at line <a class="el" href="configuration_8cpp_source.html#l00398">398</a> of file <a class="el" href="configuration_8cpp_source.html">configuration.cpp</a>.</p>
 
 </div>
 </div>
@@ -362,7 +380,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const
 </div><div class="memdoc">
 <p>The port a client should use to connect to this server. </p>
 
-<p>Definition at line <a class="el" href="configuration_8cpp_source.html#l00221">221</a> of file <a class="el" href="configuration_8cpp_source.html">configuration.cpp</a>.</p>
+<p>Definition at line <a class="el" href="configuration_8cpp_source.html#l00259">259</a> of file <a class="el" href="configuration_8cpp_source.html">configuration.cpp</a>.</p>
 
 </div>
 </div>
@@ -380,7 +398,39 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const
 </div><div class="memdoc">
 <p>The directory for "myid" file and "version-2" directory (containing the log, snapshot, and epoch files). </p>
 
-<p>Definition at line <a class="el" href="configuration_8cpp_source.html#l00232">232</a> of file <a class="el" href="configuration_8cpp_source.html">configuration.cpp</a>.</p>
+<p>Definition at line <a class="el" href="configuration_8cpp_source.html#l00270">270</a> of file <a class="el" href="configuration_8cpp_source.html">configuration.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a1e11ae316ea3897382c2112f433266a5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="group__Client.html#ggaec8382e2b14fe4fd770d6ad3511fcb93acdaeeeba9b4a4c5ebf042c0215a7bb0e">std::set</a>&lt; std::string &gt; &amp; zk::server::configuration::four_letter_word_whitelist </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>A list of comma separated four letter words commands that user wants to use. A valid four letter words command must be put in this list or the ZooKeeper server will not enable the command. If unspecified, the whitelist only contains "srvr" command (<a class="el" href="classzk_1_1server_1_1configuration.html#ac67369575d6e937d5305421869721027">default_four_letter_word_whitelist</a>).</p>
+<dl class="section note"><dt>Note</dt><dd>It is planned that the ZooKeeper server will deprecate this whitelist in preference of using a JSON REST API for health checks. It is unlikely to be deprecated any time in the near future and will likely remain in the product for a very long time.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">words</td><td>is the list of four letter words to allow or <code>nullopt</code> to clear the setting. If specified as an empty set, this explicitly disables all words, which is <em>different</em> than setting this value to <code>nullopt</code>.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::invalid_argument</td><td>if <em>words</em> contains the all value (<code>"*"</code>) but it is not the only value in the set.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p><a class="el" href="classzk_1_1server_1_1configuration.html#ac67369575d6e937d5305421869721027">default_four_letter_word_whitelist</a> <a class="el" href="classzk_1_1server_1_1configuration.html#a03d0e35b6c68b89a325690fac54160a6">all_four_letter_word_whitelist</a> <a class="el" href="classzk_1_1server_1_1configuration.html#a31699b74cc83685f4f055e514d05231a">known_four_letter_word_whitelist</a> </p>
+
+<p>Definition at line <a class="el" href="configuration_8cpp_source.html#l00325">325</a> of file <a class="el" href="configuration_8cpp_source.html">configuration.cpp</a>.</p>
 
 </div>
 </div>
@@ -408,7 +458,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const
 
 <p>Load the configuration from a file. </p>
 
-<p>Definition at line <a class="el" href="configuration_8cpp_source.html#l00163">163</a> of file <a class="el" href="configuration_8cpp_source.html">configuration.cpp</a>.</p>
+<p>Definition at line <a class="el" href="configuration_8cpp_source.html#l00201">201</a> of file <a class="el" href="configuration_8cpp_source.html">configuration.cpp</a>.</p>
 
 </div>
 </div>
@@ -436,7 +486,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const
 
 <p>Load configuration from the provided <em>lines</em>. </p>
 
-<p>Definition at line <a class="el" href="configuration_8cpp_source.html#l00084">84</a> of file <a class="el" href="configuration_8cpp_source.html">configuration.cpp</a>.</p>
+<p>Definition at line <a class="el" href="configuration_8cpp_source.html#l00118">118</a> of file <a class="el" href="configuration_8cpp_source.html">configuration.cpp</a>.</p>
 
 </div>
 </div>
@@ -464,7 +514,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const
 
 <p>Load configuration from the provided <em>stream</em>. </p>
 
-<p>Definition at line <a class="el" href="configuration_8cpp_source.html#l00147">147</a> of file <a class="el" href="configuration_8cpp_source.html">configuration.cpp</a>.</p>
+<p>Definition at line <a class="el" href="configuration_8cpp_source.html#l00185">185</a> of file <a class="el" href="configuration_8cpp_source.html">configuration.cpp</a>.</p>
 
 </div>
 </div>
@@ -492,7 +542,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const
 
 <p>Load configuration directly from the in-memory <em>value</em>. </p>
 
-<p>Definition at line <a class="el" href="configuration_8cpp_source.html#l00171">171</a> of file <a class="el" href="configuration_8cpp_source.html">configuration.cpp</a>.</p>
+<p>Definition at line <a class="el" href="configuration_8cpp_source.html#l00209">209</a> of file <a class="el" href="configuration_8cpp_source.html">configuration.cpp</a>.</p>
 
 </div>
 </div>
@@ -510,7 +560,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const
 </div><div class="memdoc">
 <p>The number of ticks that the initial synchronization phase can take. This limits the length of time the ZooKeeper servers in quorum have to connect to a leader. </p>
 
-<p>Definition at line <a class="el" href="configuration_8cpp_source.html#l00254">254</a> of file <a class="el" href="configuration_8cpp_source.html">configuration.cpp</a>.</p>
+<p>Definition at line <a class="el" href="configuration_8cpp_source.html#l00292">292</a> of file <a class="el" href="configuration_8cpp_source.html">configuration.cpp</a>.</p>
 
 </div>
 </div>
@@ -530,16 +580,16 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const
 <p>Check if this is a "minimal" configuration &ndash; meaning it only has a <code>data_directory</code> and <code>client_port</code> set. </p>
 <p>Configurations which are minimal can be started directly from the command line. </p>
 
-<p>Definition at line <a class="el" href="configuration_8cpp_source.html#l00178">178</a> of file <a class="el" href="configuration_8cpp_source.html">configuration.cpp</a>.</p>
+<p>Definition at line <a class="el" href="configuration_8cpp_source.html#l00216">216</a> of file <a class="el" href="configuration_8cpp_source.html">configuration.cpp</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a42aea0016f7d514ea91b114db908c9f1"></a>
+<a class="anchor" id="a3145dbf4e3457ddfe66bf047b164f76a"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">optional&lt; bool &gt; zk::server::configuration::leader_serves </td>
+          <td class="memname">bool zk::server::configuration::leader_serves </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -548,7 +598,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const
 </div><div class="memdoc">
 <p>Should an elected leader accepts client connections? For higher update throughput at the slight expense of read latency, the leader can be configured to not accept clients and focus on coordination. The default to this value is <code>true</code>, which means that a leader will accept client connections. </p>
 
-<p>Definition at line <a class="el" href="configuration_8cpp_source.html#l00276">276</a> of file <a class="el" href="configuration_8cpp_source.html">configuration.cpp</a>.</p>
+<p>Definition at line <a class="el" href="configuration_8cpp_source.html#l00314">314</a> of file <a class="el" href="configuration_8cpp_source.html">configuration.cpp</a>.</p>
 
 </div>
 </div>
@@ -587,7 +637,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const
 <p>Creates a minimal configuration, setting the four needed values. </p>
 <p>The resulting <a class="el" href="classzk_1_1server_1_1configuration.html">configuration</a> can be run through a file with <code>save</code> or it can run directly from the command line. </p>
 
-<p>Definition at line <a class="el" href="configuration_8cpp_source.html#l00073">73</a> of file <a class="el" href="configuration_8cpp_source.html">configuration.cpp</a>.</p>
+<p>Definition at line <a class="el" href="configuration_8cpp_source.html#l00077">77</a> of file <a class="el" href="configuration_8cpp_source.html">configuration.cpp</a>.</p>
 
 </div>
 </div>
@@ -608,7 +658,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const
 <p>Write this configuration to the provided <em>stream</em>. </p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classzk_1_1server_1_1configuration.html#a1e72779df1c3788ee4c5ca5c436a7476" title="Save this configuration to filename. ">save_file</a> </dd></dl>
 
-<p>Definition at line <a class="el" href="configuration_8cpp_source.html#l00341">341</a> of file <a class="el" href="configuration_8cpp_source.html">configuration.cpp</a>.</p>
+<p>Definition at line <a class="el" href="configuration_8cpp_source.html#l00413">413</a> of file <a class="el" href="configuration_8cpp_source.html">configuration.cpp</a>.</p>
 
 </div>
 </div>
@@ -629,7 +679,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const
 <p>Save this configuration to <em>filename</em>. </p>
 <p>On successful save, <code>source_file</code> will but updated to reflect the new file. </p>
 
-<p>Definition at line <a class="el" href="configuration_8cpp_source.html#l00349">349</a> of file <a class="el" href="configuration_8cpp_source.html">configuration.cpp</a>.</p>
+<p>Definition at line <a class="el" href="configuration_8cpp_source.html#l00421">421</a> of file <a class="el" href="configuration_8cpp_source.html">configuration.cpp</a>.</p>
 
 </div>
 </div>
@@ -648,7 +698,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const
 
 <p>Get the servers which are part of the ZooKeeper ensemble. </p>
 
-<p>Definition at line <a class="el" href="configuration_8cpp_source.html#l00287">287</a> of file <a class="el" href="configuration_8cpp_source.html">configuration.cpp</a>.</p>
+<p>Definition at line <a class="el" href="configuration_8cpp_source.html#l00359">359</a> of file <a class="el" href="configuration_8cpp_source.html">configuration.cpp</a>.</p>
 
 </div>
 </div>
@@ -675,7 +725,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const
 
 <p>Get the source file. This will only have a value if this was created by <a class="el" href="classzk_1_1server_1_1configuration.html#a5723ee792b047cb44e427bf3d1d477fb">from_file</a>. </p>
 
-<p>Definition at line <a class="el" href="configuration_8hpp_source.html#l00114">114</a> of file <a class="el" href="configuration_8hpp_source.html">configuration.hpp</a>.</p>
+<p>Definition at line <a class="el" href="configuration_8hpp_source.html#l00126">126</a> of file <a class="el" href="configuration_8hpp_source.html">configuration.hpp</a>.</p>
 
 </div>
 </div>
@@ -693,7 +743,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const
 </div><div class="memdoc">
 <p>Limits how far out of date a server can be from a leader. </p>
 
-<p>Definition at line <a class="el" href="configuration_8cpp_source.html#l00265">265</a> of file <a class="el" href="configuration_8cpp_source.html">configuration.cpp</a>.</p>
+<p>Definition at line <a class="el" href="configuration_8cpp_source.html#l00303">303</a> of file <a class="el" href="configuration_8cpp_source.html">configuration.cpp</a>.</p>
 
 </div>
 </div>
@@ -711,7 +761,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const
 </div><div class="memdoc">
 <p>The time between server "ticks." This value is used to translate <a class="el" href="classzk_1_1server_1_1configuration.html#afa3ec3a3d68a82a1755d9e7f5aae922e">init_limit</a> and <a class="el" href="classzk_1_1server_1_1configuration.html#a35e72c359e41b1f8720daeda3a3a4a13">sync_limit</a> into clock times. </p>
 
-<p>Definition at line <a class="el" href="configuration_8cpp_source.html#l00243">243</a> of file <a class="el" href="configuration_8cpp_source.html">configuration.cpp</a>.</p>
+<p>Definition at line <a class="el" href="configuration_8cpp_source.html#l00281">281</a> of file <a class="el" href="configuration_8cpp_source.html">configuration.cpp</a>.</p>
 
 </div>
 </div>
@@ -730,7 +780,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const
 
 <p>Get settings that were in the configuration file (or manually added with <a class="el" href="classzk_1_1server_1_1configuration.html#aaeea54c459a522fe56814f56b8d78e46">add_setting</a>) but unknown to this library. </p>
 
-<p>Definition at line <a class="el" href="configuration_8cpp_source.html#l00317">317</a> of file <a class="el" href="configuration_8cpp_source.html">configuration.cpp</a>.</p>
+<p>Definition at line <a class="el" href="configuration_8cpp_source.html#l00389">389</a> of file <a class="el" href="configuration_8cpp_source.html">configuration.cpp</a>.</p>
 
 </div>
 </div>
@@ -768,11 +818,36 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const
 </div><div class="memdoc">
 <p>Check for equality of configuration. This does not check the specification in lines, but the values of the settings. In other words, two configurations with <code>tick_time</code> set to 1 second are equal, even if the source files are different and <code>"tickTime=1000"</code> was set on different lines. </p>
 
-<p>Definition at line <a class="el" href="configuration_8cpp_source.html#l00359">359</a> of file <a class="el" href="configuration_8cpp_source.html">configuration.cpp</a>.</p>
+<p>Definition at line <a class="el" href="configuration_8cpp_source.html#l00431">431</a> of file <a class="el" href="configuration_8cpp_source.html">configuration.cpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a03d0e35b6c68b89a325690fac54160a6"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="group__Client.html#ggaec8382e2b14fe4fd770d6ad3511fcb93acdaeeeba9b4a4c5ebf042c0215a7bb0e">std::set</a>&lt; std::string &gt; zk::server::configuration::all_four_letter_word_whitelist = { &quot;*&quot; }</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>A value for <a class="el" href="classzk_1_1server_1_1configuration.html#a1e11ae316ea3897382c2112f433266a5">four_letter_word_whitelist</a> that enables all commands. </p>
+<p>Note that this is not a list of all allowed words, but simply the string <code>"*"</code>. </p>
+
+<p>Definition at line <a class="el" href="configuration_8hpp_source.html#l00100">100</a> of file <a class="el" href="configuration_8hpp_source.html">configuration.hpp</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a929cd1b773fc2861840037802cbaddbf"></a>
 <div class="memitem">
 <div class="memproto">
@@ -793,7 +868,31 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const
 
 <p>The default value for <a class="el" href="classzk_1_1server_1_1configuration.html#a70df833da6aae590a817b7de838775a6">client_port</a>. </p>
 
-<p>Definition at line <a class="el" href="configuration_8hpp_source.html#l00077">77</a> of file <a class="el" href="configuration_8hpp_source.html">configuration.hpp</a>.</p>
+<p>Definition at line <a class="el" href="configuration_8hpp_source.html#l00078">78</a> of file <a class="el" href="configuration_8hpp_source.html">configuration.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac67369575d6e937d5305421869721027"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="group__Client.html#ggaec8382e2b14fe4fd770d6ad3511fcb93acdaeeeba9b4a4c5ebf042c0215a7bb0e">std::set</a>&lt; std::string &gt; zk::server::configuration::default_four_letter_word_whitelist = { &quot;srvr&quot; }</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The default value for <a class="el" href="classzk_1_1server_1_1configuration.html#a1e11ae316ea3897382c2112f433266a5">four_letter_word_whitelist</a>. </p>
+
+<p>Definition at line <a class="el" href="configuration_8hpp_source.html#l00096">96</a> of file <a class="el" href="configuration_8hpp_source.html">configuration.hpp</a>.</p>
 
 </div>
 </div>
@@ -817,7 +916,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const
 
 <p>The default value for <a class="el" href="classzk_1_1server_1_1configuration.html#afa3ec3a3d68a82a1755d9e7f5aae922e">init_limit</a>. </p>
 
-<p>Definition at line <a class="el" href="configuration_8hpp_source.html#l00089">89</a> of file <a class="el" href="configuration_8hpp_source.html">configuration.hpp</a>.</p>
+<p>Definition at line <a class="el" href="configuration_8hpp_source.html#l00090">90</a> of file <a class="el" href="configuration_8hpp_source.html">configuration.hpp</a>.</p>
 
 </div>
 </div>
@@ -841,7 +940,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const
 
 <p>The default value for leader_port. </p>
 
-<p>Definition at line <a class="el" href="configuration_8hpp_source.html#l00083">83</a> of file <a class="el" href="configuration_8hpp_source.html">configuration.hpp</a>.</p>
+<p>Definition at line <a class="el" href="configuration_8hpp_source.html#l00084">84</a> of file <a class="el" href="configuration_8hpp_source.html">configuration.hpp</a>.</p>
 
 </div>
 </div>
@@ -865,7 +964,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const
 
 <p>The default value for peer_port. </p>
 
-<p>Definition at line <a class="el" href="configuration_8hpp_source.html#l00080">80</a> of file <a class="el" href="configuration_8hpp_source.html">configuration.hpp</a>.</p>
+<p>Definition at line <a class="el" href="configuration_8hpp_source.html#l00081">81</a> of file <a class="el" href="configuration_8hpp_source.html">configuration.hpp</a>.</p>
 
 </div>
 </div>
@@ -889,7 +988,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const
 
 <p>The default value for <a class="el" href="classzk_1_1server_1_1configuration.html#a35e72c359e41b1f8720daeda3a3a4a13">sync_limit</a>. </p>
 
-<p>Definition at line <a class="el" href="configuration_8hpp_source.html#l00092">92</a> of file <a class="el" href="configuration_8hpp_source.html">configuration.hpp</a>.</p>
+<p>Definition at line <a class="el" href="configuration_8hpp_source.html#l00093">93</a> of file <a class="el" href="configuration_8hpp_source.html">configuration.hpp</a>.</p>
 
 </div>
 </div>
@@ -913,7 +1012,32 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const
 
 <p>The default value for <a class="el" href="classzk_1_1server_1_1configuration.html#a60ab73f5184f21107eea3db20a1ed366">tick_time</a>. </p>
 
-<p>Definition at line <a class="el" href="configuration_8hpp_source.html#l00086">86</a> of file <a class="el" href="configuration_8hpp_source.html">configuration.hpp</a>.</p>
+<p>Definition at line <a class="el" href="configuration_8hpp_source.html#l00087">87</a> of file <a class="el" href="configuration_8hpp_source.html">configuration.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a31699b74cc83685f4f055e514d05231a"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="group__Client.html#ggaec8382e2b14fe4fd770d6ad3511fcb93acdaeeeba9b4a4c5ebf042c0215a7bb0e">std::set</a>&lt;std::string&gt; zk::server::configuration::known_four_letter_word_whitelist</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>All known values allowed in <a class="el" href="classzk_1_1server_1_1configuration.html#a1e11ae316ea3897382c2112f433266a5">four_letter_word_whitelist</a>. </p>
+<p>This set comes from what ZooKeeper server 3.5.3 supported, so it is possible the version of ZooKeeper you are running supports a different set. </p>
+
+<p>Definition at line <a class="el" href="configuration_8hpp_source.html#l00104">104</a> of file <a class="el" href="configuration_8hpp_source.html">configuration.hpp</a>.</p>
 
 </div>
 </div>

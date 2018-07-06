@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['value',['value',['../structzk_1_1strong__id.html#a003a6c9d4c209602757c9fd88806922f',1,'zk::strong_id']]]
+  ['settings',['settings',['../structzk_1_1server_1_1server__group_1_1info.html#acbff4194102efa97721a9392ea901d5f',1,'zk::server::server_group::info']]]
 ];

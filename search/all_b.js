@@ -1,20 +1,13 @@
 var searchData=
 [
-  ['name',['name',['../structzk_1_1server_1_1server__group_1_1info.html#ac5c7eac017dfe5f1d4d6e15424bab8f0',1,'zk::server::server_group::info::name()'],['../classzk_1_1create__result.html#aef0f54ede4c90c809b46df252fd346e8',1,'zk::create_result::name()']]],
-  ['new_5fconfiguration_5fno_5fquorum',['new_configuration_no_quorum',['../group__Client.html#gga59dbc6c98abba145d356557222aa9f7fa3703bd1d007cb145ba491ab64746e464',1,'zk']]],
-  ['new_5fconfiguration_5fno_5fquorum',['new_configuration_no_quorum',['../classzk_1_1new__configuration__no__quorum.html',1,'zk']]],
-  ['next',['next',['../classzk_1_1watch__result.html#a20ad8a501736b00d45192ad323c3a47f',1,'zk::watch_result::next()'],['../classzk_1_1watch__children__result.html#af599d1a0f0955c9e48acf1ad545d9633',1,'zk::watch_children_result::next()'],['../classzk_1_1watch__exists__result.html#a5997dfd2c6253a40caba2d8911d8bf82',1,'zk::watch_exists_result::next()']]],
-  ['no_5fchildren_5ffor_5fephemerals',['no_children_for_ephemerals',['../classzk_1_1no__children__for__ephemerals.html',1,'zk']]],
-  ['no_5fchildren_5ffor_5fephemerals',['no_children_for_ephemerals',['../group__Client.html#gga59dbc6c98abba145d356557222aa9f7fa30addcb3f8fe57b08f6b7eca34980cd1',1,'zk']]],
-  ['no_5fentry',['no_entry',['../group__Client.html#gga59dbc6c98abba145d356557222aa9f7fae86ebb3d13cc1b95ade80a71c41bdbad',1,'zk']]],
-  ['no_5fentry',['no_entry',['../classzk_1_1no__entry.html',1,'zk']]],
-  ['none',['none',['../group__Client.html#gga75dfaeeb3b2f4e1588380b3bf68ecc08a334c4a4c42fdb79d7ebc3e73b517e6f8',1,'zk']]],
-  ['normal',['normal',['../group__Client.html#gga9f10c37f69a7d1084b08cac07ebb7918afea087517c26fadd409bd4b9dc642555',1,'zk']]],
-  ['not_5fauthorized',['not_authorized',['../group__Client.html#gga59dbc6c98abba145d356557222aa9f7fa89a15d5a10ea1b37e1719c52c3507c0a',1,'zk']]],
-  ['not_5fauthorized',['not_authorized',['../classzk_1_1not__authorized.html',1,'zk']]],
-  ['not_5fempty',['not_empty',['../group__Client.html#gga59dbc6c98abba145d356557222aa9f7fac958110cdc493ed57989dde572ba9c33',1,'zk']]],
-  ['not_5fempty',['not_empty',['../classzk_1_1not__empty.html',1,'zk']]],
-  ['not_5fimplemented',['not_implemented',['../classzk_1_1not__implemented.html#a5c70745202cd8f96e7171d65f16ab3f7',1,'zk::not_implemented::not_implemented()'],['../group__Client.html#gga59dbc6c98abba145d356557222aa9f7fa63877363c706f5095d05a54f8b57b0ae',1,'zk::not_implemented()']]],
-  ['not_5fimplemented',['not_implemented',['../classzk_1_1not__implemented.html',1,'zk']]],
-  ['not_5fwatching',['not_watching',['../group__Client.html#gga6521a380e3d01a123e5145fafe9d8d3ca7027d8d5de8fd7cfb33c7d4624378160',1,'zk']]]
+  ['make_5fensemble',['make_ensemble',['../classzk_1_1server_1_1server__group.html#afe1fc9e26912d8834cb812978d10710b',1,'zk::server::server_group']]],
+  ['make_5fminimal',['make_minimal',['../classzk_1_1server_1_1configuration.html#a49c3bd6d6109ab64c64b6aec5c4a7965',1,'zk::server::configuration']]],
+  ['map',['map',['../group__Client.html#gad895648faa9ce5a5ef73bb4403b982e1',1,'zk']]],
+  ['marshalling_5ferror',['marshalling_error',['../group__Client.html#gga59dbc6c98abba145d356557222aa9f7facb55c77d7c56c44c2597135b3608c136',1,'zk']]],
+  ['marshalling_5ferror',['marshalling_error',['../classzk_1_1marshalling__error.html',1,'zk']]],
+  ['modified_5ftime',['modified_time',['../structzk_1_1stat.html#ad2aa8280ea89947cd45bf0c800c391c5',1,'zk::stat']]],
+  ['modified_5ftransaction',['modified_transaction',['../structzk_1_1stat.html#ab0adc55d8307b80b8f8b09bc0ff1ff55',1,'zk::stat']]],
+  ['multi_5fop',['multi_op',['../classzk_1_1multi__op.html',1,'zk']]],
+  ['multi_5fop',['multi_op',['../classzk_1_1multi__op.html#ad709c9ed1ce73bdd6354a302bb7385d2',1,'zk::multi_op::multi_op() noexcept'],['../classzk_1_1multi__op.html#afcea7e73ef5f3a1f2fb51f3c0acec637',1,'zk::multi_op::multi_op(std::vector&lt; op &gt; ops) noexcept'],['../classzk_1_1multi__op.html#aa61322beb32e1b68bde5ad630bb79c2c',1,'zk::multi_op::multi_op(std::initializer_list&lt; op &gt; ops)']]],
+  ['multi_5fresult',['multi_result',['../classzk_1_1multi__result.html',1,'zk']]]
 ];
