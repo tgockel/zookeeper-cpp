@@ -45,14 +45,14 @@ public:
 
 }
 
-std::uint16_t configuration::default_client_port = std::uint16_t(2181);
-std::uint16_t configuration::default_peer_port   = std::uint16_t(2888);
-std::uint16_t configuration::default_leader_port = std::uint16_t(3888);
+const std::uint16_t configuration::default_client_port = std::uint16_t(2181);
+const std::uint16_t configuration::default_peer_port   = std::uint16_t(2888);
+const std::uint16_t configuration::default_leader_port = std::uint16_t(3888);
 
-configuration::duration_type configuration::default_tick_time = std::chrono::milliseconds(2000);
+const configuration::duration_type configuration::default_tick_time = std::chrono::milliseconds(2000);
 
-std::size_t configuration::default_init_limit = 10U;
-std::size_t configuration::default_sync_limit =  5U;
+const std::size_t configuration::default_init_limit = 10U;
+const std::size_t configuration::default_sync_limit =  5U;
 
 template <typename T>
 configuration::setting<T>::setting() noexcept :
