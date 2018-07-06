@@ -41,7 +41,7 @@ GTEST_TEST(configuration_tests, from_example)
     CHECK_EQ(10U,   parsed.init_limit());
     CHECK_EQ(5U,    parsed.sync_limit());
     CHECK_EQ(2181U, parsed.client_port());
-    CHECK_TRUE(parsed.leader_serves().value());
+    CHECK_TRUE(parsed.leader_serves());
 
     auto servers = parsed.servers();
     CHECK_EQ(3U, servers.size());
@@ -78,6 +78,25 @@ GTEST_TEST(configuration_tests, minimal)
     CHECK_EQ("/some/path", minimal.data_directory().value());
     CHECK_EQ(2345,         minimal.client_port());
     CHECK_TRUE(minimal.is_minimal());
+}
+
+static string_view configuration_source_with_four_letter_words_example =
+R"(# http://hadoop.apache.org/zookeeper/docs/current/zookeeperAdmin.html
+
+tickTime=2500
+initLimit=10
+syncLimit=5
+dataDir=/var/lib/zookeeper
+4lw.commands.whitelist=stat,mntr,srvr,ruok
+)";
+
+GTEST_TEST(configuration_tests, four_letter_words)
+{
+    auto parsed = configuration::from_string(configuration_source_with_four_letter_words_example);
+
+    CHECK_EQ(4U, parsed.four_letter_word_whitelist().size());
+    std::set<std::string> expected = { "stat", "mntr", "srvr", "ruok" };
+    CHECK_TRUE(expected == parsed.four_letter_word_whitelist());
 }
 
 }
