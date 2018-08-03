@@ -37,6 +37,10 @@ while [[ $# -gt 0 ]]; do
       COPY_TO="${key/--copy-to=/}"
       shift
       ;;
+    --help)
+      show_usage
+      exit 1
+      ;;
     --)
       # No shift: want to use the -- in the call
       break
