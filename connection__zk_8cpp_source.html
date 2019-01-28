@@ -1052,19 +1052,19 @@ $(document).ready(function(){initNavTree('connection__zk_8cpp_source.html','');}
 <div class="line"><a name="l00950"></a><span class="lineno">  950</span>&#160;                }</div>
 <div class="line"><a name="l00951"></a><span class="lineno">  951</span>&#160;            }</div>
 <div class="line"><a name="l00952"></a><span class="lineno">  952</span>&#160;        }</div>
-<div class="line"><a name="l00953"></a><span class="lineno">  953</span>&#160;        <span class="keyword">auto</span> rc = error_code_from_raw(::zoo_amulti(_handle,</div>
-<div class="line"><a name="l00954"></a><span class="lineno">  954</span>&#160;                                                   <span class="keywordtype">int</span>(txn.size()),</div>
-<div class="line"><a name="l00955"></a><span class="lineno">  955</span>&#160;                                                   raw_ops,</div>
-<div class="line"><a name="l00956"></a><span class="lineno">  956</span>&#160;                                                   pcompleter-&gt;raw_results.data(),</div>
-<div class="line"><a name="l00957"></a><span class="lineno">  957</span>&#160;                                                   callback,</div>
-<div class="line"><a name="l00958"></a><span class="lineno">  958</span>&#160;                                                   pcompleter.get()</div>
-<div class="line"><a name="l00959"></a><span class="lineno">  959</span>&#160;                                                  )</div>
-<div class="line"><a name="l00960"></a><span class="lineno">  960</span>&#160;                                     );</div>
-<div class="line"><a name="l00961"></a><span class="lineno">  961</span>&#160;        <span class="keywordflow">if</span> (rc == <a class="code" href="group__Client.html#gga59dbc6c98abba145d356557222aa9f7fa444bcb3a3fcf8389296c49467f27e1d6">error_code::ok</a>)</div>
-<div class="line"><a name="l00962"></a><span class="lineno">  962</span>&#160;        {</div>
-<div class="line"><a name="l00963"></a><span class="lineno">  963</span>&#160;            <span class="keyword">auto</span> f = pcompleter-&gt;prom.get_future();</div>
+<div class="line"><a name="l00953"></a><span class="lineno">  953</span>&#160;        <span class="keyword">auto</span> fut = pcompleter-&gt;prom.get_future();</div>
+<div class="line"><a name="l00954"></a><span class="lineno">  954</span>&#160;        <span class="keyword">auto</span> rc = error_code_from_raw(::zoo_amulti(_handle,</div>
+<div class="line"><a name="l00955"></a><span class="lineno">  955</span>&#160;                                                   <span class="keywordtype">int</span>(txn.size()),</div>
+<div class="line"><a name="l00956"></a><span class="lineno">  956</span>&#160;                                                   raw_ops,</div>
+<div class="line"><a name="l00957"></a><span class="lineno">  957</span>&#160;                                                   pcompleter-&gt;raw_results.data(),</div>
+<div class="line"><a name="l00958"></a><span class="lineno">  958</span>&#160;                                                   callback,</div>
+<div class="line"><a name="l00959"></a><span class="lineno">  959</span>&#160;                                                   pcompleter.get()</div>
+<div class="line"><a name="l00960"></a><span class="lineno">  960</span>&#160;                                                  )</div>
+<div class="line"><a name="l00961"></a><span class="lineno">  961</span>&#160;                                     );</div>
+<div class="line"><a name="l00962"></a><span class="lineno">  962</span>&#160;        <span class="keywordflow">if</span> (rc == <a class="code" href="group__Client.html#gga59dbc6c98abba145d356557222aa9f7fa444bcb3a3fcf8389296c49467f27e1d6">error_code::ok</a>)</div>
+<div class="line"><a name="l00963"></a><span class="lineno">  963</span>&#160;        {</div>
 <div class="line"><a name="l00964"></a><span class="lineno">  964</span>&#160;            pcompleter.release();</div>
-<div class="line"><a name="l00965"></a><span class="lineno">  965</span>&#160;            <span class="keywordflow">return</span> f;</div>
+<div class="line"><a name="l00965"></a><span class="lineno">  965</span>&#160;            <span class="keywordflow">return</span> fut;</div>
 <div class="line"><a name="l00966"></a><span class="lineno">  966</span>&#160;        }</div>
 <div class="line"><a name="l00967"></a><span class="lineno">  967</span>&#160;        <span class="keywordflow">else</span></div>
 <div class="line"><a name="l00968"></a><span class="lineno">  968</span>&#160;        {</div>
