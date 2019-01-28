@@ -11,7 +11,7 @@
 
 #define ZKPP_VERSION_MAJOR 0
 #define ZKPP_VERSION_MINOR 2
-#define ZKPP_VERSION_PATCH 2
+#define ZKPP_VERSION_PATCH 3
 
 /// \def ZKPP_DEBUG
 /// Was ZooKeeper C++ compiled in debug mode? This value must be the same between when the SO was built and when you are
