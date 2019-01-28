@@ -950,6 +950,7 @@ future<multi_result> connection_zk::commit(multi_op&& txn_in)
                 }
             }
         }
+        auto fut = pcompleter->prom.get_future();
         auto rc = error_code_from_raw(::zoo_amulti(_handle,
                                                    int(txn.size()),
                                                    raw_ops,
@@ -960,9 +961,8 @@ future<multi_result> connection_zk::commit(multi_op&& txn_in)
                                      );
         if (rc == error_code::ok)
         {
-            auto f = pcompleter->prom.get_future();
             pcompleter.release();
-            return f;
+            return fut;
         }
         else
         {
