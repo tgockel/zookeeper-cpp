@@ -1,5 +1,5 @@
 FROM ubuntu:16.04
-MAINTAINER Travis Gockel <travis@gockelhut.com>
+LABEL maintainer="Travis Gockel <travis@gockelhut.com>"
 
 RUN apt-get update
 RUN apt-get install --yes software-properties-common

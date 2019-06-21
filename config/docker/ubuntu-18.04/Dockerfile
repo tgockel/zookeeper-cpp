@@ -1,5 +1,5 @@
 FROM ubuntu:18.04
-MAINTAINER Travis Gockel <travis@gockelhut.com>
+LABEL maintainer="Travis Gockel <travis@gockelhut.com>"
 
 RUN apt-get update          \
  && apt-get install --yes   \

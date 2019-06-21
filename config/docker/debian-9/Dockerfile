@@ -1,5 +1,5 @@
 FROM debian:9
-MAINTAINER Travis Gockel <travis@gockelhut.com>
+LABEL maintainer="Travis Gockel <travis@gockelhut.com>"
 
 
 RUN apt-get update          \

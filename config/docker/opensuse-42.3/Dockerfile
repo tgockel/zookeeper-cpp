@@ -1,5 +1,5 @@
 FROM opensuse:42.3
-MAINTAINER Travis Gockel <travis@gockelhut.com>
+LABEL maintainer="Travis Gockel <travis@gockelhut.com>"
 
 COPY repos /tmp/repos
 RUN zypper addrepo -f /tmp/repos/server:database.repo \
