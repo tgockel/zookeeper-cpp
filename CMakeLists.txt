@@ -44,7 +44,7 @@ if(NOT ${CMAKE_BUILD_TYPE} IN_LIST VALID_BUILD_TYPES)
 endif()
 message(STATUS "Configuration: ${CMAKE_BUILD_TYPE}")
 
-set(ZKPP_SERVER_VERSIONS "3.5.4-beta;3.4.10"
+set(ZKPP_SERVER_VERSIONS "3.5.5;3.4.14"
     CACHE STRING "The ZooKeeper server versions to run tests against. The first in the list is the default."
    )
 
