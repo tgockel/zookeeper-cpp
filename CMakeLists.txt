@@ -250,9 +250,9 @@ if(ZKPP_PACKAGE_SYSTEM)
 
         add_custom_target("lib${package_name}.deb"
                           BYPRODUCTS "install/lib${package_name}${PROJECT_SO_VERSION}.deb"
-                          COMMAND rm -rf "install/lib${package_name}${PROJECT_SO_VERSION}/usr/local/lib"
-                          COMMAND mkdir -p "install/lib${package_name}${PROJECT_SO_VERSION}/usr/local/lib"
-                          COMMAND cp "$<TARGET_FILE:${module}>" "install/lib${package_name}${PROJECT_SO_VERSION}/usr/local/lib"
+                          COMMAND rm -rf "install/lib${package_name}${PROJECT_SO_VERSION}${CMAKE_INSTALL_PREFIX}/lib"
+                          COMMAND mkdir -p "install/lib${package_name}${PROJECT_SO_VERSION}${CMAKE_INSTALL_PREFIX}/lib"
+                          COMMAND cp "$<TARGET_FILE:${module}>" "install/lib${package_name}${PROJECT_SO_VERSION}${CMAKE_INSTALL_PREFIX}/lib"
                           COMMAND dpkg --build "install/lib${package_name}${PROJECT_SO_VERSION}"
                           DEPENDS
                             "${CMAKE_CURRENT_BINARY_DIR}/install/lib${package_name}${PROJECT_SO_VERSION}/DEBIAN/control"
@@ -263,7 +263,7 @@ if(ZKPP_PACKAGE_SYSTEM)
 
       if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/install/deb/lib${package_name}-dev")
         message(STATUS "    lib${package_name}-dev")
-        set(staging_dir "install/lib${package_name}${PROJECT_SO_VERSION}-dev/usr/local/include/${header_path}")
+        set(staging_dir "install/lib${package_name}${PROJECT_SO_VERSION}-dev${CMAKE_INSTALL_PREFIX}/include/${header_path}")
         configure_file("${CMAKE_CURRENT_SOURCE_DIR}/install/deb/lib${package_name}-dev/control.in"
                        "${CMAKE_CURRENT_BINARY_DIR}/install/lib${package_name}${PROJECT_SO_VERSION}-dev/DEBIAN/control"
                        @ONLY IMMEDIATE
