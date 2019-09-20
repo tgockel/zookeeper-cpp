@@ -292,6 +292,9 @@ public:
 
     multi_result(std::vector<part> parts) noexcept;
 
+    multi_result(multi_result&&) = default;
+    multi_result & operator=(multi_result&&) = default;
+
     ~multi_result() noexcept;
 
     /// The number of results in this transaction bundle.

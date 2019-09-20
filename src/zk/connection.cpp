@@ -2,6 +2,7 @@
 #include "connection_zk.hpp"
 #include "error.hpp"
 #include "types.hpp"
+#include "exceptions.hpp"
 
 #include <algorithm>
 #include <regex>
@@ -47,7 +48,7 @@ void connection::on_session_event(zk::state new_state)
 
     auto ex = new_state == zk::state::expired_session       ? get_exception_ptr_of(error_code::session_expired)
             : new_state == zk::state::authentication_failed ? get_exception_ptr_of(error_code::authentication_failed)
-            :                                                 std::exception_ptr();
+            :                                                 zk::exception_ptr();
 
     for (auto& p : l_state_change_promises)
     {
@@ -105,7 +106,7 @@ static connection_params::host_list extract_host_list(string_view src)
 static bool extract_bool(string_view key, string_view val)
 {
     if (val.empty())
-        throw std::invalid_argument(std::string("Key ") + std::string(key) + " has blank value");
+        zk::throw_exception(std::invalid_argument(std::string("Key ") + std::string(key) + " has blank value"));
 
     switch (val[0])
     {
@@ -118,20 +119,20 @@ static bool extract_bool(string_view key, string_view val)
     case 'F':
         return false;
     default:
-        throw std::invalid_argument(std::string("Invalid value for ") + std::string(key) + std::string(" \"")
+        zk::throw_exception(std::invalid_argument(std::string("Invalid value for ") + std::string(key) + std::string(" \"")
                                     + std::string(val) + "\" -- expected a boolean"
-                                   );
+                                    ));
     }
 }
 
 static std::chrono::milliseconds extract_millis(string_view key, string_view val)
 {
     if (val.empty())
-        throw std::invalid_argument(std::string("Key ") + std::string(key) + " has blank value");
+        zk::throw_exception(std::invalid_argument(std::string("Key ") + std::string(key) + " has blank value"));
 
     if (val[0] == 'P')
     {
-        throw std::invalid_argument("ISO 8601 duration is not supported (yet).");
+        zk::throw_exception(std::invalid_argument("ISO 8601 duration is not supported (yet)."));
     }
     else
     {
@@ -162,9 +163,9 @@ static void extract_advanced_options(string_view src, connection_params& out)
     {
         auto eq_it = std::find(qp_part.begin(), qp_part.end(), '=');
         if (eq_it == qp_part.end())
-            throw std::invalid_argument("Invalid connection string -- query string must be specified as "
+            zk::throw_exception(std::invalid_argument("Invalid connection string -- query string must be specified as "
                                         "\"key1=value1&key2=value2...\""
-                                       );
+                                       ));
 
         auto key = qp_part.substr(0, std::distance(qp_part.begin(), eq_it));
         auto val = qp_part.substr(std::distance(qp_part.begin(), eq_it) + 1);
@@ -180,7 +181,7 @@ static void extract_advanced_options(string_view src, connection_params& out)
     });
 
     if (!invalid_keys_msg.empty())
-        throw std::invalid_argument(std::move(invalid_keys_msg));
+        zk::throw_exception(std::invalid_argument(std::move(invalid_keys_msg)));
 }
 
 connection_params connection_params::parse(string_view conn_string)
@@ -195,9 +196,9 @@ connection_params connection_params::parse(string_view conn_string)
 
     std::cmatch match;
     if (!std::regex_match(conn_string.begin(), conn_string.end(), match, expr))
-        throw std::invalid_argument(std::string("Invalid connection string (") + std::string(conn_string)
+        zk::throw_exception(std::invalid_argument(std::string("Invalid connection string (") + std::string(conn_string)
                                     + " -- format is \"schema://[auth@]${host_addrs}/[path][?options]\""
-                                   );
+                                    ));
 
     connection_params out;
     out.connection_schema() = match[schema_idx].str();
