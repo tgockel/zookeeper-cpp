@@ -60,6 +60,7 @@ configuration_setting(NAME    BUFFER
                       DEFAULT STD_VECTOR
                       OPTIONS
                         STD_VECTOR
+                        STD_STRING
                         CUSTOM
                      )
 
