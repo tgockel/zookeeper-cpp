@@ -10,7 +10,7 @@
 /// \{
 
 // \def ZKPP_BUFFER_USE_STD_STRING
-//  Set this to 1 to use \c std::string as the backing types for zk::buffer.
+//  Set this to 1 to use \c std::string as the backing type for zk::buffer.
 //
 #ifndef ZKPP_BUFFER_USE_STD_STRING
 #   define ZKPP_BUFFER_USE_STD_STRING 0
