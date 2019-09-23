@@ -25,9 +25,6 @@ namespace zk
 class client final
 {
 public:
-    /// Create a non-connected client. All operations will fail.
-    client() noexcept;
-
     /// Create a client connected to the cluster specified by \a params.
     explicit client(const connection_params& params);
 
