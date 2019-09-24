@@ -46,9 +46,9 @@ future<client> client::connect(connection_params conn_params)
         else
         {
             // TODO: Test if future::then can be relied on and use that instead of std::async
-            return std::async
+            return zk::async
                    (
-                       std::launch::async,
+                       zk::launch::async,
                        [state_change_fut = std::move(state_change_fut), conn = std::move(conn)] () mutable -> client
                        {
                          state s(state_change_fut.get());
