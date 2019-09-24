@@ -40,7 +40,7 @@
  *  The template to use for \c zk::async. This should be highly related to \c ZKPP_FUTURE_TEMPLATE and usually mapped
  *  to std::async or boost::async.
  *
- *  \def ZKPP_LAUNCH_ENUM_
+ *  \def ZKPP_LAUNCH_ENUM
  *  The enum to use for \c zk::async launch policy. This should be highly related to \c ZKPP_FUTURE_TEMPLATE and usually mapped
  *  to std::launch::async or boost::launch::async.
  *
