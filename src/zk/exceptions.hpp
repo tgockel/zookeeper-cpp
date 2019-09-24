@@ -30,7 +30,7 @@ template<typename T>
 #else
 
 using exception_ptr = std::exception_ptr;
-exception_ptr current_exception() noexcept
+exception_ptr current_exception() noexcept;
 
 template<typename T>
 [[noreturn]] inline void throw_exception(T const & e)
