@@ -18,6 +18,14 @@
 #   define ZKPP_FUTURE_USE_STD_EXPERIMENTAL 0
 #endif
 
+/** \def ZKPP_FUTURE_USE_BOOST_
+ *  Set this to 1 to use \c boost::future and \c boost::promise as the backing types for
+ *  \c zk::future and \c zk::promise.
+**/
+#ifndef ZKPP_FUTURE_USE_BOOST
+#   define ZKPP_FUTURE_USE_BOOST 0
+#endif
+
 /** \def ZKPP_FUTURE_USE_CUSTOM
  *  Set this to 1 to use custom definitions of \c zk::future and \c zk::promise. If this is set, you must also set
  *  \c ZKPP_FUTURE_TEMPLATE, \c ZKPP_PROMISE_TEMPLATE, and \c ZKPP_FUTURE_INCLUDE.
@@ -41,7 +49,7 @@
  *  This is the default behavior.
 **/
 #ifndef ZKPP_FUTURE_USE_STD
-#   if ZKPP_FUTURE_USE_STD_EXPERIMENTAL || ZKPP_FUTURE_USE_CUSTOM
+#   if ZKPP_FUTURE_USE_BOOST || ZKPP_FUTURE_USE_STD_EXPERIMENTAL || ZKPP_FUTURE_USE_CUSTOM
 #       define ZKPP_FUTURE_USE_STD 0
 #   else
 #       define ZKPP_FUTURE_USE_STD 1
@@ -56,6 +64,13 @@
 #   define ZKPP_FUTURE_INCLUDE   <experimental/future>
 #   define ZKPP_FUTURE_TEMPLATE  std::experimental::future
 #   define ZKPP_PROMISE_TEMPLATE std::experimental::promise
+#elif ZKPP_FUTURE_USE_BOOST
+#   define BOOST_THREAD_PROVIDES_FUTURE
+#   define BOOST_THREAD_PROVIDES_FUTURE_CONTINUATION
+#   define BOOST_THREAD_PROVIDES_FUTURE_WHEN_ALL_WHEN_ANY
+#   define ZKPP_FUTURE_INCLUDE   <boost/thread/future.hpp>
+#   define ZKPP_FUTURE_TEMPLATE  boost::future
+#   define ZKPP_PROMISE_TEMPLATE boost::promise
 #elif ZKPP_FUTURE_USE_CUSTOM
 #   if !defined ZKPP_FUTURE_TEMPLATE || !defined ZKPP_PROMISE_TEMPLATE || !defined ZKPP_FUTURE_INCLUDE
 #       error "When ZKPP_FUTURE_USE_CUSTOM is set, you must also define ZKPP_FUTURE_TEMPLATE, ZKPP_PROMISE_TEMPLATE,"
