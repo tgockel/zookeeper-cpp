@@ -15,6 +15,11 @@
 
 namespace zk
 {
+
+/// \addtogroup Client
+/// \{
+
+
 #if ZKPP_FUTURE_USE_BOOST
 
 using exception_ptr = boost::exception_ptr;
@@ -39,6 +44,8 @@ template<typename T>
 }
 
 #endif
+
+/// \}
 
 }
 
