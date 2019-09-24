@@ -1,6 +1,7 @@
 #pragma once
 
 #include <zk/config.hpp>
+#include "exceptions.hpp"
 
 #include <iosfwd>
 #include <string>
@@ -91,10 +92,10 @@ std::string to_string(const error_code&);
 [[noreturn]]
 void throw_error(error_code code);
 
-/// Get an \c std::exception_ptr containing an exception with the proper type for the given \a code.
+/// Get an \c zk::exception_ptr containing an exception with the proper type for the given \a code.
 ///
 /// \see throw_error
-std::exception_ptr get_exception_ptr_of(error_code code);
+zk::exception_ptr get_exception_ptr_of(error_code code);
 
 /// Get the \c std::error_category capable of describing ZooKeeper-provided error codes.
 ///

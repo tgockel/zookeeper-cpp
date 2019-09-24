@@ -2,6 +2,7 @@
 #include "acl.hpp"
 #include "connection.hpp"
 #include "multi.hpp"
+#include "exceptions.hpp"
 
 #include <sstream>
 #include <ostream>
@@ -54,7 +55,7 @@ future<client> client::connect(connection_params conn_params)
                          if (s == state::connected)
                             return client(conn);
                          else
-                             throw std::runtime_error(std::string("Unexpected state: ") + to_string(s));
+                            zk::throw_exception(std::runtime_error(std::string("Unexpected state: ") + to_string(s)));
                        }
                    );
         }
@@ -62,7 +63,7 @@ future<client> client::connect(connection_params conn_params)
     catch (...)
     {
         promise<client> p;
-        p.set_exception(std::current_exception());
+        p.set_exception(zk::current_exception());
         return p.get_future();
     }
 }

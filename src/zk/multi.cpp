@@ -1,4 +1,5 @@
 #include "multi.hpp"
+#include "exceptions.hpp"
 
 #include <new>
 #include <ostream>
@@ -67,11 +68,11 @@ const T& op::as(ptr<const char> operation) const
     }
     catch (const std::bad_variant_access&)
     {
-        throw std::logic_error( std::string("Invalid op type for op::")
+        zk::throw_exception(std::logic_error( std::string("Invalid op type for op::")
                               + std::string(operation)
                               + std::string(": ")
                               + to_string(type())
-                              );
+                              ));
     }
 }
 
@@ -259,11 +260,11 @@ const T& multi_result::part::as(ptr<const char> operation) const
     }
     catch (const std::bad_variant_access&)
     {
-        throw std::logic_error( std::string("Invalid op type for multi_result::")
+        zk::throw_exception(std::logic_error( std::string("Invalid op type for multi_result::")
                               + std::string(operation)
                               + std::string(": ")
                               + to_string(type())
-                              );
+                              ));
     }
 }
 

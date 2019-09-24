@@ -1,4 +1,5 @@
 #include "error.hpp"
+#include "exceptions.hpp"
 
 #include <sstream>
 #include <ostream>
@@ -32,30 +33,30 @@ void throw_error(error_code code)
 {
     switch (code)
     {
-    case error_code::connection_loss:               throw connection_loss();
-    case error_code::marshalling_error:             throw marshalling_error();
-    case error_code::not_implemented:               throw not_implemented("unspecified");
-    case error_code::invalid_arguments:             throw invalid_arguments();
-    case error_code::new_configuration_no_quorum:   throw new_configuration_no_quorum();
-    case error_code::reconfiguration_in_progress:   throw reconfiguration_in_progress();
-    case error_code::no_entry:                      throw no_entry();
-    case error_code::not_authorized:                throw not_authorized();
-    case error_code::version_mismatch:              throw version_mismatch();
-    case error_code::no_children_for_ephemerals:    throw no_children_for_ephemerals();
-    case error_code::entry_exists:                  throw entry_exists();
-    case error_code::not_empty:                     throw not_empty();
-    case error_code::session_expired:               throw session_expired();
-    case error_code::authentication_failed:         throw authentication_failed();
-    case error_code::closed:                        throw closed();
-    case error_code::read_only_connection:          throw read_only_connection();
-    case error_code::ephemeral_on_local_session:    throw ephemeral_on_local_session();
-    case error_code::reconfiguration_disabled:      throw reconfiguration_disabled();
-    case error_code::transaction_failed:            throw transaction_failed(error_code::transaction_failed, 0U);
-    default:                                        throw error(code, "unknown");
+    case error_code::connection_loss:               zk::throw_exception( connection_loss() );
+    case error_code::marshalling_error:             zk::throw_exception( marshalling_error() );
+    case error_code::not_implemented:               zk::throw_exception( not_implemented("unspecified") );
+    case error_code::invalid_arguments:             zk::throw_exception( invalid_arguments() );
+    case error_code::new_configuration_no_quorum:   zk::throw_exception( new_configuration_no_quorum() );
+    case error_code::reconfiguration_in_progress:   zk::throw_exception( reconfiguration_in_progress() );
+    case error_code::no_entry:                      zk::throw_exception( no_entry() );
+    case error_code::not_authorized:                zk::throw_exception( not_authorized() );
+    case error_code::version_mismatch:              zk::throw_exception( version_mismatch() );
+    case error_code::no_children_for_ephemerals:    zk::throw_exception( no_children_for_ephemerals() );
+    case error_code::entry_exists:                  zk::throw_exception( entry_exists() );
+    case error_code::not_empty:                     zk::throw_exception( not_empty() );
+    case error_code::session_expired:               zk::throw_exception( session_expired() );
+    case error_code::authentication_failed:         zk::throw_exception( authentication_failed() );
+    case error_code::closed:                        zk::throw_exception( closed() );
+    case error_code::read_only_connection:          zk::throw_exception( read_only_connection() );
+    case error_code::ephemeral_on_local_session:    zk::throw_exception( ephemeral_on_local_session() );
+    case error_code::reconfiguration_disabled:      zk::throw_exception( reconfiguration_disabled() );
+    case error_code::transaction_failed:            zk::throw_exception( transaction_failed(error_code::transaction_failed, 0U) );
+    default:                                        zk::throw_exception( error(code, "unknown") );
     }
 }
 
-std::exception_ptr get_exception_ptr_of(error_code code)
+zk::exception_ptr get_exception_ptr_of(error_code code)
 {
     try
     {
@@ -63,7 +64,7 @@ std::exception_ptr get_exception_ptr_of(error_code code)
     }
     catch (...)
     {
-        return std::current_exception();
+        return zk::current_exception();
     }
 }
 
