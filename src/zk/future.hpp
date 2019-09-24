@@ -18,7 +18,7 @@
 #   define ZKPP_FUTURE_USE_STD_EXPERIMENTAL 0
 #endif
 
-/** \def ZKPP_FUTURE_USE_BOOST_
+/** \def ZKPP_FUTURE_USE_BOOST
  *  Set this to 1 to use \c boost::future and \c boost::promise as the backing types for
  *  \c zk::future and \c zk::promise.
 **/
