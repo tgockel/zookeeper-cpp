@@ -990,7 +990,7 @@ future<void> connection_zk::load_fence()
                 prom->set_exception(get_exception_ptr_of(rc));
         };
 
-    auto ppromise = std::make_unique<std::promise<void>>();
+    auto ppromise = std::make_unique<zk::promise<void>>();
     auto rc = error_code_from_raw(::zoo_async(_handle, "/", callback, ppromise.get()));
     if (rc == error_code::ok)
     {
