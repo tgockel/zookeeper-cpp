@@ -69,6 +69,7 @@ configuration_setting(NAME    FUTURE
                       OPTIONS
                         STD
                         STD_EXPERIMENTAL
+                        BOOST
                         CUSTOM
                      )
 
@@ -88,8 +89,19 @@ set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O3")
 ################################################################################
 
 find_library(zookeeper_LIBRARIES zookeeper_mt)
+set(ZKPP_LIB_DEPENDENCIES ${ZKPP_LIB_DEPENDENCIES} ${zookeeper_LIBRARIES})
 
 include_directories("${PROJECT_SOURCE_DIR}/src")
+
+if (ZKPP_BUILD_SETTING_FUTURE STREQUAL "BOOST")
+    find_package(Boost
+                 1.52.0
+                 REQUIRED
+                 thread)
+    set(ZKPP_LIB_DEPENDENCIES ${ZKPP_LIB_DEPENDENCIES} ${Boost_LIBRARIES})
+endif()
+
+
 
 ################################################################################
 # GTest                                                                        #
@@ -146,8 +158,8 @@ build_module(NAME zkpp
              PATH src/zk
              NO_RECURSE
              LINK_LIBRARIES
-               ${zookeeper_LIBRARIES}
-            )
+             ${ZKPP_LIB_DEPENDENCIES}
+             )
 
 build_module(NAME zkpp-server
              PATH src/zk/server
