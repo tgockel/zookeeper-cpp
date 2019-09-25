@@ -7,7 +7,7 @@ var NAVTREEINDEX0 =
 "acl_8hpp_source.html":[2,0,0,2],
 "annotated.html":[1,0],
 "buffer_8hpp.html":[2,0,0,3],
-"buffer_8hpp.html#ga8175fa6edfc7371c269524730d3c0a9d":[2,0,0,3,4],
+"buffer_8hpp.html#ga8175fa6edfc7371c269524730d3c0a9d":[2,0,0,3,5],
 "buffer_8hpp_source.html":[2,0,0,3],
 "classes.html":[1,1],
 "classpath_8cpp_source.html":[2,0,0,0,0],

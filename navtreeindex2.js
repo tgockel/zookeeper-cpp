@@ -1,5 +1,6 @@
 var NAVTREEINDEX2 =
 {
+"group__Client.html#gga59dbc6c98abba145d356557222aa9f7fa242ac674d98ee2191f0bbf6de851d2d0":[0,0,65,4],
 "group__Client.html#gga59dbc6c98abba145d356557222aa9f7fa28a224da3ab2611c61969aa099558da8":[0,0,65,11],
 "group__Client.html#gga59dbc6c98abba145d356557222aa9f7fa30addcb3f8fe57b08f6b7eca34980cd1":[0,0,65,10],
 "group__Client.html#gga59dbc6c98abba145d356557222aa9f7fa311d4d7fe26a56fa5bb8216d56e91a2f":[0,0,65,19],
@@ -145,6 +146,8 @@ var NAVTREEINDEX2 =
 "structzk_1_1op_1_1set__data.html#a4be829d0eff65844a7c832915fd01df9":[0,0,31,3,4],
 "structzk_1_1op_1_1set__data.html#a8139bcbfbb986958d059b62d47f0dc3b":[0,0,31,3,2],
 "structzk_1_1op_1_1set__data.html#afef6ce0ba4a0b1259486f21bea400968":[0,0,31,3,1],
+"structzk_1_1print__buffer__content__tag.html":[1,0,1,39],
+"structzk_1_1print__buffer__length__tag.html":[1,0,1,40],
 "structzk_1_1server_1_1package__registry_1_1registration__info.html":[0,1,3,0],
 "structzk_1_1server_1_1package__registry_1_1registration__info.html#a1f1cd1972d9989478d49f759854325b2":[0,1,3,0,0],
 "structzk_1_1server_1_1package__registry_1_1registration__info.html#aaa3edd49eed140d7f8d594ccacadc10a":[0,1,3,0,1],

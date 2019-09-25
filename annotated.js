@@ -56,6 +56,8 @@ var annotated =
       [ "not_empty", "classzk_1_1not__empty.html", "classzk_1_1not__empty" ],
       [ "not_implemented", "classzk_1_1not__implemented.html", "classzk_1_1not__implemented" ],
       [ "op", "classzk_1_1op.html", "classzk_1_1op" ],
+      [ "print_buffer_content_tag", "structzk_1_1print__buffer__content__tag.html", null ],
+      [ "print_buffer_length_tag", "structzk_1_1print__buffer__length__tag.html", null ],
       [ "read_only_connection", "classzk_1_1read__only__connection.html", "classzk_1_1read__only__connection" ],
       [ "reconfiguration_disabled", "classzk_1_1reconfiguration__disabled.html", "classzk_1_1reconfiguration__disabled" ],
       [ "reconfiguration_in_progress", "classzk_1_1reconfiguration__in__progress.html", "classzk_1_1reconfiguration__in__progress" ],

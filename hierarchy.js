@@ -35,6 +35,9 @@ var hierarchy =
     [ "zk::op", "classzk_1_1op.html", null ],
     [ "zk::server::package_registry", "classzk_1_1server_1_1package__registry.html", null ],
     [ "zk::multi_result::part", "classzk_1_1multi__result_1_1part.html", null ],
+    [ "zk::print_buffer_length_tag", "structzk_1_1print__buffer__length__tag.html", [
+      [ "zk::print_buffer_content_tag", "structzk_1_1print__buffer__content__tag.html", null ]
+    ] ],
     [ "zk::server::package_registry::registration_info", "structzk_1_1server_1_1package__registry_1_1registration__info.html", null ],
     [ "zk::server::server", "classzk_1_1server_1_1server.html", null ],
     [ "zk::server::server_group", "classzk_1_1server_1_1server__group.html", null ],

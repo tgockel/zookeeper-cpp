@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.7"/>
-<title>zookeeper-cpp: zk/buffer.hpp File Reference</title>
+<title>zookeeper-cpp: zk::print_buffer_length_tag Struct Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -46,8 +46,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="modules.html"><span>Modules</span></a></li>
-      <li><a href="annotated.html"><span>Classes</span></a></li>
-      <li class="current"><a href="files.html"><span>Files</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
+      <li><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -68,8 +68,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
-      <li><a href="files.html"><span>File&#160;List</span></a></li>
-      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
+      <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
+      <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
+      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
 </div><!-- top -->
@@ -84,7 +86,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
 </div>
 <script type="text/javascript">
-$(document).ready(function(){initNavTree('buffer_8hpp.html','');});
+$(document).ready(function(){initNavTree('structzk_1_1print__buffer__length__tag.html','');});
 </script>
 <div id="doc-content">
 <!-- window showing the filter options -->
@@ -102,55 +104,33 @@ $(document).ready(function(){initNavTree('buffer_8hpp.html','');});
 </div>
 
 <div class="header">
-  <div class="summary">
-<a href="#define-members">Macros</a> &#124;
-<a href="#typedef-members">Typedefs</a>  </div>
   <div class="headertitle">
-<div class="title">buffer.hpp File Reference</div>  </div>
+<div class="title">zk::print_buffer_length_tag Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-
-<p>Controls the <code>buffer</code> type.  
-<a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;zk/config.hpp&gt;</code><br />
-<code>#include &lt;type_traits&gt;</code><br />
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for zk::print_buffer_length_tag:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
-<p><a href="buffer_8hpp_source.html">Go to the source code of this file.</a></p>
-<table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:gabaf1b1095169ccaa7ad2dabb3f65fabf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gabaf1b1095169ccaa7ad2dabb3f65fabf"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>ZKPP_BUFFER_USE_STD_STRING</b>&#160;&#160;&#160;0</td></tr>
-<tr class="separator:gabaf1b1095169ccaa7ad2dabb3f65fabf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga39e71b216e23cb584a0026e266883521"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Client.html#ga39e71b216e23cb584a0026e266883521">ZKPP_BUFFER_USE_CUSTOM</a>&#160;&#160;&#160;0</td></tr>
-<tr class="memdesc:ga39e71b216e23cb584a0026e266883521"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set this to 1 to use a custom definitions for <code>buffer</code>.  <a href="group__Client.html#ga39e71b216e23cb584a0026e266883521">More...</a><br /></td></tr>
-<tr class="separator:ga39e71b216e23cb584a0026e266883521"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab00a9abf8077b95dafdea60961c6a86a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Client.html#gab00a9abf8077b95dafdea60961c6a86a">ZKPP_BUFFER_USE_STD_VECTOR</a>&#160;&#160;&#160;1</td></tr>
-<tr class="memdesc:gab00a9abf8077b95dafdea60961c6a86a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set this to 1 to use <code>std::vector&lt;char&gt;</code> for the implementation of zk::buffer.  <a href="group__Client.html#gab00a9abf8077b95dafdea60961c6a86a">More...</a><br /></td></tr>
-<tr class="separator:gab00a9abf8077b95dafdea60961c6a86a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga4df5a8de13cf6d51cb9f04b0b1f189de"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Client.html#ga4df5a8de13cf6d51cb9f04b0b1f189de">ZKPP_BUFFER_INCLUDE</a>&#160;&#160;&#160;&lt;vector&gt;</td></tr>
-<tr class="memdesc:ga4df5a8de13cf6d51cb9f04b0b1f189de"><td class="mdescLeft">&#160;</td><td class="mdescRight">The header file to use to find the <code>buffer</code> type.  <a href="group__Client.html#ga4df5a8de13cf6d51cb9f04b0b1f189de">More...</a><br /></td></tr>
-<tr class="separator:ga4df5a8de13cf6d51cb9f04b0b1f189de"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga6d40ba7af556658d3dde2110aaffc70d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Client.html#ga6d40ba7af556658d3dde2110aaffc70d">ZKPP_BUFFER_TYPE</a>&#160;&#160;&#160;std::vector&lt;char&gt;</td></tr>
-<tr class="memdesc:ga6d40ba7af556658d3dde2110aaffc70d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The type name to use for the <code>buffer</code> type.  <a href="group__Client.html#ga6d40ba7af556658d3dde2110aaffc70d">More...</a><br /></td></tr>
-<tr class="separator:ga6d40ba7af556658d3dde2110aaffc70d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
-Typedefs</h2></td></tr>
-<tr class="memitem:ga8175fa6edfc7371c269524730d3c0a9d"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Client.html#ga8175fa6edfc7371c269524730d3c0a9d">zk::buffer</a> = <a class="el" href="group__Client.html#ga6d40ba7af556658d3dde2110aaffc70d">ZKPP_BUFFER_TYPE</a></td></tr>
-<tr class="memdesc:ga8175fa6edfc7371c269524730d3c0a9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The <code>buffer</code> type.  <a href="group__Client.html#ga8175fa6edfc7371c269524730d3c0a9d">More...</a><br /></td></tr>
-<tr class="separator:ga8175fa6edfc7371c269524730d3c0a9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+ <div class="center">
+  <img src="structzk_1_1print__buffer__length__tag.png" usemap="#zk::print_buffer_length_tag_map" alt=""/>
+  <map id="zk::print_buffer_length_tag_map" name="zk::print_buffer_length_tag_map">
+<area href="structzk_1_1print__buffer__content__tag.html" alt="zk::print_buffer_content_tag" shape="rect" coords="0,56,168,80"/>
+</map>
+ </div></div>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Controls the <code>buffer</code> type. </p>
-
-<p>Definition in file <a class="el" href="buffer_8hpp_source.html">buffer.hpp</a>.</p>
-</div></div><!-- contents -->
+<div class="textblock">
+<p>Definition at line <a class="el" href="results_8cpp_source.html#l00019">19</a> of file <a class="el" href="results_8cpp_source.html">results.cpp</a>.</p>
+</div><hr/>The documentation for this struct was generated from the following file:<ul>
+<li>zk/<a class="el" href="results_8cpp_source.html">results.cpp</a></li>
+</ul>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d6de0c1dab961ce6c5ee2d7394ff0d2c.html">zk</a></li><li class="navelem"><a class="el" href="buffer_8hpp.html">buffer.hpp</a></li>
+    <li class="navelem"><b>zk</b></li><li class="navelem"><a class="el" href="structzk_1_1print__buffer__length__tag.html">print_buffer_length_tag</a></li>
     <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7 </li>
