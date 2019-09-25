@@ -9,6 +9,13 @@
 /// \addtogroup Client
 /// \{
 
+// \def ZKPP_BUFFER_USE_STD_STRING
+//  Set this to 1 to use \c std::string as the backing type for zk::buffer.
+//
+#ifndef ZKPP_BUFFER_USE_STD_STRING
+#   define ZKPP_BUFFER_USE_STD_STRING 0
+#endif
+
 /// \def ZKPP_BUFFER_USE_CUSTOM
 /// Set this to 1 to use a custom definitions for \c buffer. If this is set, you must also set
 /// \ref ZKPP_BUFFER_INCLUDE and \ref ZKPP_BUFFER_TYPE.
@@ -27,7 +34,7 @@
 /// \def ZKPP_BUFFER_USE_STD_VECTOR
 /// Set this to 1 to use \c std::vector<char> for the implementation of \ref zk::buffer. This is the default behavior.
 #ifndef ZKPP_BUFFER_USE_STD_VECTOR
-#   if ZKPP_BUFFER_USE_CUSTOM
+#   if ZKPP_BUFFER_USE_STD_STRING || ZKPP_BUFFER_USE_CUSTOM
 #       define ZKPP_BUFFER_USE_STD_VECTOR 0
 #   else
 #       define ZKPP_BUFFER_USE_STD_VECTOR 1
@@ -37,6 +44,9 @@
 #if ZKPP_BUFFER_USE_STD_VECTOR
 #   define ZKPP_BUFFER_INCLUDE <vector>
 #   define ZKPP_BUFFER_TYPE std::vector<char>
+#elif ZKPP_BUFFER_USE_STD_STRING
+#   define ZKPP_BUFFER_INCLUDE <string>
+#   define ZKPP_BUFFER_TYPE std::string
 #elif ZKPP_BUFFER_USE_CUSTOM
 #   if !defined ZKPP_BUFFER_INCLUDE || !defined ZKPP_BUFFER_TYPE
 #       error "When ZKPP_BUFFER_USE_CUSTOM is set, you must also define ZKPP_BUFFER_INCLUDE and ZKPP_BUFFER_TYPE"

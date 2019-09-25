@@ -11,15 +11,23 @@ namespace zk
 // Utilities                                                                                                          //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+// These tags are used during print_buffer overload resolution. If TBuffer type is not
+// applicable (ill-formed) for one of the overloads, then SFINAE selects the appropriate overload.
+// But there are cases (e.g. when TBuffer is std::string) when both of the print_buffer
+// are well-formed and therefore the call to print_buffer would be ambiguous. These tags
+// allows to select one of the overloads by using more derived tag (print_buffer_content_tag).
+struct print_buffer_length_tag {};
+struct print_buffer_content_tag  : public print_buffer_length_tag {};
+
 template <typename TBuffer>
-auto print_buffer(std::ostream& os, const TBuffer& buf)
+auto print_buffer(std::ostream& os, const TBuffer& buf, struct print_buffer_content_tag)
         -> decltype((os << buf), void())
 {
     os << buf;
 }
 
 template <typename TBuffer>
-void print_buffer(std::ostream& os, const TBuffer& buf, ...)
+void print_buffer(std::ostream& os, const TBuffer& buf, struct print_buffer_length_tag)
 {
     os << "size=" << buf.size();
 }
@@ -63,7 +71,7 @@ get_result::~get_result() noexcept
 std::ostream& operator<<(std::ostream& os, const get_result& self)
 {
     os << "get_result{";
-    print_buffer(os, self.data());
+    print_buffer(os, self.data(), print_buffer_content_tag {});
     os << ' ' << self.stat();
     return os << '}';
 }
