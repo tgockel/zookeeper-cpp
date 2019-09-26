@@ -14,7 +14,7 @@ var searchData=
   ['chroot',['chroot',['../classzk_1_1connection__params.html#a83bfb8cc8f46b37e3f742692e247471a',1,'zk::connection_params']]],
   ['classpath',['classpath',['../classzk_1_1server_1_1classpath.html',1,'zk::server']]],
   ['classpath',['classpath',['../classzk_1_1server_1_1classpath.html#a4c08b7da435dde82ab5d6ef14676dc04',1,'zk::server::classpath']]],
-  ['client',['client',['../classzk_1_1client.html#af82c2448bd13459b5a300a5ae66c5c5d',1,'zk::client::client() noexcept'],['../classzk_1_1client.html#a02442eaf7c2e8b47b90f4c7f39d42813',1,'zk::client::client(const connection_params &amp;params)'],['../classzk_1_1client.html#afadb45f36fee021748a4d0096978746f',1,'zk::client::client(string_view conn_string)'],['../classzk_1_1client.html#a4897d1b54544316ba9632984f70f1783',1,'zk::client::client(std::shared_ptr&lt; connection &gt; conn) noexcept'],['../group__Client.html',1,'(Global Namespace)']]],
+  ['client',['client',['../classzk_1_1client.html#a02442eaf7c2e8b47b90f4c7f39d42813',1,'zk::client::client(const connection_params &amp;params)'],['../classzk_1_1client.html#afadb45f36fee021748a4d0096978746f',1,'zk::client::client(string_view conn_string)'],['../classzk_1_1client.html#a4897d1b54544316ba9632984f70f1783',1,'zk::client::client(std::shared_ptr&lt; connection &gt; conn) noexcept'],['../group__Client.html',1,'(Global Namespace)']]],
   ['client',['client',['../classzk_1_1client.html',1,'zk']]],
   ['client_5fport',['client_port',['../classzk_1_1server_1_1configuration.html#a70df833da6aae590a817b7de838775a6',1,'zk::server::configuration']]],
   ['close',['close',['../classzk_1_1client.html#aa9ba8303c608fbfe15b480a6dfd4e6d5',1,'zk::client']]],

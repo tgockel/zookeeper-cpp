@@ -119,9 +119,6 @@ $(document).ready(function(){initNavTree('classzk_1_1client.html','');});
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:af82c2448bd13459b5a300a5ae66c5c5d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1client.html#af82c2448bd13459b5a300a5ae66c5c5d">client</a> () noexcept</td></tr>
-<tr class="memdesc:af82c2448bd13459b5a300a5ae66c5c5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a non-connected client. All operations will fail.  <a href="#af82c2448bd13459b5a300a5ae66c5c5d">More...</a><br /></td></tr>
-<tr class="separator:af82c2448bd13459b5a300a5ae66c5c5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a02442eaf7c2e8b47b90f4c7f39d42813"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzk_1_1client.html#a02442eaf7c2e8b47b90f4c7f39d42813">client</a> (const <a class="el" href="classzk_1_1connection__params.html">connection_params</a> &amp;params)</td></tr>
 <tr class="memdesc:a02442eaf7c2e8b47b90f4c7f39d42813"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a client connected to the cluster specified by <em>params</em>.  <a href="#a02442eaf7c2e8b47b90f4c7f39d42813">More...</a><br /></td></tr>
 <tr class="separator:a02442eaf7c2e8b47b90f4c7f39d42813"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -204,31 +201,6 @@ static future&lt; <a class="el" href="classzk_1_1client.html">client</a> &gt;&#1
 
 <p>Definition at line <a class="el" href="client_8hpp_source.html#l00025">25</a> of file <a class="el" href="client_8hpp_source.html">client.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="af82c2448bd13459b5a300a5ae66c5c5d"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">zk::client::client </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Create a non-connected client. All operations will fail. </p>
-
-</div>
-</div>
 <a class="anchor" id="a02442eaf7c2e8b47b90f4c7f39d42813"></a>
 <div class="memitem">
 <div class="memproto">
@@ -620,9 +592,9 @@ static future&lt; <a class="el" href="classzk_1_1client.html">client</a> &gt;&#1
 <dl class="section warning"><dt>Warning</dt><dd>The internal pipeline for this operation is not the same as modifying operations (<a class="el" href="classzk_1_1client.html#a45b579013b53fb89c1a690f0520c4edf">set</a>, <a class="el" href="classzk_1_1client.html#a45f67fc3c1bcba32dfd2f848d050d376">create</a>, etc.). In cases of leader failure, there is a chance that the leader does not have support from the quorum, as it has switched to a new leader. While this is rare, it is still <em>possible</em> that not all updates have been processed.</dd></dl>
 <dl class="section note"><dt>Note</dt><dd>Other APIs call this operation <code>sync</code> and allow you to provide a <code>path</code> parameter. There are a few issues with this. First: that name conflicts with the commonly-used POSIX <code>sync</code> command, leading to confusion that data in ZooKeeper does not have integrity. Secondly, this operation has more in common with <code>std::atomic_thread_fence</code> or the x86 <code>lfence</code> instruction than <code>sync</code> (on the server, "flush" is an appropriate term &ndash; just like fence implementations in CPUs). Finally, the <code>path</code> parameter is ignored by the server &ndash; all future fetches are fenced, no matter what path is specified. In the future, ZooKeeper might support partitioning, in which case the <code>path</code> parameter might become relevant.</dd></dl>
 <p>It is often not necessary to wait for the fence future to be returned, as future reads will be synced without waiting. However, there is no guarantee on the ordering of the read if the future returned from <code>load_fence</code> is completed in error.</p>
-<div class="fragment"><div class="line"><span class="keyword">auto</span> fence_future = <a class="code" href="classzk_1_1client.html#af82c2448bd13459b5a300a5ae66c5c5d">client</a>.load_fence();</div>
+<div class="fragment"><div class="line"><span class="keyword">auto</span> fence_future = <a class="code" href="classzk_1_1client.html#a02442eaf7c2e8b47b90f4c7f39d42813">client</a>.load_fence();</div>
 <div class="line"><span class="comment">// data_future will be completed with the load_fence, even though we haven&#39;t waited to complete</span></div>
-<div class="line"><span class="keyword">auto</span> data_future = <a class="code" href="classzk_1_1client.html#af82c2448bd13459b5a300a5ae66c5c5d">client</a>.get(<span class="stringliteral">&quot;/some/path&quot;</span>);</div>
+<div class="line"><span class="keyword">auto</span> data_future = <a class="code" href="classzk_1_1client.html#a02442eaf7c2e8b47b90f4c7f39d42813">client</a>.get(<span class="stringliteral">&quot;/some/path&quot;</span>);</div>
 <div class="line"></div>
 <div class="line"><span class="comment">// Useful to use when_all to concat and error check (C++ Extensions for Concurrency, ISO/IEC TS 19571:2016)</span></div>
 <div class="line"><span class="keyword">auto</span> guaranteed_future = std::when_all(std::move(fence_future), std::move(data_future));</div>
