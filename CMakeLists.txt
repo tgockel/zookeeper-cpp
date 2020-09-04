@@ -248,6 +248,12 @@ if(ZKPP_PACKAGE_SYSTEM)
                FILE_PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE
               )
         endif()
+        if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/install/deb/lib${package_name}/shlibs.in")
+          configure_file("${CMAKE_CURRENT_SOURCE_DIR}/install/deb/lib${package_name}/shlibs.in"
+                         "${CMAKE_CURRENT_BINARY_DIR}/install/lib${package_name}${PROJECT_SO_VERSION}/DEBIAN/shlibs"
+                         @ONLY IMMEDIATE
+                        )
+        endif()
 
         add_custom_target("lib${package_name}.deb"
                           BYPRODUCTS "install/lib${package_name}${PROJECT_SO_VERSION}.deb"
