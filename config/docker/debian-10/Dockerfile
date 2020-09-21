@@ -1,12 +1,12 @@
-FROM ubuntu:18.10
+FROM debian:10
 LABEL maintainer="Travis Gockel <travis@gockelhut.com>"
 
 RUN apt-get update          \
  && apt-get install --yes   \
     cmake                   \
+    g++                     \
     grep                    \
     googletest              \
-    g++                     \
     ivy                     \
     lcov                    \
     libgtest-dev            \
