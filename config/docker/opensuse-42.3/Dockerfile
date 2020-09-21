@@ -1,8 +1,8 @@
-FROM opensuse:42.3
+FROM opensuse/leap:42.3
 LABEL maintainer="Travis Gockel <travis@gockelhut.com>"
 
 COPY repos /tmp/repos
-RUN zypper addrepo -f /tmp/repos/server:database.repo \
+RUN zypper addrepo -f /tmp/repos/server-database.repo \
  && zypper --gpg-auto-import-keys refresh
 
 RUN zypper install -y       \
