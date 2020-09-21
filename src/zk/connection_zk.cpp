@@ -1,4 +1,5 @@
 #include "connection_zk.hpp"
+#include "exceptions.hpp"
 
 #include <algorithm>
 #include <cassert>
@@ -168,7 +169,7 @@ connection_zk::connection_zk(const connection_params& params) :
         _handle(nullptr)
 {
     if (params.connection_schema() != "zk")
-        throw std::invalid_argument(std::string("Invalid connection string \"") + to_string(params) + "\"");
+        zk::throw_exception(std::invalid_argument(std::string("Invalid connection string \"") + to_string(params) + "\""));
 
     auto conn_string = [&] ()
                        {
@@ -254,7 +255,7 @@ public:
         watcher::deliver_event(std::move(ev));
     }
 
-    void deliver_data(optional<TResult> data, std::exception_ptr ex_ptr)
+    void deliver_data(optional<TResult> data, zk::exception_ptr ex_ptr)
     {
         if (!_data_delivered.exchange(true, std::memory_order_relaxed))
         {
@@ -378,7 +379,7 @@ public:
             self.deliver_data(watch_result(get_result(buffer(data, data + data_sz), stat_from_raw(*pstat)),
                                            self.get_event_future()
                                           ),
-                              std::exception_ptr()
+                              zk::exception_ptr()
                              );
         }
         else
@@ -431,7 +432,7 @@ future<get_children_result> connection_zk::get_children(string_view path)
             }
             catch (...)
             {
-                prom->set_exception(std::current_exception());
+                prom->set_exception(zk::current_exception());
             }
         };
 
@@ -482,12 +483,12 @@ public:
                                                                        ),
                                                     self.get_event_future()
                                                    ),
-                              std::exception_ptr()
+                              zk::exception_ptr()
                              );
         }
         catch (...)
         {
-            self.deliver_data(nullopt, std::current_exception());
+            self.deliver_data(nullopt, zk::current_exception());
         }
 
     }
@@ -561,13 +562,13 @@ public:
         if (rc == error_code::ok)
         {
             self.deliver_data(watch_exists_result(exists_result(stat_from_raw(*stat_in)), self.get_event_future()),
-                              std::exception_ptr()
+                              zk::exception_ptr()
                              );
         }
         else if (rc == error_code::no_entry)
         {
             self.deliver_data(watch_exists_result(exists_result(nullopt), self.get_event_future()),
-                              std::exception_ptr()
+                              zk::exception_ptr()
                              );
         }
         else
@@ -853,12 +854,12 @@ struct connection_zk_commit_completer
                 auto iter = std::partition_point(raw_results.begin(), raw_results.end(),
                                                  [] (auto res) { return res.err == 0; }
                                                 );
-                throw transaction_failed(rc, std::size_t(std::distance(raw_results.begin(), iter)));
+                zk::throw_exception(transaction_failed(rc, std::size_t(std::distance(raw_results.begin(), iter))));
             }
         }
         catch (...)
         {
-            prom.set_exception(std::current_exception());
+            prom.set_exception(zk::current_exception());
         }
     }
 };
@@ -944,9 +945,9 @@ future<multi_result> connection_zk::commit(multi_op&& txn_in)
                 default:
                 {
                     using std::to_string;
-                    throw std::invalid_argument("Invalid op_type at index=" + to_string(idx) + ": "
+                    zk::throw_exception(std::invalid_argument("Invalid op_type at index=" + to_string(idx) + ": "
                                                 + to_string(src_op.type())
-                                               );
+                                               ));
                 }
             }
         }
@@ -972,7 +973,7 @@ future<multi_result> connection_zk::commit(multi_op&& txn_in)
     }
     catch (...)
     {
-        pcompleter->prom.set_exception(std::current_exception());
+        pcompleter->prom.set_exception(zk::current_exception());
         return pcompleter->prom.get_future();
     }
 }
@@ -990,7 +991,7 @@ future<void> connection_zk::load_fence()
                 prom->set_exception(get_exception_ptr_of(rc));
         };
 
-    auto ppromise = std::make_unique<std::promise<void>>();
+    auto ppromise = std::make_unique<zk::promise<void>>();
     auto rc = error_code_from_raw(::zoo_async(_handle, "/", callback, ppromise.get()));
     if (rc == error_code::ok)
     {

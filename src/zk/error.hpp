@@ -1,6 +1,7 @@
 #pragma once
 
 #include <zk/config.hpp>
+#include "exceptions.hpp"
 
 #include <iosfwd>
 #include <string>
@@ -91,10 +92,10 @@ std::string to_string(const error_code&);
 [[noreturn]]
 void throw_error(error_code code);
 
-/// Get an \c std::exception_ptr containing an exception with the proper type for the given \a code.
+/// Get an \c zk::exception_ptr containing an exception with the proper type for the given \a code.
 ///
 /// \see throw_error
-std::exception_ptr get_exception_ptr_of(error_code code);
+zk::exception_ptr get_exception_ptr_of(error_code code);
 
 /// Get the \c std::error_category capable of describing ZooKeeper-provided error codes.
 ///
@@ -138,7 +139,7 @@ public:
 /// the client can experience a \ref connection_loss before the server replies with OK.
 ///
 /// \see session_expired
-class connection_loss final :
+class connection_loss:
         public transport_error
 {
 public:
@@ -153,7 +154,7 @@ public:
 /// <a href="https://zookeeper.apache.org/doc/r3.4.10/zookeeperAdmin.html">ZooKeeper Administrator's Guide</a> for more
 /// information and a stern warning). Another possible cause is the system running out of memory, but due to overcommit,
 /// OOM issues rarely manifest so cleanly.
-class marshalling_error final :
+class marshalling_error:
         public transport_error
 {
 public:
@@ -164,7 +165,7 @@ public:
 
 /// Operation was attempted that was not implemented. If you happen to be writing a \ref connection implementation, you
 /// are encouraged to raise this error in cases where you have not implemented an operation.
-class not_implemented final :
+class not_implemented:
         public error
 {
 public:
@@ -192,7 +193,7 @@ public:
 /// credentials to function.
 ///
 /// \see acl_rule
-class authentication_failed final :
+class authentication_failed:
         public invalid_arguments
 {
 public:
@@ -216,7 +217,7 @@ public:
 /// Raised when attempting an ensemble reconfiguration, but the proposed new ensemble would not be able to form quorum.
 /// This happens when not enough time has passed for potential new servers to sync with the leader. If the proposed new
 /// ensemble is up and running, the solution is usually to simply wait longer and attempt reconfiguration later.
-class new_configuration_no_quorum final :
+class new_configuration_no_quorum:
         public invalid_ensemble_state
 {
 public:
@@ -227,7 +228,7 @@ public:
 
 /// An attempt was made to reconfigure the ensemble, but there is already a reconfiguration in progress. Concurrent
 /// reconfiguration is not supported.
-class reconfiguration_in_progress final :
+class reconfiguration_in_progress:
         public invalid_ensemble_state
 {
 public:
@@ -237,7 +238,7 @@ public:
 };
 
 /// The ensemble does not support reconfiguration.
-class reconfiguration_disabled final :
+class reconfiguration_disabled:
         public invalid_ensemble_state
 {
 public:
@@ -267,7 +268,7 @@ public:
 /// of resuming a session can happen even in cases of quorum loss, as session expiration requires a leader in order to
 /// proceed, so a client reconnecting soon enough after the ensemble forms quorum and elects a leader will resume the
 /// session, even if the quorum has been lost for days.
-class session_expired final :
+class session_expired:
         public invalid_connection_state
 {
 public:
@@ -277,7 +278,7 @@ public:
 };
 
 /// An attempt was made to read or write to a ZNode when the connection does not have permission to do.
-class not_authorized final :
+class not_authorized:
         public invalid_connection_state
 {
 public:
@@ -288,7 +289,7 @@ public:
 
 /// The connection is closed. This exception is delivered for all unfilled operations and watches when the connection is
 /// closing.
-class closed final :
+class closed:
         public invalid_connection_state
 {
 public:
@@ -300,7 +301,7 @@ public:
 /// An attempt was made to create an ephemeral entry, but the connection has a local session.
 ///
 /// \see connection_params::local
-class ephemeral_on_local_session final :
+class ephemeral_on_local_session:
         public invalid_connection_state
 {
 public:
@@ -312,7 +313,7 @@ public:
 /// A write operation was attempted on a read-only connection.
 ///
 /// \see connection_params::read_only
-class read_only_connection final :
+class read_only_connection :
         public invalid_connection_state
 {
 public:
@@ -333,7 +334,7 @@ public:
 };
 
 /// Thrown from read operations when attempting to read a ZNode that does not exist.
-class no_entry final :
+class no_entry :
         public check_failed
 {
 public:
@@ -343,7 +344,7 @@ public:
 };
 
 /// Thrown when attempting to create a ZNode, but one already exists at the specified path.
-class entry_exists final :
+class entry_exists :
         public check_failed
 {
 public:
@@ -353,7 +354,7 @@ public:
 };
 
 /// Thrown when attempting to erase a ZNode that has children.
-class not_empty final :
+class not_empty :
         public check_failed
 {
 public:
@@ -364,7 +365,7 @@ public:
 
 /// Thrown from modification operations when a version check is specified and the value in the database does not match
 /// the expected.
-class version_mismatch final :
+class version_mismatch :
         public check_failed
 {
 public:
@@ -374,7 +375,7 @@ public:
 };
 
 /// Ephemeral ZNodes cannot have children.
-class no_children_for_ephemerals final :
+class no_children_for_ephemerals :
         public check_failed
 {
 public:
@@ -385,7 +386,7 @@ public:
 
 /// Thrown from \ref client::commit when a transaction cannot be committed to the system. Check the
 /// \ref underlying_cause to see the specific error and \ref failed_op_index to see what operation failed.
-class transaction_failed final :
+class transaction_failed :
         public check_failed
 {
 public:

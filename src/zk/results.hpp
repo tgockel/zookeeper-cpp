@@ -227,6 +227,8 @@ public:
     explicit watch_result(get_result initial, future<event> next) noexcept;
 
     watch_result(watch_result&&) = default;
+    watch_result& operator=(watch_result&&) = default;
+
 
     ~watch_result() noexcept;
 
@@ -260,6 +262,8 @@ public:
     explicit watch_children_result(get_children_result initial, future<event> next) noexcept;
 
     watch_children_result(watch_children_result&&) = default;
+    watch_children_result& operator=(watch_children_result&&) = default;
+
 
     ~watch_children_result() noexcept;
 
@@ -293,6 +297,7 @@ public:
     explicit watch_exists_result(exists_result initial, future<event> next) noexcept;
 
     watch_exists_result(watch_exists_result&&) = default;
+    watch_exists_result & operator=(watch_exists_result&&) = default;
 
     ~watch_exists_result() noexcept;
 

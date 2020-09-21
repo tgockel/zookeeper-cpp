@@ -44,7 +44,7 @@ Ultimately, the usage looks like this (assuming you have a ZooKeeper server runn
 
     /** All result types are printable for debugging purposes. **/
     template <typename T>
-    void print_thing(const std::future<T>& result)
+    void print_thing(const zk::future<T>& result)
     {
         try
         {
