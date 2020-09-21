@@ -7,13 +7,11 @@ env:
   - DISTRO=ubuntu-16.04 CONFIG=Release
   - DISTRO=ubuntu-18.04 CONFIG=Debug
   - DISTRO=ubuntu-18.04 CONFIG=Release
-  - DISTRO=ubuntu-18.10 CONFIG=Debug
-  - DISTRO=ubuntu-18.10 CONFIG=Release
-  - DISTRO=ubuntu-19.04 CONFIG=Debug
-  - DISTRO=ubuntu-19.04 CONFIG=Release
-  - DISTRO=debian-9     CONFIG=Debug
-  - DISTRO=debian-9     CONFIG=Release
-  - DISTRO=opensuse-42.3 CONFIG=Debug
+  - DISTRO=ubuntu-20.04 CONFIG=Debug
+  - DISTRO=ubuntu-20.04 CONFIG=Release
+  - DISTRO=debian-10    CONFIG=Debug
+  - DISTRO=debian-10    CONFIG=Release
+  - DISTRO=opensuse-15  CONFIG=Debug
 services:
 - docker
 before_install:
@@ -23,7 +21,7 @@ script:
 - if [[ ${CONFIG} == "Debug" ]]; then ./config/dev-env ${DISTRO} -- ./config/run-tests; fi
 - if [[ ${CONFIG} == "Release" ]]; then ./config/make-package --dockerize ${DISTRO}; fi
 after_success:
-- if [[ ${DISTRO} != "ubuntu-16.04" ]]; then echo "Skipping documentation publishing due to non-main build environment"; exit 0; fi
+- if [[ ${DISTRO} != "ubuntu-20.04" ]]; then echo "Skipping documentation publishing due to non-main build environment"; exit 0; fi
 - if [[ ${CONFIG} != "Debug" ]]; then echo "Skipp documentation publishing due to non-debug build"; exit 0; fi
 - GIT_CURRENT_HASH=$(git rev-parse HEAD)
 - GIT_MASTER_HASH=$(git rev-parse master)

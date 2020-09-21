@@ -1,22 +1,18 @@
-FROM opensuse/leap:42.3
+FROM opensuse/leap:15
 LABEL maintainer="Travis Gockel <travis@gockelhut.com>"
 
-COPY repos /tmp/repos
-RUN zypper addrepo -f /tmp/repos/server-database.repo \
- && zypper --gpg-auto-import-keys refresh
-
-RUN zypper install -y       \
+RUN zypper addrepo -f "https://download.opensuse.org/repositories/server:/database/openSUSE_Leap_15.2/" "serverdatabase" \
+ && zypper --no-gpg-checks  \
+    install -y              \
     apache-ivy              \
     cmake                   \
     grep                    \
-    gcc7-c++                \
+    gcc-c++                 \
     git                     \
     googletest-devel        \
     java-1_8_0-openjdk      \
     lcov                    \
     libzookeeper2-devel     \
     ninja
-
-RUN update-alternatives --install /usr/bin/c++ c++ /usr/bin/g++-7 99
 
 CMD ["/root/zookeeper-cpp/config/run-tests"]
