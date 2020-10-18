@@ -81,6 +81,11 @@ std::string to_string(const get_result& self)
     return to_string_generic(self);
 }
 
+static_assert(std::is_copy_constructible_v<get_result>);
+static_assert(std::is_copy_assignable_v<get_result>);
+static_assert(std::is_nothrow_move_constructible_v<get_result>);
+static_assert(std::is_nothrow_move_assignable_v<get_result>);
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // get_children_result                                                                                                //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -105,6 +110,11 @@ std::string to_string(const get_children_result& self)
 {
     return to_string_generic(self);
 }
+
+static_assert(std::is_copy_constructible_v<get_children_result>);
+static_assert(std::is_copy_assignable_v<get_children_result>);
+static_assert(std::is_nothrow_move_constructible_v<get_children_result>);
+static_assert(std::is_nothrow_move_assignable_v<get_children_result>);
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // exists_result                                                                                                      //
@@ -132,6 +142,11 @@ std::string to_string(const exists_result& self)
     return to_string_generic(self);
 }
 
+static_assert(std::is_copy_constructible_v<exists_result>);
+static_assert(std::is_copy_assignable_v<exists_result>);
+static_assert(std::is_nothrow_move_constructible_v<exists_result>);
+static_assert(std::is_nothrow_move_assignable_v<exists_result>);
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // create_result                                                                                                      //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -153,6 +168,11 @@ std::string to_string(const create_result& self)
     return to_string_generic(self);
 }
 
+static_assert(std::is_copy_constructible_v<create_result>);
+static_assert(std::is_copy_assignable_v<create_result>);
+static_assert(std::is_nothrow_move_constructible_v<create_result>);
+static_assert(std::is_nothrow_move_assignable_v<create_result>);
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // set_result                                                                                                         //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -173,6 +193,11 @@ std::string to_string(const set_result& self)
 {
     return to_string_generic(self);
 }
+
+static_assert(std::is_copy_constructible_v<set_result>);
+static_assert(std::is_copy_assignable_v<set_result>);
+static_assert(std::is_nothrow_move_constructible_v<set_result>);
+static_assert(std::is_nothrow_move_assignable_v<set_result>);
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // get_acl_result                                                                                                     //
@@ -196,6 +221,11 @@ std::string to_string(const get_acl_result& self)
     return to_string_generic(self);
 }
 
+static_assert(std::is_copy_constructible_v<get_acl_result>);
+static_assert(std::is_copy_assignable_v<get_acl_result>);
+static_assert(std::is_nothrow_move_constructible_v<get_acl_result>);
+static_assert(std::is_nothrow_move_assignable_v<get_acl_result>);
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // event                                                                                                              //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -214,6 +244,11 @@ std::string to_string(const event& self)
 {
     return to_string_generic(self);
 }
+
+static_assert(std::is_copy_constructible_v<event>);
+static_assert(std::is_copy_assignable_v<event>);
+static_assert(std::is_nothrow_move_constructible_v<event>);
+static_assert(std::is_nothrow_move_assignable_v<event>);
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // watch_result                                                                                                       //
@@ -237,6 +272,9 @@ std::string to_string(const watch_result& self)
     return to_string_generic(self);
 }
 
+static_assert(std::is_nothrow_move_constructible_v<watch_result>);
+static_assert(std::is_nothrow_move_assignable_v<watch_result>);
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // watch_children_result                                                                                              //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -259,6 +297,9 @@ std::string to_string(const watch_children_result& self)
     return to_string_generic(self);
 }
 
+static_assert(std::is_nothrow_move_constructible_v<watch_children_result>);
+static_assert(std::is_nothrow_move_assignable_v<watch_children_result>);
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // watch_exists_result                                                                                                //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -280,5 +321,8 @@ std::string to_string(const watch_exists_result& self)
 {
     return to_string_generic(self);
 }
+
+static_assert(std::is_nothrow_move_constructible_v<watch_exists_result>);
+static_assert(std::is_nothrow_move_assignable_v<watch_exists_result>);
 
 }

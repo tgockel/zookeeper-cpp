@@ -29,21 +29,35 @@ enum class permission : unsigned int
     all     = 0b11111, //!< You can do anything.
 };
 
+/// \{
 /// Set union operation of \ref permission.
-constexpr permission operator|(permission a, permission b)
+inline constexpr permission operator|(permission a, permission b)
 {
     return permission(static_cast<unsigned int>(a) | static_cast<unsigned int>(b));
 }
 
+inline constexpr permission& operator|=(permission& self, permission mask)
+{
+    return self = self | mask;
+}
+/// \}
+
+/// \{
 /// Set intersection operation of \ref permission.
-constexpr permission operator&(permission a, permission b)
+inline constexpr permission operator&(permission a, permission b)
 {
     return permission(static_cast<unsigned int>(a) & static_cast<unsigned int>(b));
 }
 
+inline constexpr permission& operator&=(permission& self, permission mask)
+{
+    return self = self & mask;
+}
+/// \}
+
 /// Set inverse operation of \ref permission. This is not exactly the bitwise complement of \a a, as the returned value
 /// will only include bits set that are valid in \ref permission discriminants.
-constexpr permission operator~(permission a)
+inline constexpr permission operator~(permission a)
 {
     return permission(~static_cast<unsigned int>(a)) & permission::all;
 }
@@ -51,7 +65,7 @@ constexpr permission operator~(permission a)
 /// Check that \a self allows it \a perform all operations. For example,
 /// `allows(permission::read | permission::write, permission::read)` will be \c true, as `read|write` is allowed to
 /// \c read.
-constexpr bool allows(permission self, permission perform)
+inline constexpr bool allows(permission self, permission perform)
 {
     return (self & perform) == perform;
 }
@@ -70,6 +84,12 @@ class acl_rule final
 public:
     /// Create an ACL under the given \a scheme and \a id with the given \a permissions.
     acl_rule(std::string scheme, std::string id, permission permissions);
+
+    acl_rule(const acl_rule&)            = default;
+    acl_rule& operator=(const acl_rule&) = default;
+
+    acl_rule(acl_rule&&)            = default;
+    acl_rule& operator=(acl_rule&&) = default;
 
     ~acl_rule() noexcept;
 
@@ -154,6 +174,12 @@ public:
     acl(std::initializer_list<acl_rule> rules) :
             acl(std::vector<acl_rule>(rules))
     { }
+
+    acl(const acl&)            = default;
+    acl& operator=(const acl&) = default;
+
+    acl(acl&&)            = default;
+    acl& operator=(acl&&) = default;
 
     ~acl() noexcept;
 

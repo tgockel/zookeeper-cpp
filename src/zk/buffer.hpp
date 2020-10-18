@@ -73,24 +73,27 @@ namespace zk
 /// | `buffer::value_type`  | `char`                    | Buffers must be made of single-byte elements                 |
 /// | `buffer::size_type`   | `std::size_t`             |                                                              |
 /// | `buffer(ib, ie)`      | `buffer`                  | Constructs a buffer with the range [`ib`, `ie`)              |
-/// | `buffer(buffer&&)`    | `buffer`                  | Move constructible.                                          |
+/// | `buffer(buffer&&)`    | `buffer`                  | Move constructible (must be `noexcept`).                     |
+/// | `operator=(buffer&&)` | `buffer&`                 | Move assignable (must be `noexcept`).                        |
 /// | `size()`              | `size_type`               | Get the length of the buffer                                 |
 /// | `data()`              | `const value_type*`       | Get a pointer to the beginning of the contents               |
 using buffer = ZKPP_BUFFER_TYPE;
 
 // Check through static_assert:
-static_assert(sizeof(buffer::value_type) == 1, "buffer::value_type must be single-byte elements");
+static_assert(sizeof(buffer::value_type) == 1U, "buffer::value_type must be single-byte elements");
 static_assert(std::is_same<std::size_t, buffer::size_type>::value, "buffer::size_type must be std::size_t");
 static_assert(std::is_constructible<buffer, ptr<const buffer::value_type>, ptr<const buffer::value_type>>::value,
               "buffer must be constructible with two pointers"
              );
 static_assert(std::is_move_constructible<buffer>::value, "buffer must be move-constructible");
+static_assert(std::is_nothrow_move_constructible<buffer>::value, "buffer must be nothrow move-constructible");
+static_assert(std::is_nothrow_move_assignable<buffer>::value, "buffer must be nothrow move-assignable");
 static_assert(std::is_same<decltype(std::declval<const buffer&>().size()), buffer::size_type>::value,
               "buffer::size() must return buffer::size_type"
              );
 static_assert(std::is_constructible<ptr<const buffer::value_type>,
-                                   decltype(std::declval<const buffer&>().data())
-                                  >::value,
+                                    decltype(std::declval<const buffer&>().data())
+                                   >::value,
               "buffer::data() must return ptr<const buffer::value_type>"
              );
 
