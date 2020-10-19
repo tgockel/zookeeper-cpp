@@ -26,6 +26,12 @@ class get_result final
 public:
     explicit get_result(buffer data, const zk::stat& stat) noexcept;
 
+    get_result(const get_result&)            = default;
+    get_result& operator=(const get_result&) = default;
+
+    get_result(get_result&&)            = default;
+    get_result& operator=(get_result&&) = default;
+
     ~get_result() noexcept;
 
     /// \{
@@ -60,6 +66,12 @@ public:
 public:
     explicit get_children_result(children_list_type children, const stat& parent_stat) noexcept;
 
+    get_children_result(const get_children_result&)            = default;
+    get_children_result& operator=(const get_children_result&) = default;
+
+    get_children_result(get_children_result&&)            = default;
+    get_children_result& operator=(get_children_result&&) = default;
+
     ~get_children_result() noexcept;
 
     /// \{
@@ -90,6 +102,12 @@ class exists_result final
 public:
     explicit exists_result(const optional<zk::stat>& stat) noexcept;
 
+    exists_result(const exists_result&)            = default;
+    exists_result& operator=(const exists_result&) = default;
+
+    exists_result(exists_result&&)            = default;
+    exists_result& operator=(exists_result&&) = default;
+
     ~exists_result() noexcept;
 
     /// \{
@@ -118,6 +136,12 @@ class create_result final
 public:
     explicit create_result(std::string name) noexcept;
 
+    create_result(const create_result&)            = default;
+    create_result& operator=(const create_result&) = default;
+
+    create_result(create_result&&)            = default;
+    create_result& operator=(create_result&&) = default;
+
     ~create_result() noexcept;
 
     /// \{
@@ -143,6 +167,12 @@ class set_result final
 public:
     explicit set_result(const zk::stat& stat) noexcept;
 
+    set_result(const set_result&)            = default;
+    set_result& operator=(const set_result&) = default;
+
+    set_result(set_result&&)            = default;
+    set_result& operator=(set_result&&) = default;
+
     ~set_result() noexcept;
 
     /// \{
@@ -165,7 +195,13 @@ class get_acl_result final
 public:
     explicit get_acl_result(zk::acl acl, const zk::stat& stat) noexcept;
 
-    virtual ~get_acl_result() noexcept;
+    get_acl_result(const get_acl_result&)            = default;
+    get_acl_result& operator=(const get_acl_result&) = default;
+
+    get_acl_result(get_acl_result&&)            = default;
+    get_acl_result& operator=(get_acl_result&&) = default;
+
+    ~get_acl_result() noexcept;
 
     /// \{
     /// The \ref zk::acl of the entry.
@@ -204,6 +240,12 @@ class event final
 public:
     explicit event(event_type type, zk::state state) noexcept;
 
+    event(const event&)            = default;
+    event& operator=(const event&) = default;
+
+    event(event&&)            = default;
+    event& operator=(event&&) = default;
+
     /// The type of event that occurred.
     const event_type& type() const { return _type; }
 
@@ -226,9 +268,11 @@ class watch_result final
 public:
     explicit watch_result(get_result initial, future<event> next) noexcept;
 
-    watch_result(watch_result&&) = default;
-    watch_result& operator=(watch_result&&) = default;
+    watch_result(const watch_result&)            = delete;
+    watch_result& operator=(const watch_result&) = delete;
 
+    watch_result(watch_result&&)            = default;
+    watch_result& operator=(watch_result&&) = default;
 
     ~watch_result() noexcept;
 
@@ -261,9 +305,11 @@ class watch_children_result final
 public:
     explicit watch_children_result(get_children_result initial, future<event> next) noexcept;
 
-    watch_children_result(watch_children_result&&) = default;
-    watch_children_result& operator=(watch_children_result&&) = default;
+    watch_children_result(const watch_children_result&)            = delete;
+    watch_children_result& operator=(const watch_children_result&) = delete;
 
+    watch_children_result(watch_children_result&&)            = default;
+    watch_children_result& operator=(watch_children_result&&) = default;
 
     ~watch_children_result() noexcept;
 
@@ -296,8 +342,11 @@ class watch_exists_result final
 public:
     explicit watch_exists_result(exists_result initial, future<event> next) noexcept;
 
-    watch_exists_result(watch_exists_result&&) = default;
-    watch_exists_result & operator=(watch_exists_result&&) = default;
+    watch_exists_result(const watch_exists_result&)            = delete;
+    watch_exists_result& operator=(const watch_exists_result&) = delete;
+
+    watch_exists_result(watch_exists_result&&)            = default;
+    watch_exists_result& operator=(watch_exists_result&&) = default;
 
     ~watch_exists_result() noexcept;
 
