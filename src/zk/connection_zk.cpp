@@ -337,7 +337,7 @@ future<get_result> connection_zk::get(string_view path)
             std::unique_ptr<promise<get_result>> prom((ptr<promise<get_result>>) prom_in);
             auto rc = error_code_from_raw(rc_in);
             if (rc == error_code::ok)
-                prom->set_value(get_result(buffer(data, data + data_sz), stat_from_raw(*pstat)));
+                prom->set_value(get_result(data ? buffer(data, data + data_sz) : buffer(), stat_from_raw(*pstat)));
             else
                 prom->set_exception(get_exception_ptr_of(rc));
         };
@@ -376,7 +376,7 @@ public:
 
         if (rc == error_code::ok)
         {
-            self.deliver_data(watch_result(get_result(buffer(data, data + data_sz), stat_from_raw(*pstat)),
+            self.deliver_data(watch_result(get_result(data ? buffer(data, data + data_sz) : buffer(), stat_from_raw(*pstat)),
                                            self.get_event_future()
                                           ),
                               zk::exception_ptr()
